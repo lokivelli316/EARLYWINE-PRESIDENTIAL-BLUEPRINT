@@ -1,0 +1,6 @@
+interface:
+  display_name: "EARLYWINE PRESIDENTIAL BLUEPRINT"
+  short_description: "Repo-specific patterns and workflows for EARLYWINE-PRESIDENTIAL-BLUEPRINT"
+  default_prompt: "Use the EARLYWINE-PRESIDENTIAL-BLUEPRINT repo skill to follow existing architecture, testing, and workflow conventions."
+policy:
+  allow_implicit_invocation: true

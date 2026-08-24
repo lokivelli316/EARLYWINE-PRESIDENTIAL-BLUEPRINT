@@ -1,8 +1,12 @@
 # EXPLORERS TAB — BUILD RECEIPT
 
-Status: BUILDING / NOT FROZEN
+Status: FROZEN / HUMAN APPROVED
 Branch target: `explorers-tab-buildout`
 Date: 2026-08-24
+
+## Human gate
+
+Approved in chat by the user: **Looks good continue**.
 
 ## Preserved source architecture
 
@@ -19,15 +23,19 @@ Date: 2026-08-24
 
 No new artwork is used. The interactive lab itself is the visual spine.
 
-## QA completed so far
+## QA completed
 
 - Static HTML parse completed with no duplicate IDs.
 - Inline JavaScript passed `node --check` on the local build.
 - Responsive breakpoints are present for tablet and phone layouts.
-- Human review required before freeze.
+- Human visual review passed for this tab.
+
+## Freeze rule
+
+This tab is now frozen at the tab level. Future changes must be additive or explicitly reopen the tab; do not flatten the five Explorer surfaces into a generic Labs page.
 
 ## Next gate
 
-After human approval, freeze Explorers, wire Home → Explorers on the cumulative child branch, then begin the Presidential Address tab.
+Build the Presidential Address tab on a child branch. No merge into `main` is authorized yet.
 
 DO NOT MERGE YET.

@@ -1,30 +1,35 @@
-# HOME TAB BUILDOUT — STATUS
+# HOME TAB — FREEZE RECEIPT
 
-Branch target: `home-tab-buildout`
+Status: USER-APPROVED / STRUCTURE FROZEN
+Branch: `home-tab-buildout`
+Date: 2026-08-24
 
-## Scope of this pass
-- Home / landing surface only.
-- Exact assigned Forge Council composition is the single tab hero.
-- Exact assigned candidate image is used as profile/identity art, not as a second hero.
-- Full Spectrum Independent identity is explicit.
-- Dual-Partisan / The Weld doctrine and requested air-quote line are visible.
-- Old/deep surfaces remain visible in the navigation rail.
-- Unbuilt surfaces are labeled `queued` instead of pointing to fake or broken routes.
-- Current `main/index.html` is not replaced in this pass.
+## Locked Home contract
 
-## Asset transport note
-The branch preview uses a heavily compressed copy of the exact Forge Council hero so the image can be moved safely through the current repository connector. The full-resolution source remains the authority and must replace the transport preview before any production merge. Candidate profile art uses the assigned image in a web-optimized copy.
+- Forge Council image is the single wide landing hero.
+- Candidate/profile image is the identity image directly beneath the hero.
+- Full Spectrum Independent identity remains visible.
+- The Weld / dual-partisan doctrine remains visible and unsanitized.
+- Surface rail keeps deeper tabs distinct; queued tabs are shown but not faked.
+- Public links include GitHub, Zenodo, YouTube, TikTok, and Facebook.
+- No more than one hero per tab.
+- No new visual is generated or substituted unless the human requests/approves it.
+- Additive build rule: preserve prior states; do not flatten lineage or replace deeper surfaces with summaries.
 
-## QA state
-- HTML structure parse: PASS.
-- Single tab hero rule: PASS.
-- Candidate profile kept separate from hero: PASS.
-- Local asset references: PASS.
-- Inline JavaScript syntax: PASS.
-- Full headless-browser visual QA: NOT YET PASSED; the local Chromium screenshot run stalled in the container.
+## QA completed for this freeze
 
-## Freeze rule
-Do not merge this branch into `main` until the Home visual/layout/wording is approved, the full-resolution hero is in place, and browser/mobile QA is complete.
+- Human visual approval received in-chat.
+- Static HTML parse: no duplicate IDs found.
+- Required Home image paths resolve in the local staging package.
+- Desktop/mobile responsive CSS is present.
+- Headless Chromium screenshot attempt timed out in the build container, so this receipt does NOT claim a completed automated screenshot QA pass.
 
-## Next tab after Home is approved
-Blueprint.
+## Deployment boundary
+
+This is a tab-level freeze, not authorization to replace `main/index.html` and not authorization to merge a pull request. Final deployment QA remains a separate gate after the cumulative tab build is assembled.
+
+## Next tab
+
+Blueprint — preserve the original `Ten pillars. One machine.` architecture, preserve the interactive remove/restore logic as its own Explorer relationship, and keep the 11-paper publication family distinct from the 10-pillar public system map.
+
+DO NOT MERGE YET.

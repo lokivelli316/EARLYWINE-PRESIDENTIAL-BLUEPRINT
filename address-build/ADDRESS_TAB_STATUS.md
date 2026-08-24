@@ -1,8 +1,12 @@
 # PRESIDENTIAL ADDRESS TAB — BUILD RECEIPT
 
-Status: BUILDING / NOT FROZEN
+Status: FROZEN / HUMAN APPROVED
 Branch target: `presidential-address-tab-buildout`
 Date: 2026-08-24
+
+## Freeze basis
+
+Human review approved the staged Presidential Address surface on 2026-08-24 with the instruction to continue.
 
 ## Preserved source architecture
 
@@ -31,16 +35,16 @@ Date: 2026-08-24
 
 No new artwork added. The on-demand Presidential Address video is the tab's visual spine.
 
-## QA completed so far
+## Freeze notes
 
-- Static single-file HTML created.
+- Static single-file HTML retained.
 - No external framework dependency.
-- Mobile/tablet responsive breakpoints included.
-- JavaScript limited to track switching, containment-tier inspection, and on-demand video loading.
-- Human visual review still required before freeze.
+- Mobile/tablet responsive breakpoints retained.
+- JavaScript remains limited to track switching, containment-tier inspection, and on-demand video loading.
+- This freeze approves the tab-level structure. It does **not** authorize a merge to `main`.
 
 ## Next gate
 
-Human review. After approval: freeze Address, wire Home → Address on the cumulative branch, then begin Gate Closing.
+Build Gate Closing as a child branch. Preserve contradictory findings, counter-evidence, open states, economics, and source-integrity boundaries.
 
-DO NOT MERGE YET.
+**DO NOT MERGE YET.**

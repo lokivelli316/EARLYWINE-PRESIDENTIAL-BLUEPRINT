@@ -1,6 +1,6 @@
 # BLUEPRINT TAB — BUILD RECEIPT
 
-Status: BUILDING / NOT FROZEN
+Status: FROZEN AT TAB LEVEL / NOT MERGED
 Branch target: `blueprint-tab-buildout`
 Date: 2026-08-24
 
@@ -19,15 +19,20 @@ Date: 2026-08-24
 
 No new picture was selected for this tab. The interactive system inspector is the tab's visual spine for this pass, avoiding unnecessary image duplication and honoring the ask-before-adding-art rule.
 
-## QA completed so far
+## QA completed
 
 - Local static parse completed with no duplicate IDs.
 - Inline JavaScript passed `node --check`.
 - Responsive breakpoints are present for tablet and phone layouts.
-- Human visual review is still required before this tab is frozen.
+- Human review approved on 2026-08-24.
+- Home → Blueprint is allowed to be wired on the cumulative child branch.
+
+## Freeze rule
+
+This freezes the Blueprint tab's current structure and interaction contract. Later corrections must be additive or explicitly justified; they must not flatten the ten-pillar system, erase the 11-paper distinction, or turn modeled completeness into an evidence claim.
 
 ## Next gate
 
-Human review of the Blueprint preview. After approval: freeze this tab, wire Home → Blueprint on the cumulative branch, then begin the next tab as a child branch.
+Begin Explorers as a child branch. Restore the five public Explorer tabs exactly as a first-class surface: AEGIS Explorer, Citizen Road Builder, Pillar Explorer, Weld Explorer, and White Papers.
 
 DO NOT MERGE YET.

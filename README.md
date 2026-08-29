@@ -4,13 +4,13 @@ Public GitHub Pages landing surface for **The Earlywine Blueprint** by Robert M.
 
 ## Deployment
 
-GitHub Pages should publish from:
+GitHub Pages publishes from:
 
 - Branch: `main`
 - Folder: `/ (root)`
 - Entry file: `index.html`
 
-The page is intentionally static: no framework, no build step, no Jekyll dependency.
+The public landing page is the interactive Pillar Explorer. Previous landing states are preserved under `lineage/` rather than silently overwritten.
 
 ## Status
 
@@ -18,4 +18,4 @@ Public civic systems presentation. Proposals, targets, planning assumptions, leg
 
 ## Media
 
-The address has been published separately on YouTube, Facebook, and TikTok. Exact public URLs can be wired into `index.html` once frozen so the Pages URL becomes the single durable front door.
+The Architecture of Survival address remains linked from the landing page on YouTube, Facebook, and TikTok.

@@ -1,0 +1,28 @@
+(function(){
+  const routes = [
+    {id:'home',label:'Candidate',href:'index.html',state:'LIVE',kind:'front-door',desc:'Candidate identity, the Weld, system map, media, and public status.'},
+    {id:'blueprint',label:'Blueprint',href:'blueprint-build/blueprint-preview.html',state:'LIVE',kind:'architecture',desc:'Ten pillars as a connected systems architecture.'},
+    {id:'explore',label:'Explore',href:'explorers-build/explorers-preview.html',state:'LIVE',kind:'interactive',desc:'AEGIS, Road Builder, Pillar, Weld, and white-paper explorers.'},
+    {id:'papers',label:'White Papers',href:'explorers-build/explorers-preview.html',state:'SOURCE PACK PENDING',kind:'publication',desc:'Public paper family remains inside the Explorer surface with source/package gates visible.'},
+    {id:'research',label:'Gate Closing / Research',href:'gate-closing-build/gate-closing-preview.html',state:'STAGED',kind:'evidence',desc:'Independent audit, scenarios, counter-evidence, and research lineage. Built but not final-frozen.'},
+    {id:'labs',label:'Labs',href:null,state:'EXPERIMENTAL',kind:'lab',desc:'Interactive tools, models, and staged experimental systems.'},
+    {id:'receipts',label:'Receipts / Source Integrity',href:'source-integrity-build/source-integrity-preview.html',state:'STAGED',kind:'integrity',desc:'Provenance, source integrity, correction lineage, and publication gates. Built but not final-frozen.'},
+    {id:'rights',label:'Rights After Conviction',href:'rc3-overlay/voting-rights.html',state:'REVIEW',kind:'rights',desc:'Rights-after-conviction public surface with federal/state distinction and review status preserved.'},
+    {id:'address',label:'Presidential Address',href:'address-build/address-preview.html',state:'LIVE',kind:'media',desc:'Five-track address, on-demand media, and high-risk systems annex.'},
+    {id:'participate',label:'Participate',href:'#participate',state:'OPEN',kind:'public',desc:'Public links, source repository, media, and challenge routes.'}
+  ];
+  const pillars = [
+    {id:1,key:'drug-policy',name:'Drug Policy & Harm Reduction',tag:'Public Health',status:'PROPOSAL',mechanism:'Clinical handling for personal use paired with scaled penalties for harm to others.',depends:['Housing','Veterans','Education'],failure:'Fails if treatment access is absent or consequences become non-enforceable.'},
+    {id:2,key:'earn-down',name:'Earn-Down Tax',tag:'Reciprocity',status:'PROPOSAL',mechanism:'Verified public service can reduce part of federal tax liability.',depends:['Education','Infrastructure'],failure:'Fails if verification is gameable or credits crowd out paid labor.'},
+    {id:3,key:'aegis',name:'Project Aegis',tag:'Infrastructure Spine',status:'ENGINEERING',mechanism:'Road-as-utility spine combining transport, power, fiber, sensing, subsurface utilities, and maintenance.',depends:['Housing','ARPA','Resilience'],failure:'Fails if capital cost, maintenance burden, or interoperability cannot survive field pilots.'},
+    {id:4,key:'firearms',name:'Firearms Responsibility',tag:'Public Safety',status:'POLICY',mechanism:'Competency-centered recurring proficiency and decision training.',depends:['Training','Due Process'],failure:'Fails if competence gates become arbitrary, inaccessible, or unequally applied.'},
+    {id:5,key:'housing',name:'Resilient Housing',tag:'Housing',status:'PROPOSAL',mechanism:'Dignified housing integrated with services, connectivity, utilities, and participation pathways.',depends:['Aegis','Veterans','Education'],failure:'Fails if service integration collapses or capital/operating costs are hidden.'},
+    {id:6,key:'ebt2',name:'EBT 2.0',tag:'Food Assistance',status:'PROPOSAL',mechanism:'Digital-first benefit verification with stronger transaction safeguards and anti-fraud controls.',depends:['Identity','Payments','Appeals'],failure:'Fails if anti-fraud controls block legitimate access or create opaque automated denials.'},
+    {id:7,key:'veterans',name:'Veterans — 30-Day Guarantee',tag:'Veterans',status:'PROPOSAL',mechanism:'Fast claims path using provisional benefits, integrated services, and tiered review.',depends:['Health','Housing','Data'],failure:'Fails if speed replaces due process or provisional decisions become permanent by inertia.'},
+    {id:8,key:'education',name:'Education for All',tag:'Education',status:'PROPOSAL',mechanism:'Tuition support plus universal public online learning and civic work-study pathways.',depends:['Earn-Down','ARPA','Broadband'],failure:'Fails if access expands while quality, completion, or credential portability collapses.'},
+    {id:9,key:'arpa',name:'ARPA Ecosystem',tag:'Innovation',status:'ARCHITECTURE',mechanism:'Civilian advanced-research agencies with milestone gates and mandatory cross-program spillover.',depends:['Aegis','Science','Procurement'],failure:'Fails if milestone gates become theater or captured programs cannot be terminated.'},
+    {id:10,key:'self-defense',name:'Self-Defense Law',tag:'Law',status:'POLICY',mechanism:'Codified self-defense protections with competence and explicit equal-application requirements.',depends:['Courts','Training','Civil Rights'],failure:'Fails if standards are vague, discriminatory, or encourage avoidable escalation.'}
+  ];
+  window.EARLYWINE_ROUTES = routes;
+  window.EARLYWINE_PILLARS = pillars;
+})();

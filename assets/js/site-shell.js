@@ -19,9 +19,17 @@
   function initNav(){
     const button=qs('[data-nav-toggle]'), drawer=qs('[data-nav-drawer]');
     if(!button||!drawer)return;
+    if(window.EARLYWINE_ROUTES){
+      drawer.innerHTML=window.EARLYWINE_ROUTES.map(r=>{
+        const status=`<span>${r.state}</span>`;
+        return r.href
+          ? `<a href="${r.href}" data-global-route="${r.id}">${r.label} ${status}</a>`
+          : `<a aria-disabled="true" title="${r.desc}">${r.label} ${status}</a>`;
+      }).join('');
+    }
     const close=()=>{drawer.dataset.open='false';button.setAttribute('aria-expanded','false');document.body.classList.remove('nav-open')};
     button.addEventListener('click',()=>{const next=drawer.dataset.open!=='true';drawer.dataset.open=String(next);button.setAttribute('aria-expanded',String(next));document.body.classList.toggle('nav-open',next)});
-    qsa('a',drawer).forEach(a=>a.addEventListener('click',close));
+    qsa('a',drawer).forEach(a=>a.addEventListener('click',e=>{if(a.getAttribute('aria-disabled')==='true')e.preventDefault();close()}));
     document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
   }
   function setStatusRail(target='[data-status-rail]'){

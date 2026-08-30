@@ -1,14 +1,16 @@
 (function(){
   const routes = [
-    {id:'home',label:'Candidate',href:'index.html',state:'LIVE',kind:'front-door',desc:'Candidate identity, the Weld, system map, media, and public status.'},
+    {id:'home',label:'Candidate / Temporary Home',href:'index.html',state:'LIVE',kind:'front-door',desc:'Temporary public front door while the final landing architecture is still evolving.'},
     {id:'blueprint',label:'Blueprint',href:'blueprint-build/blueprint-preview.html',state:'LIVE',kind:'architecture',desc:'Ten pillars as a connected systems architecture.'},
-    {id:'explore',label:'Explore',href:'explorers-build/explorers-preview.html',state:'LIVE',kind:'interactive',desc:'AEGIS, Road Builder, Pillar, Weld, and white-paper explorers.'},
+    {id:'explore',label:'Explorers',href:'explorers-build/explorers-preview.html',state:'LIVE',kind:'interactive',desc:'AEGIS, Road Builder, Pillar, Weld, and white-paper explorers.'},
     {id:'papers',label:'White Papers',href:'explorers-build/explorers-preview.html',state:'SOURCE PACK PENDING',kind:'publication',desc:'Public paper family remains inside the Explorer surface with source/package gates visible.'},
-    {id:'research',label:'Gate Closing / Research',href:'gate-closing-build/gate-closing-preview.html',state:'STAGED',kind:'evidence',desc:'Independent audit, scenarios, counter-evidence, and research lineage. Built but not final-frozen.'},
-    {id:'labs',label:'Labs',href:null,state:'EXPERIMENTAL',kind:'lab',desc:'Interactive tools, models, and staged experimental systems.'},
+    {id:'research',label:'Gate Closing / Research',href:'gate-closing-build/gate-closing-preview.html',state:'STAGED',kind:'evidence',desc:'Independent audit, scenarios, counter-evidence, frozen predictions, and receipts.'},
+    {id:'labs',label:'Labs / Physics',href:null,state:'EXPERIMENTAL',kind:'lab',desc:'Interactive physics tools and staged experimental systems; route remains visible until a public surface clears integration.'},
     {id:'receipts',label:'Receipts / Source Integrity',href:'source-integrity-build/source-integrity-preview.html',state:'STAGED',kind:'integrity',desc:'Provenance, source integrity, correction lineage, and publication gates. Built but not final-frozen.'},
-    {id:'rights',label:'Rights After Conviction',href:'rc3-overlay/voting-rights.html',state:'REVIEW',kind:'rights',desc:'Rights-after-conviction public surface with federal/state distinction and review status preserved.'},
+    {id:'rights',label:'Rights After Conviction / Voting Rights',href:'rc3-overlay/voting-rights.html',state:'REVIEW',kind:'rights',desc:'Rights-after-conviction public surface with federal/state distinction and review status preserved.'},
     {id:'address',label:'Presidential Address',href:'address-build/address-preview.html',state:'LIVE',kind:'media',desc:'Five-track address, on-demand media, and high-risk systems annex.'},
+    {id:'tracks',label:'Tracks / Media',href:null,state:'QUEUED',kind:'media',desc:'Additional music and media surfaces remain visible in the navigation manifest while their public route is not yet frozen.'},
+    {id:'data',label:'Data / Gates',href:null,state:'QUEUED',kind:'data',desc:'Data and gate-analysis surfaces remain visible without inventing a route that has not been built.'},
     {id:'participate',label:'Participate',href:'#participate',state:'OPEN',kind:'public',desc:'Public links, source repository, media, and challenge routes.'}
   ];
   const pillars = [

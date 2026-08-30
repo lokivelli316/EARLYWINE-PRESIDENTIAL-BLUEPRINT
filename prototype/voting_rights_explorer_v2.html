@@ -105,5 +105,6 @@ function renderAll(){renderRegions();renderStates();renderMatrix();renderLedger(
 search.addEventListener('input',e=>{app.query=e.target.value;renderStates()});$('#citizenMode').onclick=()=>setMode('citizen');$('#receiptMode').onclick=()=>setMode('receipt');$('#modeTop').onclick=()=>setMode(app.mode==='citizen'?'receipt':'citizen');$('#resetView').onclick=()=>{app.state='Indiana';app.region='All';app.query='';app.mode='citizen';search.value='';syncUrl();renderAll();showToast('Explorer reset')};$('#copyLink').onclick=async()=>{syncUrl();try{await navigator.clipboard.writeText(location.href);showToast('State link copied')}catch{showToast('Copy unavailable — use address bar')}};
 restoreUrl();renderFederal();renderAll();
 </script>
+<script data-ew-hamburger-graft src="/EARLYWINE-PRESIDENTIAL-BLUEPRINT/assets/js/hamburger-everywhere.js" defer></script>
 </body>
 </html>

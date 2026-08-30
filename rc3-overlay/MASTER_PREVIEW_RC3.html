@@ -15,4 +15,5 @@
 <button data-page="data.html">Data / Gates</button>
 </nav></header><main class="stage"><iframe id="preview" title="Earlywine Blueprint preview" src="index.html"></iframe></main></div><script>
 const frame=document.getElementById('preview'),status=document.getElementById('status'),openCurrent=document.getElementById('openCurrent');const buttons=[...document.querySelectorAll('[data-page]')];buttons.forEach(b=>b.addEventListener('click',()=>{buttons.forEach(x=>x.setAttribute('aria-selected','false'));b.setAttribute('aria-selected','true');frame.src=b.dataset.page;status.textContent=b.textContent;openCurrent.href=b.dataset.page;}));
-</script></body></html>
+</script><script data-ew-hamburger-graft src="/EARLYWINE-PRESIDENTIAL-BLUEPRINT/assets/js/hamburger-everywhere.js" defer></script>
+</body></html>

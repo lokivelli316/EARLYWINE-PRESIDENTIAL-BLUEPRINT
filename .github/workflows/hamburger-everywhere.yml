@@ -1,0 +1,53 @@
+name: Hamburger Everywhere
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/hamburger-everywhere.yml'
+permissions:
+  contents: write
+jobs:
+  graft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add shared navigation graft to public HTML
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          marker='data-ew-hamburger-graft'
+          tag='<script data-ew-hamburger-graft src="/EARLYWINE-PRESIDENTIAL-BLUEPRINT/assets/js/hamburger-everywhere.js" defer></script>'
+          excluded={Path('index.html')}
+          changed=[]
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or p in excluded: continue
+              s=p.read_text(encoding='utf-8')
+              if marker in s: continue
+              if '</body>' not in s.lower(): continue
+              i=s.lower().rfind('</body>')
+              s=s[:i]+tag+'\n'+s[i:]
+              p.write_text(s,encoding='utf-8')
+              changed.append(str(p))
+          print('GRAFTED', len(changed), *changed, sep='\n')
+          PY
+      - name: Verify every public subpage has the graft
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          missing=[]
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts or p==Path('index.html'): continue
+              s=p.read_text(encoding='utf-8')
+              if '</body>' in s.lower() and 'data-ew-hamburger-graft' not in s: missing.append(str(p))
+          if missing:
+              raise SystemExit('Missing hamburger graft:\n'+'\n'.join(missing))
+          print('PASS: every HTML subpage inherits the universal hamburger graft')
+          PY
+      - name: Commit grafted pages
+        run: |
+          if git diff --quiet; then echo 'No changes needed'; exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- '*.html'
+          git commit -m 'feat: every subpage gets a hamburger [skip ci]'
+          git push

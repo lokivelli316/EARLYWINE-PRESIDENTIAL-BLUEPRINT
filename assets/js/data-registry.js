@@ -5,6 +5,7 @@
     {id:'explore',label:'Explorers',href:'explorers-build/explorers-preview.html',state:'LIVE',kind:'interactive',desc:'AEGIS, Road Builder, Pillar, Weld, and white-paper explorers.'},
     {id:'papers',label:'White Papers',href:'explorers-build/explorers-preview.html',state:'SOURCE PACK PENDING',kind:'publication',desc:'Public paper family remains inside the Explorer surface with source/package gates visible.'},
     {id:'research',label:'Gate Closing / Research',href:'gate-closing-build/gate-closing-preview.html',state:'STAGED',kind:'evidence',desc:'Independent audit, scenarios, counter-evidence, frozen predictions, and receipts.'},
+    {id:'prior',label:'Prior Site Builds',href:'prior-sites/index.html',state:'PRESERVED',kind:'archive',desc:'Preserved earlier site/page variants kept live for side-by-side comparison and exact copy/paste harvesting.'},
     {id:'labs',label:'Labs / Physics',href:null,state:'EXPERIMENTAL',kind:'lab',desc:'Interactive physics tools and staged experimental systems; route remains visible until a public surface clears integration.'},
     {id:'receipts',label:'Receipts / Source Integrity',href:'source-integrity-build/source-integrity-preview.html',state:'STAGED',kind:'integrity',desc:'Provenance, source integrity, correction lineage, and publication gates. Built but not final-frozen.'},
     {id:'rights',label:'Rights After Conviction / Voting Rights',href:'rc3-overlay/voting-rights.html',state:'REVIEW',kind:'rights',desc:'Rights-after-conviction public surface with federal/state distinction and review status preserved.'},

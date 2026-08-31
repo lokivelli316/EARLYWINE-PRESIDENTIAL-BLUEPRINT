@@ -3,6 +3,9 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - '**.html'
+      - 'assets/js/hamburger-everywhere.js'
+      - 'assets/js/data-registry.js'
       - '.github/workflows/hamburger-everywhere.yml'
 permissions:
   contents: write
@@ -15,22 +18,29 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-          marker='data-ew-hamburger-graft'
-          tag='<script data-ew-hamburger-graft src="/EARLYWINE-PRESIDENTIAL-BLUEPRINT/assets/js/hamburger-everywhere.js" defer></script>'
+          ROOT='/EARLYWINE-PRESIDENTIAL-BLUEPRINT/assets/js/'
+          HB_MARK='data-ew-hamburger-graft'
+          REG_MARK='data-ew-registry-graft'
+          hb='<script %s src="%shamburger-everywhere.js" defer></script>'%(HB_MARK,ROOT)
+          reg='<script %s src="%sdata-registry.js"></script>'%(REG_MARK,ROOT)
           excluded={Path('index.html')}
           changed=[]
           for p in Path('.').rglob('*.html'):
               if '.git' in p.parts or p in excluded: continue
               s=p.read_text(encoding='utf-8')
-              if marker in s: continue
-              if '</body>' not in s.lower(): continue
-              i=s.lower().rfind('</body>')
-              s=s[:i]+tag+'\n'+s[i:]
-              p.write_text(s,encoding='utf-8')
+              low=s.lower()
+              if '</body>' not in low: continue
+              add=''
+              # registry must load before the hamburger consumes it
+              if REG_MARK not in s and 'data-registry.js' not in s: add+=reg
+              if HB_MARK not in s: add+=hb
+              if not add: continue
+              i=low.rfind('</body>')
+              p.write_text(s[:i]+add+'\n'+s[i:],encoding='utf-8')
               changed.append(str(p))
           print('GRAFTED', len(changed), *changed, sep='\n')
           PY
-      - name: Verify every public subpage has the graft
+      - name: Verify every public subpage has both grafts
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -38,10 +48,27 @@ jobs:
           for p in Path('.').rglob('*.html'):
               if '.git' in p.parts or p==Path('index.html'): continue
               s=p.read_text(encoding='utf-8')
-              if '</body>' in s.lower() and 'data-ew-hamburger-graft' not in s: missing.append(str(p))
+              if '</body>' not in s.lower(): continue
+              if 'hamburger-everywhere.js' not in s: missing.append(str(p)+' (hamburger)')
+              if 'data-registry.js' not in s: missing.append(str(p)+' (registry)')
           if missing:
-              raise SystemExit('Missing hamburger graft:\n'+'\n'.join(missing))
-          print('PASS: every HTML subpage inherits the universal hamburger graft')
+              raise SystemExit('Missing navigation graft:\n'+'\n'.join(missing))
+          print('PASS: every HTML subpage inherits the registry + universal hamburger')
+          PY
+      - name: Fail if any page carries its own hardcoded route list
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          offenders=[]
+          for p in list(Path('.').rglob('*.html'))+list(Path('assets/js').rglob('*.js')):
+              if '.git' in p.parts or p.name=='data-registry.js': continue
+              s=p.read_text(encoding='utf-8',errors='replace')
+              if re.search(r'SOURCE PACK PENDING',s) and 'EARLYWINE_ROUTES' not in s:
+                  offenders.append(str(p))
+          if offenders:
+              raise SystemExit('Hardcoded route copy detected (single source of truth is data-registry.js):\n'+'\n'.join(offenders))
+          print('PASS: data-registry.js is the only route/status source')
           PY
       - name: Commit grafted pages
         run: |
@@ -49,5 +76,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- '*.html'
-          git commit -m 'feat: every subpage gets a hamburger [skip ci]'
+          git commit -m 'feat: graft shared registry + hamburger onto public HTML [skip ci]'
           git push

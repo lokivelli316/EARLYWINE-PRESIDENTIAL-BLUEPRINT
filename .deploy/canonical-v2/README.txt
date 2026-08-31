@@ -1,0 +1,1 @@
+Canonical V2 staging lane. main baseline: f231447749bc8536f1ffa89dd1fb06a270d25f99. No READY marker means no promotion. Rollback branch: pre-canonical-v2-live-promotion-2026-08-31.

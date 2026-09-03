@@ -60,21 +60,24 @@
 <section class="section" id="participate"><div class="wrap"><div class="section-head" data-reveal><div><span class="micro">Public routes</span><h2>Inspect it. Challenge it. Follow the work.</h2></div><p class="section-lede">The campaign front door should make it easy to reach the source, the public address, the rights explorer and the research without pretending the unfinished pieces are finished.</p></div><div class="participate-grid"><a class="public-link" href="https://github.com/lokivelli316/EARLYWINE-PRESIDENTIAL-BLUEPRINT" target="_blank" rel="noopener"><strong>Source Repository</strong><span>Public GitHub lineage and site source.</span></a><a class="public-link" href="rc3-overlay/voting-rights.html"><strong>Know Your Rights</strong><span>Official-source civic verification route. LIVE.</span></a><a class="public-link" href="https://youtu.be/mgwV4lzqZoM?si=TuSO3BoaM9qXXIrN" target="_blank" rel="noopener"><strong>Presidential Address</strong><span>Full public address on YouTube.</span></a><a class="public-link" href="#ecosystem"><strong>Build Status</strong><span>See what is LIVE, QUEUED, OPEN or still experimental.</span></a></div></div></section>
 </main><footer class="site-footer"><div class="wrap"><strong>The Earlywine Blueprint.</strong> Build what lasts. Preserve what failed. Publish what survives. <span data-year></span></div></footer>
 <script>
-(function(){
+function initHomeSystems(){
  const routes=window.EARLYWINE_ROUTES||[],grid=document.getElementById('ecosystemGrid');
  const icons={home:'\u25c8',blueprint:'\u232c',explore:'\u2726',papers:'\u25a4',research:'\u2316',labs:'\u2697',receipts:'\u2317',rights:'\u2696',address:'\u25c9',participate:'\u2197'};
  function badge(s){const k=s==='SOURCE PACK PENDING'?'pending':String(s).toLowerCase();return '<span class="state-badge '+k+'">'+s+'</span>'}
  if(grid){
-  grid.innerHTML=routes.filter(r=>r.id!=='home').map(r=>'<article class="ecosystem-card glass" data-tilt data-reveal data-route-card="'+r.id+'"><div class="icon">'+(icons[r.id]||'\u25c7')+'</div><span class="micro">'+r.kind+'</span><h3>'+r.label+'</h3><p>'+r.desc+'</p><footer>'+badge(r.state)+'<span class="micro">'+(r.href?'ENTER':'INSPECT')+'</span></footer></article>').join('');
-  grid.querySelectorAll('[data-route-card]').forEach(card=>card.addEventListener('click',()=>{const r=routes.find(x=>x.id===card.dataset.routeCard);if(!r)return;if(r.href){location.href=r.href;return}const panel=document.querySelector('[data-route-inspector]');if(panel){panel.innerHTML='<div class="micro">'+r.state+'</div><div><h3>'+r.label+'</h3><p>'+r.desc+'</p><p class="muted">Visible by design; integration gate not cleared yet.</p></div>';panel.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})}}));
+  grid.innerHTML=routes.filter(r=>r.id!=='home').map(r=>'<article class="ecosystem-card glass" role="'+(r.href?'link':'button')+'" tabindex="0" data-tilt data-reveal data-route-card="'+r.id+'" aria-label="'+r.label+' · '+r.state+'"><div class="icon">'+(icons[r.id]||'\u25c7')+'</div><span class="micro">'+r.kind+'</span><h3>'+r.label+'</h3><p>'+r.desc+'</p><footer>'+badge(r.state)+'<span class="micro">'+(r.href?'ENTER':'INSPECT')+'</span></footer></article>').join('');
+  function openRouteCard(card){const r=routes.find(x=>x.id===card.dataset.routeCard);if(!r)return;if(r.href){location.href=r.href;return}const panel=document.querySelector('[data-route-inspector]');if(panel){panel.innerHTML='<div class="micro">'+r.state+'</div><div><h3>'+r.label+'</h3><p>'+r.desc+'</p><p class="muted">Visible by design; integration gate not cleared yet.</p></div>';panel.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})}}
+  grid.addEventListener('click',function(e){const card=e.target.closest('[data-route-card]');if(card)openRouteCard(card)});
+  grid.addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')return;const card=e.target.closest('[data-route-card]');if(!card)return;e.preventDefault();openRouteCard(card)});
  }
  const list=document.getElementById('pillarList'),stage=document.getElementById('pillarStage'),pillars=window.EARLYWINE_PILLARS||[];
- if(list&&stage){
+ if(list&&stage&&pillars.length){
   list.innerHTML=pillars.map((p,i)=>'<button class="pillar-btn '+(i===0?'active':'')+'" data-pillar="'+p.id+'"><span class="n">'+String(p.id).padStart(2,'0')+'</span><b>'+p.name+'</b><small>'+p.status+'</small></button>').join('');
   function renderPillar(id,push){const p=pillars.find(x=>x.id===Number(id))||pillars[0];list.querySelectorAll('.pillar-btn').forEach(b=>b.classList.toggle('active',Number(b.dataset.pillar)===p.id));stage.innerHTML='<span class="micro">PILLAR '+String(p.id).padStart(2,'0')+' \u00b7 '+p.tag+' \u00b7 '+p.status+'</span><h3>'+p.name+'</h3><p class="hero-lede" style="font-size:1.1rem">'+p.mechanism+'</p><div class="pillar-meta"><div><b>Depends on</b>'+p.depends.join(' \u00b7 ')+'</div><div><b>Failure condition</b>'+p.failure+'</div><div><b>Current gate</b>'+(p.status==='ENGINEERING'?'Mechanism / pilot qualification':'Policy / source / implementation design')+'</div></div><div class="pillar-links">'+p.depends.map(x=>'<span class="chip">'+x+'</span>').join('')+'</div>';if(push)history.replaceState(null,'','#pillar-'+p.id)}
   list.addEventListener('click',function(e){const b=e.target.closest('[data-pillar]');if(b)renderPillar(b.dataset.pillar,true)});var m=location.hash.match(/pillar-(\d+)/);renderPillar(m?m[1]:1,false);
  }
-})();
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initHomeSystems,{once:true});else initHomeSystems();
 </script>
 <script defer src="assets/js/home-keep-top-v3.js"></script>
 </body></html>

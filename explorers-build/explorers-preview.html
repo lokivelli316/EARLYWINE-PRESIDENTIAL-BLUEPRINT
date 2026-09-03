@@ -3,38 +3,699 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#05070a">
-<title>Explorers | The Earlywine Blueprint</title>
+<meta name="theme-color" content="#020508">
+<meta name="description" content="Earlywine Blueprint interactive systems lab — AEGIS infrastructure cross-section, Citizen Road Builder, pillar dependencies, Weld scenarios and white-paper family.">
+<title>Explorers | Earlywine Blueprint</title>
 <style>
-:root{--bg:#05070a;--p:#0d1318;--p2:#121a21;--t:#f1f5f7;--s:#bec9cf;--m:#87949d;--g:#f3ad45;--r:#d94b45;--b:#4b9eda;--c:#4bd4ca;--line:rgba(255,255,255,.13);--max:1380px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-width:320px;background:radial-gradient(circle at 12% 0,rgba(217,75,69,.08),transparent 24%),radial-gradient(circle at 88% 0,rgba(75,158,218,.08),transparent 24%),var(--bg);color:var(--t);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit}.wrap{width:min(calc(100% - 32px),var(--max));margin:auto}.stage{border-bottom:1px solid var(--line);background:#111821;color:#d6dfe4;font:800 11px ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase}.stage .wrap{min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:16px}.stage b,.eyebrow{color:var(--g)}header{position:sticky;top:0;z-index:50;background:rgba(5,7,10,.93);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}header .wrap{min-height:62px;display:flex;align-items:center;gap:10px}.brand{text-decoration:none;font-weight:950;letter-spacing:.055em}.nav{margin-left:auto;display:flex;gap:8px}.nav a{min-height:39px;display:inline-flex;align-items:center;padding:0 12px;border:1px solid var(--line);text-decoration:none;font:850 10px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.06em}.hero{padding:70px 0 34px}.eyebrow{font:900 11px ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase}h1,h2,h3{font-family:Georgia,serif}h1{font-size:clamp(52px,8vw,108px);line-height:.86;letter-spacing:-.06em;margin:.18em 0}.lede{max-width:980px;color:var(--s);font-size:clamp(17px,1.8vw,22px)}.warn,.impact{margin-top:18px;padding:13px 15px;border-left:4px solid var(--g);background:rgba(243,173,69,.07);color:#cbd4d9}.tabs{display:flex;gap:7px;overflow-x:auto;padding:16px 0;border-block:1px solid var(--line)}.tab{white-space:nowrap;min-height:45px;border:1px solid var(--line);background:var(--p);color:#aeb9bf;padding:0 14px;font:900 10px ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase;cursor:pointer}.tab[aria-pressed="true"]{color:#171008;background:var(--g);border-color:var(--g)}.view{display:none;padding:28px 0 80px}.view.active{display:block}.panel{border:1px solid var(--line);background:linear-gradient(160deg,var(--p2),var(--p));padding:22px}.panel h2{font-size:clamp(31px,4vw,52px);line-height:.98;margin:8px 0 14px}.muted{color:var(--m)}button{font:inherit}
-.aegis{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(300px,.75fr);gap:12px}.cross{min-height:610px;position:relative;overflow:hidden;border:1px solid var(--line);background:linear-gradient(#10212d 0 23%,#0d171e 23% 35%,#171b1e 35% 58%,#17120e 58% 100%)}.grid{position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(75,158,218,.18) 0 1px,transparent 1px 76px),repeating-linear-gradient(0deg,rgba(75,158,218,.12) 0 1px,transparent 1px 42px);pointer-events:none}.layer{position:absolute;left:5%;right:5%;border:1px solid rgba(255,255,255,.18);background:#151c21;color:#fff;text-align:left;padding:8px 11px;font:850 10px ui-monospace,monospace;cursor:pointer}.layer.sel{border-color:var(--g);box-shadow:0 0 0 2px rgba(243,173,69,.12)}.surface{top:28%;height:16%;background:#222b31}.sensors{top:47%;height:7%;background:rgba(75,212,202,.1)}.maintenance{top:57%;height:8%;border-style:dashed}.corridor{top:68%;height:14%;background:#10171c}.vault{top:84%;height:9%;background:#081116}.drain{top:95%;height:4%;background:#080d10}.jumps{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}.jump{min-height:42px;text-align:left;border:1px solid var(--line);background:#080c10;color:#a5b0b7;padding:8px;font-size:.8rem;cursor:pointer}.jump.active{border-color:var(--g);color:#fff}.conn{border:1px solid var(--line);background:#080c10;padding:10px;color:#99a7af;font-size:.82rem;margin-top:7px}.conn strong{display:block;color:#e2e8eb}
-.builder{display:grid;grid-template-columns:300px minmax(0,1fr) 300px;gap:12px}.parts{display:grid;gap:7px}.part{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:12px;border:1px solid var(--line);background:#0a0f14}.part span{display:block;color:var(--m);font-size:.74rem}.part button{min-width:66px;min-height:36px;border:1px solid var(--g);background:transparent;color:var(--g);font:900 9px ui-monospace,monospace;text-transform:uppercase;cursor:pointer}.part button.on{background:var(--g);color:#171008}.road{min-height:500px;position:relative;overflow:hidden;border:1px solid var(--line);background:linear-gradient(#10202a 0 27%,#20282c 27% 43%,#15110d 43% 100%)}.roadbase{position:absolute;left:7%;right:7%;top:31%;height:14%;border:1px solid #495760;background:#252e32}.slot{position:absolute;left:8%;right:8%;padding:9px;border:1px dashed rgba(255,255,255,.17);color:#738089;font:800 9px ui-monospace,monospace;text-transform:uppercase;opacity:.25}.slot.on{opacity:1;color:#dce5e9;border-style:solid}.s1{top:48%;height:7%}.s2{top:59%;height:15%}.s3{top:77%;height:10%}.s4{top:90%;height:6%}.tiles{position:absolute;left:7%;right:7%;top:31%;height:14%;background:repeating-linear-gradient(90deg,transparent 0 11%,rgba(243,173,69,.28) 11% 11.5%);display:none}.maint{position:absolute;right:9%;top:47%;padding:6px 8px;border:1px solid var(--g);color:var(--g);font:800 8px ui-monospace,monospace;display:none}.scores{display:grid;grid-template-columns:1fr 1fr;gap:7px}.score{padding:11px;border:1px solid var(--line);background:#080c10}.score span{display:block;color:#7f8c95;font:800 8px ui-monospace,monospace;text-transform:uppercase}.score strong{font:26px Georgia,serif}.meter{height:5px;background:#182026;margin-top:7px}.meter i{height:100%;display:block;background:var(--g)}
-.pillar-mount iframe{width:100%;height:72vh;min-height:640px;border:1px solid var(--line);background:#05070a}.weld{display:grid;grid-template-columns:245px minmax(0,1fr);gap:12px}.wlist{display:grid;gap:7px}.wlist button{padding:12px;text-align:left;border:1px solid var(--line);background:#080c10;color:#fff;cursor:pointer}.wlist button.active{border-color:var(--g);color:var(--g)}.machine{display:grid;grid-template-columns:1fr 110px 1fr;gap:9px;margin-top:18px}.half{border:1px solid var(--line);padding:20px}.half.red{background:rgba(217,75,69,.08)}.half.blue{background:rgba(75,158,218,.08)}.half.off{opacity:.35}.toggle,.core{border:1px solid var(--line);background:#080c10;color:#fff;cursor:pointer}.toggle{min-height:38px;padding:0 10px}.toggle.on{border-color:var(--g);color:var(--g)}.core{min-height:100%;color:var(--g);font:900 11px ui-monospace,monospace;text-transform:uppercase}.results{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}.result{padding:12px;border:1px solid var(--line);background:#080c10}.result span{display:block;color:var(--m);font:800 8px ui-monospace,monospace;text-transform:uppercase}.result strong{font:28px Georgia,serif}
-.paper-tools{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}.paper-tools button{min-height:37px;border:1px solid var(--line);background:#080c10;color:#fff;padding:0 10px;cursor:pointer}.paper-tools button.active{border-color:var(--g);color:var(--g)}.papers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.paper{border:1px solid var(--line);background:#090e13;padding:13px;cursor:pointer}.paper.active{border-color:var(--g)}.paper span{display:block;color:var(--g);font:800 8px ui-monospace,monospace;text-transform:uppercase}.detail{margin-top:10px}.detail-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.info{border:1px solid var(--line);padding:10px;background:#080c10}.info b{display:block;color:var(--g);font:800 8px ui-monospace,monospace;text-transform:uppercase}.info span{color:#b7c2c8;font-size:.84rem}
-footer{border-top:1px solid var(--line);padding:28px 0;color:var(--m)}@media(max-width:980px){.aegis,.builder,.weld{grid-template-columns:1fr}.machine{grid-template-columns:1fr}.core{min-height:62px}.papers{grid-template-columns:1fr 1fr}.detail-grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.wrap{width:min(calc(100% - 20px),var(--max))}.stage .wrap{padding:8px 0;align-items:flex-start;flex-direction:column;gap:2px}.nav{display:none}.hero{padding-top:52px}.panel{padding:17px}.jumps,.scores,.papers,.detail-grid,.results{grid-template-columns:1fr}.cross{min-height:520px}.pillar-mount iframe{min-height:700px}}
+:root{
+  --bg:#020508;--bg2:#050a10;--panel:rgba(8,14,21,.88);--panel2:rgba(11,19,29,.90);
+  --text:#f2f7fa;--soft:#c8d4da;--muted:#7f909c;--line:rgba(255,255,255,.10);
+  --line2:rgba(255,255,255,.20);--gold:#ffc044;--red:#db4947;--green:#53c984;
+  --blue:#4ca8f1;--cyan:#5fe5df;--violet:#a585ff;--max:1480px;--radius:20px;
+  --mono:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  --serif:Georgia,"Times New Roman",serif;--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{min-width:320px;scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;min-width:320px;overflow-x:hidden;color:var(--text);font-family:var(--sans);line-height:1.5;background:
+radial-gradient(circle at 13% 0,rgba(219,73,71,.08),transparent 26%),
+radial-gradient(circle at 87% 0,rgba(76,168,241,.08),transparent 26%),
+linear-gradient(180deg,#020508,#050a10 45%,#020407)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:
+linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);background-size:40px 40px;
+mask-image:linear-gradient(#000,transparent 86%)}
+a{color:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{width:min(calc(100% - 28px),var(--max));margin:auto}
+.micro{color:var(--gold);font:900 8px/1.2 var(--mono);letter-spacing:.13em;text-transform:uppercase}
+.glass{border:1px solid var(--line);border-radius:var(--radius);background:
+linear-gradient(145deg,rgba(255,255,255,.025),transparent 42%),linear-gradient(150deg,rgba(13,20,30,.88),rgba(5,9,15,.94));
+box-shadow:0 26px 80px rgba(0,0,0,.28)}
+
+/* top */
+.stage{border-bottom:1px solid var(--line);background:#101722;color:#aebdc5;font:800 8px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.stage .wrap{min-height:32px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.stage b{color:var(--gold)}
+header{position:sticky;top:0;z-index:90;border-bottom:1px solid var(--line);background:rgba(2,5,8,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+header .wrap{min-height:68px;display:flex;align-items:center;gap:10px}
+.brand{text-decoration:none;font:950 12px/1 var(--mono);letter-spacing:.08em}
+.brand span{color:var(--gold)}
+.nav{margin-left:auto;display:flex;gap:5px}
+.nav a{min-height:38px;padding:0 11px;display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:#afbdc5;font:850 8px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em}
+
+/* hero */
+.hero{position:relative;min-height:660px;overflow:hidden;border-bottom:1px solid var(--line);isolation:isolate}
+#heroCanvas{position:absolute;inset:0;z-index:-1;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+linear-gradient(90deg,rgba(2,5,8,.94),rgba(2,5,8,.62) 46%,rgba(2,5,8,.20) 75%,rgba(2,5,8,.70)),
+linear-gradient(0deg,#020508,transparent 50%)}
+.hero .wrap{min-height:660px;padding:90px 0 80px;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.52fr);gap:56px;align-items:center}
+.hero h1{margin:.17em 0 .18em;max-width:880px;font:800 clamp(64px,9vw,132px)/.79 var(--serif);letter-spacing:-.065em}
+.hero h1 em{display:block;color:transparent;font-style:normal;-webkit-text-stroke:1px rgba(255,255,255,.70);text-shadow:0 0 30px rgba(95,229,223,.12)}
+.lede{max-width:820px;margin:0;color:#c5d0d6;font-size:clamp(17px,1.65vw,22px)}
+.hero-actions{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px}
+.btn{min-height:48px;padding:0 15px;display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line2);border-radius:11px;background:rgba(5,9,15,.76);color:#fff;text-decoration:none;font:900 8px/1 var(--mono);text-transform:uppercase;letter-spacing:.07em}
+.btn.primary{border-color:var(--gold);background:var(--gold);color:#171008}
+.hero-console{padding:18px;background:rgba(6,10,17,.73);backdrop-filter:blur(14px)}
+.hero-console header{position:static;background:none;backdrop-filter:none;border-bottom:1px solid var(--line);padding-bottom:11px;display:flex;justify-content:space-between;gap:10px}
+.hero-console h2{margin:5px 0 0;font:700 28px/.95 var(--serif)}
+.hero-console header span:last-child{color:var(--green);font:850 7px/1 var(--mono)}
+.console-rows{display:grid;margin-top:8px}
+.console-row{min-height:58px;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.055)}
+.console-row:last-child{border:0}
+.console-row b{color:var(--gold);font:900 9px/1 var(--mono)}
+.console-row strong{font-size:.86rem}
+.console-row span{color:var(--muted);font:800 7px/1 var(--mono);text-transform:uppercase}
+
+/* tabs */
+.tabs-shell{position:sticky;z-index:75;top:68px;border-bottom:1px solid var(--line);background:rgba(2,5,8,.88);backdrop-filter:blur(16px)}
+.tabs{display:flex;gap:5px;overflow-x:auto;padding:8px 0;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;min-height:38px;padding:0 11px;border:1px solid var(--line);border-radius:10px;background:#070c12;color:#8799a5;cursor:pointer;font:900 7px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.tab[aria-pressed="true"]{color:#151008;border-color:var(--gold);background:var(--gold)}
+
+/* generic views */
+.view{display:none;padding:70px 0 110px}
+.view.active{display:block}
+.section-head{margin-bottom:30px;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:end}
+.section-head h2{margin:.15em 0 0;font:750 clamp(44px,6vw,82px)/.87 var(--serif);letter-spacing:-.045em}
+.section-head p{margin:0;max-width:730px;color:var(--muted)}
+.notice{margin:0 0 20px;padding:12px 14px;border:1px solid rgba(255,192,68,.20);border-left:3px solid var(--gold);border-radius:11px;background:rgba(255,192,68,.035);color:#cbd4d9;font-size:.82rem}
+
+/* AEGIS */
+.aegis-shell{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(320px,.7fr);gap:10px}
+.aegis-visual{position:relative;min-height:720px;overflow:hidden;padding:0;background:
+radial-gradient(circle at 50% 8%,rgba(76,168,241,.12),transparent 28%),
+linear-gradient(180deg,#081623 0 21%,#0b1118 21% 33%,#12161a 33% 52%,#0c0d0f 52% 100%)}
+.aegis-visual::before{content:"";position:absolute;inset:0;pointer-events:none;background:
+linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(#000,transparent 80%)}
+.skyline{position:absolute;left:0;right:0;top:0;height:21%;background:
+linear-gradient(180deg,rgba(26,67,95,.24),rgba(6,14,22,.12)),
+radial-gradient(circle at 74% 30%,rgba(255,192,68,.10),transparent 24%)}
+.aegis-road{position:absolute;left:7%;right:7%;top:25%;height:18%;transform:perspective(900px) rotateX(54deg);transform-origin:center bottom;border:1px solid rgba(255,255,255,.24);border-radius:8px;background:
+repeating-linear-gradient(90deg,rgba(255,192,68,.0) 0 11%,rgba(255,192,68,.25) 11.2% 11.8%),
+linear-gradient(180deg,#27333a,#141a1f);box-shadow:0 18px 45px rgba(0,0,0,.42)}
+.aegis-road::after{content:"AEGIS SURFACE";position:absolute;left:12px;top:10px;color:#8e9ca6;font:900 7px/1 var(--mono);letter-spacing:.10em}
+.cross-depth{position:absolute;left:7%;right:7%;top:42%;bottom:6%;overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:0 0 17px 17px;background:
+linear-gradient(180deg,#171819,#101113 35%,#080b0e)}
+.strata{position:absolute;inset:0;background:
+repeating-linear-gradient(0deg,transparent 0 30px,rgba(255,255,255,.018) 31px),
+linear-gradient(90deg,rgba(219,73,71,.03),transparent 25%,transparent 75%,rgba(76,168,241,.03))}
+.layer{position:absolute;left:6%;right:6%;min-height:52px;padding:9px 12px;display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid rgba(255,255,255,.11);border-radius:9px;background:rgba(7,12,17,.86);color:#c6d3da;cursor:pointer;text-align:left;font:850 8px/1.25 var(--mono);letter-spacing:.03em;transition:.16s ease}
+.layer:hover,.layer.active{transform:translateX(5px);border-color:rgba(255,192,68,.42);background:rgba(255,192,68,.045)}
+.layer .signal{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+.layer[data-layer="sensors"]{top:7%}
+.layer[data-layer="maintenance"]{top:23%}
+.layer[data-layer="corridor"]{top:42%}
+.layer[data-layer="vault"]{top:61%}
+.layer[data-layer="drain"]{top:80%}
+.layer[data-layer="vault"] .signal{background:var(--blue);box-shadow:0 0 12px var(--blue)}
+.layer[data-layer="corridor"] .signal{background:var(--gold);box-shadow:0 0 12px var(--gold)}
+.layer[data-layer="drain"] .signal{background:var(--green);box-shadow:0 0 12px var(--green)}
+.aegis-side{display:grid;gap:10px;align-content:start}
+.layer-inspector{padding:18px}
+.layer-inspector h3{margin:8px 0 8px;font:700 34px/.95 var(--serif)}
+.layer-inspector p{color:var(--muted)}
+.inspector-meta{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:14px}
+.inspector-meta div{min-height:84px;padding:10px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.018)}
+.inspector-meta b{display:block;margin-bottom:6px;color:var(--gold);font:900 7px/1 var(--mono);text-transform:uppercase}
+.aegis-stack{padding:14px}
+.aegis-stack button{width:100%;min-height:45px;margin-top:6px;padding:0 10px;border:1px solid var(--line);border-radius:9px;background:#070c12;color:#aebbc3;text-align:left;cursor:pointer;font:850 8px/1 var(--mono);text-transform:uppercase}
+.aegis-stack button.active{border-color:rgba(95,229,223,.35);color:#eaffff;background:rgba(95,229,223,.035)}
+
+/* Road builder */
+.builder-shell{display:grid;grid-template-columns:320px minmax(0,1fr);gap:10px}
+.parts{padding:14px;display:grid;gap:7px;align-content:start}
+.part{min-height:68px;padding:10px;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.018)}
+.part strong{display:block;font-size:.86rem}
+.part small{display:block;margin-top:4px;color:var(--muted)}
+.switch{width:46px;height:26px;padding:0;border:1px solid var(--line2);border-radius:999px;background:#080d13;cursor:pointer;position:relative}
+.switch::after{content:"";position:absolute;top:4px;left:4px;width:16px;height:16px;border-radius:50%;background:#71808a;transition:.16s ease}
+.switch[aria-pressed="true"]{border-color:rgba(83,201,132,.5);background:rgba(83,201,132,.10)}
+.switch[aria-pressed="true"]::after{left:24px;background:var(--green);box-shadow:0 0 10px var(--green)}
+.builder-stage{min-height:680px;padding:18px;position:relative;overflow:hidden}
+.builder-stage::before{content:"";position:absolute;inset:0;background:
+radial-gradient(circle at 50% 22%,rgba(76,168,241,.08),transparent 28%),
+linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px);background-size:auto,44px 44px,44px 44px}
+.builder-scene{position:relative;min-height:500px}
+.road-surface{position:absolute;left:10%;right:10%;top:13%;height:28%;transform:perspective(900px) rotateX(57deg);transform-origin:center bottom;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:#263038;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.road-component{position:absolute;left:12%;right:12%;min-height:56px;padding:10px;border:1px solid var(--line);border-radius:9px;background:#081018;color:#a8b8c1;font:850 8px/1 var(--mono);opacity:.18;transition:.25s ease}
+.road-component.on{opacity:1;box-shadow:0 0 24px rgba(95,229,223,.05)}
+.rc-sensors{top:46%;border-color:rgba(95,229,223,.25)}
+.rc-utility{top:58%;border-color:rgba(255,192,68,.25)}
+.rc-fiber{top:70%;border-color:rgba(76,168,241,.30)}
+.rc-drain{top:82%;border-color:rgba(83,201,132,.25)}
+.rc-maint{top:94%;border-style:dashed}
+.metrics{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.metric{min-height:112px;padding:11px;border:1px solid var(--line);border-radius:12px;background:rgba(5,10,16,.76)}
+.metric span{display:block;color:var(--muted);font:850 7px/1 var(--mono);text-transform:uppercase}
+.metric strong{display:block;margin-top:7px;font:700 30px/1 var(--serif)}
+.meter{height:4px;margin-top:12px;background:#152029}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--cyan));transition:width .24s ease}
+
+/* other tabs */
+.placeholder-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.info-card{min-height:260px;padding:20px}
+.info-card h3{margin:14px 0 7px;font:700 28px/1 var(--serif)}
+.info-card p{color:var(--muted)}
+.weld-lab{display:grid;grid-template-columns:1fr 160px 1fr;gap:10px;align-items:stretch}
+.constraint{padding:22px;min-height:300px}
+.constraint h3{font:700 42px/.95 var(--serif)}
+.constraint button{min-height:40px;padding:0 11px;border:1px solid var(--line2);border-radius:9px;background:#070c12;color:#d7e3e8;cursor:pointer;font:850 8px/1 var(--mono)}
+.constraint button[aria-pressed="true"]{border-color:var(--gold);color:#171008;background:var(--gold)}
+.weld-core{display:grid;place-items:center;align-content:center;text-align:center}
+.weld-core i{width:110px;aspect-ratio:1;display:grid;place-items:center;border:1px solid rgba(255,192,68,.35);border-radius:50%;color:var(--gold);font:700 44px/1 var(--serif);font-style:normal;box-shadow:0 0 40px rgba(255,192,68,.08)}
+.weld-result{margin-top:10px;padding:16px;border:1px solid var(--line);border-radius:12px;background:#071019}
+.paper-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.paper{padding:20px;min-height:230px}
+.paper h3{font:700 30px/1 var(--serif)}
+.paper p{color:var(--muted)}
+
+/* footer */
+footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px}
+footer strong{color:#fff}
+
+@media(max-width:1000px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-console{max-width:720px}
+  .aegis-shell{grid-template-columns:1fr}
+  .builder-shell{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .wrap{width:min(calc(100% - 18px),var(--max))}
+  header .wrap{min-height:auto;padding:10px 0;align-items:flex-start;flex-direction:column}
+  .nav{width:100%;display:flex;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .hero,.hero .wrap{min-height:720px}
+  .hero .wrap{padding:70px 0}
+  .hero h1{font-size:clamp(58px,16vw,90px)}
+  .tabs-shell{position:relative;top:auto}
+  .section-head{grid-template-columns:1fr;gap:12px}
+  .aegis-visual{min-height:650px}
+  .metrics{grid-template-columns:1fr 1fr}
+  .placeholder-grid{grid-template-columns:1fr}
+  .weld-lab{grid-template-columns:1fr}
+  .weld-core{min-height:150px}
+  .paper-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.001ms!important;animation-duration:.001ms!important;animation-iteration-count:1!important}
+}
 </style>
+<script defer src="../assets/js/data-registry.js"></script>
 </head>
 <body>
-<div class="stage"><div class="wrap"><span><b>EXPLORERS TAB BUILDOUT</b> · additive child branch</span><span>MAIN REMAINS UNTOUCHED</span></div></div>
-<header><div class="wrap"><a class="brand" href="#top">EARLYWINE BLUEPRINT / EXPLORERS</a><nav class="nav"><a href="../home-build/home-preview.html">Home</a><a href="../blueprint-build/blueprint-preview.html">Blueprint</a></nav></div></header>
-<main id="top">
-<section class="hero"><div class="wrap"><div class="eyebrow">Interactive Public Systems Lab</div><h1>Don’t trust the diagram.<br>Pull on it.</h1><p class="lede">Inspect AEGIS underground. Rebuild the road. Remove mechanisms from the policy pillars. Break the Weld. Then follow the reasoning into the white-paper family.</p><div class="warn"><strong>Educational system model — not engineering certification.</strong> Scores below are source-defined heuristics for interaction, not measured AEGIS performance, policy probability, or evidence strength.</div></div></section>
-<div class="wrap"><nav class="tabs" aria-label="Blueprint explorers"><button class="tab" aria-pressed="true" data-view="aegis">01 AEGIS Explorer</button><button class="tab" aria-pressed="false" data-view="builder">02 Citizen Road Builder</button><button class="tab" aria-pressed="false" data-view="pillar">03 Pillar Explorer</button><button class="tab" aria-pressed="false" data-view="weld">04 Weld Explorer</button><button class="tab" aria-pressed="false" data-view="papers">05 White Papers</button></nav></div>
-<section class="view active" id="aegis"><div class="wrap aegis"><div class="cross" aria-label="AEGIS exploded road cross-section"><div class="grid"></div><button class="layer surface sel" data-layer="surface">SMART ROAD TILE SYSTEM</button><button class="layer sensors" data-layer="sensors">DISTRIBUTED SENSORS / TELEMETRY</button><button class="layer maintenance" data-layer="maintenance">MAINTENANCE INTERFACE</button><button class="layer corridor" data-layer="corridor">DTDFM SUBSURFACE UTILITY CORRIDOR</button><button class="layer vault" data-layer="vault">AEGIS FIBER VAULT</button><button class="layer drain" data-layer="drain">DRAINAGE / ENVIRONMENTAL INTERFACE</button></div><aside class="panel"><div class="eyebrow">Select any layer</div><div class="jumps" id="jumps"></div><h2 id="layerTitle"></h2><p class="muted" id="layerText"></p><div id="connections"></div></aside></div></section>
-<section class="view" id="builder"><div class="wrap builder"><aside class="panel"><div class="eyebrow">Citizen Road Builder</div><h2>Rebuild the road.</h2><p class="muted">Toggle the six source-defined components. The four outputs are an educational heuristic only.</p><div class="parts" id="parts"></div></aside><div class="road"><div class="roadbase"></div><div class="tiles" id="tiles"></div><div class="slot s1" id="slotSensors">Sensor Mesh</div><div class="slot s2 on" id="slotCorridor">Utility Corridor</div><div class="slot s3" id="slotFiber">Fiber Vault</div><div class="slot s4" id="slotDrain">Drainage Interface</div><div class="maint" id="maint">Maintenance System</div></div><aside class="panel"><div class="scores"><div class="score"><span>Resilience</span><strong id="res">0</strong><div class="meter"><i id="resM"></i></div></div><div class="score"><span>Connectivity</span><strong id="con">0</strong><div class="meter"><i id="conM"></i></div></div><div class="score"><span>Maintainability</span><strong id="mnt">0</strong><div class="meter"><i id="mntM"></i></div></div><div class="score"><span>Complexity</span><strong id="cmp">0</strong><div class="meter"><i id="cmpM"></i></div></div></div><div class="impact" id="buildSummary"></div></aside></div></section>
-<section class="view" id="pillar"><div class="wrap"><article class="panel"><div class="eyebrow">Citizen Pillar Explorer</div><h2>Remove pieces. Watch the network change.</h2><p class="muted">The full ten-pillar mechanism inspector is federated from the frozen Blueprint build rather than copied into a second divergent implementation. That preserves one canonical interactive model while keeping Pillar Explorer as its own first-class tab.</p></article><div class="pillar-mount"><iframe src="../blueprint-build/blueprint-preview.html" title="Interactive ten-pillar Blueprint mechanism inspector"></iframe></div></div></section>
-<section class="view" id="weld"><div class="wrap weld"><aside class="panel"><div class="eyebrow">Weld Scenarios</div><h2>Pick a contradiction.</h2><div class="wlist" id="wlist"></div></aside><article class="panel"><div class="eyebrow">The Weld</div><h2 id="wtitle"></h2><p class="muted" id="wintro"></p><div class="machine"><div class="half red" id="leftHalf"><div class="eyebrow">One Correct Half</div><h3 id="leftTitle"></h3><p class="muted" id="leftText"></p><button class="toggle on" id="leftToggle">Half Enabled</button></div><button class="core" id="weldToggle">Weld<br>Engaged</button><div class="half blue" id="rightHalf"><div class="eyebrow">Other Correct Half</div><h3 id="rightTitle"></h3><p class="muted" id="rightText"></p><button class="toggle on" id="rightToggle">Half Enabled</button></div></div><div class="results"><div class="result"><span>Coverage</span><strong id="coverage">100%</strong></div><div class="result"><span>Accountability</span><strong id="accountability">100%</strong></div><div class="result"><span>Coherence</span><strong id="coherence">100%</strong></div></div><div class="impact" id="wexplain"></div></article></div></section>
-<section class="view" id="papers"><div class="wrap"><article class="panel"><div class="eyebrow">White Paper Explorer</div><h2>The page carries the contradiction. The paper carries the mechanism.</h2><p class="muted">The publication family remains a distribution layer with audience, system connection, political weld, and explicit review cautions.</p><div class="paper-tools" id="paperTools"></div><div class="papers" id="paperGrid"></div><div class="detail panel" id="paperDetail"><h3 id="paperTitle"></h3><p class="muted" id="paperSummary"></p><div class="detail-grid"><div class="info"><b>Audience</b><span id="paperAudience"></span></div><div class="info"><b>System Connection</b><span id="paperConnection"></span></div><div class="info"><b>Political Weld</b><span id="paperWeld"></span></div><div class="info"><b>Underpromise / Review</b><span id="paperCaution"></span></div></div></div></article></div></section>
-</main><footer><div class="wrap">EXPLORERS BUILDOUT · five public tabs restored as separate surfaces · <strong>DO NOT MERGE YET</strong></div></footer>
+<div class="stage"><div class="wrap"><span>EXPLORERS / PUBLIC SYSTEMS LAB</span><b>EDUCATIONAL MODEL · NOT ENGINEERING CERTIFICATION</b></div></div>
+<header>
+  <div class="wrap">
+    <a class="brand" href="../index.html"><span>THE WELD</span> / EARLYWINE</a>
+    <nav class="nav" aria-label="Explorer navigation">
+      <a href="../index.html">Home</a>
+      <a href="../blueprint-build/blueprint-preview.html">Blueprint</a>
+      <a href="../source-integrity-build/source-integrity-preview.html">Receipts</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <span class="micro">Interactive public systems lab</span>
+      <h1>Pull on<br><em>the machine.</em></h1>
+      <p class="lede">Inspect AEGIS underground. Rebuild the road. Remove mechanisms from the policy architecture. Stress the Weld. Follow the public-paper family without pretending the viewer is measured engineering evidence.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#lab">Enter the lab</a>
+        <a class="btn" href="../blueprint-build/blueprint-preview.html">Open the Blueprint</a>
+      </div>
+    </div>
+
+    <aside class="hero-console glass">
+      <header>
+        <div><span class="micro">SYSTEM DOCTRINE</span><h2>Expose the load path.</h2></div>
+        <span>PUBLIC</span>
+      </header>
+      <div class="console-rows">
+        <div class="console-row"><b>01</b><strong>Surface</strong><span>roads / generation</span></div>
+        <div class="console-row"><b>02</b><strong>Utility corridor</strong><span>subsurface</span></div>
+        <div class="console-row"><b>03</b><strong>Fiber vault</strong><span>communications</span></div>
+        <div class="console-row"><b>04</b><strong>Maintenance</strong><span>fix forever</span></div>
+        <div class="console-row"><b>∞</b><strong>Failure gates</strong><span>visible</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="tabs-shell" id="lab">
+  <div class="wrap tabs" role="tablist" aria-label="Explorer modes">
+    <button class="tab" id="tab-aegis" type="button" role="tab" aria-controls="view-aegis" aria-selected="true" aria-pressed="true" tabindex="0" data-tab="aegis">01 AEGIS Explorer</button>
+    <button class="tab" id="tab-builder" type="button" role="tab" aria-controls="view-builder" aria-selected="false" aria-pressed="false" tabindex="-1" data-tab="builder">02 Citizen Road Builder</button>
+    <button class="tab" id="tab-pillars" type="button" role="tab" aria-controls="view-pillars" aria-selected="false" aria-pressed="false" tabindex="-1" data-tab="pillars">03 Pillar Explorer</button>
+    <button class="tab" id="tab-weld" type="button" role="tab" aria-controls="view-weld" aria-selected="false" aria-pressed="false" tabindex="-1" data-tab="weld">04 Weld Explorer</button>
+    <button class="tab" id="tab-papers" type="button" role="tab" aria-controls="view-papers" aria-selected="false" aria-pressed="false" tabindex="-1" data-tab="papers">05 White Papers</button>
+  </div>
+</div>
+
+<section class="view active" id="view-aegis" role="tabpanel" aria-labelledby="tab-aegis" data-view="aegis">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="micro">AEGIS / infrastructure cross-section</span><h2>The road beneath the road.</h2></div>
+      <p>Click a layer. The cross-section is an educational structural viewer for source-defined components. It is not a measured AEGIS performance score or engineering certification.</p>
+    </div>
+    <div class="notice">The visual system is illustrative. Component names and relationships are preserved; visual depth, spacing and glow are interface devices.</div>
+
+    <div class="aegis-shell">
+      <div class="aegis-visual glass" aria-label="Interactive AEGIS infrastructure cross-section">
+        <div class="skyline"></div>
+        <div class="aegis-road"></div>
+        <div class="cross-depth">
+          <div class="strata"></div>
+          <button class="layer active" type="button" data-layer="sensors"><span>DISTRIBUTED SENSORS / TELEMETRY</span><i class="signal"></i></button>
+          <button class="layer" type="button" data-layer="maintenance"><span>MAINTENANCE INTERFACE</span><i class="signal"></i></button>
+          <button class="layer" type="button" data-layer="corridor"><span>DTDFM SUBSURFACE UTILITY CORRIDOR</span><i class="signal"></i></button>
+          <button class="layer" type="button" data-layer="vault"><span>AEGIS FIBER VAULT</span><i class="signal"></i></button>
+          <button class="layer" type="button" data-layer="drain"><span>DRAINAGE / ENVIRONMENTAL INTERFACE</span><i class="signal"></i></button>
+        </div>
+      </div>
+
+      <aside class="aegis-side">
+        <article class="layer-inspector glass" id="layerInspector" aria-live="polite"></article>
+
+        <div class="aegis-stack glass" aria-label="AEGIS source-defined layers">
+          <span class="micro">Layer jump</span>
+          <button type="button" class="active" data-layer-jump="sensors">Sensors / telemetry</button>
+          <button type="button" data-layer-jump="maintenance">Maintenance</button>
+          <button type="button" data-layer-jump="corridor">Utility corridor</button>
+          <button type="button" data-layer-jump="vault">Fiber vault</button>
+          <button type="button" data-layer-jump="drain">Drainage / environment</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="view-builder" role="tabpanel" aria-labelledby="tab-builder" data-view="builder" hidden>
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="micro">Citizen Road Builder</span><h2>Rebuild the road.</h2></div>
+      <p>Toggle the source-defined components. The four output meters are educational heuristics for interaction only — not measured AEGIS performance.</p>
+    </div>
+
+    <div class="builder-shell">
+      <div class="parts glass" id="builderParts"></div>
+
+      <div class="builder-stage glass">
+        <div class="builder-scene">
+          <div class="road-surface"></div>
+          <div class="road-component rc-sensors" data-component="sensors">SENSOR MESH / TELEMETRY</div>
+          <div class="road-component rc-utility" data-component="utility">DTDFM UTILITY CORRIDOR</div>
+          <div class="road-component rc-fiber" data-component="fiber">AEGIS FIBER VAULT</div>
+          <div class="road-component rc-drain" data-component="drain">DRAINAGE / ENVIRONMENTAL INTERFACE</div>
+          <div class="road-component rc-maint" data-component="maintenance">NIGHTLY MAINTENANCE / REPAIR INTERFACE</div>
+        </div>
+
+        <div class="metrics">
+          <div class="metric"><span>Resilience</span><strong data-metric="resilience">0</strong><div class="meter"><i></i></div></div>
+          <div class="metric"><span>Connectivity</span><strong data-metric="connectivity">0</strong><div class="meter"><i></i></div></div>
+          <div class="metric"><span>Maintainability</span><strong data-metric="maintainability">0</strong><div class="meter"><i></i></div></div>
+          <div class="metric"><span>Complexity</span><strong data-metric="complexity">0</strong><div class="meter"><i></i></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="view-pillars" role="tabpanel" aria-labelledby="tab-pillars" data-view="pillars" hidden>
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="micro">Citizen Pillar Explorer</span><h2>Remove pieces. Watch the network change.</h2></div>
+      <p>The canonical ten-pillar mechanism inspector remains federated from the Blueprint instead of being copied into a second divergent implementation.</p>
+    </div>
+    <div class="placeholder-grid">
+      <article class="info-card glass"><span class="micro">Canonical viewer</span><h3>One mechanism model.</h3><p>Use the Blueprint’s interactive ten-pillar inspector as the authoritative public mechanism viewer.</p><a class="btn primary" href="../blueprint-build/blueprint-preview.html">Open Pillar Inspector</a></article>
+      <article class="info-card glass"><span class="micro">Reason</span><h3>No divergent copy.</h3><p>Keeping one canonical interactive model reduces drift between the Blueprint and Explorers.</p></article>
+      <article class="info-card glass"><span class="micro">Rule</span><h3>Pull, don’t worship.</h3><p>The diagram is a structural teaching surface. Failure or dependency exposure is part of the point.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="view-weld" role="tabpanel" aria-labelledby="tab-weld" data-view="weld" hidden>
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="micro">Weld Scenarios</span><h2>Hold the contradiction under load.</h2></div>
+      <p>The Weld is not the middle. Toggle constraints to see why a one-sided solution can remain fatally incomplete.</p>
+    </div>
+
+    <div class="weld-lab">
+      <article class="constraint glass">
+        <span class="micro">Constraint A</span>
+        <h3>Accountability</h3>
+        <p class="muted">Consequences, verification, competence and enforceable gates.</p>
+        <button type="button" aria-pressed="true" data-weld-toggle="a">Constraint enabled</button>
+      </article>
+
+      <div class="weld-core"><i>W</i><span class="micro">THE WELD</span></div>
+
+      <article class="constraint glass">
+        <span class="micro">Constraint B</span>
+        <h3>Access / mercy</h3>
+        <p class="muted">Clinical handling, second chances, access, rehabilitation and public investment.</p>
+        <button type="button" aria-pressed="true" data-weld-toggle="b">Constraint enabled</button>
+      </article>
+    </div>
+
+    <div class="weld-result" id="weldResult" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="view" id="view-papers" role="tabpanel" aria-labelledby="tab-papers" data-view="papers" hidden>
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="micro">White Paper Explorer</span><h2>The page carries the contradiction. The paper carries the mechanism.</h2></div>
+      <p>The publication family is a distribution layer with audience, system connection, political weld and explicit review cautions.</p>
+    </div>
+
+    <div class="paper-grid">
+      <article class="paper glass"><span class="micro">Policy / fiscal</span><h3>Harm Reduction</h3><p>Clinical distribution architecture paired with consequences scaled to harm caused to others.</p></article>
+      <article class="paper glass"><span class="micro">Civic reciprocity</span><h3>Earn-Down Tax</h3><p>A civic-credit model tied to verified public service and explicit implementation gates.</p></article>
+      <article class="paper glass"><span class="micro">Infrastructure</span><h3>Project AEGIS</h3><p>The road platform as a physical spine: surface, utilities, fiber, sensing and maintenance.</p></article>
+      <article class="paper glass"><span class="micro">Institutional</span><h3>ARPA Ecosystem</h3><p>Purpose-built civilian advanced-research agencies with milestone gates and cross-program spillover.</p></article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><div><strong>Earlywine Blueprint / Explorers.</strong><br>Build what lasts. Preserve what failed.</div><a href="../index.html">Back to campaign front door ↑</a></div></footer>
+
 <script>
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];$$('.tab').forEach(b=>b.onclick=()=>{$$('.tab').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));$$('.view').forEach(v=>v.classList.toggle('active',v.id===b.dataset.view))});
-const L={surface:{t:'Smart Road Tile System',x:'The visible AEGIS interface: a modular roadway paired with sensing and proposed distributed-generation capability.',c:[['Surface → sensing','Traffic and road-condition information passes into the telemetry system.'],['Surface → utility spine','Power and data can route vertically into protected below-grade infrastructure.']]},sensors:{t:'Distributed Sensors / Telemetry',x:'A sensing layer represents road condition, traffic state, equipment health and connected-response telemetry.',c:[['Sensors → road','The network observes the operating environment.'],['Sensors → fiber','Telemetry routes into the communications backbone.']]},maintenance:{t:'Maintenance Interface',x:'Inspection, cleaning, component replacement and service access are modeled around long asset life.',c:[['Maintenance → tiles','Surface components can be inspected and replaced.'],['Maintenance → corridor','Dedicated service access reduces disturbance to unrelated infrastructure.']]},corridor:{t:'DTDFM Subsurface Utility Corridor',x:'A shared below-grade corridor consolidates infrastructure otherwise placed in separate trenches and rights-of-way.',c:[['Corridor → surface','Vertical risers connect the road layer with protected infrastructure.'],['Corridor → services','Fiber and power can become reusable public infrastructure.']]},vault:{t:'Aegis Fiber Vault',x:'The proposed hardened communications backbone carrying data and supporting connected public systems.',c:[['Fiber → policy systems','Connectivity can support education, benefits, veterans services, clinics and public safety.'],['Fiber → ARPA','Advanced digital-trust technologies can feed back into the network.']]},drain:{t:'Drainage / Environmental Interface',x:'Water management stays visibly separate from communications and power so environmental interfaces do not disappear inside the road abstraction.',c:[['Drainage → surface','Water must move away from the roadway platform.'],['Drainage → infrastructure','Water, power and communications require deliberate separation and engineering review.']]}};
-function layer(k){const o=L[k];$$('[data-layer]').forEach(b=>b.classList.toggle('sel',b.dataset.layer===k));$$('.jump').forEach(b=>b.classList.toggle('active',b.dataset.k===k));$('#layerTitle').textContent=o.t;$('#layerText').textContent=o.x;$('#connections').innerHTML=o.c.map(([a,b])=>`<div class="conn"><strong>${a}</strong>${b}</div>`).join('')}$('#jumps').innerHTML=Object.entries(L).map(([k,o])=>`<button class="jump" data-k="${k}">${o.t}</button>`).join('');$$('[data-layer]').forEach(b=>b.onclick=()=>layer(b.dataset.layer));$$('.jump').forEach(b=>b.onclick=()=>layer(b.dataset.k));layer('surface');
-const P=[['tiles','Smart Road Tiles','Distributed-generation / sensing surface.',14,3,3,13],['sensors','Sensor Mesh','Traffic and system telemetry.',8,13,7,7],['corridor','Utility Corridor','Protected shared below-grade access.',18,7,18,16],['fiber','Fiber Vault','Hardened communications backbone.',15,28,10,14],['maintenance','Maintenance System','Recurring inspection and repair.',14,2,27,11],['drain','Drainage Interface','Water-management layer.',9,1,11,8]],S=new Set(['corridor']);const clamp=n=>Math.max(0,Math.min(100,Math.round(n)));
-function build(){let r=20,c=12,m=20,x=8;P.forEach(p=>{if(S.has(p[0])){r+=p[3];c+=p[4];m+=p[5];x+=p[6]}});if(S.has('fiber')&&!S.has('corridor')){r-=8;m-=8;x+=7}if(S.has('tiles')&&!S.has('maintenance'))m-=8;if(S.has('sensors')&&S.has('fiber'))c+=10;if(S.has('corridor')&&S.has('maintenance'))m+=8;const z={r:clamp(r),c:clamp(c),m:clamp(m),x:clamp(x)};[['res','resM',z.r],['con','conM',z.c],['mnt','mntM',z.m],['cmp','cmpM',z.x]].forEach(([a,b,v])=>{$('#'+a).textContent=v;$('#'+b).style.width=v+'%'});P.forEach(p=>{const q=$(`[data-part="${p[0]}"]`);q.classList.toggle('on',S.has(p[0]));q.textContent=S.has(p[0])?'Added':'Add'});$('#tiles').style.display=S.has('tiles')?'block':'none';$('#slotSensors').classList.toggle('on',S.has('sensors'));$('#slotCorridor').classList.toggle('on',S.has('corridor'));$('#slotFiber').classList.toggle('on',S.has('fiber'));$('#slotDrain').classList.toggle('on',S.has('drain'));$('#maint').style.display=S.has('maintenance')?'block':'none';$('#buildSummary').textContent='Educational heuristic only. Toggle parts to inspect trade-offs; these numbers are not construction estimates, safety approvals, engineering certification, or measured AEGIS performance.'}$('#parts').innerHTML=P.map(p=>`<div class="part"><div><strong>${p[1]}</strong><span>${p[2]}</span></div><button data-part="${p[0]}">Add</button></div>`).join('');$$('[data-part]').forEach(b=>b.onclick=()=>{S.has(b.dataset.part)?S.delete(b.dataset.part):S.add(b.dataset.part);build()});build();
-const W=[['Drug Policy','Clinical handling and accountability for harm are held together rather than traded against each other.','Accountability','Trafficking, distribution to minors, impaired operation and harmful contamination remain punishable.','Public Health','Addiction is treated clinically and users are not made the primary target of the enforcement system.'],['Earn-Down','Participation and fiscal verification operate together.','Obligation','Public benefits and tax reductions are connected to verified civic contribution.','Opportunity','Citizens receive a concrete path to exchange public service for personal tax value.'],['ARPA Ecosystem','Public-good research and national resilience are treated as overlapping rather than competing motives.','Security','Domestic capacity, hardened systems, manufacturing and resilience matter.','Public Good','Climate, water, infrastructure and open technological spillovers create broad social value.'],['Self-Defense','A defense right and a competency obligation are held at the same time.','Defense','A capable citizen can possess a legitimate right to protect life.','Competency','Training and equal application constrain avoidable harm and careless implementation.']];let wi=0,le=true,re=true,we=true;
-function weld(){const q=W[wi];$('#wlist').innerHTML=W.map((z,i)=>`<button class="${i===wi?'active':''}" data-w="${i}">${z[0]}</button>`).join('');$('#wtitle').textContent=q[0];$('#wintro').textContent=q[1];$('#leftTitle').textContent=q[2];$('#leftText').textContent=q[3];$('#rightTitle').textContent=q[4];$('#rightText').textContent=q[5];$('#leftHalf').classList.toggle('off',!le);$('#rightHalf').classList.toggle('off',!re);$('#leftToggle').classList.toggle('on',le);$('#rightToggle').classList.toggle('on',re);$('#leftToggle').textContent=le?'Half Enabled':'Half Removed';$('#rightToggle').textContent=re?'Half Enabled':'Half Removed';$('#weldToggle').innerHTML=we?'Weld<br>Engaged':'Weld<br>Removed';let cov=(le?45:0)+(re?45:0)+(le&&re&&we?10:0),acc=le?(re&&we?100:75):25,coh=le&&re&&we?100:(le&&re?70:(le||re?45:0));$('#coverage').textContent=cov+'%';$('#accountability').textContent=acc+'%';$('#coherence').textContent=coh+'%';$('#wexplain').textContent=le&&re&&we?'Both halves are present and the weld is engaged: the architecture is modeled as carrying both loads at once.':le&&re&&!we?'Both truths remain visible, but the connecting mechanism is removed. Coherence drops because coexistence is no longer engineered.':le||re?'One half has been amputated. The remaining half can still carry part of the problem, but coverage and coherence fall.':'Nothing remains to weld.';$$('[data-w]').forEach(b=>b.onclick=()=>{wi=+b.dataset.w;le=re=we=true;weld()})}$('#leftToggle').onclick=()=>{le=!le;weld()};$('#rightToggle').onclick=()=>{re=!re;weld()};$('#weldToggle').onclick=()=>{we=!we;weld()};weld();
-const A=[['Public Health','Unified National Harm Reduction','Clinical handling, controlled quality, redirected enforcement and penalties tied to harm.','Public-health / justice readers','Pillar 01','Mercy + accountability','Mechanisms require sourcing, legal review and pilot evidence.'],['Public Health','Harm-Reduction Duality','The explicit two-load treatment of treatment and consequence.','Cross-partisan policy readers','Pillar 01 / Weld','Clinical care + consequence','Not a field-result claim.'],['Fiscal','Earn-Down Tax','Civic service converted into auditable tax-liability reduction.','Fiscal / civic-service readers','Pillar 02','Obligation + opportunity','Rates, caps and legal structure remain pilot/review gates.'],['Public Safety','Firearms Responsibility / Defense-Zone Standard','Recurring competency, scenario training, live qualification and verification.','Public safety / rights readers','Pillars 04 + 10','Right + competency','Legal and constitutional review required.'],['Benefits','EBT 2.0','More current verification, transaction safeguards and anti-fraud controls.','Benefits / administration readers','Pillar 06','Access + auditability','Privacy and due-process boundaries require explicit testing.'],['Veterans','Veteran Benefits 30-Day Guarantee','Defined claims deadline paired with provisional support and integrated access.','Veterans / administration readers','Pillar 07','Speed + verification','Service-level and appropriations assumptions need validation.'],['Education','Education for All / 50% Subsidy','Tuition support, public online learning, credentials and work-study pathways.','Education / workforce readers','Pillar 08','Access + measurable mastery','Funding design and credential recognition require review.'],['Research','Civilian DARPA','Civilian advanced-research architecture with explicit public missions.','R&D / industrial-policy readers','Pillar 09','National capacity + public good','Program authority and governance remain design work.'],['Research','ARPA Ecosystem','Multiple civilian ARPA lanes with milestone gates and spillovers.','Research / resilience readers','Pillar 09','Security + public-good spillover','Do not treat proposed portfolios as funded programs.'],['Infrastructure','Project Aegis Infrastructure Prospectus','Road-as-utility architecture combining transport, power, fiber, sensing and subsurface access.','Infrastructure / engineering readers','Pillar 03','Public infrastructure + maintainability','Prospectus is not engineering certification.'],['Infrastructure','Aegis Grid / National Resilience','National-resilience framing for the connected AEGIS infrastructure system.','Resilience / infrastructure readers','Pillar 03 + ARPA','Continuity + public service','Scale economics and engineering need independent audit.']];let f='All',pi=0;const G=['All',...new Set(A.map(x=>x[0]))];function papers(){const list=A.map((x,i)=>[...x,i]).filter(x=>f==='All'||x[0]===f);if(!list.some(x=>x[7]===pi))pi=list[0]?.[7]??0;$('#paperTools').innerHTML=G.map(g=>`<button class="${g===f?'active':''}" data-g="${g}">${g}</button>`).join('');$('#paperGrid').innerHTML=list.map(x=>`<div class="paper ${x[7]===pi?'active':''}" data-p="${x[7]}"><span>${String(x[7]+1).padStart(2,'0')} · ${x[0]}</span><strong>${x[1]}</strong></div>`).join('');const p=A[pi];$('#paperTitle').textContent=p[1];$('#paperSummary').textContent=p[2];$('#paperAudience').textContent=p[3];$('#paperConnection').textContent=p[4];$('#paperWeld').textContent=p[5];$('#paperCaution').textContent=p[6];$$('[data-g]').forEach(b=>b.onclick=()=>{f=b.dataset.g;papers()});$$('[data-p]').forEach(b=>b.onclick=()=>{pi=+b.dataset.p;papers()})}papers();
+"use strict";
+
+(() => {
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+  // --------------------------
+  // Tabs: one delegated handler
+  // --------------------------
+  const tabs = $(".tabs");
+  tabs?.addEventListener("click", event => {
+    const tab = event.target.closest("[data-tab]");
+    if (!tab) return;
+
+    const id = tab.dataset.tab;
+
+    $$("[data-tab]", tabs).forEach(button => {
+      const selected = button === tab;
+      button.setAttribute("aria-pressed", String(selected));
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
+    });
+
+    $$("[data-view]").forEach(view => {
+      const selected = view.dataset.view === id;
+      view.classList.toggle("active", selected);
+      view.hidden = !selected;
+    });
+
+    history.replaceState(null, "", `#${id}`);
+  });
+
+  tabs?.addEventListener("keydown", event => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    const buttons = $$("[data-tab]", tabs);
+    const current = event.target.closest("[data-tab]");
+    if (!current) return;
+    event.preventDefault();
+    const index = buttons.indexOf(current);
+    const nextIndex = event.key === "Home"
+      ? 0
+      : event.key === "End"
+        ? buttons.length - 1
+        : (index + (event.key === "ArrowRight" ? 1 : -1) + buttons.length) % buttons.length;
+    buttons[nextIndex].focus();
+    buttons[nextIndex].click();
+  });
+
+  const initialTab = location.hash.slice(1);
+  if (initialTab && $(`[data-tab="${CSS.escape(initialTab)}"]`)) {
+    $(`[data-tab="${CSS.escape(initialTab)}"]`).click();
+  }
+
+  // --------------------------
+  // AEGIS layer explorer
+  // --------------------------
+  const layers = {
+    sensors: {
+      title: "Distributed Sensors / Telemetry",
+      text: "Public-facing sensing and telemetry layer associated with the AEGIS surface system.",
+      role: "Observation / routing",
+      status: "Source-defined component"
+    },
+    maintenance: {
+      title: "Maintenance Interface",
+      text: "Maintenance is treated as a designed subsystem rather than an afterthought: inspect, clean, repair and report failure.",
+      role: "Fix forever",
+      status: "Source-defined component"
+    },
+    corridor: {
+      title: "DTDFM Subsurface Utility Corridor",
+      text: "Subsurface utility corridor carrying the infrastructure that would otherwise be repeatedly cut into or buried ad hoc.",
+      role: "Utility spine",
+      status: "Source-defined component"
+    },
+    vault: {
+      title: "AEGIS Fiber Vault",
+      text: "Protected communications backbone integrated with the right-of-way rather than treated as an unrelated overlay.",
+      role: "Connectivity",
+      status: "Source-defined component"
+    },
+    drain: {
+      title: "Drainage / Environmental Interface",
+      text: "Environmental and drainage handling stays visible in the system viewer instead of being flattened out of the road concept.",
+      role: "Environmental interface",
+      status: "Source-defined component"
+    }
+  };
+
+  const inspector = $("#layerInspector");
+
+  function selectLayer(id) {
+    const data = layers[id];
+    if (!data || !inspector) return;
+
+    $$("[data-layer]").forEach(button => {
+      button.classList.toggle("active", button.dataset.layer === id);
+    });
+
+    $$("[data-layer-jump]").forEach(button => {
+      button.classList.toggle("active", button.dataset.layerJump === id);
+    });
+
+    inspector.innerHTML = `
+      <span class="micro">SELECTED LAYER</span>
+      <h3>${data.title}</h3>
+      <p>${data.text}</p>
+      <div class="inspector-meta">
+        <div><b>Role</b>${data.role}</div>
+        <div><b>Status</b>${data.status}</div>
+      </div>
+    `;
+  }
+
+  document.addEventListener("click", event => {
+    const layer = event.target.closest("[data-layer]");
+    if (layer) selectLayer(layer.dataset.layer);
+
+    const jump = event.target.closest("[data-layer-jump]");
+    if (jump) selectLayer(jump.dataset.layerJump);
+  });
+
+  selectLayer("sensors");
+
+  // --------------------------
+  // Citizen Road Builder
+  // --------------------------
+  const builderParts = [
+    {id:"sensors",name:"Sensor Mesh",detail:"Distributed sensing / telemetry",resilience:12,connectivity:12,maintainability:6,complexity:12},
+    {id:"utility",name:"Utility Corridor",detail:"DTDFM subsurface corridor",resilience:24,connectivity:14,maintainability:18,complexity:24},
+    {id:"fiber",name:"Fiber Vault",detail:"Protected communications backbone",resilience:14,connectivity:34,maintainability:10,complexity:16},
+    {id:"drain",name:"Drainage Interface",detail:"Drainage / environmental handling",resilience:20,connectivity:3,maintainability:14,complexity:12},
+    {id:"maintenance",name:"Maintenance System",detail:"Inspect / clean / repair / report",resilience:22,connectivity:4,maintainability:42,complexity:20}
+  ];
+
+  const enabled = new Set();
+  const partsHost = $("#builderParts");
+
+  if (partsHost) {
+    partsHost.innerHTML = builderParts.map(part => `
+      <div class="part">
+        <div><strong>${part.name}</strong><small>${part.detail}</small></div>
+        <button class="switch" type="button" aria-pressed="false" data-part="${part.id}" aria-label="Toggle ${part.name}"></button>
+      </div>
+    `).join("");
+
+    partsHost.addEventListener("click", event => {
+      const button = event.target.closest("[data-part]");
+      if (!button) return;
+
+      const id = button.dataset.part;
+      const on = enabled.has(id);
+
+      if (on) enabled.delete(id);
+      else enabled.add(id);
+
+      button.setAttribute("aria-pressed", String(!on));
+      updateBuilder();
+    });
+  }
+
+  function updateBuilder() {
+    $$("[data-component]").forEach(component => {
+      component.classList.toggle("on", enabled.has(component.dataset.component));
+    });
+
+    const totals = {
+      resilience: 0,
+      connectivity: 0,
+      maintainability: 0,
+      complexity: 0
+    };
+
+    for (const part of builderParts) {
+      if (!enabled.has(part.id)) continue;
+      totals.resilience += part.resilience;
+      totals.connectivity += part.connectivity;
+      totals.maintainability += part.maintainability;
+      totals.complexity += part.complexity;
+    }
+
+    for (const key of Object.keys(totals)) {
+      const value = Math.min(100, totals[key]);
+      const node = $(`[data-metric="${key}"]`);
+      if (!node) continue;
+      node.textContent = value;
+      node.parentElement.querySelector(".meter i").style.width = `${value}%`;
+    }
+  }
+
+  // --------------------------
+  // Weld lab
+  // --------------------------
+  const weldState = { a: true, b: true };
+  const weldResult = $("#weldResult");
+
+  function renderWeld() {
+    if (!weldResult) return;
+
+    if (weldState.a && weldState.b) {
+      weldResult.innerHTML = `<span class="micro">WELD ENGAGED</span><p>Both constraints remain present. The viewer treats coexistence as the design problem instead of deleting one side of the load.</p>`;
+    } else if (weldState.a || weldState.b) {
+      weldResult.innerHTML = `<span class="micro">INCOMPLETE LOAD CASE</span><p>One constraint has been removed. The remaining position may still contain a true diagnosis, but this educational scenario marks the architecture incomplete.</p>`;
+    } else {
+      weldResult.innerHTML = `<span class="micro">NO LOAD CASE</span><p>Both constraints are disabled. There is nothing left for the Weld to reconcile or test.</p>`;
+    }
+  }
+
+  document.addEventListener("click", event => {
+    const button = event.target.closest("[data-weld-toggle]");
+    if (!button) return;
+
+    const key = button.dataset.weldToggle;
+    weldState[key] = !weldState[key];
+    button.setAttribute("aria-pressed", String(weldState[key]));
+    button.textContent = weldState[key] ? "Constraint enabled" : "Constraint disabled";
+    renderWeld();
+  });
+
+  renderWeld();
+
+  // --------------------------
+  // Hero network canvas
+  // --------------------------
+  if (!reduceMotion) {
+    const canvas = $("#heroCanvas");
+    const hero = $(".hero");
+
+    if (canvas && hero) {
+      const ctx = canvas.getContext("2d", {alpha:true});
+      let w=1,h=1,dpr=1,visible=true,animationFrame=0;
+      const nodes = Array.from({length:26},(_,i)=>({
+        x:(Math.sin((i+1)*12.9898)*43758.5453)%1,
+        y:(Math.sin((i+3)*21.773)*13758.5453)%1,
+        phase:i/26*Math.PI*2
+      })).map(n=>({x:Math.abs(n.x),y:Math.abs(n.y),phase:n.phase}));
+
+      function resize(){
+        const r=hero.getBoundingClientRect();
+        w=r.width;h=r.height;dpr=Math.min(devicePixelRatio||1,2);
+        canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+        canvas.style.width=w+"px";canvas.style.height=h+"px";
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      }
+
+      function queueFrame(){
+        if(!animationFrame&&visible&&!document.hidden)animationFrame=requestAnimationFrame(frame);
+      }
+
+      function frame(now){
+        animationFrame=0;
+        if(!visible||document.hidden)return;
+        ctx.clearRect(0,0,w,h);
+        const cx=w*.73,cy=h*.48;
+
+        nodes.forEach((n,i)=>{
+            const angle=n.phase+now*.00005*(i%2?1:-1);
+            const rx=w*(.10+.20*n.x);
+            const ry=h*(.08+.18*n.y);
+            const x=cx+Math.cos(angle)*rx;
+            const y=cy+Math.sin(angle)*ry;
+
+            ctx.beginPath();
+            ctx.moveTo(cx,cy);
+            ctx.lineTo(x,y);
+            ctx.strokeStyle="rgba(95,229,223,.055)";
+            ctx.lineWidth=1;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(x,y,1.2+(i%3)*.5,0,Math.PI*2);
+            ctx.fillStyle=i%3===0?"#ffc044":i%3===1?"#5fe5df":"#4ca8f1";
+            ctx.globalAlpha=.62;
+            ctx.shadowBlur=8;
+            ctx.shadowColor=ctx.fillStyle;
+            ctx.fill();
+        });
+
+        ctx.globalAlpha=1;
+        ctx.shadowBlur=0;
+
+        const g=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.min(w,h)*.22);
+        g.addColorStop(0,"rgba(95,229,223,.12)");
+        g.addColorStop(.25,"rgba(165,133,255,.05)");
+        g.addColorStop(1,"rgba(0,0,0,0)");
+        ctx.fillStyle=g;
+        ctx.beginPath();
+        ctx.arc(cx,cy,Math.min(w,h)*.22,0,Math.PI*2);
+        ctx.fill();
+        queueFrame();
+      }
+
+      new ResizeObserver(resize).observe(hero);
+      new IntersectionObserver(entries=>{visible=entries.some(e=>e.isIntersecting);queueFrame()},{threshold:.01}).observe(hero);
+      document.addEventListener("visibilitychange",queueFrame);
+      resize();
+      queueFrame();
+    }
+  }
+})();
 </script>
-<script data-ew-hamburger-graft src="/EARLYWINE-PRESIDENTIAL-BLUEPRINT/assets/js/hamburger-everywhere.js" defer></script>
-</body></html>
+</body>
+</html>

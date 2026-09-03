@@ -49,44 +49,8 @@
     function draw(){ctx.clearRect(0,0,w,h);for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`hsla(${p.hue},90%,65%,.55)`;ctx.fill()}for(let i=0;i<pts.length;i++){for(let j=i+1;j<pts.length;j++){const a=pts[i],b=pts[j],dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy);if(d<105){ctx.strokeStyle=`rgba(130,170,220,${(1-d/105)*.08})`;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}}raf=requestAnimationFrame(draw)}
     new ResizeObserver(resize).observe(c);resize();draw();document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else draw()});
   }
-  function initHomeImages(){
-    const hero=qs('.hero-cinematic'), art=qs('.hero-art',hero||document);
-    if(!hero||!art)return;
-
-    // HOME_IMAGE_HOTFIX_2026_08_30
-    // Promote the preserved Home-build image assets into the live root page.
-    // These remain replaceable assets; this hook does not redefine their canon authority.
-    art.style.backgroundImage="linear-gradient(90deg,rgba(2,4,7,.80) 0%,rgba(2,4,7,.34) 46%,rgba(2,4,7,.18) 100%),linear-gradient(0deg,#030508 0%,transparent 35%),url('home-build/assets/forge-council-hero.webp')";
-    art.style.backgroundPosition='center';
-    art.style.backgroundSize='cover';
-    art.style.backgroundRepeat='no-repeat';
-
-    if(!qs('[data-candidate-portrait]',hero)){
-      const figure=document.createElement('figure');
-      figure.className='candidate-portrait-card';
-      figure.dataset.candidatePortrait='preserved-home-build';
-      figure.innerHTML='<img src="home-build/assets/candidate-profile.webp" alt="Robert M. Earlywine-Lucas candidate portrait"><figcaption>Robert M. Earlywine-Lucas <span>Full Spectrum Independent</span></figcaption>';
-      hero.appendChild(figure);
-    }
-
-    if(!qs('#home-image-hotfix-styles')){
-      const style=document.createElement('style');
-      style.id='home-image-hotfix-styles';
-      style.textContent=`
-        .candidate-portrait-card{position:absolute;right:clamp(18px,3.4vw,58px);top:clamp(76px,10vh,118px);z-index:2;width:clamp(170px,17vw,285px);margin:0;border:1px solid rgba(255,255,255,.28);border-radius:22px;overflow:hidden;background:rgba(5,8,12,.76);box-shadow:0 26px 80px rgba(0,0,0,.52),0 0 0 1px rgba(243,180,76,.12) inset;backdrop-filter:blur(12px);transform:rotate(1.25deg);pointer-events:none}
-        .candidate-portrait-card::before{content:"";position:absolute;inset:0;z-index:1;box-shadow:inset 0 0 70px rgba(0,0,0,.34);pointer-events:none}
-        .candidate-portrait-card img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top}
-        .candidate-portrait-card figcaption{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:28px 12px 11px;background:linear-gradient(transparent,rgba(2,4,7,.94));color:#fff;font:900 10px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.06em;text-transform:uppercase}
-        .candidate-portrait-card figcaption span{display:block;margin-top:3px;color:#f3b44c;font-size:8px}
-        @media(max-width:1080px){.candidate-portrait-card{width:clamp(145px,18vw,210px);right:16px;top:84px;opacity:.95}}
-        @media(max-width:760px){.candidate-portrait-card{width:132px;right:12px;top:72px;border-radius:17px;transform:rotate(1deg)}.candidate-portrait-card figcaption{display:none}.hero-copy{padding-right:84px}}
-        @media(max-width:470px){.candidate-portrait-card{width:106px;right:10px;top:70px}.hero-copy{padding-right:56px}}
-      `;
-      document.head.appendChild(style);
-    }
-  }
   function stampYear(){qsa('[data-year]').forEach(x=>x.textContent=new Date().getFullYear())}
-  function init(){wirePageRoutes();initNav();setStatusRail();initHomeImages();initReveal();initTilt();initSpectrumCanvas();stampYear();resolveLegacyHash()}
-  window.EarlywineShell={init,setStatusRail,initSpectrumCanvas,wirePageRoutes,initHomeImages};
+  function init(){wirePageRoutes();initNav();setStatusRail();initReveal();initTilt();initSpectrumCanvas();stampYear();resolveLegacyHash()}
+  window.EarlywineShell={init,setStatusRail,initSpectrumCanvas,wirePageRoutes};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();

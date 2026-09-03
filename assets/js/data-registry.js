@@ -1,6 +1,6 @@
 (function(){
   const routes = [
-    {id:'home',label:'Candidate / Temporary Home',href:'index.html',state:'LIVE',kind:'front-door',desc:'Temporary public front door while the final landing architecture is still evolving.'},
+    {id:'home',label:'Candidate / Home',href:'index.html',state:'LIVE',kind:'front-door',desc:'Current public front door for the candidate, the Weld doctrine, the Blueprint, research, rights, receipts, and address.'},
     {id:'blueprint',label:'Blueprint',href:'blueprint-build/blueprint-preview.html',state:'LIVE',kind:'architecture',desc:'Ten pillars as a connected systems architecture.'},
     {id:'explore',label:'Explorers',href:'explorers-build/explorers-preview.html',state:'LIVE',kind:'interactive',desc:'AEGIS, Road Builder, Pillar, Weld, and white-paper explorers.'},
     {id:'papers',label:'White Papers',href:'explorers-build/explorers-preview.html',state:'SOURCE PACK PENDING',kind:'publication',desc:'Public paper family remains inside the Explorer surface with source/package gates visible.'},

@@ -1,0 +1,623 @@
+
+/*
+  EARLYWINE HOMEPAGE V3 — KEEP-THE-TOP REFINEMENT
+  ============================================================
+  Intent:
+  - Current production top composition stays intact.
+  - Three canonical image assets stay intact.
+  - Change the two Weld panels above the middle emblem.
+  - Add a NEW lower hero after the middle emblem.
+  - Upgrade everything beneath it without flattening the page.
+  - Add molten seams and two firework modes without controls.
+
+  This stylesheet is additive. Load it AFTER the current embedded
+  presidential CSS, ideally immediately before </head>.
+*/
+
+:root {
+  --ew3-bg: #020407;
+  --ew3-panel: rgba(8, 13, 20, .86);
+  --ew3-panel2: rgba(12, 19, 28, .88);
+  --ew3-text: #f4f8fa;
+  --ew3-soft: #cbd5da;
+  --ew3-muted: #84929d;
+  --ew3-gold: #ffc044;
+  --ew3-red: #d84143;
+  --ew3-green: #40b875;
+  --ew3-blue: #429ee8;
+  --ew3-cyan: #62ddd7;
+  --ew3-violet: #9c7dff;
+  --ew3-line: rgba(255,255,255,.105);
+  --ew3-line2: rgba(255,255,255,.20);
+  --ew3-shadow: 0 28px 90px rgba(0,0,0,.42);
+  --ew3-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* ------------------------------------------------------------
+   PRODUCTION LOCK VISUAL MARKER (non-visible by default)
+   JS also enforces src attributes at runtime.
+   ------------------------------------------------------------ */
+img[data-visual-authority="locked"] {
+  --ew3-locked: 1;
+}
+
+/* ------------------------------------------------------------
+   TOP: NO LAYOUT REWRITE.
+   We only provide overlay layers and hotter seams.
+   ------------------------------------------------------------ */
+.upper-rally {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.upper-rally > img {
+  position: relative;
+  z-index: 0;
+}
+
+.ew3-fireworks {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.ew3-fireworks[data-mode="auto"] { opacity: .72; }
+.ew3-fireworks[data-mode="interactive"] { opacity: .96; }
+
+.weld-seam-strip [data-field="weld"] {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg,
+      #5c1d00 0%,
+      #d24f0c 14%,
+      #ff9d18 28%,
+      #fff1a0 44%,
+      #ffffff 50%,
+      #ffd258 56%,
+      #ff6b16 72%,
+      #5c1d00 100%) !important;
+  box-shadow:
+    0 0 7px rgba(255,255,210,.95),
+    0 0 18px rgba(255,139,32,.72),
+    0 0 34px rgba(255,65,19,.30) !important;
+}
+
+.weld-seam-strip [data-field="weld"]::after {
+  content: "";
+  position: absolute;
+  inset: -40% -120%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 14px,
+      rgba(255,255,255,.92) 15px 16px,
+      transparent 17px 31px
+    );
+  opacity: .46;
+  animation: ew3SeamCharge 3.5s linear infinite;
+}
+
+@keyframes ew3SeamCharge {
+  to { transform: translateX(28%); }
+}
+
+/* Page-length molten rails; decorative only. */
+.ew3-page-seams {
+  position: fixed;
+  z-index: 17;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ew3-page-seam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  opacity: .55;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0 3%,
+      #ff5917 5%,
+      #fff0a0 7%,
+      #6c2100 10%,
+      transparent 14%,
+      #d84143 20%,
+      #ffb431 23%,
+      #40b875 31%,
+      #ffe37b 34%,
+      #429ee8 43%,
+      #d8f0ff 46%,
+      transparent 51%,
+      #8a2e00 61%,
+      #ff8b19 64%,
+      #fff0a0 66%,
+      transparent 72%,
+      #429ee8 82%,
+      #ffcf64 90%,
+      transparent 100%
+    );
+  background-size: 100% 900px;
+  filter: drop-shadow(0 0 5px rgba(255,164,48,.52));
+  animation: ew3RailFlow 14s linear infinite;
+}
+
+.ew3-page-seam.left { left: clamp(2px, .8vw, 12px); }
+.ew3-page-seam.right { right: clamp(2px, .8vw, 12px); animation-direction: reverse; }
+
+.ew3-page-seam::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  width: 7px;
+  height: 28px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #fff 0 8%, #ffe580 20%, #ff711b 42%, transparent 70%);
+  box-shadow: 0 0 11px #ff8a21;
+  animation: ew3MoltenDrop 8s linear infinite;
+}
+
+.ew3-page-seam.right::after { animation-delay: -4s; }
+
+@keyframes ew3RailFlow {
+  to { background-position-y: 900px; }
+}
+@keyframes ew3MoltenDrop {
+  0% { top: -40px; opacity: 0; }
+  5% { opacity: .9; }
+  95% { opacity: .55; }
+  100% { top: calc(100% + 40px); opacity: 0; }
+}
+
+/* ------------------------------------------------------------
+   REPLACE THE VISUAL LANGUAGE OF THE TWO WELD PANELS
+   WITHOUT DISCARDING THEIR TEXT.
+   ------------------------------------------------------------ */
+
+#weld {
+  overflow: hidden;
+}
+
+#weld .weld-grid.ew3-weld-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) 170px minmax(0,1fr) !important;
+  gap: 12px !important;
+  align-items: stretch;
+}
+
+#weld .weld-panel {
+  min-height: 270px;
+  padding: clamp(22px,3vw,34px) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: 20px !important;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(216,65,67,.13), transparent 40%),
+    linear-gradient(155deg, rgba(17,22,30,.94), rgba(6,10,15,.96)) !important;
+}
+
+#weld .weld-panel.blue {
+  background:
+    radial-gradient(circle at 90% 10%, rgba(66,158,232,.14), transparent 40%),
+    linear-gradient(155deg, rgba(13,20,29,.94), rgba(6,10,15,.96)) !important;
+}
+
+#weld .weld-panel::before {
+  content: attr(data-ew3-index);
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  color: rgba(255,255,255,.045);
+  font: 950 88px/1 Georgia, serif;
+  pointer-events: none;
+}
+
+#weld .weld-panel h3 {
+  margin: 8px 0 !important;
+  font-size: clamp(34px,4vw,56px) !important;
+}
+
+#weld .weld-panel p {
+  max-width: 560px;
+  color: var(--ew3-soft) !important;
+}
+
+.ew3-weld-core {
+  position: relative;
+  min-height: 270px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.ew3-weld-core::before,
+.ew3-weld-core::after {
+  content: "";
+  position: absolute;
+  width: 122px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(255,192,68,.32);
+  box-shadow:
+    0 0 38px rgba(255,192,68,.08),
+    inset 0 0 28px rgba(255,192,68,.05);
+}
+
+.ew3-weld-core::after {
+  width: 92px;
+  border-style: dashed;
+  border-color: rgba(255,255,255,.12);
+  animation: ew3CoreSpin 18s linear infinite;
+}
+
+@keyframes ew3CoreSpin { to { transform: rotate(360deg); } }
+
+.ew3-weld-core strong {
+  position: relative;
+  z-index: 1;
+  color: var(--ew3-gold);
+  font: 950 42px/1 Georgia, serif;
+  text-shadow: 0 0 20px rgba(255,192,68,.18);
+}
+
+.ew3-weld-core span,
+.ew3-weld-core small {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-family: var(--ew3-mono);
+  text-transform: uppercase;
+}
+
+.ew3-weld-core span {
+  margin-top: 8px;
+  color: #f4d98e;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .13em;
+}
+
+.ew3-weld-core small {
+  margin-top: 5px;
+  color: var(--ew3-muted);
+  font-size: 7px;
+  letter-spacing: .08em;
+}
+
+/* Quote spans full row after the three-column load bay. */
+#weld .weld-quote {
+  grid-column: 1 / -1 !important;
+  margin-top: 4px;
+  padding: 18px 20px !important;
+  border: 1px solid rgba(255,192,68,.14);
+  border-left: 3px solid var(--ew3-gold);
+  border-radius: 13px;
+  background: rgba(255,192,68,.025);
+  color: #d9e0e4;
+  font-family: Georgia, serif;
+  font-size: clamp(17px,1.7vw,21px);
+}
+
+/* ------------------------------------------------------------
+   NEW LOWER HERO — inserted AFTER the locked middle emblem.
+   No replacement image required.
+   ------------------------------------------------------------ */
+
+.ew3-lower-hero {
+  position: relative;
+  min-height: clamp(560px, 69vw, 860px);
+  overflow: hidden;
+  border-bottom: 1px solid var(--ew3-line);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(98,221,215,.08), transparent 18%),
+    radial-gradient(circle at 20% 40%, rgba(216,65,67,.07), transparent 24%),
+    radial-gradient(circle at 80% 40%, rgba(66,158,232,.075), transparent 24%),
+    #02050a;
+  isolation: isolate;
+}
+
+.ew3-lower-hero canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ew3-lower-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: .45;
+  background:
+    linear-gradient(rgba(255,255,255,.016) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.016) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at 50% 50%, #000, transparent 77%);
+}
+
+.ew3-lower-copy {
+  position: relative;
+  z-index: 3;
+  width: min(calc(100% - 34px), 1400px);
+  min-height: inherit;
+  margin: auto;
+  padding-block: clamp(80px, 10vw, 130px);
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(400px,1.1fr);
+  gap: clamp(30px,6vw,90px);
+  align-items: center;
+}
+
+.ew3-lower-copy h2 {
+  margin: .18em 0 .22em;
+  max-width: 760px;
+  color: var(--ew3-text);
+  font: 800 clamp(56px,8vw,116px)/.82 Georgia, serif;
+  letter-spacing: -.06em;
+}
+
+.ew3-lower-copy p {
+  max-width: 690px;
+  margin: 0;
+  color: #aab6bf;
+  font-size: clamp(16px,1.5vw,20px);
+}
+
+.ew3-lower-copy .micro {
+  color: var(--ew3-gold);
+}
+
+.ew3-lower-actions {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ew3-lower-actions a {
+  min-height: 48px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--ew3-line2);
+  border-radius: 12px;
+  color: #fff;
+  background: rgba(8,12,18,.78);
+  text-decoration: none;
+  font: 900 8px/1 var(--ew3-mono);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.ew3-lower-actions a:first-child {
+  border-color: var(--ew3-gold);
+  background: var(--ew3-gold);
+  color: #151008;
+}
+
+.ew3-lower-readout {
+  justify-self: end;
+  width: min(100%, 560px);
+  padding: 18px;
+  border: 1px solid rgba(98,221,215,.18);
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.025), transparent),
+    rgba(5,10,17,.76);
+  box-shadow: var(--ew3-shadow);
+  backdrop-filter: blur(12px);
+}
+
+.ew3-lower-readout header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ew3-line);
+}
+
+.ew3-lower-readout header b {
+  font: 900 9px/1 var(--ew3-mono);
+  color: #e7f5f7;
+  letter-spacing: .08em;
+}
+
+.ew3-lower-readout header span {
+  color: var(--ew3-green);
+  font: 850 7px/1 var(--ew3-mono);
+}
+
+.ew3-system-lines {
+  display: grid;
+  margin-top: 10px;
+}
+
+.ew3-system-line {
+  min-height: 50px;
+  display: grid;
+  grid-template-columns: 34px minmax(0,1fr) auto;
+  gap: 9px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,.055);
+}
+
+.ew3-system-line:last-child { border-bottom: 0; }
+
+.ew3-system-line b {
+  color: var(--ew3-gold);
+  font: 900 9px/1 var(--ew3-mono);
+}
+
+.ew3-system-line strong {
+  font-size: .86rem;
+}
+
+.ew3-system-line span {
+  color: var(--ew3-muted);
+  font: 800 7px/1 var(--ew3-mono);
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------
+   LOWER-PAGE POLISH
+   ------------------------------------------------------------ */
+
+#ecosystem,
+#blueprint,
+#research,
+#address,
+#receipts,
+#participate {
+  padding-block: clamp(86px,9vw,138px) !important;
+}
+
+#ecosystem .ecosystem-grid {
+  gap: 10px !important;
+}
+
+#ecosystem .ecosystem-card {
+  min-height: 270px;
+  border-radius: 18px !important;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(66,158,232,.05), transparent 30%),
+    linear-gradient(155deg, rgba(13,20,29,.92), rgba(6,10,15,.96)) !important;
+}
+
+#ecosystem .ecosystem-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 18px;
+  width: 82px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--ew3-gold), transparent);
+}
+
+#blueprint .pillar-shell {
+  gap: 10px !important;
+}
+
+#blueprint .pillar-list,
+#blueprint .pillar-stage,
+#research .research-card,
+#receipts .research-card,
+#participate .public-link,
+#address .address-stage,
+#address .track-card {
+  border-radius: 18px !important;
+}
+
+#research .research-grid,
+#receipts .research-grid {
+  gap: 10px !important;
+}
+
+#research .research-card,
+#receipts .research-card {
+  min-height: 300px;
+  padding: 22px !important;
+}
+
+#participate .participate-grid {
+  gap: 9px !important;
+}
+
+#participate .public-link {
+  min-height: 170px;
+  padding: 18px !important;
+}
+
+#address .address-shell {
+  gap: 10px !important;
+}
+
+#address .track-card {
+  min-height: 86px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.018), transparent),
+    rgba(8,13,20,.88) !important;
+}
+
+/* Runtime current-section marker */
+.ew3-progress {
+  position: fixed;
+  z-index: 180;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: var(--ew3-progress, 0%);
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--ew3-red), var(--ew3-gold), var(--ew3-green), var(--ew3-blue));
+  box-shadow: 0 0 10px rgba(255,192,68,.45);
+}
+
+@media (max-width: 900px) {
+  #weld .weld-grid.ew3-weld-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ew3-weld-core {
+    min-height: 160px;
+  }
+
+  .ew3-lower-copy {
+    grid-template-columns: 1fr;
+  }
+
+  .ew3-lower-readout {
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 620px) {
+  .ew3-page-seams { opacity: .62; }
+
+  .ew3-lower-hero {
+    min-height: 720px;
+  }
+
+  .ew3-lower-copy {
+    width: min(calc(100% - 22px), 1400px);
+    padding-block: 72px;
+  }
+
+  .ew3-lower-copy h2 {
+    font-size: clamp(50px,14vw,76px);
+  }
+
+  #ecosystem,
+  #blueprint,
+  #research,
+  #address,
+  #receipts,
+  #participate {
+    padding-block: 72px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ew3-fireworks { display: none; }
+
+  .ew3-page-seam,
+  .ew3-page-seam::after,
+  .weld-seam-strip [data-field="weld"]::after,
+  .ew3-weld-core::after {
+    animation: none !important;
+  }
+}

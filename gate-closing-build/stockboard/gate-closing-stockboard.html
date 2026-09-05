@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080708">
+<title>Gate Closing Stockboard · A/R · A/P Ledger | Earlywine Blueprint</title>
+<style>
+/* ============ TOKENS — inherited from gate-closing-board-prototype.html (G2b). Not redesigned. ============ */
+:root{
+  --bg:#080708;--panel:#111014;--surface:#09080a;--text:#f4f1ef;--soft:#cfc6c0;--muted:#918780;--line:rgba(255,255,255,.13);
+  --red:#e34d43;--amber:#f0ad43;--blue:#4d9fe0;--green:#4ec58b;--purple:#9f84ff;--danger:#ff6c65;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;
+  /* state colors — one per authoritative state; never reused for anything else */
+  --st-watch:#8a8a8a;--st-ar:#f0ad43;--st-ap:#4ec58b;--st-posted:#e9e4dd;--st-ash:#9f84ff;--st-reopen:#4d9fe0;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(circle at 12% 0,rgba(227,77,67,.10),transparent 24%),radial-gradient(circle at 88% 0,rgba(77,159,224,.08),transparent 22%),var(--bg)}
+button,input,select,textarea{font:inherit} button{cursor:pointer} a{color:inherit}
+.wrap{width:min(calc(100% - 34px),1500px);margin:auto}
+.stage{border-bottom:1px solid var(--line);background:#141116;font:800 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:#d6ceca}
+.stage .wrap{min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.stage b{color:var(--amber)}
+.site-head{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(8,7,8,.94);backdrop-filter:blur(14px)}
+.site-head .wrap{min-height:56px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:950;letter-spacing:.055em;text-decoration:none}
+.badge{margin-left:auto;border:1px solid rgba(240,173,67,.5);color:var(--amber);padding:6px 8px;font:900 9px var(--mono);letter-spacing:.08em}
+.intro{padding:26px 0 16px}
+.eyebrow{font:900 11px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
+.intro h1{font:clamp(34px,5.5vw,64px)/.95 Georgia,serif;letter-spacing:-.05em;margin:.15em 0}
+.intro h1 span{color:var(--red)}
+.lede{max-width:1000px;color:var(--soft);font-size:clamp(14px,1.6vw,17px)}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.legend span{border:1px solid var(--line);padding:5px 8px;font:800 9px var(--mono)}
+.legend i{display:inline-block;width:9px;height:9px;margin-right:6px;vertical-align:-1px}
+
+/* ============ BOARD SHELL (G2b mechanics preserved: cmdbar, tape, presets, edit/drag, collapse/max, inspector) ============ */
+.board-shell{margin:16px auto 30px;width:min(calc(100% - 18px),1560px);border:1px solid #3a3a3a;background:#000;box-shadow:0 30px 90px rgba(0,0,0,.52);font-family:var(--mono);color:#d7d7d7}
+.cmdbar{min-height:38px;display:flex;align-items:stretch;background:var(--amber);color:#000;border-bottom:1px solid #000;font-size:11px;font-weight:800;white-space:nowrap;overflow-x:auto}
+.cmdbar .terminal-brand{display:flex;align-items:center;padding:0 12px;background:#000;color:var(--amber);letter-spacing:.6px}
+.cursor{width:7px;height:14px;background:var(--amber);margin-left:7px;display:inline-block;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.cmdbar button,.cmdbar a,.cmdbar label{border:0;border-left:1px solid rgba(0,0,0,.35);background:transparent;color:#000;padding:0 10px;font:800 11px var(--mono);display:flex;align-items:center;gap:6px;text-decoration:none}
+.cmdbar button:hover,.cmdbar a:hover,.cmdbar button[aria-pressed="true"]{background:#000;color:var(--amber)}
+.cmdbar .grow{flex:1} .cmdbar .clock{display:flex;align-items:center;padding:0 10px;border-left:1px solid rgba(0,0,0,.35)}
+.cmdbar input[type=date]{border:1px solid #000;background:#000;color:var(--amber);font:800 10px var(--mono);padding:2px 4px}
+.tape{height:36px;display:flex;align-items:stretch;background:#050505;border-bottom:1px solid #353535;overflow:hidden}
+.tape-control{flex:0 0 auto;border:0;border-right:1px solid #353535;background:#050505;color:var(--amber);font:800 10px var(--mono);padding:0 10px}
+.tape-viewport{overflow:hidden;position:relative;flex:1}
+.tape-track{display:flex;align-items:center;height:100%;width:max-content;animation:tape 48s linear infinite}
+.tape.paused .tape-track{animation-play-state:paused}
+.tape:hover .tape-track,.tape:focus-within .tape-track{animation-play-state:paused}
+@keyframes tape{to{transform:translateX(-50%)}}
+.tape-item{height:100%;display:flex;align-items:center;gap:9px;padding:0 14px;border:0;border-right:1px solid #292929;background:transparent;color:#d7d7d7;font:11px var(--mono);white-space:nowrap}
+.tape-item:hover{background:#101008}
+.sym{color:var(--amber);font-weight:900}.up{color:#00c176}.dn{color:#ff6264}.flat{color:#9c9c9c}
+.tape-item .st{font-weight:900} .tape-item .sec{color:#7d7d7d;font-size:9px}
+.tape-item.index .sym{color:var(--blue)}
+.board-tools{display:flex;gap:6px;flex-wrap:wrap;padding:7px;background:#090909;border-bottom:1px solid #2b2b2b;align-items:center}
+.board-tools button{border:1px solid #353535;background:#080808;color:#aaa;padding:4px 8px;font:800 10px var(--mono)}
+.board-tools button.on,.board-tools button:hover{border-color:var(--amber);color:var(--amber)}
+.board-tools .hint{margin-left:auto;color:#686868;font:9px var(--mono)}
+.timebar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:6px 8px;background:#0d0b06;border-bottom:1px solid #3a2f14;color:var(--amber);font:800 10px var(--mono)}
+.timebar[hidden]{display:none}
+.dashboard{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-flow:row;gap:6px;padding:6px;background:repeating-linear-gradient(0deg,transparent 0 31px,rgba(41,41,41,.2) 31px 32px),#000}
+.dashboard.edit{background:repeating-linear-gradient(0deg,transparent 0 31px,rgba(240,173,67,.10) 31px 32px),repeating-linear-gradient(90deg,transparent 0 calc(100%/12 - 1px),rgba(240,173,67,.055) calc(100%/12 - 1px) calc(100%/12)),#000}
+.widget{min-height:200px;border:1px solid #3a3a3a;background:#070707;display:flex;flex-direction:column;overflow:hidden}
+.widget[hidden]{display:none!important}
+.widget.maximized{grid-column:1/-1!important;min-height:560px}
+.dashboard.has-max .widget:not(.maximized){display:none}
+.widget.dragging{opacity:.45;border-color:var(--amber)}
+.widget-title{min-height:25px;display:flex;align-items:center;gap:6px;padding:0 5px 0 8px;background:#0a0a0a;border-bottom:1px solid #3a3a3a;color:var(--amber);font:800 10px var(--mono);letter-spacing:.35px;user-select:none}
+.dashboard.edit .widget-title{cursor:grab}
+.widget-num{background:var(--amber);color:#000;padding:1px 4px}
+.widget-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.widget-actions{margin-left:auto;display:flex;gap:1px}
+.widget-actions button{width:22px;height:20px;border:0;background:transparent;color:#888;font:11px var(--mono)}
+.widget-actions button:hover{background:var(--amber);color:#000}
+.widget-body{flex:1;min-height:0;overflow:auto}
+.widget.collapsed{min-height:26px} .widget.collapsed .widget-body{display:none}
+.widget[data-widget="book"]{grid-column:span 7;min-height:330px}
+.widget[data-widget="wire"]{grid-column:span 5;min-height:330px}
+.widget[data-widget="ledger"]{grid-column:span 12;min-height:420px}
+.widget[data-widget="survival"]{grid-column:span 6;min-height:320px}
+.widget[data-widget="predictions"]{grid-column:span 6;min-height:320px}
+.widget[data-widget="matrix"]{grid-column:span 8;min-height:340px}
+.widget[data-widget="indices"]{grid-column:span 4;min-height:340px}
+.widget[data-widget="graveyard"]{grid-column:span 6;min-height:240px}
+.widget[data-widget="integrity"]{grid-column:span 6;min-height:240px}
+.widget[data-widget="propose"]{grid-column:span 12;min-height:300px}
+.widget[data-widget="legacy"]{grid-column:span 12;min-height:260px}
+.toolbar{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:5px 7px;border-bottom:1px solid #292929;background:#0b0b0b}
+.toolbar button{border:1px solid #3a3a3a;background:#060606;color:#8c8c8c;padding:2px 6px;font:800 9px var(--mono)}
+.toolbar button.on{background:var(--amber);border-color:var(--amber);color:#000}
+.toolbar input,.toolbar select{min-width:150px;flex:1;border:1px solid #363636;background:#000;color:#ddd;padding:3px 6px;font:10px var(--mono)}
+.meta{color:#8a8078;font:9px var(--mono);padding:5px 7px;border-bottom:1px solid #242424;line-height:1.45}
+.meta.warn{color:var(--amber);background:#120e05}
+.tbl{width:100%;border-collapse:collapse;font:10px var(--mono)}
+.tbl th,.tbl td{padding:5px 7px;border-bottom:1px solid #252525;text-align:left;vertical-align:top}
+.tbl th{position:sticky;top:0;background:#0c0c0c;color:#777;font-weight:500;z-index:2}
+.tbl tbody tr{cursor:pointer} .tbl tbody tr:hover td,.tbl tbody tr:focus td{background:#111008}
+.tbl td.id{color:var(--amber);font-weight:900;white-space:nowrap}
+.pill{display:inline-block;border:1px solid #444;padding:1px 4px;font:800 8px var(--mono);white-space:nowrap}
+.pill.supports{border-color:#73591e;color:#f0ad43}.pill.weakens{border-color:#226746;color:#62d69c}.pill.open{border-color:#4a4a4a;color:#a3a3a3}
+.pill.PROPOSED{border-color:#5a4a20;color:#c9a35b;border-style:dashed}.pill.REVIEWED{border-color:#3d5a7a;color:#7fb2e6;border-style:dashed}.pill.ADJUDICATED{border-color:#2f6a4c;color:#79d8a8}.pill.POSTED{border-color:#8a8a8a;color:#eee}
+.st-WATCH{color:var(--st-watch)}.st-AR{color:var(--st-ar)}.st-AP{color:var(--st-ap)}.st-POSTED{color:var(--st-posted)}.st-ASH{color:var(--st-ash)}.st-REOPEN{color:var(--st-reopen)}
+.book{display:grid;grid-template-columns:1fr 1fr;gap:0;height:100%}
+.bookcol{border-right:1px solid #2a2a2a;min-width:0}.bookcol:last-child{border-right:0}
+.bookcol h3{margin:0;padding:7px 9px;font:900 10px var(--mono);border-bottom:1px solid #2a2a2a;letter-spacing:.06em}
+.bookcol.ar h3{color:var(--st-ar);background:#120e05}.bookcol.ap h3{color:var(--st-ap);background:#05120c}
+.bookcol .sub{padding:5px 9px;color:#7c7c7c;font:9px var(--mono);border-bottom:1px solid #202020;line-height:1.4}
+.bookitem{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #202020;background:transparent;color:#ddd;padding:8px 9px;font:10px var(--mono);cursor:pointer}
+.bookitem:hover{background:#111008}.bookitem b{color:var(--amber)}.bookitem small{display:block;color:#7c7c7c;margin-top:3px}
+.bookitem.cand{border-left:3px dashed #5a4a20}.bookitem.cand b{color:#c9a35b}
+.empty{padding:14px 9px;color:#7c7c7c;font:9px var(--mono);line-height:1.5}
+.news-item{display:grid;grid-template-columns:44px 84px 1fr;gap:7px;width:100%;text-align:left;border:0;border-bottom:1px solid #252525;background:transparent;color:#cfcfcf;padding:6px 7px;font:10px var(--mono);cursor:pointer}
+.news-item:hover{background:#111008}.news-item .t{color:#777}.news-item .s{color:var(--amber);font-weight:900;overflow:hidden;text-overflow:ellipsis}
+.news-item .h{color:#ddd}.news-item .h small{color:#7c7c7c}
+.news-item.internal{border-left:3px solid var(--purple)}
+.heatgrid{display:grid;gap:2px;padding:6px;font:9px var(--mono)}
+.heatgrid .hd{color:#777;padding:4px 2px;writing-mode:vertical-rl;transform:rotate(180deg);text-align:left;white-space:nowrap}
+.heatgrid .rh{color:var(--amber);font-weight:900;padding:6px 4px;white-space:nowrap;display:flex;align-items:center}
+.cell{min-height:34px;border:1px solid #1f1f1f;background:#0d0d0d;color:#666;display:grid;place-items:center;font:800 9px var(--mono);cursor:default}
+.cell.has{cursor:pointer;color:#ddd}.cell.has:hover{outline:1px solid var(--amber);outline-offset:-1px}
+.cell.WATCH{background:#141414}.cell.POSTED{background:#2a2622}.cell.AR{background:#3a2d10}.cell.AP{background:#0f3323}.cell.ASH{background:#2a1f4a}.cell.REOPEN{background:#10304a}
+.cell .pend{position:relative;top:-1px;color:#c9a35b}
+.claimrow{display:grid;grid-template-columns:1fr auto;gap:8px;border-bottom:1px solid #222;padding:8px;width:100%;text-align:left;border-left:0;border-right:0;border-top:0;background:transparent;color:#ddd;font:10px var(--mono);cursor:pointer}
+.claimrow:hover{background:#111008}.claimrow b{display:block;color:#eee;font-size:10px;line-height:1.35}.claimrow small{color:#7c7c7c}
+.claimrow .num{display:flex;gap:6px;align-items:start;flex-wrap:wrap;justify-content:flex-end;max-width:180px}
+.claimrow .num span{border:1px solid #333;padding:1px 5px;font-size:8px;white-space:nowrap}
+.claimrow.null{border-left:3px solid var(--red)}
+.status-SURVIVING{color:var(--st-ap)}.status-WEAKENED,.status-UNDER\ PRESSURE{color:var(--st-ar)}.status-FALSIFIED,.status-PARTIALLY\ FALSIFIED,.status-NOT\ ESTABLISHED{color:var(--st-ash)}.status-UNRESOLVED{color:#aaa}
+.predcard{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #222;background:transparent;color:#ddd;padding:9px;font:10px var(--mono);cursor:pointer}
+.predcard:hover{background:#111008}.predcard b{color:var(--amber)}.predcard .q{display:block;margin:4px 0;color:#e6e0d8;line-height:1.4}
+.predcard .row{display:flex;gap:6px;flex-wrap:wrap}.predcard .row span{border:1px solid #333;padding:1px 5px;font-size:8px}
+.predcard.internal{border-left:3px solid var(--purple)}.predcard.draft{opacity:.75;border-left:3px dashed #5a4a20}
+.aging-NEW,.aging-ACTIVE{color:var(--st-ap)}.aging-NEAR\ MATURITY{color:var(--st-ar)}.aging-MATURED,.aging-OVERDUE{color:var(--red)}.aging-FALSIFIED,.aging-MISSED{color:var(--st-ash)}.aging-NO\ WINDOW\ STATED{color:var(--red)}.aging-DRAFT{color:#999}
+.grave{padding:0}.grave button{display:grid;grid-template-columns:90px 1fr;gap:8px;width:100%;text-align:left;border:0;border-bottom:1px solid #222;background:transparent;color:#bbb;padding:7px 9px;font:10px var(--mono);cursor:pointer}
+.grave button:hover{background:#15102a}.grave .k{color:var(--st-ash);font-weight:900}
+.integrity{padding:8px 9px;font:10px var(--mono);line-height:1.55}.integrity .ok{color:var(--st-ap)}.integrity .bad{color:var(--red)}.integrity .warn{color:var(--st-ar)}
+.integrity code{color:#aaa;font-size:9px;word-break:break-all}
+.idx{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #222;background:transparent;color:#ddd;padding:8px 9px;font:10px var(--mono);cursor:pointer}
+.idx:hover{background:#111008}.idx b{color:var(--blue)}.idx small{display:block;color:#7c7c7c;margin-top:3px}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;padding:9px}
+.form label{display:flex;flex-direction:column;gap:3px;color:#8a8078;font:9px var(--mono)}
+.form input,.form select,.form textarea{border:1px solid #363636;background:#000;color:#ddd;padding:5px 6px;font:10px var(--mono)}
+.form textarea{min-height:52px}.form .full{grid-column:1/-1}
+.form .actions{grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.form .actions button{border:1px solid var(--amber);background:#000;color:var(--amber);padding:6px 10px;font:900 9px var(--mono)}
+.form .actions button.secondary{border-color:#444;color:#aaa}
+.form .result{grid-column:1/-1;padding:8px;border:1px dashed #333;color:#bbb;font:9px var(--mono);white-space:pre-wrap;min-height:20px}
+.form .result.bad{border-color:var(--red);color:#ffb3ae}.form .result.ok{border-color:var(--st-ap);color:#a8ecc8}
+.tabs{display:flex;border-bottom:1px solid #292929;background:#0b0b0b;flex-wrap:wrap}
+.tabs button{border:0;border-right:1px solid #292929;background:transparent;color:#888;padding:6px 8px;font:800 9px var(--mono)}
+.tabs button.on{background:var(--amber);color:#000}
+.board-foot{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:7px 10px;background:#050505;border-top:1px solid #353535;color:#656565;font:9px var(--mono);flex-wrap:wrap}
+.board-foot a{color:var(--amber)}
+/* inspector (G2b modal, extended with tabs) */
+.dialog-backdrop{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.74);display:grid;place-items:center;padding:18px}
+.dialog-backdrop[hidden]{display:none}
+.inspector{width:min(900px,96vw);max-height:88vh;overflow:auto;border:1px solid var(--amber);background:#080808;box-shadow:0 25px 90px #000;font-family:var(--mono)}
+.inspector-head{display:flex;gap:10px;align-items:center;background:var(--amber);color:#000;padding:8px 10px;font-weight:900;position:sticky;top:0;z-index:2}
+.inspector-head button{margin-left:auto;border:1px solid #000;background:transparent;color:#000;font-weight:900}
+.inspector-body{padding:14px 16px}
+.inspector-body h3{font:22px Georgia,serif;margin:4px 0 10px;color:#f0ebe4}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:6px 10px;font-size:10px;padding:8px 0;border-top:1px solid #292929}
+.kv dt{color:#777}.kv dd{margin:0;color:#ddd;word-break:break-word}
+.kv dd a{color:var(--blue)}
+.evlink{border:1px solid #3a3a3a;background:#0c0c0c;color:var(--amber);padding:1px 6px;font:800 9px var(--mono);margin:1px 3px 1px 0;cursor:pointer}
+.evlink:hover{background:var(--amber);color:#000}
+.hist{list-style:none;margin:0;padding:0}.hist li{padding:6px 0;border-bottom:1px solid #1e1e1e;font-size:10px}
+.hist li b{color:var(--amber)} .hist li.pending{color:#c9a35b;border-left:3px dashed #5a4a20;padding-left:6px}
+.decomp{width:100%;border-collapse:collapse;font-size:10px}.decomp td{padding:4px 6px;border-bottom:1px solid #1e1e1e}.decomp td:last-child{text-align:right;color:var(--amber);font-weight:900}
+.decomp tr.pending td{color:#8a7a50;font-style:italic}
+.section-h{margin:14px 0 4px;color:var(--amber);font:900 9px var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.counter-box{border:1px solid #226746;background:#06140d;padding:8px;font-size:10px;margin:6px 0}
+.counter-box.none{border-color:#333;background:#0c0c0c;color:#888}
+.toast{position:fixed;right:16px;bottom:16px;z-index:120;background:#111;border:1px solid var(--amber);color:var(--amber);padding:9px 11px;font:10px var(--mono);box-shadow:0 10px 40px #000}
+.toast[hidden]{display:none}
+@media(max-width:1000px){.widget[data-widget]{grid-column:span 12}.book{grid-template-columns:1fr}.bookcol{border-right:0;border-bottom:1px solid #2a2a2a}}
+@media(max-width:620px){.wrap{width:min(calc(100% - 20px),1500px)}.badge{display:none}.board-shell{width:100%;border-left:0;border-right:0}.cmdbar .terminal-brand{position:sticky;left:0;z-index:2}.board-tools .hint{display:none}.news-item{grid-template-columns:44px 1fr}.news-item .s{grid-column:2}.kv{grid-template-columns:1fr}.heatgrid .hd{writing-mode:horizontal-tb;transform:none;font-size:7px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.cursor{animation:none}.tape-track{animation:none;transform:none!important}.tape-viewport{overflow-x:auto}}
+</style>
+</head>
+<body>
+<div class="stage"><div class="wrap"><span><b>GATE CLOSING / STOCKBOARD</b> · A/R · A/P ledger · federated beside the daily board and the terminal prototypes</span><span>FREEZE 2026-08-13 · PROTOCOL 2026-08-30 · SEMANTICS AR-AP-v2</span></div></div>
+<header class="site-head"><div class="wrap"><a class="brand" href="#top">EARLYWINE BLUEPRINT / GATE CLOSING</a><span class="badge">FEDERATED · NOT PROMOTED · NOT A SECURITIES BOARD</span></div></header>
+
+<main id="top">
+<section class="intro"><div class="wrap">
+  <div class="eyebrow">Simple surface. Nasty machinery underneath.</div>
+  <h1><span>Gate</span> Closing Stockboard.</h1>
+  <p class="lede">Entities, laws and mechanisms move on this tape only when adjudicated evidence moves them. Every arrow, every number and every state opens to the events that produced it. A/R holds provisional openings; A/P holds openings that proved durable — <b>A/P is where the thesis loses ground.</b> Nothing here is a price.</p>
+  <div class="legend">
+    <span><i style="background:var(--st-watch)"></i>WATCH · under observation</span>
+    <span><i style="background:var(--st-ar)"></i>AR · something opened; durability unproven</span>
+    <span><i style="background:var(--st-ap)"></i>AP · durable opening landed</span>
+    <span><i style="background:var(--st-posted)"></i>POSTED · adjudicated restriction evidence on the ledger</span>
+    <span><i style="background:var(--st-ash)"></i>ASH · scoped universal closure (hard to earn)</span>
+    <span><i style="background:var(--st-reopen)"></i>REOPEN · closure reversed; history kept</span>
+    <span>▲ latest posted evidence moved the lane toward restriction · ▼ toward opening · ─ no posted movement</span>
+  </div>
+</div></section>
+
+<section id="board" aria-label="Gate Closing stockboard">
+<div class="board-shell">
+  <div class="cmdbar" role="toolbar" aria-label="Board controls">
+    <div class="terminal-brand">GATE://STOCKBOARD<span class="cursor" aria-hidden="true"></span></div>
+    <button type="button" data-preset="GLOBAL" aria-pressed="true">GLOBAL</button>
+    <button type="button" data-preset="BOOK" aria-pressed="false">A/R·A/P</button>
+    <button type="button" data-preset="EVIDENCE" aria-pressed="false">EVIDENCE</button>
+    <button type="button" data-preset="PREDICTIONS" aria-pressed="false">PREDICTIONS</button>
+    <button type="button" data-preset="GRAVEYARD" aria-pressed="false">GRAVEYARD</button>
+    <span class="grow"></span>
+    <button type="button" data-time="NOW" aria-pressed="true">NOW</button>
+    <button type="button" data-time="FREEZE" aria-pressed="false">AT FREEZE</button>
+    <button type="button" data-time="PROTOCOL" aria-pressed="false">AT PROTOCOL</button>
+    <label>AS OF <input type="date" id="asOfInput" aria-label="Custom as-of date"></label>
+    <button type="button" id="diffToggle" aria-pressed="false">THEN vs NOW</button>
+    <button type="button" id="internalToggle" aria-pressed="false" title="Show repo-only internal records (never publish with this on)">INTERNAL</button>
+    <button id="editToggle" type="button" aria-pressed="false">EDIT</button>
+    <button id="resetBoard" type="button">RESET LAYOUT</button>
+    <a href="https://lokivelli316.github.io/EARLYWINE-PRESIDENTIAL-BLUEPRINT/gate-closing-build/gate-closing-preview.html" target="_blank" rel="noopener">FULL AUDIT ↗</a>
+    <div class="clock" id="clock">--:--:--</div>
+  </div>
+  <div class="tape" id="tape">
+    <button class="tape-control" id="tapeToggle" type="button" aria-pressed="false">TAPE HALT</button>
+    <div class="tape-viewport" aria-label="Gate Closing ticker tape"><div class="tape-track" id="tapeTrack"></div></div>
+  </div>
+  <div class="timebar" id="timebar" hidden></div>
+  <div class="board-tools">
+    <button type="button" data-market="All" class="on">ALL</button>
+    <button type="button" data-market="Music">MUSIC</button>
+    <button type="button" data-market="Publishing">PUBLISHING</button>
+    <button type="button" data-market="Scholarly">SCHOLARLY</button>
+    <button type="button" data-market="Cross-cutting">CROSS-CUTTING</button>
+    <button type="button" id="settledOnly" aria-pressed="false">SETTLED ONLY</button>
+    <span class="hint">/ SEARCH · ESC CLOSES INSPECTOR · EDIT ENABLES REORDER · CLICK ANYTHING TO DRILL DOWN</span>
+  </div>
+
+  <div class="dashboard" id="dashboard">
+    <section class="widget" data-widget="book" data-groups="GLOBAL BOOK" tabindex="-1">
+      <div class="widget-title"><span class="widget-num">01</span><span class="widget-name">A/R · A/P BOOK · PROVISIONAL vs DURABLE OPENINGS</span><div class="widget-actions"><button data-act="up" aria-label="Move earlier">←</button><button data-act="down" aria-label="Move later">→</button><button data-act="max" aria-label="Maximize">□</button><button data-act="min" aria-label="Collapse">—</button></div></div>
+      <div class="widget-body"><div class="book">
+        <div class="bookcol ar"><h3>ACCOUNTS RECEIVABLE</h3><div class="sub">Reality produced a potential opening (release, loosening, new availability). Proof of durability not yet received. A release by itself stays here.</div><div id="arList"></div></div>
+        <div class="bookcol ap"><h3>ACCOUNTS PAYABLE</h3><div class="sub">The ledger owes recognition: a durable structural opening landed. Every entry here is a lane that did <b>not</b> close. Dashed entries are candidates awaiting human adjudication.</div><div id="apList"></div></div>
+      </div></div>
+    </section>
+
+    <section class="widget" data-widget="wire" data-groups="GLOBAL EVIDENCE BOOK" tabindex="-1">
+      <div class="widget-title"><span class="widget-num">02</span><span class="widget-name">RECEIPTS WIRE · CHRONOLOGICAL</span><div class="widget-actions"><button data-act="up">←</button><button data-act="down">→</button><button data-act="max">□</button><button data-act="min">—</button></div></div>
+      <div class="widget-body"><div class="meta">Every line opens its record. Posted-at order (what the ledger learned, when). No decorative lines.</div><div id="wire"></div></div>
+    </section>
+
+    <section class="widget" data-widget="ledger" data-groups="GLOBAL EVIDENCE" tabindex="-1">
+      <div class="widget-title"><span class="widget-num">03</span><span class="widget-name">EVIDENCE LEDGER · APPEND-ONLY EVENT JOURNAL</span><div class="widget-actions"><button data-act="up">←</button><button data-act="down">→</button><button data-act="max">□</button><button data-act="min">—</button></div></div>
+      <div class="widget-body">
+        <div class="toolbar">
+          <button data-dir="all" class="on">ALL</button><button data-dir="supports">SUPPORT</button><button data-dir="weakens">COUNTER</button><button data-dir="open">OPEN</button>
+          <button data-kind="all" class="on">ALL KINDS</button><button data-kind="transition">TRANSITIONS</button><button data-kind="adjudication">ADJUDICATIONS</button><button data-kind="correction">CORRECTIONS</button><button data-kind="lineage">LINEAGE</button>
+          <input id="ledgerSearch" type="search" placeholder="entity / mechanism / title / event id / source" aria-label="Search ledger">
+          <span id="ledgerCount" style="color:#666;font:9px var(--mono)"></span>
+        </div>
+        <table class="tbl"><thead><tr><th>EVENT</th><th>DATE</th><th>ENTITY</th><th>MECHANISM</th><th>TITLE</th><th>DIR</th><th>TRANSITION</th><th>AUDIT</th><th>SRC</th></tr></thead><tbody id="ledgerBody"></tbody></table>
+      </div>
+    </section>
+
+    <section class="widget" data-widget="survival" data-groups="GLOBAL EVIDENCE PREDICTIONS" tabindex="-1">
+      <div class="widget-title"><span class="widget-num">04</span><span class="widget-name">CLAIM SURVIVAL · UNDER EVIDENCE PRESSURE</span><div class="widget-actions"><button data-act="up">←</button><button data-act="down">→</button><button data-act="max">□</button><button data-act="min">—</button></div></div>
+      <div class="widget-body"><div class="meta">Status is the human adjudication where one exists; otherwise derived from counts and labeled so. Counts are event lists, not scores. The red-edged row is the adversarial null hypothesis — it must be visible.</div><div id="claims"></div></div>
+    </section>
+
+    <section class="widget" data-widget="predictions" data-groups="GLOBAL PREDICTIONS" tabindex="-1">
+      <div class="widget-title"><span class="widget-num">05</span><span class="widget-name">FROZEN PREDICTIONS · IMMUTABLE INSTRUMENTS · AGING</span><div class="widget-actions"><button data-act="up">←</button><button data-act="down">→</button><button data-act="max">□</button><button data-act="min">—</button></div></div>
+      <div class="widget-body"><div class="meta">Frozen text is content-hashed. Original confidence is never rewritten; current confidence, if any, comes from a later posted event. Extensions are new records; the original window still ages.</div><div id="predictions"></div></div>
+    </section>
+
+    <section class="widget" data-widget="matrix" data-groups="GLOBAL EVIDENCE" tabindex="-1">
+      <div class="widget-title"><span class="widget-num">06</span><span class="widget-name">MECHANISM MATRIX · ENTITY × MECHANISM · LANE STATE</span><div class="widget-actions"><button data-act="up">←</button><button data-act="down">→</button><button data-act="max">□</button><button data-act="min">—</button></div></div>
+      <div class="widget-body"><div class="meta">Cell = lane state (color) and posted evidence count. † = proposal pending. Cell size is equal; it communicates nothing about magnitude.</div><div id="matrix" class="heatgrid"></div></div>
+    </section>
+
+    <section class="widget" data-widget="indices" data-groups="GLOBAL EVIDENCE" tabindex="-1">
+      <div class="widget-title"><span class="widget-num">07</span><span class="widget-name">SECTOR / MECHANISM INDICES · REVERSIBLE</span><div class="widget-actions"><button data-act="up">←</button><button data-act="down">→</button><button data-act="max">□</button><button data-act="min">—</button></div></div>
+      <div class="widget-body"><div class="meta">An index is a sum of its listed constituents under provisional weights v0. Click to see the constituents. An aggregate mechanism trend is not universal company behavior.</div><div id="indices"></div></div>
+    </section>
+
+    <section class="widget" data-widget="graveyard" data-groups="GLOBAL GRAVEYARD PREDICTIONS" tabindex="-1">
+      <div class="widget-title"><span class="widget-num">08</span><span class="widget-name">GRAVEYARD · FALSIFIED · FAILED · SUPERSEDED · HISTORICAL ASH</span><div class="widget-actions"><button data-act="up">←</button><button data-act="down">→</button><button data-act="max">□</button><button data-act="min">—</button></div></div>
+      <div class="widget-body"><div class="meta">A prediction system that displays only victories is propaganda. Nothing here is deleted; REOPEN never erases a prior ASH.</div><div class="grave" id="graveyard"></div></div>
+    </section>
+
+    <section class="widget" data-widget="integrity" data-groups="GLOBAL GRAVEYARD EVIDENCE" tabindex="-1">
+      <div class="widget-title"><span class="widget-num">09</span><span class="widget-name">LEDGER INTEGRITY · HASH CHAIN · TAMPER CHECKS · WARNINGS</span><div class="widget-actions"><button data-act="up">←</button><button data-act="down">→</button><button data-act="max">□</button><button data-act="min">—</button></div></div>
+      <div class="widget-body integrity" id="integrity"></div>
+    </section>
+
+    <section class="widget" data-widget="propose" data-groups="GLOBAL BOOK EVIDENCE" tabindex="-1">
+      <div class="widget-title"><span class="widget-num">10</span><span class="widget-name">PROPOSE · ADD ENTITY / EVENT / TRANSITION / PREDICTION (LOCAL PROPOSAL JOURNAL)</span><div class="widget-actions"><button data-act="up">←</button><button data-act="down">→</button><button data-act="max">□</button><button data-act="min">—</button></div></div>
+      <div class="widget-body">
+        <div class="tabs" id="proposeTabs"><button data-tab="event" class="on">EVENT / TRANSITION</button><button data-tab="entity">ENTITY</button><button data-tab="prediction">PREDICTION</button><button data-tab="ash">ASH (scoped)</button></div>
+        <div class="meta">Proposals are validated by the engine and appended to a local, append-only proposal journal in this browser. They are PROPOSED unless a human adjudicator is named. Export the journal and append it to <code>tools/journal-source.js</code>, then re-seal. Nothing here writes to the canonical file.</div>
+        <form class="form" id="proposeForm" autocomplete="off"></form>
+      </div>
+    </section>
+
+    <section class="widget" data-widget="legacy" data-groups="EVIDENCE" tabindex="-1">
+      <div class="widget-title"><span class="widget-num">11</span><span class="widget-name">LEGACY RECORDS · daily-board-v1 · PRESERVED VERBATIM · NOT MIGRATED</span><div class="widget-actions"><button data-act="up">←</button><button data-act="down">→</button><button data-act="max">□</button><button data-act="min">—</button></div></div>
+      <div class="widget-body"><div class="meta warn">These are the 12 records from gate-closing-data.js (2026-09-04) in their old schema. Their "state" is an evidence label (VERIFIED), not an AR-AP-v2 state. Each maps to an event above via legacy_ref. LOAD JSON accepts a daily-board file to preview beside the journal.</div>
+        <div class="toolbar"><button id="loadLegacyBtn">LOAD DAILY-BOARD JSON</button><button id="clearLegacyBtn">CLEAR PREVIEW</button><span id="legacyNote" style="color:#666;font:9px var(--mono)"></span></div>
+        <table class="tbl"><thead><tr><th>ID</th><th>MARKET</th><th>MECHANISM</th><th>CLAIM</th><th>DATE</th><th>DIR</th><th>LEGACY STATE</th><th>→ EVENT</th></tr></thead><tbody id="legacyBody"></tbody></table>
+      </div>
+    </section>
+  </div>
+
+  <div class="board-foot">
+    <span id="footLeft">JOURNAL: — events · chain —</span>
+    <span>Gate Closing survives only where the evidence survives. Weights v0 are provisional until validated against historical cases.</span>
+  </div>
+</div>
+</section>
+</main>
+
+<input id="fileInput" type="file" accept=".json,application/json" hidden>
+<div class="dialog-backdrop" id="dialogBackdrop" hidden>
+  <section class="inspector" role="dialog" aria-modal="true" aria-labelledby="inspectorTitle">
+    <div class="inspector-head"><span>GATE://PROVENANCE INSPECTOR</span><span id="inspectorCrumb" style="font-weight:500;color:#3a2a00"></span><button id="closeInspector" type="button">ESC / CLOSE</button></div>
+    <div class="inspector-body" id="inspectorBody"></div>
+  </section>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="gate-closing-engine.js"></script>
+<script src="gate-closing-journal.js"></script>
+<script>
+/* ================= BOARD SHELL SCRIPT ================= */
+const E = window.GCEngine;
+const SEALED = window.GC_JOURNAL;
+const LS_LAYOUT = 'gate.stockboard.layout.v1', LS_LOCAL = 'gate.stockboard.local-journal.v1', LS_LEGACY = 'gate.stockboard.legacy-preview.v1';
+const FREEZE = SEALED.meta.freeze, PROTOCOL = SEALED.meta.protocol;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+const ui = { market: 'All', dir: 'all', kind: 'all', q: '', preset: 'GLOBAL', time: 'NOW', asOf: null, diff: false, internal: false, settledOnly: false, tapePaused: false, edit: false };
+let journal = SEALED, view = null, quarantine = [];
+
+/* ---- local proposal journal (append-only; merged onto the sealed journal at load via validation) ---- */
+function loadLocal() { try { return JSON.parse(localStorage.getItem(LS_LOCAL) || '[]') } catch (e) { return [] } }
+function saveLocal(arr) { try { localStorage.setItem(LS_LOCAL, JSON.stringify(arr)) } catch (e) {} }
+function rebuildJournal() {
+  journal = JSON.parse(JSON.stringify(SEALED)); quarantine = [];
+  const local = loadLocal();
+  for (const item of local) {
+    try {
+      if (item.type === 'entity') { if (journal.entities.some(x => x.id === item.record.id)) throw new Error('entity id exists'); journal.entities.push({ ...item.record, local: true }); }
+      else if (item.type === 'prediction') { const r = E.freezePrediction(journal, { ...item.record, local: true }, { now: item.record.frozen_at }); journal = r.journal; }
+      else if (item.type === 'event') { const r = E.appendEvent(journal, { ...item.record, local: true }); journal = r.journal; }
+    } catch (e) { quarantine.push({ item, error: (e.errors || [e.message]).join(' | ') }); }
+  }
+}
+function derive() {
+  const asOf = ui.time === 'NOW' ? null : ui.time === 'FREEZE' ? FREEZE : ui.time === 'PROTOCOL' ? PROTOCOL : ui.asOf;
+  view = E.derive(journal, { asOf, includeInternal: ui.internal });
+  view.legacyPreview = (() => { try { return JSON.parse(localStorage.getItem(LS_LEGACY) || 'null') } catch (e) { return null } })();
+  return view;
+}
+
+/* ---- layout persistence (G2b) ---- */
+function saveLayout() { try { const order = [...document.querySelectorAll('.widget')].map(w => w.dataset.widget); const collapsed = [...document.querySelectorAll('.widget.collapsed')].map(w => w.dataset.widget); localStorage.setItem(LS_LAYOUT, JSON.stringify({ market: ui.market, preset: ui.preset, tapePaused: ui.tapePaused, order, collapsed })) } catch (e) {} }
+function loadLayout() { try { return JSON.parse(localStorage.getItem(LS_LAYOUT) || '{}') } catch (e) { return {} } }
+const dashboard = document.getElementById('dashboard');
+(function applySavedLayout() { const p = loadLayout(); if (p.market) ui.market = p.market; if (p.preset) ui.preset = p.preset; ui.tapePaused = !!p.tapePaused; if (Array.isArray(p.order)) p.order.forEach(id => { const w = dashboard.querySelector('[data-widget="' + CSS.escape(id) + '"]'); if (w) dashboard.appendChild(w) }); if (Array.isArray(p.collapsed)) p.collapsed.forEach(id => dashboard.querySelector('[data-widget="' + CSS.escape(id) + '"]')?.classList.add('collapsed')) })();
+
+/* ---- filters ---- */
+const marketOK = m => ui.market === 'All' || m === ui.market;
+const entList = () => Object.values(view.entities).filter(e => marketOK(e.market) || (ui.market !== 'All' && view.indices.some(ix => ix.market === ui.market && ix.members.includes(e.id))));
+const evOK = e => (ui.dir === 'all' || (e.direction || 'open') === ui.dir) && (ui.kind === 'all' || e.kind === ui.kind) && (!ui.settledOnly || ['ADJUDICATED', 'POSTED'].includes(e.audit_status)) && (marketOK(e.market) || (e.entity_id && view.entities[e.entity_id] && marketOK(view.entities[e.entity_id].market)));
+
+/* ---- renderers ---- */
+function stateSpan(s) { return '<span class="st-' + esc(s) + '">' + esc(s) + '</span>' }
+function arrow(mv) { return mv === 'up' ? '<span class="up">▲</span>' : mv === 'down' ? '<span class="dn">▼</span>' : '<span class="flat">─</span>' }
+function renderTape() {
+  const host = document.getElementById('tapeTrack'); host.replaceChildren();
+  const ents = entList().sort((a, b) => a.symbol.localeCompare(b.symbol));
+  const items = [...ents.map(e => ({ t: 'e', e })), ...view.indices.map(ix => ({ t: 'i', ix }))];
+  [...items, ...items].forEach(it => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'tape-item' + (it.t === 'i' ? ' index' : '');
+    if (it.t === 'e') { const e = it.e; b.innerHTML = '<span class="sym">' + esc(e.symbol) + '</span><span class="st st-' + esc(e.state) + '">' + esc(e.state) + '</span>' + arrow(e.movement) + '<span>' + (e.score.total >= 0 ? '+' : '') + e.score.total + '</span><span class="sec">' + esc(e.market.toUpperCase()) + (e.pending.length ? ' · ' + e.pending.length + ' PENDING' : '') + '</span>'; b.addEventListener('click', () => openEntity(e.id)); }
+    else { const ix = it.ix; b.innerHTML = '<span class="sym">' + esc(ix.symbol) + '</span><span class="st">INDEX</span><span>' + (ix.score.total >= 0 ? '+' : '') + ix.score.total + '</span><span class="sec">' + ix.members.length + ' CONSTITUENTS</span>'; b.addEventListener('click', () => openIndex(ix.id)); }
+    host.appendChild(b);
+  });
+  document.getElementById('tape').classList.toggle('paused', ui.tapePaused);
+  const t = document.getElementById('tapeToggle'); t.textContent = ui.tapePaused ? 'TAPE PLAY' : 'TAPE HALT'; t.setAttribute('aria-pressed', String(ui.tapePaused));
+}
+function laneLabel(l) { const e = view.entities[l.entity_id], m = journal.mechanisms.find(x => x.id === l.mechanism_id); return esc(e ? e.symbol : l.entity_id) + ' · ' + esc(m ? m.name : '—') }
+function renderBook() {
+  const ar = document.getElementById('arList'), ap = document.getElementById('apList'); ar.replaceChildren(); ap.replaceChildren();
+  const mk = (l, cand) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'bookitem' + (cand ? ' cand' : ''); const last = l.history[l.history.length - 1]; const pend = l.pending[l.pending.length - 1]; b.innerHTML = '<b>' + laneLabel(l) + '</b>' + (cand ? ' <span class="pill PROPOSED">' + esc(pend.from) + ' → ' + esc(pend.to) + ' PROPOSED by ' + esc(pend.by.actor.split(' ')[0]) + '</span>' : ' <span class="pill POSTED">' + esc(last ? last.from + ' → ' + last.to : '') + '</span>') + '<small>' + esc(cand ? view.events[pend.event_id].transition_reason : (last ? last.reason : '')) + '</small>'; b.addEventListener('click', () => openLane(l.key)); return b; };
+  const arL = view.arBook.filter(l => marketOK(view.entities[l.entity_id].market)), apL = view.apBook.filter(l => marketOK(view.entities[l.entity_id].market));
+  const arC = view.arCandidates.filter(l => l.state !== 'AR' && marketOK(view.entities[l.entity_id].market)), apC = view.apCandidates.filter(l => l.state !== 'AP' && marketOK(view.entities[l.entity_id].market));
+  arL.forEach(l => ar.appendChild(mk(l, false))); arC.forEach(l => ar.appendChild(mk(l, true)));
+  apL.forEach(l => ap.appendChild(mk(l, false))); apC.forEach(l => ap.appendChild(mk(l, true)));
+  if (!arL.length && !arC.length) ar.innerHTML = '<div class="empty">No provisional openings on the ledger for this filter.</div>';
+  if (!apL.length) ap.insertAdjacentHTML('afterbegin', '<div class="empty"><b style="color:var(--red)">A/P BOOK EMPTY.</b> No opening has been adjudicated durable. Candidates below await a human ruling. If this stays empty, the ledger is under-recording openings (§17), not winning.</div>');
+}
+function renderWire() {
+  const host = document.getElementById('wire'); host.replaceChildren();
+  view.wire.filter(w => evOK(view.events[w.event_id])).forEach(w => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'news-item' + (w.visibility === 'internal' ? ' internal' : '');
+    b.innerHTML = '<span class="t">' + esc(w.posted_at.slice(5)) + '</span><span class="s">' + esc(w.symbol) + '</span><span class="h">' + esc(w.headline) + ' <small>· ' + esc(w.transition || w.kind.toUpperCase()) + ' · <span class="pill ' + esc(w.audit_status) + '">' + esc(w.audit_status) + '</span></small></span>';
+    b.addEventListener('click', () => openEvent(w.event_id)); host.appendChild(b);
+  });
+  if (!host.children.length) host.innerHTML = '<div class="empty">No receipts for this filter / as-of date.</div>';
+}
+function renderLedger() {
+  const body = document.getElementById('ledgerBody'); body.replaceChildren();
+  const q = ui.q.trim().toLowerCase();
+  const rows = view.allEvents.filter(evOK).filter(e => !q || [e.event_id, e.title, e.entity_id, e.mechanism_id, e.market, e.note, (e.source_refs || []).join(' '), e.legacy_ref].join(' ').toLowerCase().includes(q)).sort((a, b) => b.seq - a.seq);
+  rows.forEach(e => {
+    const tr = document.createElement('tr'); tr.tabIndex = 0;
+    const ent = e.entity_id ? view.entities[e.entity_id] || journal.entities.find(x => x.id === e.entity_id) : null, m = journal.mechanisms.find(x => x.id === e.mechanism_id);
+    tr.innerHTML = '<td class="id">' + esc(e.event_id) + (e.legacy_ref ? '<br><small style="color:#777">' + esc(e.legacy_ref) + '</small>' : '') + (e.local ? '<br><small style="color:#c9a35b">LOCAL</small>' : '') + '</td><td>' + esc(e.date) + '</td><td>' + esc(ent ? ent.symbol : '—') + '</td><td>' + esc(m ? m.name : '—') + '</td><td style="max-width:360px">' + esc(e.title) + '</td><td>' + (e.direction ? '<span class="pill ' + esc(e.direction) + '">' + esc(e.direction === 'supports' ? 'SUPPORT' : e.direction === 'weakens' ? 'COUNTER' : 'OPEN') + '</span>' : '') + '</td><td>' + (e.new_state ? stateSpan(e.previous_state) + ' → ' + stateSpan(e.new_state) : '') + '</td><td><span class="pill ' + esc(e.audit_status) + '">' + esc(e.audit_status) + '</span></td><td>' + (e.source_refs || []).length + '</td>';
+    tr.addEventListener('click', () => openEvent(e.event_id)); tr.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openEvent(e.event_id) } });
+    body.appendChild(tr);
+  });
+  document.getElementById('ledgerCount').textContent = rows.length + ' / ' + view.allEvents.length + ' EVENTS';
+}
+function renderClaims() {
+  const host = document.getElementById('claims'); host.replaceChildren();
+  view.claims.forEach(c => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'claimrow' + (c.kind === 'null-hypothesis' ? ' null' : '');
+    b.innerHTML = '<div><b>' + esc(c.text) + '</b><small>' + esc(c.id) + ' · ' + esc(c.kind) + (c.parent ? ' · descendant of ' + esc(c.parent) : '') + (c.descendants.length ? ' · descendants: ' + esc(c.descendants.join(', ')) : '') + ' · age ' + (c.ageDays ?? '—') + 'd · ' + esc(c.statusSource) + '</small></div><div class="num"><span class="status-' + esc(c.status) + '">' + esc(c.status) + '</span><span>SUPPORT ' + c.support.length + '</span><span>COUNTER ' + c.counter.length + '</span><span>OPEN ' + c.open.length + '</span><span>PRED ' + c.predictions.length + '</span><span>HITS ' + c.hits + '</span><span>MISSES ' + c.misses + '</span></div>';
+    b.addEventListener('click', () => openClaim(c.id)); host.appendChild(b);
+  });
+}
+function renderPredictions() {
+  const host = document.getElementById('predictions'); host.replaceChildren();
+  view.predictions.forEach(p => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'predcard' + (p.visibility === 'internal' ? ' internal' : '') + (!p.frozen_at ? ' draft' : '');
+    b.innerHTML = '<b>' + esc(p.prediction_id) + '</b> <span class="aging-' + esc(p.aging.status) + '">' + esc(p.aging.status) + '</span>' + (p.hashOk === false ? ' <span style="color:var(--red)">HASH MISMATCH — TAMPERED</span>' : '') + '<span class="q">' + esc(p.exact_claim) + '</span><div class="row"><span>FROZEN ' + esc(p.frozen_at || 'not frozen') + '</span><span>WINDOW ' + esc(p.expected_window ? (p.expected_window.start || p.frozen_at) + ' → ' + p.expected_window.end : 'NONE STATED') + '</span><span>ORIG CONF ' + esc(p.initial_confidence ?? 'not stated') + '</span><span>CURRENT CONF ' + esc(p.current_confidence ?? '—') + '</span><span>LINKED EVENTS ' + p.linkedEvents.length + '</span>' + (p.parent ? '<span>PARENT ' + esc(p.parent) + '</span>' : '') + (p.descendants.length ? '<span>DESCENDANTS ' + esc(p.descendants.join(', ')) + '</span>' : '') + '</div>';
+    b.addEventListener('click', () => openPrediction(p.prediction_id)); host.appendChild(b);
+  });
+}
+function renderMatrix() {
+  const host = document.getElementById('matrix'); host.replaceChildren();
+  const ents = entList(); const mechIds = journal.mechanisms.filter(m => ents.some(e => view.matrix[e.id] && view.matrix[e.id][m.id])).map(m => m.id);
+  host.style.gridTemplateColumns = '120px repeat(' + mechIds.length + ', minmax(52px,1fr))';
+  host.appendChild(document.createElement('div'));
+  mechIds.forEach(mid => { const d = document.createElement('div'); d.className = 'hd'; d.textContent = journal.mechanisms.find(m => m.id === mid).name; host.appendChild(d) });
+  ents.forEach(e => {
+    const rh = document.createElement('div'); rh.className = 'rh'; rh.textContent = e.symbol; host.appendChild(rh);
+    mechIds.forEach(mid => { const c = (view.matrix[e.id] || {})[mid]; const d = document.createElement('div'); d.className = 'cell' + (c ? ' has ' + c.state : ''); d.innerHTML = c ? esc(c.state) + '<br>' + c.supports + '▲ ' + c.weakens + '▼' + (c.pending ? ' <span class="pend">†</span>' : '') : '·'; if (c) d.addEventListener('click', () => openLane(E.laneKey(e.id, mid))); host.appendChild(d) });
+  });
+}
+function renderIndices() {
+  const host = document.getElementById('indices'); host.replaceChildren();
+  view.indices.forEach(ix => { const b = document.createElement('button'); b.type = 'button'; b.className = 'idx'; b.innerHTML = '<b>' + esc(ix.symbol) + '</b> ' + (ix.score.total >= 0 ? '+' : '') + ix.score.total + '<small>' + esc(ix.name) + ' · ' + ix.members.length + ' constituents: ' + esc(ix.score.components.map(c => c.symbol + ' ' + (c.value >= 0 ? '+' : '') + c.value).join(' · ')) + '</small>'; b.addEventListener('click', () => openIndex(ix.id)); host.appendChild(b) });
+  Object.values(view.mechanisms).filter(m => m.entities.length).forEach(m => { const b = document.createElement('button'); b.type = 'button'; b.className = 'idx'; b.innerHTML = '<b>' + esc(m.symbol) + '</b> ' + (m.score.total >= 0 ? '+' : '') + m.score.total + '<small>' + esc(m.name) + ' · ' + m.entities.length + ' entities · ' + m.independentAdoptions + ' independent adoption(s) · ' + m.commonCause + ' common-cause link(s)</small>'; b.addEventListener('click', () => openMechanism(m.id)); host.appendChild(b) });
+}
+function renderGraveyard() {
+  const host = document.getElementById('graveyard'); host.replaceChildren();
+  view.graveyard.forEach(g => { const b = document.createElement('button'); b.type = 'button'; b.innerHTML = '<span class="k">' + esc(g.kind.toUpperCase()) + '</span><span><b style="color:#ddd">' + esc(g.id) + '</b> · ' + esc(g.status) + '<br><span style="color:#8a8078">' + esc(g.label) + '</span></span>'; b.addEventListener('click', () => { if (g.kind === 'prediction') openPrediction(g.id); else if (g.kind === 'claim') openClaim(g.id); else if (g.kind === 'lane-closure') openLane(g.id); else openEvent(g.id) }); host.appendChild(b) });
+  if (!host.children.length) host.innerHTML = '<div class="empty">Graveyard empty for this as-of date.</div>';
+}
+function renderIntegrity() {
+  const host = document.getElementById('integrity'); const ch = view.validation.chain, tp = view.validation.tamperedPredictions;
+  const localCount = loadLocal().length;
+  host.innerHTML = '<div>HASH CHAIN: ' + (ch.ok ? '<span class="ok">INTACT</span>' : '<span class="bad">BROKEN</span> ' + esc(ch.problems.join('; '))) + ' · ' + journal.events.length + ' events (' + SEALED.events.length + ' sealed + ' + (journal.events.length - SEALED.events.length) + ' local) · head <code>' + esc(journal.events[journal.events.length - 1].content_hash) + '</code></div>' +
+    '<div>FROZEN PREDICTIONS: ' + (tp.length ? '<span class="bad">' + tp.length + ' TAMPERED: ' + esc(tp.map(t => t.prediction_id).join(', ')) + '</span>' : '<span class="ok">all content hashes verify</span>') + '</div>' +
+    '<div>WEIGHTS: <span class="warn">' + esc(view.weights.version) + '</span> · by source type ' + esc(JSON.stringify(view.weights.bySourceType)) + ' · hit ' + view.weights.predictionHit + ' · miss ' + view.weights.predictionMiss + ' · replication→mechanism +' + view.weights.replicationToMechanism + ' · PROPOSED counts 0</div>' +
+    '<div>SEMANTICS: ' + esc(journal.meta.semantics) + '</div>' +
+    (view.validation.warnings.length ? '<div class="warn">WARNINGS:<br>' + view.validation.warnings.map(w => '· ' + esc(w)).join('<br>') + '</div>' : '') +
+    (quarantine.length ? '<div class="bad">QUARANTINED LOCAL PROPOSALS (' + quarantine.length + ') — failed validation against the current sealed journal:<br>' + quarantine.map(qq => '· ' + esc(qq.item.type) + ' ' + esc(qq.item.record.event_id || qq.item.record.id || qq.item.record.prediction_id) + ': ' + esc(qq.error)).join('<br>') + '</div>' : '') +
+    '<div style="margin-top:6px"><button class="evlink" id="exportLocal">EXPORT LOCAL PROPOSALS (' + localCount + ')</button> <button class="evlink" id="copyLocal">COPY JSON</button> <button class="evlink" id="discardLocal" style="color:#ff8a84;border-color:#5a2a26">DISCARD LOCAL PROPOSALS</button> <span style="color:#777">· the sealed journal cannot be modified from this page</span></div>';
+  document.getElementById('exportLocal').onclick = () => { const blob = new Blob([JSON.stringify(loadLocal(), null, 2)], { type: 'application/json' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'gate-closing-local-proposals-' + new Date().toISOString().slice(0, 10) + '.json'; a.click(); };
+  document.getElementById('copyLocal').onclick = async () => { try { await navigator.clipboard.writeText(JSON.stringify(loadLocal(), null, 2)); toast('LOCAL PROPOSALS COPIED') } catch (e) { toast('CLIPBOARD BLOCKED — USE EXPORT') } };
+  document.getElementById('discardLocal').onclick = () => { if (confirm('Discard ALL local proposals in this browser? The sealed journal is unaffected.')) { try { localStorage.removeItem(LS_LOCAL) } catch (e) {} rebuildJournal(); rerender(); toast('LOCAL PROPOSALS DISCARDED') } };
+  document.getElementById('footLeft').textContent = 'JOURNAL: ' + journal.events.length + ' events · ' + journal.predictions.length + ' predictions · chain ' + (ch.ok ? 'INTACT' : 'BROKEN') + ' · as-of ' + (view.asOf || 'NOW') + (ui.internal ? ' · INTERNAL VISIBLE' : '');
+}
+function renderLegacy() {
+  const body = document.getElementById('legacyBody'); body.replaceChildren();
+  const preview = view.legacyPreview; const recs = preview ? E.adaptDailyBoard(preview).legacy_records.map(E.normalizeLegacy) : view.legacy;
+  document.getElementById('legacyNote').textContent = preview ? 'PREVIEWING LOADED FILE (' + recs.length + ' records, updated ' + (preview.meta || {}).updated + ') — local only' : 'sealed legacy_records (' + recs.length + ')';
+  recs.forEach(r => { const link = journal.events.find(e => e.legacy_ref === r.id); const tr = document.createElement('tr'); tr.tabIndex = 0; tr.innerHTML = '<td class="id">' + esc(r.id) + '</td><td>' + esc(r.market) + '</td><td>' + esc(r.mechanism) + '</td><td style="max-width:380px">' + esc(r.claim) + '</td><td>' + esc(r.date) + '</td><td><span class="pill ' + esc(r.direction) + '">' + esc(r.direction) + '</span></td><td>' + esc(r.state) + ' <small style="color:#777">(legacy label)</small></td><td>' + (link ? '<span class="evlink">' + esc(link.event_id) + '</span>' : '<span style="color:#777">unmapped</span>') + '</td>'; tr.addEventListener('click', () => link ? openEvent(link.event_id) : openLegacy(r)); body.appendChild(tr) });
+}
+function renderTimebar() {
+  const tb = document.getElementById('timebar');
+  if (ui.time === 'NOW' && !ui.diff) { tb.hidden = true; return }
+  tb.hidden = false;
+  const asOf = view.asOf || 'NOW';
+  if (ui.diff) { const d = E.thenVsNow(journal, view.asOf || FREEZE, { includeInternal: ui.internal }); tb.innerHTML = 'THEN (' + esc(view.asOf || FREEZE) + ') vs NOW · ' + d.rows.filter(r => r.changed).map(r => esc(r.symbol) + ' ' + esc(r.then) + '→' + esc(r.now) + ' (' + r.thenScore + '→' + r.nowScore + ')').join(' · ') + (d.rows.some(r => r.changed) ? '' : 'no changes'); }
+  else tb.innerHTML = 'TIME TRAVEL · viewing the ledger AS OF ' + esc(asOf) + ' · only events posted on or before this date are visible · hindsight excluded';
+}
+function renderFilters() {
+  document.querySelectorAll('[data-market]').forEach(b => b.classList.toggle('on', b.dataset.market === ui.market));
+  document.querySelectorAll('[data-dir]').forEach(b => b.classList.toggle('on', b.dataset.dir === ui.dir));
+  document.querySelectorAll('[data-kind]').forEach(b => b.classList.toggle('on', b.dataset.kind === ui.kind));
+  document.querySelectorAll('[data-time]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.time === ui.time)));
+  document.getElementById('diffToggle').setAttribute('aria-pressed', String(ui.diff));
+  document.getElementById('internalToggle').setAttribute('aria-pressed', String(ui.internal));
+  document.getElementById('settledOnly').setAttribute('aria-pressed', String(ui.settledOnly));
+}
+function applyPreset(name) { ui.preset = name; document.querySelectorAll('[data-preset]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.preset === name))); document.querySelectorAll('.widget').forEach(w => { const groups = (w.dataset.groups || '').split(/\s+/); w.hidden = name !== 'GLOBAL' ? !groups.includes(name) : !groups.includes('GLOBAL'); w.classList.remove('maximized') }); dashboard.classList.remove('has-max'); saveLayout() }
+function rerender() { derive(); renderFilters(); renderTape(); renderBook(); renderWire(); renderLedger(); renderClaims(); renderPredictions(); renderMatrix(); renderIndices(); renderGraveyard(); renderIntegrity(); renderLegacy(); renderTimebar(); applyPreset(ui.preset) }
+
+/* ---- inspector (drill-down) ---- */
+const dialog = document.getElementById('dialogBackdrop'), inspectorBody = document.getElementById('inspectorBody'), closeBtn = document.getElementById('closeInspector'), crumb = document.getElementById('inspectorCrumb');
+let lastFocus = null;
+function show(html, crumbText) { if (dialog.hidden) lastFocus = document.activeElement; inspectorBody.innerHTML = html; crumb.textContent = crumbText || ''; dialog.hidden = false; inspectorBody.scrollTop = 0; closeBtn.focus(); inspectorBody.querySelectorAll('[data-open]').forEach(el => el.addEventListener('click', () => { const [t, id] = el.dataset.open.split('|'); ({ event: openEvent, entity: openEntity, lane: openLane, prediction: openPrediction, claim: openClaim, source: openSource, mechanism: openMechanism, index: openIndex })[t](id) })) }
+function closeInspector() { dialog.hidden = true; if (lastFocus && lastFocus.focus) lastFocus.focus() }
+const link = (t, id, label) => '<button class="evlink" data-open="' + esc(t) + '|' + esc(id) + '">' + esc(label || id) + '</button>';
+const kv = pairs => '<dl class="kv">' + pairs.filter(p => p[1] !== undefined && p[1] !== null && p[1] !== '').map(p => '<dt>' + esc(p[0]) + '</dt><dd>' + p[1] + '</dd>').join('') + '</dl>';
+function sourceLinks(refs) { return (refs || []).length ? refs.map(s => link('source', s)).join(' ') : '<span style="color:#888">none</span>' }
+function decomp(score) { return '<table class="decomp">' + score.components.map(c => '<tr class="' + (c.pending ? 'pending' : '') + '"><td>' + link('event', c.event_id) + '</td><td>' + esc(c.why) + (c.entity_id ? ' · ' + esc(view.entities[c.entity_id] ? view.entities[c.entity_id].symbol : c.entity_id) : '') + '</td><td>' + (c.value >= 0 ? '+' : '') + c.value + '</td></tr>').join('') + '<tr><td></td><td>TOTAL (' + esc(score.weights) + ')</td><td>' + (score.total >= 0 ? '+' : '') + score.total + '</td></tr></table>' }
+function counterBox(e) { const refs = e.counterevidence_refs || []; const inline = (e.note && /counter|remain yours|opt-in|exception|not a judgment|does not establish|rationale/i.test(e.note)) ? e.note : null; return refs.length || inline ? '<div class="counter-box"><b>COUNTER-EVIDENCE / LIMITS DECLARED:</b> ' + (refs.map(r => link(view.events[r] ? 'event' : 'source', r)).join(' ')) + (inline ? '<div style="margin-top:4px">' + esc(inline) + '</div>' : '') + '</div>' : '<div class="counter-box none">No counter-evidence refs declared on this event. That is a gap to fill, not a clean bill.</div>' }
+function openEvent(id) {
+  const e = journal.events.find(x => x.event_id === id); if (!e) return toast('EVENT NOT FOUND');
+  const hidden = !view.events[id]; const ent = e.entity_id ? journal.entities.find(x => x.id === e.entity_id) : null; const m = journal.mechanisms.find(x => x.id === e.mechanism_id);
+  const children = view.childrenOf[id] || [], corrections = view.correctionsOf[id] || [], repl = view.replicationsOf[id] || [];
+  show('<div class="eyebrow">' + esc(e.kind) + ' · ' + esc(e.event_id) + (e.legacy_ref ? ' · legacy ' + esc(e.legacy_ref) : '') + (e.local ? ' · LOCAL PROPOSAL' : '') + (e.visibility === 'internal' ? ' · INTERNAL — NOT FOR PUBLIC PAGE' : '') + (hidden ? ' · (outside current as-of / visibility filter)' : '') + '</div><h3>' + esc(e.title) + '</h3>' +
+    '<div><span class="pill ' + esc(e.audit_status) + '">' + esc(e.audit_status) + '</span> proposed by ' + esc(e.proposed_by.actor) + ' (' + esc(e.proposed_by.role) + ')' + (e.adjudicated_by ? ' · adjudicated by ' + esc(e.adjudicated_by.actor) + ' (' + esc(e.adjudicated_by.role) + ')' : ' · <b style="color:#c9a35b">awaiting human adjudication</b>') + '</div>' +
+    kv([['Entity', ent ? link('entity', ent.id, ent.symbol + ' ' + ent.name) : '—'], ['Mechanism', m ? link('mechanism', m.id, m.name) : '—'], ['Lane', e.entity_id ? link('lane', E.laneKey(e.entity_id, e.mechanism_id), E.laneKey(e.entity_id, e.mechanism_id)) : null], ['Market', esc(e.market)], ['Event date', esc(e.date) + (e.date_precision ? ' <small style="color:#888">(' + esc(e.date_precision) + ')</small>' : '')], ['Posted at', esc(e.posted_at)], ['Direction', e.direction ? '<span class="pill ' + esc(e.direction) + '">' + esc(e.direction) + '</span>' : null], ['Magnitude', e.magnitude ? esc(e.magnitude) + ' <small style="color:#888">(' + esc(e.magnitude_method || 'method unstated') + ')</small>' : null], ['Transition', e.new_state ? stateSpan(e.previous_state) + ' → ' + stateSpan(e.new_state) : null], ['Transition reason', e.transition_reason ? esc(e.transition_reason) : null], ['Durability evidence', e.durability_evidence ? esc(e.durability_evidence) : null], ['ASH scope', e.scope ? esc(JSON.stringify(e.scope)) : null], ['Known workarounds', e.known_workarounds ? esc(e.known_workarounds.join('; ') || '(none declared)') : null], ['Known exceptions', e.known_exceptions ? esc(e.known_exceptions.join('; ') || '(none declared)') : null], ['Resolution', e.resolution ? esc(e.resolution) : null], ['Claim status ruled', e.claim_status ? esc(e.claim_status) : null], ['Sources', sourceLinks(e.source_refs)], ['Claims', (e.claim_refs || []).map(c => link('claim', c)).join(' ') || null], ['Predictions', (e.prediction_refs || []).map(p => link('prediction', p)).join(' ') || null], ['Parent event', e.parent_event_id ? link('event', e.parent_event_id) : null], ['Replication of', e.replication_of ? link('event', e.replication_of) + ' · causal link: ' + esc(e.causal_link) + (e.causal_link_confidence ? ' ' + esc(e.causal_link_confidence) : '') + ' · counts to MECHANISM confidence, not to the original entity' : null], ['Replicated by', repl.length ? repl.map(r => link('event', r)).join(' ') : null], ['Counterpart', e.counterpart ? esc(e.counterpart.entity) + ' — ' + esc(e.counterpart.effect) + ' · ' + esc(e.counterpart.ledger_side) : null], ['Supersedes', e.supersedes ? link('event', e.supersedes) : null], ['Superseded by', view.supersededBy[id] ? link('event', view.supersededBy[id]) + ' (this record is retained)' : null], ['Corrections', corrections.length ? corrections.map(c => link('event', c)).join(' ') : null], ['Child events', children.length ? children.map(c => link('event', c)).join(' ') : null], ['Audit note', e.note ? esc(e.note) : null], ['Seq / hash', esc(e.seq) + ' · <code style="color:#888">' + esc(e.content_hash) + '</code><br><small style="color:#666">prev ' + esc(e.prev_hash || 'GENESIS') + '</small>']]) +
+    counterBox(e), e.event_id);
+}
+function openEntity(id) {
+  const ev = view.entities[id] || { ...journal.entities.find(x => x.id === id), state: '—', lanes: [], score: { total: 0, components: [], weights: '' }, pending: [], events: [] };
+  const hist = ev.lanes.flatMap(l => l.history.map(h => ({ ...h, lane: l }))).sort((a, b) => (journal.events.find(x => x.event_id === a.event_id).seq - journal.events.find(x => x.event_id === b.event_id).seq));
+  show('<div class="eyebrow">entity · ' + esc(ev.kind) + ' · ' + esc(ev.symbol) + (ev.public_ticker ? ' · ' + esc(ev.public_ticker) : '') + '</div><h3>' + esc(ev.name) + ' — ' + stateSpan(ev.state) + ' ' + arrow(ev.movement) + '</h3>' +
+    kv([['Market', esc(ev.market)], ['Current state from', ev.stateEvent ? link('event', ev.stateEvent) : 'no settled transition (WATCH by default)'], ['Latest movement from', ev.movementEvent ? link('event', ev.movementEvent) : 'none'], ['Lanes', ev.lanes.map(l => link('lane', l.key, (journal.mechanisms.find(m => m.id === l.mechanism_id) || { name: '*' }).name + ': ' + l.state)).join(' ')], ['Pending proposals', ev.pending.length ? ev.pending.map(p => link('event', p.event_id, p.event_id + ' ' + p.from + '→' + p.to)).join(' ') : 'none'], ['Note', ev.note ? esc(ev.note) : null]]) +
+    '<div class="section-h">Score decomposition — no mystery numbers</div>' + decomp(ev.score) +
+    '<div class="section-h">State-transition history (settled)</div><ul class="hist">' + (hist.map(h => '<li><b>' + esc(h.date) + '</b> ' + stateSpan(h.from) + ' → ' + stateSpan(h.to) + ' · ' + link('event', h.event_id) + ' · ' + esc(h.reason) + '</li>').join('') || '<li>none</li>') + ev.pending.map(p => '<li class="pending">PENDING ' + stateSpan(p.from) + ' → ' + stateSpan(p.to) + ' · ' + link('event', p.event_id) + ' · proposed by ' + esc(p.by.actor) + '</li>').join('') + '</ul>' +
+    '<div class="section-h">All events</div>' + ev.events.map(x => link('event', x)).join(' '), ev.symbol);
+}
+function openLane(key) {
+  const l = view.lanes[key]; if (!l) return toast('LANE NOT IN VIEW');
+  const ent = journal.entities.find(x => x.id === l.entity_id), m = journal.mechanisms.find(x => x.id === l.mechanism_id);
+  show('<div class="eyebrow">lane · entity × mechanism</div><h3>' + esc(ent.symbol) + ' × ' + esc(m ? m.name : '*') + ' — ' + stateSpan(l.state) + '</h3>' +
+    kv([['Entity', link('entity', ent.id, ent.name)], ['Mechanism', m ? link('mechanism', m.id, m.name) : '—'], ['AR-AP-v2 meaning', esc({ WATCH: 'under observation; nothing adjudicated stronger', AR: 'something opened; durability not shown — the release itself proves nothing', AP: 'durable opening adjudicated — this lane did NOT close', POSTED: 'adjudicated restriction evidence is on the ledger', ASH: 'scoped universal closure — every scope field was declared and no workaround remained', REOPEN: 'a prior ASH was reversed; the ASH record is retained below' }[l.state])]]) +
+    '<div class="section-h">Complete transition history (append-only)</div><ul class="hist">' + (l.history.map(h => '<li><b>' + esc(h.date) + '</b> ' + stateSpan(h.from) + ' → ' + stateSpan(h.to) + ' · ' + link('event', h.event_id) + ' · ' + esc(h.reason) + ' · by ' + esc((h.by || {}).actor || '?') + '</li>').join('') || '<li>no settled transitions — WATCH</li>') + l.pending.map(p => '<li class="pending">PENDING ' + stateSpan(p.from) + ' → ' + stateSpan(p.to) + ' · ' + link('event', p.event_id) + ' · ' + esc(p.audit_status) + ' by ' + esc(p.by.actor) + '</li>').join('') + '</ul>' +
+    '<div class="section-h">Evidence on this lane</div>' + (l.evidence.map(x => link('event', x)).join(' ') || 'none'), key);
+}
+function openMechanism(id) {
+  const m = view.mechanisms[id]; if (!m) return;
+  show('<div class="eyebrow">mechanism · ' + esc(m.symbol) + '</div><h3>' + esc(m.name) + '</h3>' + kv([['Entities exhibiting it', m.entities.map(e => link('entity', e, (view.entities[e] || {}).symbol || e)).join(' ') || 'none'], ['Independent adoptions', esc(m.independentAdoptions)], ['Common-cause / copied links', esc(m.commonCause)], ['Caution', 'Similarity of mechanism across entities is not evidence of coordination. Replication strengthens the mechanism map, not any entity\'s receipt count.']]) + '<div class="section-h">Score decomposition</div>' + decomp(m.score), m.symbol);
+}
+function openIndex(id) { const ix = view.indices.find(x => x.id === id); if (!ix) return; show('<div class="eyebrow">index · ' + esc(ix.symbol) + '</div><h3>' + esc(ix.name) + ' ' + (ix.score.total >= 0 ? '+' : '') + ix.score.total + '</h3><div class="section-h">Constituents (reversible aggregation)</div><table class="decomp">' + ix.score.components.map(c => '<tr><td>' + link('entity', c.entity_id, c.symbol) + '</td><td>' + esc(view.entities[c.entity_id].state) + '</td><td>' + (c.value >= 0 ? '+' : '') + c.value + '</td></tr>').join('') + '</table>', ix.symbol) }
+function openPrediction(id) {
+  const p = view.predictions.find(x => x.prediction_id === id) || journal.predictions.find(x => x.prediction_id === id); if (!p) return;
+  const a = p.aging || E.agePrediction(p, journal.events, view.asOf);
+  show('<div class="eyebrow">frozen prediction instrument · ' + esc(p.prediction_id) + (p.visibility === 'internal' ? ' · INTERNAL' : '') + '</div><h3>' + esc(p.exact_claim) + '</h3>' +
+    '<div><span class="aging-' + esc(a.status) + '">' + esc(a.status) + '</span> · ' + esc(a.detail) + (p.hashOk === false ? ' · <b style="color:var(--red)">CONTENT HASH MISMATCH — FROZEN TEXT WAS ALTERED</b>' : p.frozen_at ? ' · hash verifies' : '') + '</div>' +
+    kv([['Author', esc(p.author)], ['Created / frozen', esc(p.created_at) + ' / ' + esc(p.frozen_at || 'NOT FROZEN (draft; no hash; not scoreable)')], ['Horizon / window', esc(p.prediction_horizon || '—') + ' · ' + esc(p.expected_window ? (p.expected_window.start || p.frozen_at) + ' → ' + p.expected_window.end : 'NO WINDOW STATED — cannot miss as written')], ['Entity / market / mechanism', esc([p.entity, p.market, p.mechanism].filter(Boolean).join(' · '))], ['ORIGINAL frozen confidence', esc(p.initial_confidence ?? 'not stated at freeze') + (p.initial_confidence_note ? ' — ' + esc(p.initial_confidence_note) : '')], ['CURRENT evidence confidence', esc(p.current_confidence ?? 'none posted')], ['Success condition', esc(p.success_condition)], ['Falsification condition', esc(p.falsification_condition)], ['Known evidence at freeze', (p.known_evidence_at_freeze || []).map(esc).join('<br>') || 'none listed'], ['Sources at freeze', sourceLinks(p.source_refs)], ['Parent', p.parent ? link('prediction', p.parent) : null], ['Descendants', (p.descendants || []).length ? p.descendants.map(d => link('prediction', d)).join(' ') : null], ['Claims', (p.claim_refs || []).map(c => link('claim', c)).join(' ') || null], ['Content hash', p.content_hash ? '<code style="color:#888">' + esc(p.content_hash) + '</code>' : '—']]) +
+    '<div class="section-h">Linked events (freeze · evidence · resolution · extension)</div>' + ((p.linkedEvents || []).map(x => link('event', x)).join(' ') || 'none'), p.prediction_id);
+}
+function openClaim(id) {
+  const c = view.claims.find(x => x.id === id); if (!c) return;
+  show('<div class="eyebrow">claim · ' + esc(c.kind) + ' · ' + esc(c.id) + '</div><h3>' + esc(c.text) + '</h3><div><span class="status-' + esc(c.status) + '">' + esc(c.status) + '</span> · ' + esc(c.statusSource) + '</div>' +
+    kv([['Created', esc(c.created_at) + ' · age ' + (c.ageDays ?? '—') + ' days'], ['Parent', c.parent ? link('claim', c.parent) : null], ['Descendants', c.descendants.length ? c.descendants.map(d => link('claim', d)).join(' ') : null], ['Supporting events', c.support.map(x => link('event', x)).join(' ') || 'none'], ['Counter events', c.counter.map(x => link('event', x)).join(' ') || 'none'], ['Open / unsettled', c.open.map(x => link('event', x)).join(' ') || 'none'], ['Predictions', c.predictions.map(p => link('prediction', p)).join(' ') || 'none'], ['Hits / misses', c.hits + ' / ' + c.misses]]) +
+    (c.kind === 'null-hypothesis' ? '<div class="counter-box">This is the competing conventional explanation. If it survives as well as the thesis, the thesis has no distinctive predictive content on those records. Its survival is a feature of an honest board.</div>' : ''), c.id);
+}
+function openSource(id) { const s = journal.sources.find(x => x.id === id); if (!s) return; const users = journal.events.filter(e => (e.source_refs || []).includes(id)).map(e => link('event', e.event_id)).join(' '); show('<div class="eyebrow">source · ' + esc(s.type) + ' · weight ' + esc(view.weights.bySourceType[s.type] ?? 0) + '</div><h3>' + esc(s.title) + '</h3>' + kv([['URL', s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.url) + '</a>' : 'none captured'], ['Source type', esc(s.type) + ' — ' + esc({ 'primary-law': 'statute / regulation', 'primary-corporate': 'first-party company statement', 'primary-institutional': 'first-party institutional statement', 'court-filing': 'court document', 'primary-internal': 'Gate Closing frozen document (Rob)', 'observed-url': 'observed live page / URL', 'secondary-press': 'press coverage', 'secondary-blog': 'blog / commentary', 'derived': 'derived from another Gate Closing artifact — NOT primary evidence' }[s.type] || '')], ['Published', esc(s.published || 'unknown')], ['Retrieved', s.retrieved ? esc(s.retrieved) + ' by ' + esc(s.retrieved_by || '?') : '<b style="color:#c9a35b">NOT RETRIEVED — cited, not captured</b>'], ['Hash / archive', s.hash ? '<code>' + esc(s.hash) + '</code>' : 'none'], ['Quote captured', s.quote ? esc(s.quote) : null], ['Note', s.note ? esc(s.note) : null], ['Used by events', users || 'none']]), s.id) }
+function openLegacy(r) { show('<div class="eyebrow">legacy record · daily-board-v1 · not migrated</div><h3>' + esc(r.mechanism) + '</h3>' + kv([['ID', esc(r.id)], ['Market', esc(r.market)], ['Claim', esc(r.claim)], ['Date (free text)', esc(r.date)], ['Direction', esc(r.direction)], ['Legacy state label', esc(r.state) + ' — an evidence label, not an AR-AP-v2 state'], ['Note', esc(r.note)], ['Schema', esc(r.schema) + ' · ' + esc(r.semantics)]]), r.id) }
+
+/* ---- propose forms ---- */
+let proposeTab = 'event';
+const ent = () => journal.entities.map(e => '<option value="' + esc(e.id) + '">' + esc(e.symbol) + ' ' + esc(e.name) + '</option>').join('');
+const mech = () => '<option value="">(none)</option>' + journal.mechanisms.map(m => '<option value="' + esc(m.id) + '">' + esc(m.name) + '</option>').join('');
+const srcs = () => journal.sources.map(s => '<option value="' + esc(s.id) + '">' + esc(s.id) + ' · ' + esc(s.type) + '</option>').join('');
+const preds = () => '<option value="">(none)</option>' + journal.predictions.map(p => '<option value="' + esc(p.prediction_id) + '">' + esc(p.prediction_id) + '</option>').join('');
+const adjudicator = () => '<label class="full">ADJUDICATION (leave blank to keep PROPOSED; naming a human is an assertion of authority, visible on the record)<div style="display:flex;gap:6px;flex-wrap:wrap"><input name="adj_actor" placeholder="human adjudicator name" style="flex:1"><select name="audit_status"><option>PROPOSED</option><option>REVIEWED</option><option>ADJUDICATED</option><option>POSTED</option></select></div></label>';
+function renderProposeForm() {
+  const f = document.getElementById('proposeForm'); const nextId = nextEventId();
+  document.querySelectorAll('#proposeTabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === proposeTab));
+  if (proposeTab === 'event') f.innerHTML = '<label>EVENT ID<input name="event_id" value="' + nextId + '"></label><label>KIND<select name="kind"><option>evidence</option><option>observation</option><option>transition</option><option>counterpart</option><option>correction</option><option>adjudication</option><option>prediction-resolution</option><option>prediction-extension</option><option>lineage</option></select></label><label>ENTITY<select name="entity_id">' + ent() + '</select></label><label>MECHANISM<select name="mechanism_id">' + mech() + '</select></label><label>MARKET<select name="market"><option>Music</option><option>Publishing</option><option>Scholarly</option><option>Cross-cutting</option></select></label><label>EVENT DATE<input type="date" name="date"></label><label>DIRECTION<select name="direction"><option value="">(none)</option><option>supports</option><option>weakens</option><option>open</option></select></label><label>MAGNITUDE<input name="magnitude" placeholder="e.g. 20 downloads/month"></label><label>PREVIOUS STATE (for transitions)<select name="previous_state"><option value="">(n/a)</option>' + E.STATES.map(s => '<option>' + s + '</option>').join('') + '</select></label><label>NEW STATE (for transitions)<select name="new_state"><option value="">(n/a)</option>' + E.STATES.filter(s => s !== 'ASH').map(s => '<option>' + s + '</option>').join('') + '</select></label><label class="full">TITLE<input name="title" required></label><label class="full">TRANSITION REASON / DURABILITY EVIDENCE (AP requires durability)<textarea name="transition_reason"></textarea></label><label>SOURCES (multi-select; required for any state)<select name="source_refs" multiple size="5">' + srcs() + '</select></label><label>COUNTER-EVIDENCE REFS (sources or events)<input name="counterevidence_refs" placeholder="SRC-…, EVT-…"></label><label>PREDICTION REFS<select name="prediction_refs">' + preds() + '</select></label><label>REPLICATION OF (event id at another entity)<input name="replication_of" placeholder="EVT-0003"></label><label>CAUSAL LINK<select name="causal_link"><option value="">(n/a)</option><option>independent-adoption</option><option>copied-policy</option><option>shared-cause</option><option>regulatory-common-cause</option><option>unknown</option></select></label><label>PARENT EVENT<input name="parent_event_id" placeholder="EVT-…"></label><label>RESOLUTION (prediction-resolution only)<select name="resolution"><option value="">(n/a)</option><option>RECEIVED</option><option>PARTIAL</option><option>MISSED</option><option>FALSIFIED</option><option>CLOSED</option></select></label><label class="full">AUDIT NOTE<textarea name="note"></textarea></label><label>PROPOSED BY<input name="prop_actor" placeholder="your name or model name" required></label><label>ROLE<select name="prop_role"><option>human</option><option>model</option></select></label>' + adjudicator() + '<div class="actions"><button type="submit">VALIDATE + APPEND LOCALLY</button><button type="button" class="secondary" id="dryRun">DRY-RUN VALIDATE ONLY</button></div><div class="result" id="proposeResult">Engine rules apply: bad transitions, missing sources, duplicate receipts, model self-settlement and post-hoc prediction edits are refused here, not in review.</div>';
+  else if (proposeTab === 'entity') f.innerHTML = '<label>ENTITY ID<input name="id" placeholder="ENT-GITHUB" required></label><label>SYMBOL<input name="symbol" placeholder="GC:GITHUB" required></label><label>NAME<input name="name" required></label><label>KIND<select name="kind"><option>company</option><option>platform</option><option>institution</option><option>law</option><option>regulation</option><option>industry</option><option>market</option><option>mechanism</option></select></label><label>MARKET<select name="market"><option>Music</option><option>Publishing</option><option>Scholarly</option><option>Cross-cutting</option></select></label><label>PUBLIC TICKER (informational only)<input name="public_ticker"></label><label class="full">NOTE<textarea name="note"></textarea></label><div class="actions"><button type="submit">ADD ENTITY LOCALLY</button></div><div class="result" id="proposeResult">An entity with no events starts at WATCH on every lane. The system does not assume the entity exists anywhere else.</div>';
+  else if (proposeTab === 'prediction') f.innerHTML = '<label>PREDICTION ID<input name="prediction_id" placeholder="PRED-L001" required></label><label>PARENT (for descendants)<select name="parent">' + preds() + '</select></label><label>AUTHOR<input name="author" required></label><label>FREEZE DATE (freezing computes the content hash; blank = draft)<input type="date" name="frozen_at"></label><label>ENTITY / INDEX<input name="entity" placeholder="ENT-… or IDX-…"></label><label>MARKET<input name="market"></label><label>MECHANISM<select name="mechanism">' + mech() + '</select></label><label>HORIZON<select name="prediction_horizon"><option>immediate</option><option>30 days</option><option>90 days</option><option>6 months</option><option>1 year</option><option>2 years</option><option>long range</option></select></label><label>WINDOW START<input type="date" name="w_start"></label><label>WINDOW END (required to be ageable)<input type="date" name="w_end"></label><label>INITIAL CONFIDENCE (0–100, never rewritten)<input name="initial_confidence" type="number" min="0" max="100"></label><label class="full">EXACT CLAIM<textarea name="exact_claim" required></textarea></label><label class="full">SUCCESS CONDITION<textarea name="success_condition" required></textarea></label><label class="full">FALSIFICATION CONDITION<textarea name="falsification_condition" required></textarea></label><label class="full">KNOWN EVIDENCE AT FREEZE (one per line)<textarea name="known"></textarea></label><label>SOURCES<select name="source_refs" multiple size="4">' + srcs() + '</select></label><div class="actions"><button type="submit">FREEZE / DRAFT LOCALLY</button></div><div class="result" id="proposeResult">A frozen prediction cannot be edited. Corrections become descendants (PRED-xxx-R1).</div>';
+  else f.innerHTML = '<div class="meta warn full" style="grid-column:1/-1">ASH is deliberately hard to earn. All scope fields are required, workarounds and exceptions must be declared, and if any remain the engine refuses ASH.</div><label>EVENT ID<input name="event_id" value="' + nextId + '"></label><label>ENTITY<select name="entity_id">' + ent() + '</select></label><label>MECHANISM<select name="mechanism_id">' + mech() + '</select></label><label>MARKET<select name="market"><option>Music</option><option>Publishing</option><option>Scholarly</option><option>Cross-cutting</option></select></label><label>EVENT DATE<input type="date" name="date"></label><label>PREVIOUS STATE<select name="previous_state">' + E.STATES.map(s => '<option>' + s + '</option>').join('') + '</select></label><label class="full">TITLE<input name="title" required></label><label>SCOPE · technical lane<input name="s_lane" required></label><label>SCOPE · geographic<input name="s_geo" required></label><label>SCOPE · platform<input name="s_platform" required></label><label>SCOPE · user<input name="s_user" required></label><label>SCOPE · temporal<input name="s_temporal" required></label><label class="full">KNOWN WORKAROUNDS (one per line; ANY entry refuses ASH)<textarea name="workarounds"></textarea></label><label class="full">KNOWN EXCEPTIONS (one per line; ANY entry refuses ASH)<textarea name="exceptions"></textarea></label><label>SOURCES<select name="source_refs" multiple size="4">' + srcs() + '</select></label><label>COUNTER-EVIDENCE CONSIDERED<input name="counterevidence_refs" placeholder="SRC-…, EVT-… (declare even if none)"></label><label class="full">TRANSITION REASON<textarea name="transition_reason" required></textarea></label><label>PROPOSED BY<input name="prop_actor" required></label><label>ROLE<select name="prop_role"><option>human</option><option>model</option></select></label>' + adjudicator() + '<div class="actions"><button type="submit">ATTEMPT ASH</button></div><div class="result" id="proposeResult"></div>';
+  const dry = document.getElementById('dryRun'); if (dry) dry.onclick = () => submitPropose(true);
+}
+function formEvent(fd, ash) {
+  const g = k => (fd.get(k) || '').toString().trim(); const list = k => g(k) ? g(k).split(/[,\n]/).map(s => s.trim()).filter(Boolean) : [];
+  const ev = { event_id: g('event_id'), kind: ash ? 'transition' : g('kind'), title: g('title'), entity_id: g('entity_id') || null, mechanism_id: g('mechanism_id') || null, market: g('market'), date: g('date'), posted_at: new Date().toISOString().slice(0, 10), source_refs: fd.getAll('source_refs'), counterevidence_refs: list('counterevidence_refs'), claim_refs: [], prediction_refs: g('prediction_refs') ? [g('prediction_refs')] : [], note: g('note') || undefined, proposed_by: { actor: g('prop_actor'), role: g('prop_role') }, audit_status: g('audit_status') || 'PROPOSED' };
+  if (g('adj_actor')) ev.adjudicated_by = { actor: g('adj_actor'), role: 'human' };
+  if (!ash) { if (g('direction')) ev.direction = g('direction'); if (g('magnitude')) ev.magnitude = g('magnitude'); if (g('new_state')) { ev.previous_state = g('previous_state'); ev.new_state = g('new_state'); ev.transition_reason = g('transition_reason'); if (g('new_state') === 'AP') ev.durability_evidence = g('transition_reason'); } if (g('replication_of')) { ev.replication_of = g('replication_of'); ev.causal_link = g('causal_link') || undefined; } if (g('parent_event_id')) ev.parent_event_id = g('parent_event_id'); if (g('resolution')) ev.resolution = g('resolution'); }
+  else { ev.previous_state = g('previous_state'); ev.new_state = 'ASH'; ev.transition_reason = g('transition_reason'); ev.scope = { technical_lane: g('s_lane'), geographic: g('s_geo'), platform: g('s_platform'), user: g('s_user'), temporal: g('s_temporal') }; ev.known_workarounds = list('workarounds'); ev.known_exceptions = list('exceptions'); }
+  return ev;
+}
+function say(kind, msg) { const el = document.getElementById('proposeResult'); if (!el) return; el.className = 'result' + (kind ? ' ' + kind : ''); el.textContent = msg; }
+function nextEventId() { return 'EVT-L' + String(loadLocal().filter(x => x.type === 'event').length + 1).padStart(3, '0') }
+function bumpEventId() { const f = document.getElementById('proposeForm'); const el = f.querySelector('[name=event_id]'); if (el) el.value = nextEventId() }
+function refreshFormOptions() { // keep the user's inputs; only re-fill option lists that gained records
+  const f = document.getElementById('proposeForm');
+  [['entity_id', ent], ['mechanism_id', mech], ['source_refs', srcs], ['prediction_refs', preds], ['entity', null], ['parent', preds], ['mechanism', mech]].forEach(([name, gen]) => {
+    if (!gen) return; const el = f.querySelector('select[name=' + name + ']'); if (!el) return;
+    const keep = el.multiple ? [...el.selectedOptions].map(o => o.value) : [el.value];
+    el.innerHTML = gen(); if (el.multiple) [...el.options].forEach(o => o.selected = keep.includes(o.value)); else if (keep[0]) el.value = keep[0];
+  });
+}
+function submitPropose(dry) {
+  const fd = new FormData(document.getElementById('proposeForm')); const out = document.getElementById('proposeResult'); out.className = 'result';
+  try {
+    if (proposeTab === 'entity') { const rec = { id: fd.get('id'), symbol: fd.get('symbol'), name: fd.get('name'), kind: fd.get('kind'), market: fd.get('market'), public_ticker: fd.get('public_ticker') || undefined, note: fd.get('note') || undefined }; if (!/^ENT-[A-Z0-9-]+$/.test(rec.id)) throw new Error('entity id must look like ENT-NAME'); if (journal.entities.some(e => e.id === rec.id)) throw new Error('entity id exists'); saveLocal([...loadLocal(), { type: 'entity', record: rec, added_at: new Date().toISOString() }]); rebuildJournal(); rerender(); refreshFormOptions(); say('ok', 'ADDED ' + rec.symbol + ' (WATCH on all lanes). It is on the tape now.'); return; }
+    if (proposeTab === 'prediction') { const g = k => (fd.get(k) || '').toString().trim(); const p = { prediction_id: g('prediction_id'), parent: g('parent') || null, author: g('author'), exact_claim: g('exact_claim'), success_condition: g('success_condition'), falsification_condition: g('falsification_condition'), entity: g('entity') || null, market: g('market') || null, mechanism: g('mechanism') || null, created_at: new Date().toISOString().slice(0, 10), frozen_at: g('frozen_at') || null, prediction_horizon: g('prediction_horizon'), expected_window: g('w_end') ? { start: g('w_start') || g('frozen_at') || null, end: g('w_end') } : null, initial_confidence: g('initial_confidence') ? Number(g('initial_confidence')) : null, known_evidence_at_freeze: g('known') ? g('known').split('\n').map(s => s.trim()).filter(Boolean) : [], source_refs: fd.getAll('source_refs') }; const v = E.validatePrediction(journal, p); if (!v.ok) throw new Error(v.errors.join(' | ')); saveLocal([...loadLocal(), { type: 'prediction', record: p, added_at: new Date().toISOString() }]); rebuildJournal(); rerender(); refreshFormOptions(); say('ok', (p.frozen_at ? 'FROZEN ' : 'DRAFTED ') + p.prediction_id + (p.frozen_at ? ' — content hash computed; text is now immutable.' : ' — unfrozen drafts have no hash and cannot be scored.')); return; }
+    const ev = formEvent(fd, proposeTab === 'ash'); const v = E.validateEvent(journal, ev);
+    if (!v.ok) { out.className = 'result bad'; out.textContent = 'REFUSED:\n· ' + v.errors.join('\n· ') + (v.warnings.length ? '\nwarnings:\n· ' + v.warnings.join('\n· ') : ''); return; }
+    if (dry) { out.className = 'result ok'; out.textContent = 'VALID (dry run). ' + (v.warnings.length ? 'warnings: ' + v.warnings.join(' | ') : 'no warnings') + '\n' + JSON.stringify(ev, null, 1); return; }
+    saveLocal([...loadLocal(), { type: 'event', record: ev, added_at: new Date().toISOString() }]); rebuildJournal(); rerender(); refreshFormOptions(); bumpEventId(); say('ok', 'APPENDED ' + ev.event_id + ' to the local proposal journal' + (v.warnings.length ? ' — warnings: ' + v.warnings.join(' | ') : '') + '. Check the tape, the book and the wire. Your inputs are kept so you can post a related event.'); toast(ev.event_id + ' APPENDED LOCALLY');
+  } catch (e) { out.className = 'result bad'; out.textContent = 'REFUSED: ' + (e.errors ? e.errors.join(' | ') : e.message); }
+}
+document.getElementById('proposeForm').addEventListener('submit', e => { e.preventDefault(); submitPropose(false) });
+document.getElementById('proposeTabs').addEventListener('click', e => { const b = e.target.closest('[data-tab]'); if (b) { proposeTab = b.dataset.tab; renderProposeForm() } });
+
+/* ---- controls ---- */
+document.querySelectorAll('[data-market]').forEach(b => b.addEventListener('click', () => { ui.market = b.dataset.market; rerender(); saveLayout() }));
+document.querySelectorAll('[data-dir]').forEach(b => b.addEventListener('click', () => { ui.dir = b.dataset.dir; rerender() }));
+document.querySelectorAll('[data-kind]').forEach(b => b.addEventListener('click', () => { ui.kind = b.dataset.kind; rerender() }));
+document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => applyPreset(b.dataset.preset)));
+document.querySelectorAll('[data-time]').forEach(b => b.addEventListener('click', () => { ui.time = b.dataset.time; document.getElementById('asOfInput').value = ''; rerender() }));
+document.getElementById('asOfInput').addEventListener('change', e => { ui.asOf = e.target.value || null; ui.time = ui.asOf ? 'CUSTOM' : 'NOW'; rerender() });
+document.getElementById('diffToggle').addEventListener('click', () => { ui.diff = !ui.diff; rerender() });
+document.getElementById('internalToggle').addEventListener('click', () => { ui.internal = !ui.internal; rerender(); toast(ui.internal ? 'INTERNAL RECORDS VISIBLE — do not publish this view' : 'INTERNAL RECORDS HIDDEN') });
+document.getElementById('settledOnly').addEventListener('click', () => { ui.settledOnly = !ui.settledOnly; rerender() });
+document.getElementById('ledgerSearch').addEventListener('input', e => { ui.q = e.target.value; renderLedger() });
+document.getElementById('tapeToggle').addEventListener('click', () => { ui.tapePaused = !ui.tapePaused; renderTape(); saveLayout() });
+document.getElementById('editToggle').addEventListener('click', e => { ui.edit = !ui.edit; e.currentTarget.setAttribute('aria-pressed', String(ui.edit)); dashboard.classList.toggle('edit', ui.edit); document.querySelectorAll('.widget').forEach(w => w.draggable = ui.edit); toast(ui.edit ? 'EDIT MODE: drag cards or use ← / →' : 'EDIT MODE OFF') });
+dashboard.addEventListener('click', e => { const act = e.target.closest('[data-act]'); if (!act) return; const w = act.closest('.widget'), a = act.dataset.act; if (a === 'min') { w.classList.toggle('collapsed'); saveLayout() } if (a === 'max') { const on = !w.classList.contains('maximized'); document.querySelectorAll('.widget.maximized').forEach(x => x.classList.remove('maximized')); w.classList.toggle('maximized', on); dashboard.classList.toggle('has-max', on) } if (a === 'up') { const p = w.previousElementSibling; if (p && p.classList.contains('widget')) dashboard.insertBefore(w, p); saveLayout() } if (a === 'down') { const n = w.nextElementSibling; if (n && n.classList.contains('widget')) dashboard.insertBefore(n, w); saveLayout() } });
+let dragged = null;
+dashboard.addEventListener('dragstart', e => { if (!ui.edit) return e.preventDefault(); const w = e.target.closest('.widget'); if (!w) return; dragged = w; w.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move' });
+dashboard.addEventListener('dragend', () => { if (dragged) dragged.classList.remove('dragging'); dragged = null; saveLayout() });
+dashboard.addEventListener('dragover', e => { if (!dragged) return; e.preventDefault(); const over = e.target.closest('.widget'); if (!over || over === dragged) return; const box = over.getBoundingClientRect(); dashboard.insertBefore(dragged, e.clientY < box.top + box.height / 2 ? over : over.nextElementSibling) });
+document.getElementById('resetBoard').addEventListener('click', () => { try { localStorage.removeItem(LS_LAYOUT) } catch (e) {} Object.assign(ui, { market: 'All', dir: 'all', kind: 'all', preset: 'GLOBAL', q: '', tapePaused: false, time: 'NOW', asOf: null, diff: false, settledOnly: false, edit: false }); document.getElementById('ledgerSearch').value = ''; document.querySelectorAll('.widget').forEach(w => { w.hidden = false; w.classList.remove('collapsed', 'maximized') }); dashboard.classList.remove('has-max', 'edit'); document.getElementById('editToggle').setAttribute('aria-pressed', 'false'); toast('LAYOUT RESET (journal untouched)'); rerender() });
+document.getElementById('loadLegacyBtn').addEventListener('click', () => document.getElementById('fileInput').click());
+document.getElementById('fileInput').addEventListener('change', async e => { const f = e.target.files?.[0]; if (!f) return; try { const obj = JSON.parse(await f.text()); if (!obj || !Array.isArray(obj.records)) throw new Error('Expected a daily-board file with records[]'); try { localStorage.setItem(LS_LEGACY, JSON.stringify(obj)) } catch (x) {} rerender(); toast('DAILY-BOARD FILE PREVIEWED (local)') } catch (err) { alert('Could not load: ' + err.message) } e.target.value = '' });
+document.getElementById('clearLegacyBtn').addEventListener('click', () => { try { localStorage.removeItem(LS_LEGACY) } catch (e) {} rerender() });
+closeBtn.addEventListener('click', closeInspector); dialog.addEventListener('click', e => { if (e.target === dialog) closeInspector() });
+document.addEventListener('keydown', e => { const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || '') || document.activeElement?.isContentEditable; if (e.key === 'Escape' && !dialog.hidden) { e.preventDefault(); closeInspector(); return } if (e.key === '/' && !typing) { e.preventDefault(); document.getElementById('ledgerSearch').focus() } });
+function toast(msg) { const el = document.getElementById('toast'); el.textContent = msg; el.hidden = false; clearTimeout(toast.id); toast.id = setTimeout(() => el.hidden = true, 2000) }
+function tickClock() { document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-US', { hour12: false, timeZone: 'America/Indiana/Indianapolis' }) }
+tickClock(); setInterval(tickClock, 1000);
+
+/* ---- boot ---- */
+rebuildJournal(); rerender(); renderProposeForm();
+window.GC_BOARD = { get journal() { return journal }, get view() { return view }, ui, rerender, openEvent, openEntity, openLane, openPrediction, openClaim };
+</script>
+</body>
+</html>

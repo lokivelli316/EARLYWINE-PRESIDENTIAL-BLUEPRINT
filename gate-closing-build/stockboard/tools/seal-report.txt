@@ -1,0 +1,52 @@
+PREDICTIONS
+PRED-001 frozen 2026-08-13 hash 40385da6577f…
+PRED-001-R1 DRAFT (unfrozen, no hash)
+PRED-002 frozen 2026-08-30 hash ea34149122a8…
+PRED-003 frozen 2026-08-13 hash a44606538744…
+PRED-CADENCE-ORIG frozen 2026-08-13 hash fe05a86c1877…
+PRED-TECHCLOSURE frozen 2026-08-13 hash f2d9e5bb381d…
+PRED-005-HUNCH frozen 2026-09-03 hash 425e36bc12ad…
+
+EVENTS
+EVT-0001 ok seq 1
+EVT-0002 ok seq 2
+EVT-0003 ok seq 3
+EVT-0004 ok seq 4
+EVT-0005 ok seq 5
+EVT-0006 ok seq 6
+EVT-0007 ok seq 7
+EVT-0008 ok seq 8
+EVT-0009 ok seq 9
+EVT-0010 ok seq 10
+EVT-0011 ok seq 11
+EVT-0012 ok seq 12
+EVT-0013 ok seq 13
+EVT-0014 ok seq 14
+EVT-0015 ok seq 15  WARN: WATCH → AP skips AR: acceptable only for a long-standing opening; durability_evidence must say so
+EVT-0016 ok seq 16
+EVT-0017 ok seq 17
+EVT-0018 ok seq 18
+EVT-0019 ok seq 19
+EVT-0020 ok seq 20
+EVT-0021 ok seq 21
+EVT-0022 ok seq 22
+EVT-0023 ok seq 23
+EVT-0024 ok seq 24
+EVT-0025 ok seq 25  WARN: source SRC-MARKTECHPOST-20260526 predates the freeze of PRED-TECHCLOSURE — pre-freeze evidence cannot score a prediction
+EVT-0026 ok seq 26
+EVT-0027 ok seq 27
+EVT-0028 ok seq 28
+EVT-0029 ok seq 29
+EVT-0030 ok seq 30
+EVT-0031 ok seq 31
+EVT-0032 ok seq 32
+EVT-0033 ok seq 33
+EVT-0034 ok seq 34
+EVT-0035 ok seq 35
+EVT-0036 ok seq 36
+EVT-0037 ok seq 37
+EVT-0038 ok seq 38
+
+WARNINGS
+EVT-0015: WATCH → AP skips AR: acceptable only for a long-standing opening; durability_evidence must say so
+EVT-0025: source SRC-MARKTECHPOST-20260526 predates the freeze of PRED-TECHCLOSURE — pre-freeze evidence cannot score a prediction

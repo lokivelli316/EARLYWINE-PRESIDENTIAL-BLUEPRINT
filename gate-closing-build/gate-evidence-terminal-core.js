@@ -7,10 +7,10 @@
 const BRAND = 'GATE://EVIDENCE TERMINAL';   // visible brand text
 const MAIN_PAGE_URL = 'https://lokivelli316.github.io/EARLYWINE-PRESIDENTIAL-BLUEPRINT/gate-closing-build/gate-closing-preview.html'; // linked from receipts
 const SOURCES = [
-  { id:'gate-main',    label:'Gate Main',        url:'https://lokivelli316.github.io/EARLYWINE-PRESIDENTIAL-BLUEPRINT/gate-closing-build/gate-closing-preview.html', type:'html' },
-  // Canonical board JSON. Keep this filename stable so local archive and GitHub Pages resolve the same data boundary.
-  { id:'gate-json',    label:'Daily JSON (TBD)', url:'https://lokivelli316.github.io/EARLYWINE-PRESIDENTIAL-BLUEPRINT/gate-closing-build/sample-daily-update.json', type:'json' },
-  { id:'gate-archive', label:'Local Archive',    url:'./sample-daily-update.json', type:'json' }
+  // Authority order matters: canonical JSON wins duplicate IDs; legacy page is compatibility fallback only.
+  { id:'gate-archive', label:'Canonical JSON',   url:'./sample-daily-update.json', type:'json' },
+  { id:'gate-json',    label:'Published JSON',   url:'https://lokivelli316.github.io/EARLYWINE-PRESIDENTIAL-BLUEPRINT/gate-closing-build/sample-daily-update.json', type:'json' },
+  { id:'gate-main',    label:'Legacy Gate Main', url:'https://lokivelli316.github.io/EARLYWINE-PRESIDENTIAL-BLUEPRINT/gate-closing-build/gate-closing-preview.html', type:'html' }
 ];
 const MARKETS = ['All','Music','Publishing','Scholarly','Cross-cutting'];
 const PREF_KEY = 'gate.evidence.terminal.v1';
@@ -46,11 +46,12 @@ const FALLBACK_AP = ['Universal technical closure — ASH','Stable six-month cad
 
 /* --- 2. Multi-source ingestion with cache + CORS-safe fallback --- */
 function loadCache(){
-  try{ const raw=localStorage.getItem(CACHE_KEY); if(!raw) return {}; return JSON.parse(raw)||{}; }catch{ return {}; }
+  try{ const raw=localStorage.getItem(CACHE_KEY); if(!raw) return {}; const parsed=JSON.parse(raw)||{}; return parsed.sources||parsed; }catch{ return {}; }
 }
 function saveCache(map){
   try{ localStorage.setItem(CACHE_KEY, JSON.stringify({savedAt:Date.now(), sources:map})); }catch{}
 }
+
 function cacheFresh(entry){
   if(!entry||!entry.savedAt) return false;
   return (Date.now()-entry.savedAt) < CACHE_TTL_MS;

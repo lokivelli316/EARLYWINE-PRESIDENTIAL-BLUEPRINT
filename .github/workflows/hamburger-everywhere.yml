@@ -4,6 +4,10 @@ on:
   push:
     paths:
       - '.github/workflows/hamburger-everywhere.yml'
+      - '**/*.html'
+      - 'assets/js/hamburger-everywhere.js'
+      - 'assets/js/data-registry.js'
+      - 'assets/js/site-shell.js'
 permissions:
   contents: write
 jobs:

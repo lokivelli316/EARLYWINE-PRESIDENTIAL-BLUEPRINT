@@ -11,7 +11,7 @@
     {id:'rights',label:'Know Your Rights',href:'rc3-overlay/voting-rights.html',state:'LIVE',kind:'rights',desc:'Rights-after-conviction public surface with federal/state distinction preserved.'},
     {id:'address',label:'Presidential Address',href:'address-build/address-preview.html',state:'LIVE',kind:'media',desc:'Five-track address, on-demand media, and high-risk systems annex.'},
     {id:'tracks',label:'Tracks / Media',href:null,state:'QUEUED',kind:'media',desc:'Additional music and media surfaces remain visible in the navigation manifest while their public route is not yet frozen.'},
-    {id:'data',label:'Data / Gates',href:null,state:'QUEUED',kind:'data',desc:'Data and gate-analysis surfaces remain visible without inventing a route that has not been built.'},
+    {id:'data',label:'Greenfield Ticker',href:'ticker-build/ticker-preview.html',state:'BUILDING',kind:'data',desc:'Presidential-site ticker board. Sibling tab to Gate Closing. Feeds stay source-labeled. Not a Gate Closing score.'},
     {id:'participate',label:'Participate',href:'#participate',state:'OPEN',kind:'public',desc:'Public links, source repository, media, and challenge routes.'}
   ];
   const pillars = [

@@ -1,16 +1,26 @@
 (function(){
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const qs=(s,r=document)=>r.querySelector(s); const qsa=(s,r=document)=>[...r.querySelectorAll(s)];
+  const ROOT='/EARLYWINE-PRESIDENTIAL-BLUEPRINT/';
+  const WHITE=ROOT+'white-papers-build/white-papers-reading-room.html';
+  const RIGHTS=ROOT+'rights-build/know-your-rights.html';
   function stateClass(s){return 'state-'+String(s||'OPEN').toLowerCase().replace(/\s+/g,'-')}
   const legacyRoutes={
     '#blueprint':'blueprint-build/blueprint-preview.html',
     '#ecosystem':'explorers-build/explorers-preview.html',
+    '#papers':'white-papers-build/white-papers-reading-room.html',
     '#research':'gate-closing-build/gate-closing-preview.html',
     '#address':'address-build/address-preview.html',
     '#receipts':'source-integrity-build/source-integrity-preview.html'
   };
   function wirePageRoutes(){
-    qsa('a').forEach(a=>{const href=a.getAttribute('href');if(legacyRoutes[href])a.setAttribute('href',legacyRoutes[href])});
+    qsa('a').forEach(a=>{const href=a.getAttribute('href')||'';if(legacyRoutes[href]){a.setAttribute('href',legacyRoutes[href]);return}if(/rc3-overlay\/voting-rights\.html|prototype\/voting_rights_explorer_v2\.html/i.test(href)){a.setAttribute('href',RIGHTS);return}if(/white\s*papers/i.test(a.textContent||'')&&(/explorers-build\/explorers-preview\.html/i.test(href)||/#papers(?:$|\?)/i.test(href))){a.setAttribute('href',WHITE)}});
+    const primary=qs('.nav-primary');
+    if(primary&&!qs('a[href*="white-papers-build/"]',primary)){
+      const a=document.createElement('a');a.href=WHITE;a.textContent='White Papers';
+      const explore=qsa('a',primary).find(x=>/explore/i.test(x.textContent||''));
+      if(explore&&explore.nextSibling)primary.insertBefore(a,explore.nextSibling);else primary.appendChild(a);
+    }
   }
   function resolveLegacyHash(){
     const target=legacyRoutes[location.hash];

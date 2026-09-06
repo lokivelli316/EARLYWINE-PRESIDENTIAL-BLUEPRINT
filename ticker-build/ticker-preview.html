@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090708">
+<title>Greenfield Ticker | Earlywine Blueprint</title>
+<style>
+:root{--bg:#080708;--text:#f4f1ef;--soft:#cfc6c0;--muted:#918780;--amber:#f0ad43;--green:#4ec58b;--line:rgba(255,255,255,.13);--max:1100px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.5}
+a{color:inherit}.wrap{width:min(calc(100% - 28px),var(--max));margin:auto}
+.stage{background:#141116;border-bottom:1px solid var(--line);font:800 11px ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase;color:#d6ceca}
+.stage .wrap{min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:12px}.stage b{color:var(--amber)}
+header{position:sticky;top:0;z-index:70;background:rgba(8,7,8,.94);border-bottom:1px solid var(--line)}
+header .wrap{min-height:62px;display:flex;align-items:center;gap:11px}
+.brand{text-decoration:none;font-weight:950;letter-spacing:.055em}
+.hamb{margin-left:auto;width:46px;height:46px;border:1px solid var(--line);background:#0d0b0e;color:#fff;display:grid;place-items:center;cursor:pointer;font-size:22px}
+.drawer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.64);z-index:80}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,92vw);z-index:90;background:#0b090c;border-left:1px solid var(--line);padding:16px;overflow:auto}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.drawer-close{width:44px;height:44px;border:1px solid var(--line);background:#131016;color:#fff;font-size:22px;cursor:pointer}
+.drawer h2{font-size:34px;margin:10px 0;font-family:Georgia,serif}
+.eyebrow{font:900 11px ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
+.site-list{display:grid;gap:8px}
+.site-link,.site-disabled{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;text-decoration:none;border:1px solid var(--line);background:#111014;padding:13px}
+.site-link:hover{border-color:var(--amber)}.site-disabled{opacity:.58}
+.status{font:900 8px ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);padding:4px 6px}
+.status.live{color:var(--green)}.status.stage{color:var(--amber)}.status.open{color:#fff}.status.exp{color:#9f84ff}.status.review{color:#4d9fe0}
+main{padding:42px 0 64px}h1{font-family:Georgia,serif;font-size:clamp(48px,9vw,96px);line-height:.86;letter-spacing:-.06em;margin:.2em 0}
+.lede{max-width:720px;color:var(--soft);font-size:1.15rem}
+.tape{margin:28px 0;overflow:hidden;border:1px solid var(--line);background:#0b090c}
+.tape-inner{display:flex;gap:28px;white-space:nowrap;padding:12px 0;animation:scroll 28s linear infinite;font:800 12px ui-monospace,monospace;letter-spacing:.04em;text-transform:uppercase;color:var(--amber)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.tape-inner{animation:none}}
+.board{display:grid;gap:10px;margin-top:22px}
+.row{border:1px solid var(--line);padding:14px 16px;background:#111014;display:grid;grid-template-columns:140px 1fr auto;gap:12px;align-items:center}
+.row b{font:900 10px ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
+.row span{color:var(--soft)}.row em{font-style:normal;font:900 9px ui-monospace,monospace;color:var(--muted);text-transform:uppercase}
+.warn{margin-top:18px;border-left:3px solid var(--amber);padding-left:12px;color:#b9aeaa;font-size:.9rem}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:.87rem}
+@media(max-width:640px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="stage"><div class="wrap"><span><b>GREENFIELD TICKER</b> · sibling to Gate Closing · hamburger wired</span><span>BUILDING · NO LIVE FEED YET</span></div></div>
+<header><div class="wrap"><a class="brand" href="#top">EARLYWINE BLUEPRINT / TICKER</a><button class="hamb" id="menuToggle" aria-controls="siteDrawer" aria-expanded="false" aria-label="Open site navigation">☰</button></div></header>
+<div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+<aside class="drawer" id="siteDrawer" hidden aria-label="Whole-site navigation">
+<div class="drawer-head"><div><div class="eyebrow">Whole Site</div><h2>Navigation</h2></div><button class="drawer-close" id="drawerClose" aria-label="Close navigation">×</button></div>
+<div class="site-list">
+<a class="site-link" href="../index.html"><span>Home / Candidate Front Door</span><span class="status live">LIVE</span></a>
+<a class="site-link" href="../blueprint-build/blueprint-preview.html"><span>Blueprint</span><span class="status live">LIVE</span></a>
+<a class="site-link" href="../explorers-build/explorers-preview.html"><span>Explorers</span><span class="status live">LIVE</span></a>
+<a class="site-link" href="../gate-closing-build/gate-closing-preview.html"><span>Gate Closing / Research</span><span class="status live">LIVE</span></a>
+<a class="site-link" href="ticker-preview.html"><span>Greenfield Ticker / Data Gates</span><span class="status stage">BUILDING</span></a>
+<a class="site-link" href="../source-integrity-build/source-integrity-preview.html"><span>Receipts / Source Integrity</span><span class="status live">LIVE</span></a>
+<a class="site-link" href="../rc3-overlay/voting-rights.html"><span>Know Your Rights</span><span class="status live">LIVE</span></a>
+<a class="site-link" href="../address-build/address-preview.html"><span>Presidential Address</span><span class="status live">LIVE</span></a>
+<div class="site-disabled"><span>Labs / Physics</span><span class="status exp">EXPERIMENTAL</span></div>
+<div class="site-disabled"><span>Tracks / Media</span><span class="status open">QUEUED</span></div>
+<a class="site-link" href="../index.html#participate"><span>Participate</span><span class="status open">OPEN</span></a>
+</div>
+</aside>
+<main id="top">
+<div class="wrap">
+<div class="eyebrow">Presidential site · data / gates</div>
+<h1>Greenfield<br>Ticker.</h1>
+<p class="lede">This is another tab beside Gate Closing, not a score glued onto that audit. The hamburger on Home, Gate Closing, and this page all reach it.</p>
+<div class="tape" aria-label="Status tape"><div class="tape-inner">
+<span>Ticker board BUILDING</span><span>No live market feed</span><span>Sibling to Gate Closing</span><span>Source labels required</span>
+<span>Ticker board BUILDING</span><span>No live market feed</span><span>Sibling to Gate Closing</span><span>Source labels required</span>
+</div></div>
+<div class="board">
+<div class="row"><b>Campaign</b><span>Earlywine Blueprint public site routes</span><em>wired</em></div>
+<div class="row"><b>Gate Closing</b><span>Evidence / economics tab remains separate</span><em>live sibling</em></div>
+<div class="row"><b>Polls / markets</b><span>Not connected. Do not invent numbers.</span><em>source pending</em></div>
+<div class="row"><b>Donations / lists</b><span>Not connected.</span><em>source pending</em></div>
+</div>
+<p class="warn">BUILDING. A moving tape is not a verified feed. When a source is named, rows get dates and receipts the same way Gate Closing does.</p>
+</div>
+</main>
+<footer><div class="wrap">Earlywine Blueprint · Greenfield Ticker tab · hamburger wired 2026-09-06 · not frozen</div></footer>
+<script>
+const toggle=document.getElementById('menuToggle'),drawer=document.getElementById('siteDrawer'),backdrop=document.getElementById('drawerBackdrop'),closeBtn=document.getElementById('drawerClose');
+function setDrawer(open){drawer.hidden=!open;backdrop.hidden=!open;toggle.setAttribute('aria-expanded',String(open));if(open)closeBtn.focus();else toggle.focus()}
+toggle.addEventListener('click',()=>setDrawer(drawer.hidden));
+closeBtn.addEventListener('click',()=>setDrawer(false));
+backdrop.addEventListener('click',()=>setDrawer(false));
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setDrawer(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!drawer.hidden)setDrawer(false)});
+</script>
+</body>
+</html>

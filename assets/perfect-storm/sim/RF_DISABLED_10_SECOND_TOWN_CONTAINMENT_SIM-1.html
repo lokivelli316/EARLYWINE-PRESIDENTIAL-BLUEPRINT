@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>RF-Disabled Containment Race — 10-Second Simulation</title>
+<style>
+  :root{
+    --bg:#0b0d10;
+    --panel:#141820;
+    --panel2:#0f1319;
+    --text:#eef2f7;
+    --muted:#9aa6b2;
+    --line:#2b3440;
+    --ok:#39c174;
+    --warn:#e8b04a;
+    --hot:#ef5b5b;
+    --accent:#7aa2f7;
+    --road:#2b3038;
+    --wire:#4d5a6a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:18px}
+  h1{font-size:1.35rem;margin:0 0 6px}
+  .sub{color:var(--muted);margin-bottom:14px}
+  .grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.7fr) minmax(280px,.9fr);
+    gap:14px;
+  }
+  @media (max-width:850px){.grid{grid-template-columns:1fr}}
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .card h2{font-size:1rem;margin:0;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .mapWrap{position:relative;background:#0f1318;min-height:560px}
+  svg{display:block;width:100%;height:auto}
+  .legend{
+    position:absolute;left:12px;bottom:12px;
+    background:rgba(11,13,16,.88);
+    border:1px solid var(--line);
+    border-radius:10px;padding:8px 10px;
+    font-size:.82rem;color:var(--muted)
+  }
+  .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+  .controls{padding:14px}
+  label{display:block;font-size:.88rem;color:var(--muted);margin-bottom:6px}
+  input[type=range]{width:100%}
+  select,button{
+    width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);
+    background:var(--panel2);color:var(--text);font-size:1rem
+  }
+  button{cursor:pointer}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .metric{
+    padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--panel2)
+  }
+  .metric .k{font-size:.76rem;color:var(--muted)}
+  .metric .v{font-size:1.25rem;font-weight:700;margin-top:3px}
+  .status{
+    margin-top:10px;padding:10px;border-radius:10px;border:1px solid var(--line);
+    background:var(--panel2)
+  }
+  .small{font-size:.82rem;color:var(--muted)}
+  .timeline{padding:12px 14px;border-top:1px solid var(--line);background:var(--panel2)}
+  .tickline{display:flex;justify-content:space-between;color:var(--muted);font-size:.75rem}
+  .progress{
+    height:9px;background:#202630;border-radius:999px;overflow:hidden;margin:8px 0 5px
+  }
+  .bar{height:100%;width:0;background:linear-gradient(90deg,var(--ok),var(--warn),var(--hot))}
+  .note{padding:12px 14px;border-top:1px solid var(--line);color:var(--muted);font-size:.84rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>RF-Disabled Containment Race — 10-Second Simulation</h1>
+  <div class="sub">
+    Schematic / not to scale. Wi-Fi, Bluetooth, cellular/5G, and radio links are disabled.
+    Propagation is limited to pre-existing wired/shared-service trust paths.
+  </div>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Synthetic Town / Trust-Graph Overlay</h2>
+      <div class="mapWrap">
+        <svg id="map" viewBox="0 0 900 560" aria-label="Synthetic town map with digital trust nodes">
+          <rect width="900" height="560" fill="#0f1318"/>
+          <!-- schematic districts -->
+          <g opacity=".9">
+            <rect x="35" y="45" width="220" height="155" rx="18" fill="#141b23" stroke="#2b3440"/>
+            <rect x="320" y="35" width="250" height="180" rx="18" fill="#141b23" stroke="#2b3440"/>
+            <rect x="640" y="70" width="210" height="155" rx="18" fill="#141b23" stroke="#2b3440"/>
+            <rect x="65" y="310" width="240" height="180" rx="18" fill="#141b23" stroke="#2b3440"/>
+            <rect x="360" y="300" width="210" height="185" rx="18" fill="#141b23" stroke="#2b3440"/>
+            <rect x="650" y="315" width="190" height="165" rx="18" fill="#141b23" stroke="#2b3440"/>
+          </g>
+          <!-- roads -->
+          <g stroke="#2b3038" stroke-width="18" opacity=".9">
+            <path d="M0 265 H900"/>
+            <path d="M285 0 V560"/>
+            <path d="M610 0 V560"/>
+            <path d="M0 510 H900"/>
+          </g>
+          <!-- labels -->
+          <g fill="#8f9aa7" font-size="15" font-weight="600">
+            <text x="55" y="72">Residential A</text>
+            <text x="340" y="62">Commercial Core</text>
+            <text x="660" y="97">Campus / Lab Zone</text>
+            <text x="85" y="337">Residential B</text>
+            <text x="380" y="327">Municipal Services</text>
+            <text x="670" y="342">Industrial / Utility</text>
+          </g>
+          <g id="edges"></g>
+          <g id="nodes"></g>
+        </svg>
+        <div class="legend">
+          <div><span class="dot" style="background:#5a6673"></span>not reached</div>
+          <div><span class="dot" style="background:#e8b04a"></span>reached</div>
+          <div><span class="dot" style="background:#ef5b5b"></span>initial source</div>
+          <div><span style="display:inline-block;width:18px;border-top:2px solid #4d5a6a;margin-right:6px;vertical-align:middle"></span>wired/shared trust path</div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="tickline"><span>0:00</span><span id="timeLabel">0:00</span><span>60:00</span></div>
+        <div class="progress"><div id="bar" class="bar"></div></div>
+      </div>
+      <div class="note">
+        This is a bounded systems-engineering stress test, not a real-world outbreak forecast.
+        Nodes represent abstract reachable endpoints, not actual homes or devices.
+      </div>
+    </section>
+
+    <aside class="card">
+      <h2>Simulation Controls</h2>
+      <div class="controls">
+        <label for="scenario">Machine tempo</label>
+        <select id="scenario">
+          <option value="slow">Slow machine tempo</option>
+          <option value="fast" selected>Fast machine tempo</option>
+          <option value="veryfast">Very fast machine tempo</option>
+        </select>
+
+        <div style="height:12px"></div>
+
+        <label for="human">Human effective-containment window</label>
+        <select id="human">
+          <option value="fast">Fast: ~7 min median</option>
+          <option value="typical" selected>Stressed: ~22.5 min median</option>
+          <option value="slow">Slow/common-mode: ~40 min median</option>
+        </select>
+
+        <div style="height:14px"></div>
+
+        <label for="slider">Time — 10-second steps</label>
+        <input id="slider" type="range" min="0" max="3600" step="10" value="0" />
+
+        <div class="row" style="margin-top:12px">
+          <div class="metric"><div class="k">Elapsed</div><div id="elapsed" class="v">0:00</div></div>
+          <div class="metric"><div class="k">Reached</div><div id="reached" class="v">1 / 120</div></div>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <div class="metric"><div class="k">Coverage</div><div id="coverage" class="v">0.8%</div></div>
+          <div class="metric"><div class="k">Human cutoff</div><div id="cutoff" class="v">22:30</div></div>
+        </div>
+
+        <div id="status" class="status">
+          <strong>Status:</strong> simulation initialized.
+          <div class="small">Move the slider to advance in 10-second increments.</div>
+        </div>
+
+        <div style="height:12px"></div>
+        <button id="play" type="button">Play</button>
+        <div style="height:8px"></div>
+        <button id="reset" type="button">Reset</button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+(() => {
+  const svgNS = "http://www.w3.org/2000/svg";
+  const nodesG = document.getElementById("nodes");
+  const edgesG = document.getElementById("edges");
+  const slider = document.getElementById("slider");
+  const scenarioEl = document.getElementById("scenario");
+  const humanEl = document.getElementById("human");
+  const elapsedEl = document.getElementById("elapsed");
+  const reachedEl = document.getElementById("reached");
+  const coverageEl = document.getElementById("coverage");
+  const cutoffEl = document.getElementById("cutoff");
+  const statusEl = document.getElementById("status");
+  const barEl = document.getElementById("bar");
+  const timeLabel = document.getElementById("timeLabel");
+  const playBtn = document.getElementById("play");
+  const resetBtn = document.getElementById("reset");
+
+  const TEMPO = {
+    slow:     {R:1.18, generation:30},
+    fast:     {R:1.65, generation:20},
+    veryfast: {R:2.10, generation:10}
+  };
+  const HUMAN = {
+    fast:420,
+    typical:1350,
+    slow:2400
+  };
+
+  // deterministic pseudo-random generator
+  function mulberry32(a){
+    return function(){
+      let t = a += 0x6D2B79F5;
+      t = Math.imul(t ^ t >>> 15, t | 1);
+      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    }
+  }
+
+  const rng = mulberry32(3162026);
+
+  // 120 synthetic endpoints clustered around six schematic districts
+  const clusters = [
+    {cx:145,cy:130,n:18},
+    {cx:445,cy:125,n:24},
+    {cx:745,cy:145,n:18},
+    {cx:180,cy:400,n:20},
+    {cx:465,cy:395,n:20},
+    {cx:745,cy:400,n:20},
+  ];
+
+  const nodes = [];
+  clusters.forEach((c,ci)=>{
+    for(let i=0;i<c.n;i++){
+      const a = rng()*Math.PI*2;
+      const r = 20 + rng()*70;
+      nodes.push({
+        id:nodes.length,
+        cluster:ci,
+        x:c.cx + Math.cos(a)*r,
+        y:c.cy + Math.sin(a)*r,
+        reachedAt:Infinity
+      });
+    }
+  });
+
+  // Build synthetic wired/shared-service graph.
+  // Dense local wiring + sparse inter-cluster backbones.
+  const edges = [];
+  function addEdge(a,b){
+    if(a===b) return;
+    const key = a<b ? a+"-"+b : b+"-"+a;
+    if(edges.some(e=>e.key===key)) return;
+    edges.push({a,b,key});
+  }
+  for(let i=0;i<nodes.length;i++){
+    const local = nodes.filter(n=>n.cluster===nodes[i].cluster && n.id!==i);
+    local.sort((a,b)=>{
+      const da=(a.x-nodes[i].x)**2+(a.y-nodes[i].y)**2;
+      const db=(b.x-nodes[i].x)**2+(b.y-nodes[i].y)**2;
+      return da-db;
+    });
+    local.slice(0,3).forEach(n=>addEdge(i,n.id));
+  }
+  // backbone links between clusters
+  [[0,1],[1,2],[0,3],[1,4],[2,5],[3,4],[4,5],[1,5]].forEach(([ca,cb])=>{
+    const A = nodes.filter(n=>n.cluster===ca);
+    const B = nodes.filter(n=>n.cluster===cb);
+    for(let k=0;k<3;k++){
+      addEdge(A[Math.floor(rng()*A.length)].id, B[Math.floor(rng()*B.length)].id);
+    }
+  });
+
+  const nbrs = Array.from({length:nodes.length},()=>[]);
+  edges.forEach(e=>{nbrs[e.a].push(e.b);nbrs[e.b].push(e.a);});
+
+  // render edges
+  edges.forEach(e=>{
+    const line=document.createElementNS(svgNS,"line");
+    line.setAttribute("x1",nodes[e.a].x); line.setAttribute("y1",nodes[e.a].y);
+    line.setAttribute("x2",nodes[e.b].x); line.setAttribute("y2",nodes[e.b].y);
+    line.setAttribute("stroke","#4d5a6a");
+    line.setAttribute("stroke-width","1.1");
+    line.setAttribute("opacity",".42");
+    edgesG.appendChild(line);
+  });
+
+  const circles=[];
+  nodes.forEach(n=>{
+    const c=document.createElementNS(svgNS,"circle");
+    c.setAttribute("cx",n.x); c.setAttribute("cy",n.y);
+    c.setAttribute("r","5.8");
+    c.setAttribute("stroke","#0b0d10");
+    c.setAttribute("stroke-width","1.4");
+    c.setAttribute("fill","#5a6673");
+    c.setAttribute("data-id",n.id);
+    nodesG.appendChild(c);
+    circles.push(c);
+  });
+
+  function recompute(){
+    const cfg=TEMPO[scenarioEl.value];
+    const simRng=mulberry32(20260906 + (scenarioEl.value==="slow"?1:scenarioEl.value==="fast"?2:3));
+
+    nodes.forEach(n=>n.reachedAt=Infinity);
+    const source=72; // synthetic municipal-services area
+    nodes[source].reachedAt=0;
+    let frontier=[source];
+    let t=0;
+
+    while(frontier.length && t<3600){
+      t += cfg.generation;
+      const next=[];
+      const attempted=new Set();
+
+      frontier.forEach(id=>{
+        const degree=nbrs[id].length || 1;
+        // convert abstract R into per-neighbor exposure probability
+        const p=Math.min(.92, cfg.R/degree);
+        nbrs[id].forEach(nb=>{
+          if(nodes[nb].reachedAt!==Infinity || attempted.has(nb)) return;
+          attempted.add(nb);
+          if(simRng()<p){
+            nodes[nb].reachedAt=t;
+            next.push(nb);
+          }
+        });
+        // small chance an already-reached adjacent service triggers another local endpoint
+        nbrs[id].forEach(nb=>{
+          if(nodes[nb].reachedAt!==Infinity) return;
+          if(simRng()<0.03){
+            nodes[nb].reachedAt=t;
+            next.push(nb);
+          }
+        });
+      });
+
+      frontier=[...new Set(next)];
+    }
+    update();
+  }
+
+  function fmt(sec){
+    const m=Math.floor(sec/60), s=sec%60;
+    return m+":"+String(s).padStart(2,"0");
+  }
+
+  function update(){
+    const t=Number(slider.value);
+    const cutoff=HUMAN[humanEl.value];
+    const reached=nodes.filter(n=>n.reachedAt<=t).length;
+
+    circles.forEach((c,i)=>{
+      if(i===72) c.setAttribute("fill","#ef5b5b");
+      else if(nodes[i].reachedAt<=t) c.setAttribute("fill","#e8b04a");
+      else c.setAttribute("fill","#5a6673");
+    });
+
+    elapsedEl.textContent=fmt(t);
+    reachedEl.textContent=reached+" / "+nodes.length;
+    coverageEl.textContent=(reached/nodes.length*100).toFixed(1)+"%";
+    cutoffEl.textContent=fmt(cutoff);
+    timeLabel.textContent=fmt(t);
+    barEl.style.width=(t/3600*100)+"%";
+
+    if(t===0){
+      statusEl.innerHTML="<strong>Status:</strong> simulation initialized.<div class='small'>Move the slider to advance in 10-second increments.</div>";
+    } else if(t<cutoff){
+      statusEl.innerHTML="<strong>Status:</strong> machine clock is running before effective human containment.<div class='small'>Wireless/RF paths remain disabled throughout.</div>";
+    } else {
+      const before=nodes.filter(n=>n.reachedAt<=cutoff).length;
+      statusEl.innerHTML="<strong>Status:</strong> human containment window reached.<div class='small'>"+before+" of "+nodes.length+" endpoints had been reached by that point in this synthetic run.</div>";
+    }
+  }
+
+  slider.addEventListener("input",update);
+  scenarioEl.addEventListener("change",recompute);
+  humanEl.addEventListener("change",update);
+
+  let timer=null;
+  playBtn.addEventListener("click",()=>{
+    if(timer){
+      clearInterval(timer); timer=null; playBtn.textContent="Play"; return;
+    }
+    playBtn.textContent="Pause";
+    timer=setInterval(()=>{
+      let v=Number(slider.value)+10;
+      if(v>3600){ clearInterval(timer); timer=null; playBtn.textContent="Play"; return; }
+      slider.value=v; update();
+    },120);
+  });
+
+  resetBtn.addEventListener("click",()=>{
+    if(timer){clearInterval(timer);timer=null;playBtn.textContent="Play";}
+    slider.value=0; update();
+  });
+
+  recompute();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+--- PAGE 1 ---
+Enhanced BSL Containment Architecture v2.0 (Sanitized)
+Public Review Draft
+Page 1
+Lokivelli & Earlywine Foundational Research
+ORCID 0009-0000-4191-6865
+ Enhanced BSL Containment Architecture
+ Tiered Physical Escalation with
+Human-Failure-Resilient Balance Layers
+ Version 2.0 – Sanitized Public Review Draft
+ Transmission Vector Integration (Abstracted)
+ Robert Michael Earlywine-Lucas (Lokivelli)
+ Lokivelli & Earlywine Foundational Research and Design
+ ORCID: 0009-0000-4191-6865
+ Zenodo: 10.5281/zenodo.20486408
+ June 25, 2026
+Disclaimer: This document is an independent technical proposal. It has not been peer-reviewed. It is not affiliated with any government
+agency, international organisation, or academic institution. All technical specifications are proposed for evaluation and are not validated by
+operational testing. This sanitized edition abstracts specific pathogen assembly methods and energetic destruction details to facilitate
+broader technical review.
+
+
+--- PAGE 2 ---
+Enhanced BSL Containment Architecture v2.0 (Sanitized)
+Public Review Draft
+Page 2
+Lokivelli & Earlywine Foundational Research
+ORCID 0009-0000-4191-6865
+1. DISCLAIMER & VERSIONING
+This document is an independent technical proposal prepared by Lokivelli & Earlywine Foundational Research and
+Design. It has not been peer-reviewed. It is not affiliated with any government agency, international organisation, or
+academic institution. The author has no institutional affiliation relevant to this work.
+This document is published as a contribution to public discourse on biocontainment infrastructure. It is intended for
+review by biosecurity professionals, policy makers, and the interested public. All technical specifications are proposed
+for evaluation and are not validated by operational testing. The views expressed are those of the author and do not
+represent any organisation.
+Version 2.0 – Sanitized Public Review Draft. Comments and substantive critiques are invited for incorporation into
+future versions. This edition removes detailed construct assembly language and specific energetic neutralisation
+mechanics while preserving the architectural logic, failure-mode mapping, and balance-layer design.
+Versioning Philosophy: “No updates, only upgrades.” Version 2.0 represents a substantive upgrade adding
+transmission vector taxonomy (abstracted), routine infection pathway analysis, treaty architecture prerequisites, tier
+transition transport protocols, and facility decommissioning procedures. Minor corrections applied silently. No
+incremental 2.x patches will be issued.
+2. DEFINITIONS
+Human dumbassery
+A formal design hazard encompassing: fatigue-driven procedural shortcuts, single-point human decision failures,
+institutional face-saving delays, deliberate narrative control over transparent escalation, and the statistically
+predictable tendency of tired, career-incentivised, or cognitively overloaded humans to mishandle high-stakes
+containment events.
+Transmission vector
+Any mechanism by which a pathogen moves from a reservoir or infected host to a new host. Categories used here:
+airborne (aerosol / droplet nuclei), droplet, fomite, direct contact, vector-borne, and environmental / air-handling.
+Airborne transmission
+Transmission via particles small enough to remain suspended, travel beyond the immediate source area, and be
+inhaled into the lower respiratory tract. Highest-concern category because it enables distance infection,
+superspreader dynamics, and evasion of standard droplet precautions.
+Routine transmission pathway
+The mundane, repeatable chain of events by which a pathogen escapes containment (contaminated footwear,
+incomplete decontamination, improper doffing, aerosol generation during routine manipulation, HVAC issues, waste
+handling error, exit screening failure). These account for the majority of documented laboratory-acquired infections.
+Fomite half-life
+Time required for a 50% reduction in viable pathogen on a specified surface under specified environmental
+conditions. Critical escalation trigger in the Tier Qualification Matrix.
+Escalation tiers
+Spectrum of physically separated, progressively de-humanised containment environments: BSL-4 Enhanced →
+BSL-5 Remote Terrestrial → BSL-6 Automated Ground → BSL-7 Deep Orbital (boundary condition).
+Balance layers
+Governance, technical, operational, incentive, and human-factors mechanisms stacked on the physical tiers.
+Purpose: reduce reliance on perfect human behaviour so that when a person inevitably cuts a corner or delays a
+
+
+--- PAGE 3 ---
+Enhanced BSL Containment Architecture v2.0 (Sanitized)
+Public Review Draft
+Page 3
+Lokivelli & Earlywine Foundational Research
+ORCID 0009-0000-4191-6865
+decision, the system does not cascade.
+Dead-man switch
+Autonomous safety mechanism that executes a pre-authorised action (lockdown, decontamination, sterilisation,
+neutralisation) unless a regularly-timed positive confirmation signal is received. Reset window tightens with increasing
+tier.
+3. EXECUTIVE SUMMARY
+Current high-containment practice co-locates multiple high-consequence agents and publishes general methods
+capable of combining transmission efficiency, virulence, and environmental stability. Documented mundane escape
+vectors (contaminated shoes, shared equipment, decon shortcuts, incomplete doffing, HVAC recirculation errors) and
+real-world early-signal suppression patterns leave existing systems acutely vulnerable to the type of human failure
+that turns a contained incident into a wider event.
+Airborne transmission enables infection at distance, superspreader dynamics, and penetration of standard droplet
+precautions. Extended environmental stability on common surfaces creates persistent contamination reservoirs.
+Routine pathways do not require dramatic failures; they require only a single fatigued procedural lapse at the wrong
+moment.
+This architecture adds the full escalation ladder through BSL-7 Deep Orbital (treated as a boundary condition),
+integrates abstracted transmission vector analysis, and embeds twelve interdependent balance layers designed
+under the assumption that humans will get tired, protect their institutions, and delay bad news. The system does not
+ask for better humans. It compensates for them through mandatory dual verification, immutable independent logging,
+pre-authorised automated escalation, fatigue-based interlocks, and incentive structures that reward early flagging
+rather than perfect containment optics.
+The Tier Qualification Matrix incorporates specific transmission characteristics as mandatory escalation triggers. A
+construct that combines respiratory transmission with extended environmental stability escalates automatically,
+regardless of institutional risk assessment.
+Conclusion: the research capable of creating high-consequence hybrid constructs is already underway in shared
+facilities. The transmission pathways those constructs would exploit are well-understood and repeatedly documented.
+The engineering and governance response must now match the threat by eliminating single-point human failure
+modes.
+4. THREAT LANDSCAPE & FAILURE MODE MAPPING
+4.1 Pathogen Capability Already Present
+Multi-agent high-containment facilities currently handle multiple high-consequence agents side-by-side. Published
+general methods allow constructs that can combine efficient respiratory transmission characteristics, high virulence
+traits, immune-evasion features, and extended environmental stability. The component capabilities exist in current
+research collections. The general assembly approaches are published. This is not speculative.
+4.2 Transmission Vector Taxonomy (Abstracted)
+Airborne — particles remaining suspended for extended periods, capable of distance travel and lower-respiratory
+deposition. Dominant concern for pandemic potential because it enables superspreader events, pre-symptomatic
+transmission, and evasion of standard droplet precautions.
+Droplet — larger particles with limited ballistic range; easier to contain with distancing and barrier precautions.
+Fomite — contaminated surfaces and objects. Half-life on common materials (stainless steel, plastic, glass, fabric) is
+the critical variable. Most mundane and therefore highest-probability escape vector in practice.
+Direct contact, vector-borne, environmental / air-handling — additional pathways that must be engineered
+against, particularly HVAC recirculation and waste streams.
+
+
+--- PAGE 4 ---
+Enhanced BSL Containment Architecture v2.0 (Sanitized)
+Public Review Draft
+Page 4
+Lokivelli & Earlywine Foundational Research
+ORCID 0009-0000-4191-6865
+4.3 Routine Transmission Pathways — The Mundane Escape
+  Contaminated footwear and clothing exiting containment.
+ Incomplete decontamination of shared equipment.
+ Improper doffing sequence (highest-risk routine procedure).
+ Aerosol generation during routine manipulation outside primary containment.
+ Sharps injury / direct inoculation.
+ Waste handling error (incomplete sterilisation, packaging failure).
+ HVAC malfunction or contamination of air-handling units.
+ Exit screening failure (personnel exit while contaminated or incubating).
+4.4 Highest-Probability Real-World Escape Vectors
+Vector A: Mundane fomite escape → index case infects community before diagnosis.
+Vector B: Single-person procedural lapse with no witness.
+Vector C: Institutional suppression window (internal signal → delay → late external notification).
+Vector D: Pre-symptomatic or asymptomatic shedding by an infected worker.
+4.5 Documented Suppression Archetype
+Repeatable pattern across multiple national contexts: doctor-level first signal → internal research discussion →
+institutional delay while origin, liability, and messaging are assessed → eventual external notification days or weeks
+later → contact tracing begins after contacts have dispersed. Any new high-consequence escape will encounter the
+same institutional dynamics unless the notification loop is removed from institutional control.
+4.6 Trend Lines
+Volume of high-risk chimeric and gain-of-function work is increasing globally. Published methods are becoming more
+accessible. Human-error failure modes remain static. Without added layers of engineered protection, the probability
+of a high-consequence escape scenario rises.
+5. PHYSICAL ESCALATION TIERS
+5.1 BSL-4 Enhanced
+Mandatory dual-human presence for every high-risk manipulation with independent halt authority. Immutable
+real-time digital twin logging streamed to an off-site independent repository (no post-hoc editing). AI camera review
+that flags deviations and triggers immediate haptic alert + automatic containment lock. Enhanced fomite protocol
+(double-layer footwear with inter-layer disinfectant, boot scans, full-coverage impermeable gowns). Mandatory
+chemical shower with verified contact time and dual verification (AI + second human). Any deviation reported to
+oversight body within 4 hours.
+5.2 BSL-5 Remote Terrestrial
+Hardened remote sites (minimum 50 km from population centres; subterranean where feasible). Maximum 3 on-site
+personnel; robotic primary work via telemanipulation from separated control room. Permanent quarantine on exit into
+sealed transit habitat for 21-day observation with independent external medical monitoring. Treaty-level real-time
+read-only sensor feeds to oversight body. Pre-authorised facility-level sterilisation on a 72-hour dead-man timer.
+Dedicated sealed transport with independent dead-man timer.
+5.3 BSL-6 Automated Ground
+Fully robotic underground or remote bunker. Zero routine human entry. All manipulations by dexterous robots inside
+multi-chamber sealed vault. Multiple independent AI systems (different architectures and training data) analyse all
+data streams; disagreement beyond calibrated threshold for >15 min triggers automatic escalation. Human access
+requires live simultaneous dual-key activation from two internationally-appointed oversight representatives in different
+countries. Dual-redundant sterilisation for all waste. Multi-stage filtration with continuous air sampling and analysis.
+
+
+--- PAGE 5 ---
+Enhanced BSL Containment Architecture v2.0 (Sanitized)
+Public Review Draft
+Page 5
+Lokivelli & Earlywine Foundational Research
+ORCID 0009-0000-4191-6865
+5.4 BSL-7 Deep Orbital (Boundary Condition)
+Distant stable orbit (Earth-Sun L4/L5 or distant retrograde lunar). Multi-layer vault with independent robotic
+manipulators. Categorically uninhabitable — no life-support, no docking port compatible with crewed spacecraft. Fully
+robotic / teleoperated with light-delay enforcing deliberate pre-planned sequences. Autonomous irreversible
+neutralisation sequence on any breach signature, communications heartbeat loss, power failure exceeding backup, or
+uncommanded manoeuvre. Zero material return to Earth geometrically guaranteed. Treated as a critical boundary
+condition defining when lower tiers become fundamentally insufficient, not as a near-term construction blueprint.
+Current technical and political feasibility is limited (light delay, launch-phase risks, capital cost).
+6. INTEGRATED BALANCE LAYERS
+Twelve hardwired architectural constraints, each mapped to a documented human failure mode, each defaulting to
+safety when humans fail to act.
+6.1 Technical Balance Layers
+Mandatory AI + Human Dual Verification — Every critical decision at BSL-5+ requires dual independent AI
+confirmations (separate vendors, different architectures) plus two authorised humans. Single-human override is
+architecturally impossible.
+Immutable Quantum-Sealed Logging — All sensor feeds, camera frames, actuator commands, access events, and
+decision logs signed with post-quantum signature scheme and hashed into a continuously published transparency log
+accessible in real time to the oversight body.
+Continuous Fatigue and Cognitive-Load Monitoring — Multi-modal monitoring (eye-tracking PERCLOS,
+EEG/fNIRS cognitive load, keyboard/mouse dynamics, voice analysis, HRV). When pre-validated fatigue threshold is
+crossed, system automatically locks the individual out of critical controls. No override possible.
+Dual-AI Anomaly Detection with Automatic Disagreement Escalation — Two independently developed AI
+systems continuously evaluate facility state. Disagreement beyond calibrated divergence threshold for more than 60
+seconds triggers automatic escalation standby.
+Dead-Man Switch Architecture — Every tier above BSL-4 incorporates a tier-appropriate sterilisation /
+neutralisation sequence that executes automatically if positive confirmation is not received within the reset window
+(BSL-5: 72 h; BSL-6: 24 h; BSL-7: 60 s heartbeat).
+6.2 Governance and Treaty Balance Layers
+Independent International Biocontainment Oversight Body (IIBOB) — Rotating national experts + permanent
+technical staff with no national affiliation + designated ethicists. Real-time read-only access to all sensors, logs,
+camera feeds, and decision records for BSL-5+. No national veto on anomaly reporting. Funding automatic and not
+subject to annual re-approval.
+Automatic Trigger Protocols (Pre-Ratified) — Confirmed breach or unexplained anomaly at BSL-5+ automatically
+initiates the next tier’s response sequence unless overridden by dual independent human + dual AI confirmation
+within a strict window (BSL-5: 12 h; BSL-6: 2 h; BSL-7: zero override — sequence irreversible once initiated).
+Strengthened Whistleblower Protections + Mandatory Near-Miss Disclosure — Automatic career and legal
+immunity for anyone who flags a containment concern. Identity cryptographically sealed. Penalties for documented
+suppression include mandatory prosecution for criminal negligence. Positive incentives for early flagging. Every
+incident above defined severity must be reported in redacted public form within 14 days; opacity itself becomes an
+automatic investigation trigger.
+Treaty Architecture Prerequisites — IIBOB requires legal instruments that do not currently exist in ratified form
+(new Biological Containment Convention or equivalent, host nation waiver of sovereign veto, mandatory jurisdiction
+for high-risk work, whistleblower treaty, enforcement with graduated sanctions, mandatory assessed contributions).
+Until ratified, governance layers are aspirational. Technical layers function independently and should be implemented
+regardless of treaty status.
+
+
+--- PAGE 6 ---
+Enhanced BSL Containment Architecture v2.0 (Sanitized)
+Public Review Draft
+Page 6
+Lokivelli & Earlywine Foundational Research
+ORCID 0009-0000-4191-6865
+6.3 Operational Resilience Layers
+Zero single-point human decisions (hardware dual-key, spatially separated activations). Assume-failure design
+philosophy: every procedure starts from “what happens when the human fails to spot the problem?” All responses
+pre-wired to sensor thresholds. Human confirmation can delay but not permanently block an automated safety
+sequence. Mandatory rotation and rest (max 4 consecutive hours high-containment work, minimum 12-hour off-duty,
+biometric enforcement). Quarterly independent red-team exercises targeting human shortcut behaviour, social
+engineering, and incentive structures that encourage suppression; findings published and trigger binding procedure
+updates within 90 days.
+6.4 Incentive Redesign Layers
+Institutional scorecard metrics shift from “days since last incident” to: median time from first internal signal to external
+notification; number of near-miss flags raised and resolved (higher is better); red-team performance; fatigue-lockout
+event rate; whistleblower reports received and substantiated (higher is better). Any delay exceeding 48 hours
+between first digitally-logged internal signal and notification of public health authorities triggers an IIBOB-led
+investigation. Teams that flag and escalate risks early receive guaranteed funding prioritisation, co-authorship on
+safety papers, formal career protection letters, and public recognition.
+6.5 Human-Factors Engineering — Mapped to Dumbassery Modes
+ Human Failure Mode
+Engineered Countermeasure
+Fatigue-driven procedural shortcuts
+Continuous fatigue monitoring → automatic lockout, mandatory handoff
+Single-person procedural failure
+Dual-human + dual-AI verification; no single override possible
+Institutional face-saving delay
+IIBOB real-time sensor access; automatic public notification triggers
+Narrative control / PR framing before action
+Pre-authorised sequences that trigger on sensor thresholds
+Tired humans ignoring subtle warnings
+Dual-AI disagreement detection that escalates without human petition
+Incentivised suppression of near misses
+Positive incentives for early flagging + automatic investigation of lag
+Over-confidence / “we can handle it”
+Assume-failure design — all tiers have pre-planned worst-case responses
+Groupthink and hierarchy effects
+Dual-key architecture requires spatially separated independent confirmations
+Complacency after long incident-free periods
+Quarterly red-team exercises targeting complacency; automatic procedure updates
+Shift-change communication gaps
+Immutable digital twin logging provides continuous, queryable record
+7. AUTOMATIC ESCALATION AND DESTRUCTION TRIGGER MATRIX
+(HIGH-LEVEL)
+Triggers and automatic actions escalate in severity with tier. Human override windows shrink and ultimately
+disappear. At BSL-7 any breach signature, communications heartbeat loss, or power failure exceeding backup
+capacity initiates the full autonomous neutralisation sequence with zero override. Lower tiers use progressive
+lockdown, external notification, safe-mode entry, and sterilisation standby with dual-human + dual-AI confirmation
+requirements.
+8. TIER QUALIFICATION MATRIX — WHAT TRIGGERS MANDATORY
+ESCALATION
+The matrix defines mandatory minimum containment tiers based on construct characteristics. Institutional risk
+assessment may escalate a construct beyond the minimum; it may not downgrade.
+Transmission-based: Wild-type high-consequence agents handled under existing protocols remain at BSL-4
+Enhanced. Any construct combining genetic material from two or more such agents, or any respiratory / aerosol
+transmission backbone combined with high-virulence traits, forces BSL-5 Remote minimum. Confirmed airborne
+
+
+--- PAGE 7 ---
+Enhanced BSL Containment Architecture v2.0 (Sanitized)
+Public Review Draft
+Page 7
+Lokivelli & Earlywine Foundational Research
+ORCID 0009-0000-4191-6865
+characteristics with superspreader dynamics, pre-symptomatic shedding, or asymptomatic shedding force higher tiers
+(BSL-6 or BSL-7 depending on combination).
+Environmental stability: Short half-life on common surfaces stays lower tier. Extended half-life (hours to days) on
+stainless steel or porous surfaces, or intentional introduction of high-stability traits, forces progressive escalation up to
+BSL-7 when combined with airborne transmission.
+Lethality / pathogenicity: Progressive escalation with case-fatality rate in relevant models, neurotropism, confirmed
+immune evasion, or direct cell-to-cell spread. Certain combinations (airborne + high lethality + extended stability +
+immune evasion) trigger automatic BSL-7 mandate with no lower tier permissible.
+Research intent: Research specifically aiming to create transmissible, highly lethal, stable hybrids is restricted to
+BSL-7 Deep Orbital only. No terrestrial tier is permissible.
+9. TIER TRANSITION TRANSPORT, DECOMMISSIONING, COST & ROADMAP
+9.1 Transport
+All transport containers are triple-redundant sealed with inter-layer disinfectant reservoirs, rated for maximum credible
+accident scenarios, equipped with continuous environmental monitoring and autonomous sterilisation charge on a
+dead-man timer, and tracked in real time with data streamed to IIBOB and receiving facility. Requirements escalate
+by tier (armed escort → military-grade + no-fly + pre-positioned response teams → dedicated remote launch with
+independent tracking and autonomous payload neutralisation on trajectory deviation). Chain-of-custody gaps at any
+transfer point trigger automatic abort or emergency sterilisation.
+9.2 Decommissioning
+Each tier requires a decommissioning plan filed with IIBOB before construction and updated every 5 years. Lower
+tiers: verified chemical decontamination + air/surface sampling + independent external verification. Mid tiers: planned
+sterilisation, multi-year sealed monitoring, permanent restriction with no human access or repurposing. Highest tier:
+identical to the breach-neutralisation sequence; station must never reach a state where it cannot execute its own
+sequence.
+9.3 Cost-Resilience Trade-off
+Each tier increases capital cost by roughly an order of magnitude (tens of millions → hundreds of millions → low
+billions → tens of billions). The expected cost of a single high-consequence hybrid escape — measured in mortality,
+economic collapse, healthcare system destruction, supply-chain disruption, and societal trust dissolution — dwarfs
+the construction and operation of the full ladder. Balance-layer friction (dual verification, fatigue monitoring, red-team
+exercises) is intentional. A system that operates without friction has not accounted for human dumbassery.
+9.4 Implementation Roadmap (Phased)
+Phase 1 (0–12 months): Mandate BSL-4 Enhanced protocols; establish IIBOB with treaty backing; commission
+red-team exercises; publish Tier Qualification Matrix; begin public consultation on Biological Containment
+Convention.
+Phase 2 (12–36 months): Design and site selection for first BSL-5 remote site; retrofit one existing facility as pilot for
+dual-AI logging and fatigue monitoring; validate robotic telemanipulation; commission BSL-7 mission study; ratify
+convention.
+Phase 3 (3–7 years): Operationalise first BSL-5; move hybrid work above thresholds out of multi-agent urban
+facilities; complete BSL-6 design and begin construction; complete BSL-7 design and contract launch vehicle.
+Phase 4 (7–12 years): Build and launch BSL-7 module; commission BSL-6 bunker; achieve full operational
+capability; conduct first end-to-end drill.
+Phase 5 (Ongoing): Quarterly red-teams; annual treaty review; continuous monitoring; 5-year decommissioning plan
+updates; technology refresh.
+10. LIMITATIONS, FEASIBILITY, AND ALTERNATIVE MITIGATIONS
+
+
+--- PAGE 8 ---
+Enhanced BSL Containment Architecture v2.0 (Sanitized)
+Public Review Draft
+Page 8
+Lokivelli & Earlywine Foundational Research
+ORCID 0009-0000-4191-6865
+BSL-7 Deep Orbital is presented as a thought experiment that defines the absolute outer limit of acceptable risk
+rather than as an immediately constructible system. Light-speed delay, unresolved launch-phase risks, and capital
+cost currently place it beyond practical reach. It functions as a boundary condition: any construct that cannot be safely
+contained under lower tiers must either be prohibited or accepted only under conditions that do not yet exist.
+Governance layers (IIBOB, Biological Containment Convention) presuppose sovereign cooperation and treaty
+ratification that do not currently exist. These elements are aspirational long-term political objectives. Technical
+balance layers (dual verification, immutable logging, fatigue monitoring, dead-man switches, automatic escalation)
+can and should be implemented independently of treaty status.
+Equivalent investment could alternatively fund accelerated rapid-response vaccine platforms, real-time global
+genomic surveillance with mandatory reporting, strategic stockpiles of broad-spectrum countermeasures, and
+hardened domestic BSL-5/BSL-6 facilities. These are complementary parallel lines of defence. The architecture does
+not claim superiority of the orbital tier over such investments; it identifies BSL-7 as the only configuration that
+geometrically guarantees zero Earth return for constructs that exceed all lower-tier thresholds.
+Recommendation on use: This document is best read as a diagnostic and red-team instrument rather than a
+construction specification. The Tier Qualification Matrix, the mapping of human failure modes to engineered
+countermeasures, and the identification of the institutional suppression window as the critical failure point are
+immediately usable by existing facilities and national regulatory bodies. BSL-5 and BSL-6 concepts represent
+technically feasible next steps within a 10–15 year horizon. BSL-7 remains a boundary condition.
+11. CRITICAL FINDINGS (RESTATED)
+ Finding 1: Current high-containment infrastructure and published general methods already enable constructs combining
+airborne transmission, high lethality, and extended environmental stability — exactly those that can exploit mundane
+escape vectors and early-suppression windows.
+Finding 2: The transmission pathways those constructs would exploit are well-characterised and repeatedly documented.
+They are the known failure modes of existing containment.
+Finding 3: The institutional suppression window — the delay between first internal signal and external notification — is the
+critical variable that determines whether a containment failure becomes a wider catastrophe.
+Finding 4: The full escalation through BSL-7 Deep Orbital, combined with the twelve-layer balance system, directly targets
+both the technical hybrid risk and every observed pattern of human failure.
+Finding 5: Robustness is achieved by assuming failure at every level and building automatic, pre-authorised, time-bound
+responses that operate independently of tired, career-conscious, or face-saving decision-makers.
+Finding 6: The governance layers require treaty instruments that do not yet exist. The technical layers function
+independently and should be implemented regardless.
+Finding 7: The question is not whether this system is expensive. It is whether doing nothing beyond current practice while
+hybrid capability accelerates is a gamble anyone should be willing to take on behalf of the entire species.
+Finding 8: The transmission vector analysis is not academic taxonomy. It is the biological substrate on which the
+engineering architecture rests.
+CONTACT
+Robert Michael Earlywine-Lucas (Lokivelli)
+Lokivelli & Earlywine Foundational Research and Design
+ORCID: 0009-0000-4191-6865
+Zenodo: https://doi.org/10.5281/zenodo.20486408
+Correspondence is welcome from biosecurity professionals, policy makers, researchers, and members of the public.
+
+
+--- PAGE 9 ---
+Enhanced BSL Containment Architecture v2.0 (Sanitized)
+Public Review Draft
+Page 9
+Lokivelli & Earlywine Foundational Research
+ORCID 0009-0000-4191-6865
+Please include “BSL Architecture” in the subject line.

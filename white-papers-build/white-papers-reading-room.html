@@ -28,8 +28,8 @@ try{
  const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(text));
  const got=[...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,"0")).join("");
  if(got!==expectedSha256) throw new Error("frozen payload integrity mismatch");
- const graft='<script data-ew-hamburger-graft src="/EARLYWINE-PRESIDENTIAL-BLUEPRINT/assets/js/hamburger-everywhere.js" defer><\\/script>';
- const out=text.includes("data-ew-hamburger-graft")?text:text.replace(/<\\/body>/i,graft+"</body>");
+ const graft='<script data-ew-hamburger-graft src="/EARLYWINE-PRESIDENTIAL-BLUEPRINT/assets/js/hamburger-everywhere.js" defer><\/script>';
+ const out=text.includes("data-ew-hamburger-graft")?text:text.replace(/<\/body>/i,graft+"</body>");
  document.open();document.write(out);document.close();
 }catch(err){
  const boot=document.getElementById("boot");

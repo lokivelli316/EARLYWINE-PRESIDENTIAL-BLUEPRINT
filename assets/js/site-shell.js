@@ -3,6 +3,7 @@
   const qs=(s,r=document)=>r.querySelector(s); const qsa=(s,r=document)=>[...r.querySelectorAll(s)];
   const ROOT='/EARLYWINE-PRESIDENTIAL-BLUEPRINT/';
   const WHITE=ROOT+'white-papers-build/white-papers-reading-room.html';
+  const PERFECT=ROOT+'perfect-storm-build/';
   const RIGHTS=ROOT+'rights-build/know-your-rights.html';
   function stateClass(s){return 'state-'+String(s||'OPEN').toLowerCase().replace(/\s+/g,'-')}
   const legacyRoutes={
@@ -20,6 +21,11 @@
       const a=document.createElement('a');a.href=WHITE;a.textContent='White Papers';
       const explore=qsa('a',primary).find(x=>/explore/i.test(x.textContent||''));
       if(explore&&explore.nextSibling)primary.insertBefore(a,explore.nextSibling);else primary.appendChild(a);
+    }
+    if(primary&&!qs('a[href*="perfect-storm-build/"]',primary)){
+      const a=document.createElement('a');a.href=PERFECT;a.textContent='Perfect Storm';
+      const papers=qsa('a',primary).find(x=>/white\s*papers/i.test(x.textContent||''));
+      if(papers&&papers.nextSibling)primary.insertBefore(a,papers.nextSibling);else primary.appendChild(a);
     }
   }
   function resolveLegacyHash(){

@@ -24,7 +24,7 @@ jobs:
           excluded={Path('index.html')}
           changed=[]
           for p in Path('.').rglob('*.html'):
-              if '.git' in p.parts or p in excluded: continue
+              if '.git' in p.parts or 'assets' in p.parts or p in excluded: continue
               s=p.read_text(encoding='utf-8')
               if marker in s: continue
               if '</body>' not in s.lower(): continue
@@ -40,7 +40,7 @@ jobs:
           from pathlib import Path
           missing=[]
           for p in Path('.').rglob('*.html'):
-              if '.git' in p.parts or p==Path('index.html'): continue
+              if '.git' in p.parts or 'assets' in p.parts or p==Path('index.html'): continue
               s=p.read_text(encoding='utf-8')
               if '</body>' in s.lower() and 'data-ew-hamburger-graft' not in s: missing.append(str(p))
           if missing:

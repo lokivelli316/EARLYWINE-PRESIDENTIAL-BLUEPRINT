@@ -5,6 +5,8 @@ on:
     paths:
       - '.github/workflows/hamburger-everywhere.yml'
       - '**/*.html'
+      - '!assets/**'
+      - '!perfect-storm-build/**'
       - 'assets/js/hamburger-everywhere.js'
       - 'assets/js/data-registry.js'
       - 'assets/js/site-shell.js'
@@ -22,9 +24,13 @@ jobs:
           marker='data-ew-hamburger-graft'
           tag='<script data-ew-hamburger-graft src="/EARLYWINE-PRESIDENTIAL-BLUEPRINT/assets/js/hamburger-everywhere.js" defer></script>'
           excluded={Path('index.html')}
+          # Frozen-media boundary. Canonical Perfect Storm assets and the frozen
+          # successor build are byte-integrity surfaces: never graft into them.
+          protected=('assets','perfect-storm-build')
           changed=[]
           for p in Path('.').rglob('*.html'):
               if '.git' in p.parts or p in excluded: continue
+              if p.parts and p.parts[0] in protected: continue
               s=p.read_text(encoding='utf-8')
               if marker in s: continue
               if '</body>' not in s.lower(): continue
@@ -39,8 +45,10 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           missing=[]
+          protected=('assets','perfect-storm-build')
           for p in Path('.').rglob('*.html'):
               if '.git' in p.parts or p==Path('index.html'): continue
+              if p.parts and p.parts[0] in protected: continue
               s=p.read_text(encoding='utf-8')
               if '</body>' in s.lower() and 'data-ew-hamburger-graft' not in s: missing.append(str(p))
           if missing:
@@ -52,6 +60,6 @@ jobs:
           if git diff --quiet; then echo 'No changes needed'; exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- '*.html'
+          git add -- '*.html' ':(exclude)assets/**' ':(exclude)perfect-storm-build/**'
           git commit -m 'feat: every subpage gets a hamburger [skip ci]'
           git push

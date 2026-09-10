@@ -1,0 +1,271 @@
+--- PAGE 1 ---
+Appendix B: Viral-Vector Tier Selection
+Decision Table
+This appendix is a conceptual governance aid for Section 7. It does not replace nationally
+recognised biosafety standards, institutional biosafety committee review, a qualified
+biosafety officer, or applicable law. The recognised containment requirement for the parent
+agent, vector system, and procedure is always the minimum floor.
+Use rule:
+ determine the provisional tier by the highest triggered row. Two or more
+concurrent escalation factors, or an unresolved critical uncertainty, require independent
+review and normally one additional tier of conservatism. Institutional review may escalate
+the result; it may not downgrade it.
+B.1 Decision sequence
+1
+. 
+Establish the recognised baseline for the parent agent, vector system, procedure, scale,
+and host.
+2
+. 
+Evaluate every factor in Table B-1; do not average risks across rows.
+3
+. 
+Select the highest provisional tier triggered by any row.
+4
+. 
+Add an uncertainty adjustment when key characteristics are unknown, disputed, or
+supported only by weak evidence.
+5
+. 
+Require an independent biosafety and legal review before work begins or changes tier.
+6
+. 
+A Tier 7 boundary result means stop or prohibit the work unless a validated, legally
+authorised facility and governance framework actually exist. If they do not exist, the
+work does not proceed.
+Viral-vector decision aid
+Decision factor
+Lower-concern
+profile
+Escalation logic and provisional result within
+this proposal
+Decision factor
+Lower-concern
+profile
+Escalation logic and provisional result within
+this proposal
+Recognised
+baseline
+Well-characterised
+vector and
+procedure
+governed by an
+existing national
+or institutional
+standard.
+Floor:
+ use the recognised requirement. The
+proposed higher tiers apply only when added
+characteristics below trigger escalation.
+Replication
+status
+Replication-
+defective system;
+rescue pathway
+addressed;
+controls and
+inactivation are
+validated.
+Tier 4 Enhanced:
+ lower-concern profile within
+the report’s scope. 
+Tier 5 Remote:
+ conditional
+replication or plausible helper rescue. 
+Tier 6
+Automated:
+ replication-competent or poorly
+bounded control. 
+Tier 7 boundary:
+ replication
+combined with efficient human spread, severe
+outcome, and no reliable countermeasure.
+Host range and
+tropism
+Narrow, stable
+host range with
+no intended
+increase in human
+or mammalian
+tropism.
+Tier 5:
+ expanded but bounded host range. 
+Tier
+6:
+ broad, uncertain, or newly human-relevant
+tropism. 
+Tier 7 boundary:
+ deliberate
+broadening intended or predicted to support
+efficient human transmission with severe
+disease.
+No credible
+respiratory
+Tier 5:
+ aerosol-generating procedure or
+
+--- PAGE 2 ---
+Transmission
+and shedding
+transmission; no
+meaningful
+shedding
+expected;
+exposure
+opportunities are
+limited and
+controlled.
+Tier 5:
+ aerosol-generating procedure or
+unresolved shedding question. 
+Tier 6:
+ credible
+respiratory spread, pre-symptomatic shedding,
+or asymptomatic shedding. 
+Tier 7 boundary:
+efficient respiratory spread combined with
+severe outcome, persistence, or absent
+countermeasures.
+Payload or
+resulting
+phenotype
+Reporter,
+therapeutic, or
+other payload
+with no expected
+increase in
+virulence, immune
+escape, or
+systemic
+dissemination.
+Tier 5:
+ bounded immune modulation or
+cytotoxic effect. 
+Tier 6:
+ severe virulence,
+neurotropism, immune escape, or systemic
+dissemination. 
+Tier 7 boundary:
+ stacked severe
+traits intended or predicted to create pandemic-
+scale consequences.
+Environmental
+persistence
+Rapidly
+inactivated under
+validated
+conditions; limited
+environmental
+persistence and
+well-defined
+waste controls.
+Tier 5:
+ incomplete inactivation evidence or
+moderate persistence. 
+Tier 6:
+ prolonged
+persistence, prolonged shedding, or unresolved
+waste pathway. 
+Tier 7 boundary:
+ persistence
+combined with efficient respiratory spread and
+severe outcome.
+Countermeasures
+Effective vaccine,
+antiviral, post-
+exposure
+measure, and
+validated
+decontamination
+are available for
+the relevant
+hazard.
+Tier 5:
+ partial or access-limited
+countermeasure. 
+Tier 6:
+ absent, unvalidated, or
+materially uncertain countermeasure. 
+Tier 7
+boundary:
+ no effective countermeasure
+combined with efficient human spread and
+severe disease.
+Procedure, scale,
+and exposure
+opportunity
+Small-scale work
+in closed systems
+with validated
+engineering
+controls and
+limited personnel
+interaction.
+Tier 5:
+ animal work, aerosol-generating
+manipulation, or scale-up that materially
+increases exposure opportunities. 
+Tier 6:
+ high-
+throughput or repeated operations where a
+single containment lapse could seed wider
+exposure. 
+Tier 7 boundary:
+ no feasible
+terrestrial workflow can bound the
+consequence.
+Data quality and
+uncertainty
+Critical
+characteristics are
+independently
+characterised with
+reproducible
+evidence.
+No downgrade for uncertainty.
+ One material
+gap normally escalates review. Conflicting
+evidence or unknown critical traits normally
+require 
+Tier 6 review or a pause
+. When risk
+cannot be bounded and no safe lower-tier path
+exists, classify as 
+Tier 7 boundary / do not
+proceed
+.
+Research
+objective
+Objective does
+not seek increased
+transmissibility,
+severity,
+environmental
+persistence,
+immune escape,
+or broad human
+host range.
+Tier 6 minimum:
+ the stated objective
+materially increases one major hazard
+dimension. 
+Tier 7 boundary / prohibition:
+ the
+objective explicitly seeks a highly transmissible,
+severe, persistent, or countermeasure-resistant
+human pathogen phenotype.
+Decision factor
+Lower-concern
+profile
+Escalation logic and provisional result within
+this proposal
+B.2 Decision record
+
+--- PAGE 3 ---
+Every tier-selection decision should preserve: vector or construct identifier; recognised
+baseline; highest triggered factor; evidence status; uncertainty adjustment; provisional tier;
+independent reviewers; and final disposition.
+Interpretation note:
+ Tier 7 remains a conceptual boundary condition in this draft. A Tier
+7 outcome is therefore primarily a decision not to proceed under existing conditions, not
+permission to improvise an unavailable facility.

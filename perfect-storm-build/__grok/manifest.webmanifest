@@ -1,0 +1,17 @@
+{
+  "name": "Perfect Storm at the Control Plane",
+  "short_name": "Perfect Storm",
+  "id": "/EARLYWINE-PRESIDENTIAL-BLUEPRINT/perfect-storm-build/",
+  "start_url": "/EARLYWINE-PRESIDENTIAL-BLUEPRINT/perfect-storm-build/",
+  "scope": "/EARLYWINE-PRESIDENTIAL-BLUEPRINT/perfect-storm-build/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/EARLYWINE-PRESIDENTIAL-BLUEPRINT/perfect-storm-build/__grok/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

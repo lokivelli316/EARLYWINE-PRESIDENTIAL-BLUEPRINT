@@ -4,8 +4,7 @@ on:
     branches:
       - integration/perfect-storm-release-2026-09-10
     paths:
-      - '.integration/perfect-storm-static/**'
-      - '.github/workflows/perfect-storm-publish.yml'
+      - '.integration/perfect-storm-static/READY'
 permissions:
   contents: write
 jobs:

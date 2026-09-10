@@ -1,0 +1,98 @@
+name: Perfect Storm Frozen Publisher
+on:
+  push:
+    branches:
+      - integration/perfect-storm-release-2026-09-10
+    paths:
+      - '.integration/perfect-storm-static/**'
+      - '.github/workflows/perfect-storm-publish.yml'
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruct checksum-frozen static build
+        run: |
+          set -euo pipefail
+          cat .integration/perfect-storm-static/chunk-* > /tmp/perfect-storm-static.tar.xz
+          echo 'ef7c2f4f797837c55f63c12260e9062978408f61672ff1e17a6cd737e8d8f799  /tmp/perfect-storm-static.tar.xz' | sha256sum -c -
+          rm -rf perfect-storm-build
+          mkdir -p perfect-storm-build
+          tar -xJf /tmp/perfect-storm-static.tar.xz -C perfect-storm-build
+          test "$(find perfect-storm-build -name index.html | wc -l)" -eq 20
+          test -f perfect-storm-build/STATIC_SHA256SUMS.txt
+          (cd perfect-storm-build && sha256sum -c STATIC_SHA256SUMS.txt)
+      - name: Preserve canonical frozen media and harden shared navigation
+        run: |
+          set -euo pipefail
+          git checkout 53ed34401d8823549447e0c31a655a2dc6965d46 -- assets/perfect-storm/sim/RF_DISABLED_10_SECOND_TOWN_CONTAINMENT_SIM-1.html
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('assets/js/data-registry.js')
+          s=p.read_text()
+          route="    {id:'perfect-storm',label:'Perfect Storm',href:'perfect-storm-build/',state:'LIVE',kind:'evidence',desc:'Frozen successor destination for the Perfect Storm at the Control Plane framework, source companions, lineage, and bounded simulation.'},\n"
+          anchor="    {id:'research',label:'Gate Closing / Research',href:'gate-closing-build/gate-closing-preview.html',state:'LIVE',kind:'evidence',desc:'Independent audit, scenarios, counter-evidence, frozen predictions, and receipts.'},\n"
+          if "id:'perfect-storm'" not in s:
+              if anchor not in s: raise SystemExit('data-registry anchor missing')
+              s=s.replace(anchor,anchor+route)
+          p.write_text(s)
+
+          p=Path('assets/js/site-shell.js')
+          s=p.read_text()
+          if "const PERFECT=ROOT+'perfect-storm-build/';" not in s:
+              anchor="  const WHITE=ROOT+'white-papers-build/white-papers-reading-room.html';\n"
+              if anchor not in s: raise SystemExit('site-shell constant anchor missing')
+              s=s.replace(anchor,anchor+"  const PERFECT=ROOT+'perfect-storm-build/';\n")
+          if "a[href*=\"perfect-storm-build/\"]" not in s:
+              anchor="    if(primary&&!qs('a[href*=\"white-papers-build/\"]',primary)){\n      const a=document.createElement('a');a.href=WHITE;a.textContent='White Papers';\n      const explore=qsa('a',primary).find(x=>/explore/i.test(x.textContent||''));\n      if(explore&&explore.nextSibling)primary.insertBefore(a,explore.nextSibling);else primary.appendChild(a);\n    }\n"
+              block="    if(primary&&!qs('a[href*=\"perfect-storm-build/\"]',primary)){\n      const a=document.createElement('a');a.href=PERFECT;a.textContent='Perfect Storm';\n      const research=qsa('a',primary).find(x=>/gate closing|research/i.test(x.textContent||''));\n      if(research&&research.nextSibling)primary.insertBefore(a,research.nextSibling);else primary.appendChild(a);\n    }\n"
+              if anchor not in s: raise SystemExit('site-shell nav anchor missing')
+              s=s.replace(anchor,anchor+block)
+          p.write_text(s)
+
+          p=Path('assets/js/hamburger-everywhere.js')
+          s=p.read_text()
+          if "['Perfect Storm','perfect-storm-build/','LIVE']" not in s:
+              anchor="['Gate Closing / Research','gate-closing-build/gate-closing-preview.html','LIVE'],"
+              if anchor not in s: raise SystemExit('hamburger route anchor missing')
+              s=s.replace(anchor,anchor+"['Perfect Storm','perfect-storm-build/','LIVE'],")
+          p.write_text(s)
+
+          p=Path('.github/workflows/hamburger-everywhere.yml')
+          s=p.read_text()
+          s=s.replace("if '.git' in p.parts or p in excluded: continue","if '.git' in p.parts or 'assets' in p.parts or p in excluded: continue")
+          s=s.replace("if '.git' in p.parts or p==Path('index.html'): continue","if '.git' in p.parts or 'assets' in p.parts or p==Path('index.html'): continue")
+          p.write_text(s)
+          PY
+      - name: Release gates
+        run: |
+          set -euo pipefail
+          grep -q "id:'perfect-storm'" assets/js/data-registry.js
+          grep -q "perfect-storm-build/" assets/js/site-shell.js
+          grep -q "\['Perfect Storm','perfect-storm-build/','LIVE'\]" assets/js/hamburger-everywhere.js
+          ! grep -q 'data-ew-hamburger-graft' assets/perfect-storm/sim/RF_DISABLED_10_SECOND_TOWN_CONTAINMENT_SIM-1.html
+          grep -q 'data-ew-hamburger-graft' perfect-storm-build/index.html
+          grep -q '/EARLYWINE-PRESIDENTIAL-BLUEPRINT/assets/perfect-storm/' perfect-storm-build/index.html
+          grep -q 'Perfect Storm at the Control Plane' perfect-storm-build/index.html
+          grep -q 'Financial Feedback Exploitation' perfect-storm-build/index.html
+          grep -q 'Critical Infrastructure Automation Instability' perfect-storm-build/index.html
+          grep -q 'Michael Davis' perfect-storm-build/reading-room/bear-train-companion/index.html
+          grep -q 'synthetic' perfect-storm-build/sim/index.html
+          grep -q 'boundary-condition proposal' perfect-storm-build/index.html
+          if grep -R -E '\b(AR|AP|ASH)\b' perfect-storm-build --include='*.html' --include='*.js' | grep -v -E 'EARLYWINE|SHARED|PART|START|SPARK|CHART|PAR'; then
+            echo 'Unexpected Gate Closing state token detected'; exit 1
+          fi
+      - name: Commit frozen destination
+        run: |
+          set -euo pipefail
+          rm -rf .integration/perfect-storm-static
+          rm -f .github/workflows/perfect-storm-publish.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Perfect Storm: publish frozen successor destination [skip ci]'
+          git push

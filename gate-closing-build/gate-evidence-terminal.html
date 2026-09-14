@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GATE://EVIDENCE TERMINAL — Prototype</title>
+<meta name="description" content="Self-contained evidence terminal with multi-source data ingestion. Prototype.">
+<link rel="stylesheet" href="gate-evidence-terminal.css">
+
+</head>
+<body>
+<div class="top">
+  <div class="cmd">
+    <div class="brand" id="brand">GATE://EVIDENCE TERMINAL<span class="blink"></span></div>
+    <button class="navbtn active" data-view="ALL">ALL</button>
+    <button class="navbtn" data-view="CLAIMS">CLAIMS</button>
+    <button class="navbtn" data-view="ECONOMICS">ECONOMICS</button>
+    <button class="navbtn" data-view="RECEIPTS">RECEIPTS</button>
+    <button class="modebtn" id="editBtn" title="Toggle edit mode (E)">EDIT</button>
+    <div class="search">
+      <label class="sr" for="search">Search evidence</label>
+      <input id="search" type="search" placeholder="Search claim, mechanism, market, receipt…  [ / ]">
+    </div>
+    <span class="source-pill" id="sourcePill" title="Sources loaded">SOURCES —</span>
+  </div>
+  <div class="ticker"><div class="ticker-track" id="ticker"></div></div>
+  <nav class="page-rail" aria-label="Gate Closing pages">
+    <a href="gate-closing-preview.html">Gate Main</a>
+    <a class="active" href="gate-evidence-terminal.html">Stockboard</a>
+    <a href="receipts/2026-08-30_failure-resurrection-protocol.html">Frozen Protocol</a>
+    <a href="sample-daily-update.json">Evidence JSON</a>
+  </nav>
+</div>
+<main class="shell">
+  <section class="statusstrip" id="statusstrip"></section>
+  <section class="workspace" id="workspace">
+    <article class="widget w-heat" data-id="matrix">
+      <div class="widget-head"><h2>EVIDENCE / MECHANISM MATRIX</h2><span class="meta">CLICK CELL → INSPECT</span></div>
+      <div class="widget-body"><div class="heatmap" id="heatmap"></div></div>
+    </article>
+    <article class="widget w-survival" data-id="survival">
+      <div class="widget-head"><h2>CLAIM SURVIVAL PROFILE</h2><span class="meta">FROZEN LEDGER</span></div>
+      <div class="widget-body"><div class="survival" id="survival"></div></div>
+    </article>
+    <article class="widget w-tape" data-id="tape">
+      <div class="widget-head"><h2>RECEIPT TAPE</h2><span class="meta">RAW → CLAIM → VERDICT</span></div>
+      <div class="widget-body"><div class="tape" id="tapelist"></div></div>
+    </article>
+    <article class="widget w-book" data-id="book">
+      <div class="widget-head"><h2>A/R · A/P BOOK</h2><span class="meta">PROVISIONAL OPENING VS DURABLE OPENING</span></div>
+      <div class="widget-body">
+        <div class="book">
+          <div class="bookcol ar"><h3>ACCOUNTS RECEIVABLE</h3><div id="arbook"></div></div>
+          <div class="bookcol ap"><h3>ACCOUNTS PAYABLE</h3><div id="apbook"></div></div>
+        </div>
+      </div>
+    </article>
+    <article class="widget w-ledger" data-id="ledger">
+      <div class="widget-head"><h2>EVIDENCE LEDGER</h2><span class="meta" id="ledgerMeta">0 RECORDS</span></div>
+      <div class="widget-body">
+        <div class="ledger-tools" id="marketTools"></div>
+        <div style="overflow:auto;height:calc(100% - 38px)">
+          <table>
+            <thead><tr>
+              <th>ID</th><th>MARKET</th><th>MECHANISM</th><th>CLAIM / RECORD</th>
+              <th>STATE</th><th>EVIDENCE</th><th>DATE</th><th>MAGNITUDE</th><th>DIRECTION</th><th>SOURCE</th>
+            </tr></thead>
+            <tbody id="ledgerBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+    <article class="widget w-protocol" data-id="protocol">
+      <div class="widget-head"><h2>METHODOLOGY / FAILURE CONTRACT</h2><span class="meta">NO PROPHECY THEATER</span></div>
+      <div class="widget-body protocol">
+        <b>BITE → RELEASE → BITE</b> only scores supportive when the second-stage restriction actually arrives. A release alone remains <b>ACCOUNTS RECEIVABLE</b>. Durable opening becomes <b>ACCOUNTS PAYABLE</b>. Universal technical closure remains <b>ASH</b>. Same mechanism at another company is replication/herding evidence, not automatically a second receipt. Track FIRST MOVER / INTERNAL PROPAGATION / HERD CANDIDATE / REPLICATION / NORMALIZED / INDEPENDENT / UNKNOWN separately from Gate state. Direct coordination requires documentary evidence; convergent behavior alone does not prove a common command structure.
+      </div>
+    </article>
+  </section>
+  <div class="footer">
+    <span>STANDALONE PROTOTYPE · MULTI-SOURCE · UNFINISHED</span>
+    <span>
+      <span class="kbd">/</span> search ·
+      <span class="kbd">E</span> edit ·
+      <span class="kbd">Esc</span> close inspector ·
+      layout saved locally
+    </span>
+  </div>
+</main>
+<aside class="inspector" id="inspector" aria-hidden="true">
+  <div class="inspector-head">
+    <strong>GATE://INSPECTOR</strong>
+    <span id="inspectId"></span>
+    <button id="inspectClose">ESC</button>
+  </div>
+  <div class="inspector-body" id="inspectBody"></div>
+</aside>
+<script src="gate-evidence-terminal-core.js"></script>
+<script src="gate-evidence-terminal-ui.js"></script>
+
+</body>
+</html>

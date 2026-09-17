@@ -218,7 +218,7 @@ const boards={
 const list=document.getElementById('threadList');
 const status=document.getElementById('feedStatus');
 function setStatus(text,cls){status.textContent=text;status.className='status '+(cls||'')}
-function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({ '&':'&','<':'<','>':'>','"':'"' }[c]))}
+function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 function renderThreads(items,fallback){
   if(!items.length){
     list.innerHTML='<div class="empty">'+esc(fallback)+'</div>';
@@ -258,7 +258,7 @@ document.getElementById('composer').addEventListener('submit',e=>{
   e.preventDefault();
   const title=document.getElementById('title').value.trim()||'Pain point';
   const body=document.getElementById('body').value.trim();
-  const url=FORM+'&title='+encodeURIComponent(title)+(body?'&body='+encodeURIComponent(body):'');
+  const url=FORM+'&title='+encodeURIComponent(title)+(body?'&what='+encodeURIComponent(body):'');
   location.href=url;
 });
 loadBoard('issues');

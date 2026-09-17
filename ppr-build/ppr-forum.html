@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#05070a">
+<meta name="description" content="Pain Point Resolver forum. GitHub is the source of truth. Report, confirm, hunt, and resolve developer pain without a Facebook group.">
+<title>Pain Point Resolver Forum | Earlywine Blueprint</title>
+<style>
+:root{
+  --bg:#05070a;--panel:#0d1319;--panel2:#111820;--text:#f2f5f7;--soft:#c3cdd3;--muted:#87939c;
+  --gold:#f3ad45;--red:#d84e47;--blue:#4b9eda;--green:#49b879;--line:rgba(255,255,255,.14);
+  --max:1440px;--shadow:0 22px 70px rgba(0,0,0,.42)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;background:
+  radial-gradient(circle at 12% -8%,rgba(73,184,121,.08),transparent 26%),
+  radial-gradient(circle at 88% -10%,rgba(243,173,69,.10),transparent 28%),
+  var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+a{color:inherit}
+.wrap{width:min(calc(100% - 34px),var(--max));margin:auto}
+.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.skip{position:absolute;left:-999px;top:8px;background:var(--gold);color:#171008;padding:8px 12px;font:900 12px ui-monospace,monospace}
+.skip:focus{left:8px;z-index:80}
+.stage{background:#111821;border-bottom:1px solid var(--line);font:800 11px ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase;color:#d7e0e5}
+.stage .wrap{min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.stage b{color:var(--gold)}
+header{position:sticky;top:0;z-index:40;background:rgba(5,7,10,.93);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
+header .wrap{min-height:62px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{text-decoration:none;font-weight:950;letter-spacing:.055em}
+.nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.nav a{min-height:39px;display:inline-flex;align-items:center;padding:0 12px;border:1px solid var(--line);text-decoration:none;font:850 10px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.06em}
+.nav a:hover,.nav a:focus{border-color:var(--gold);color:var(--gold);outline:none}
+.hero{padding:54px 0 28px;border-bottom:1px solid var(--line)}
+.shop{padding:0 0 28px;border-bottom:1px solid var(--line)}
+.shop-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:14px;align-items:stretch}
+.shop video{width:100%;max-height:420px;object-fit:cover;border:1px solid var(--line);background:#000;display:block}
+.shop figcaption{color:var(--muted);font:800 11px ui-monospace,monospace;margin-top:8px}
+.shop blockquote{margin:0;padding:16px;border:1px solid var(--line);background:var(--panel);font-size:1.05rem}
+.shop blockquote p{margin:0 0 10px}
+@media(max-width:900px){.shop-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.shop video{max-height:220px}}
+.eyebrow{color:var(--gold);font:900 11px ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase}
+h1,h2,h3{font-family:Georgia,serif}
+h1{font-size:clamp(42px,7vw,92px);line-height:.86;letter-spacing:-.055em;margin:.16em 0 .2em;max-width:1100px}
+.lede{font-size:clamp(16px,1.7vw,22px);color:var(--soft);max-width:860px}
+.meta{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:24px}
+.meta div{border:1px solid var(--line);background:var(--panel);padding:11px}
+.meta span{display:block;color:var(--muted);font:800 8px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em}
+.meta strong{display:block;margin-top:3px;font-size:.92rem}
+.shell{padding:22px 0 64px;display:grid;grid-template-columns:220px minmax(0,1fr) 300px;gap:10px}
+.rail,.board,.side{border:1px solid var(--line);background:linear-gradient(160deg,var(--panel2),var(--panel));box-shadow:var(--shadow)}
+.rail{padding:14px}
+.rail h2,.side h2{font-size:22px;margin:6px 0 12px}
+.board-btn{width:100%;text-align:left;min-height:44px;margin:0 0 7px;padding:9px 10px;border:1px solid var(--line);background:#0a0e12;color:var(--text);cursor:pointer;font:850 11px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.05em}
+.board-btn[aria-pressed="true"]{border-color:var(--gold);background:rgba(243,173,69,.12);color:var(--gold)}
+.board-btn small{display:block;margin-top:3px;color:var(--muted);font:700 10px ui-monospace,monospace;letter-spacing:0;text-transform:none}
+.board{min-height:70vh;display:flex;flex-direction:column}
+.board-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;padding:16px 16px 12px;border-bottom:1px solid var(--line)}
+.board-head h2{font-size:clamp(28px,4vw,44px);line-height:.95;margin:6px 0 0}
+.status{font:800 10px ui-monospace,monospace;color:var(--muted);text-transform:uppercase}
+.status.live{color:var(--green)}
+.status.warn{color:var(--gold)}
+.status.bad{color:var(--red)}
+.thread-list{flex:1;overflow:auto;padding:8px}
+.thread{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:12px;padding:12px;border-bottom:1px solid rgba(255,255,255,.07);text-decoration:none}
+.thread:hover,.thread:focus{background:#ffffff08;outline:none}
+.thread b{color:var(--gold);font:900 12px ui-monospace,monospace}
+.thread h3{font-size:20px;line-height:1.15;margin:0 0 6px}
+.thread p{margin:0;color:var(--muted);font-size:.88rem}
+.chip{display:inline-flex;margin:2px 4px 0 0;padding:4px 7px;border:1px solid var(--line);font:800 8px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.06em;color:#cbd5da}
+.thread aside{color:var(--muted);font:800 10px ui-monospace,monospace;text-align:right}
+.empty{padding:28px 16px;color:var(--soft)}
+.composer{padding:14px 16px 18px;border-top:1px solid var(--line);background:#090d11}
+.composer label{display:block;margin:8px 0 4px;color:var(--muted);font:800 9px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em}
+.composer input,.composer textarea,.composer select{width:100%;border:1px solid var(--line);background:#070a0d;color:var(--text);padding:10px;font:16px/1.4 Inter,system-ui,sans-serif}
+.composer textarea{min-height:96px;resize:vertical}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{min-height:44px;display:inline-flex;align-items:center;padding:0 14px;border:1px solid var(--gold);background:transparent;color:var(--gold);text-decoration:none;font:900 11px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.06em;cursor:pointer}
+.btn.primary{background:var(--gold);color:#171008}
+.side{padding:16px}
+.side p,.side li{color:var(--soft);font-size:.92rem}
+.side ol{padding-left:18px}
+.rule{margin:12px 0;padding:10px;border-left:4px solid var(--gold);background:rgba(243,173,69,.07)}
+footer{border-top:1px solid var(--line);padding:22px 0 36px;color:var(--muted)}
+@media(max-width:1080px){.shell{grid-template-columns:1fr}.rail,.side{order:0}.meta{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.wrap{width:min(calc(100% - 20px),var(--max))}.nav{display:none}.meta{grid-template-columns:1fr}.thread{grid-template-columns:1fr}.thread aside{text-align:left}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#board">Skip to forum board</a>
+<div class="stage"><div class="wrap"><span><b>PPR FORUM TAB</b> · additive Pages route · Facebook group parked</span><span>GITHUB IS SOURCE OF TRUTH</span></div></div>
+<header>
+  <div class="wrap">
+    <a class="brand" href="../index.html">EARLYWINE BLUEPRINT / PPR</a>
+    <nav class="nav" aria-label="Local">
+      <a href="../index.html">Home</a>
+      <a href="../blueprint-build/blueprint-preview.html">Blueprint</a>
+      <a href="https://github.com/lokivelli316/Pain-point-resolver-">Repo</a>
+      <a href="https://github.com/lokivelli316/Pain-point-resolver-/discussions">Discussions</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Pain Point Resolver · community workshop</div>
+    <h1>No coder<br>left behind.</h1>
+    <p class="lede">This tab is the porch. GitHub is the workshop. Report pain, confirm it, hunt it, and prove a fix with a test. Facebook groups are not required.</p>
+    <div class="meta">
+      <div><span>Built</span><strong>doctor hunt calm docs a11y register</strong></div>
+      <div><span>Planned</span><strong>install-api · up · deps · trace</strong></div>
+      <div><span>Map</span><strong>62 points · 32 partial · 0 resolved</strong></div>
+      <div><span>Door</span><strong>Issue #5 · no Python</strong></div>
+      <div><span>License</span><strong>Apache-2.0</strong></div>
+    </div>
+  </div>
+</section>
+<section class="shop" aria-label="Shop call">
+  <div class="wrap shop-grid">
+    <figure>
+      <video id="shopCall" controls playsinline preload="metadata" controlslist="nodownload">
+        <source src="media/ppr-shop-call.mp4" type="video/mp4">
+      </video>
+      <figcaption>Click to play at 1x. No autoplay.</figcaption>
+    </figure>
+    <blockquote>
+      <p>No pain is too small. No question is too basic. Nobody gets left behind.</p>
+      <p>If it hurt you, it counts. Report it.</p>
+      <p>The forum is the porch. GitHub is the workshop.</p>
+    </blockquote>
+  </div>
+</section>
+<section class="wrap shell">
+  <aside class="rail">
+    <div class="eyebrow">Boards</div>
+    <h2>Pick a load.</h2>
+    <button class="board-btn" data-board="issues" aria-pressed="true" type="button">Pain Points<small>Live issues from the repo</small></button>
+    <button class="board-btn" data-board="door" aria-pressed="false" type="button">Issue #5<small>Share cleaned logs</small></button>
+    <button class="board-btn" data-board="hunt" aria-pressed="false" type="button">Hunt Party<small>Open discussions</small></button>
+    <button class="board-btn" data-board="qa" aria-pressed="false" type="button">Q&A<small>No question too small</small></button>
+    <button class="board-btn" data-board="a11y" aria-pressed="false" type="button">Accessibility<small>Calm output, no flash</small></button>
+  </aside>
+  <section class="board" id="board">
+    <div class="board-head">
+      <div>
+        <div class="eyebrow" id="boardEyebrow">Live feed</div>
+        <h2 id="boardTitle">Pain Points</h2>
+      </div>
+      <div class="status" id="feedStatus">idle</div>
+    </div>
+    <div class="thread-list" id="threadList" aria-live="polite"></div>
+    <form class="composer" id="composer">
+      <div class="eyebrow">Open a thread on GitHub</div>
+      <label for="title">Title</label>
+      <input id="title" name="title" maxlength="120" placeholder="The install fails with no explanation">
+      <label for="body">What hurt</label>
+      <textarea id="body" name="body" placeholder="Platform, what you tried, cleaned log. Strip tokens and personal paths."></textarea>
+      <div class="actions">
+        <button class="btn primary" type="submit">Open GitHub issue form</button>
+        <a class="btn" href="https://github.com/lokivelli316/Pain-point-resolver-/issues/new?template=pain_point.yml">Official report form</a>
+        <a class="btn" href="https://github.com/lokivelli316/Pain-point-resolver-/issues/5">Issue #5</a>
+      </div>
+    </form>
+  </section>
+  <aside class="side">
+    <div class="eyebrow">How this room works</div>
+    <h2>Report → resolve.</h2>
+    <ol>
+      <li>Report it.</li>
+      <li>Two people confirm with their setup.</li>
+      <li>Anyone hunts.</li>
+      <li>A PR with a test is proposed.</li>
+      <li>Resolved only when a test proves it.</li>
+    </ol>
+    <div class="rule">This page cannot write to GitHub by itself. That is intentional. No hidden page token. Posting opens the real issue or discussion so the record stays public and reviewable.</div>
+    <p>Rules that travel with every board:</p>
+    <ul>
+      <li>If it hurt, it counts.</li>
+      <li>Strip tokens and personal paths.</li>
+      <li>Disclose AI-assisted content.</li>
+      <li>No flashing media. No emoji walls.</li>
+    </ul>
+    <p><a href="https://github.com/lokivelli316/Pain-point-resolver-/blob/main/docs/community/PAIN_POINT_LIFECYCLE.md">Lifecycle</a> · <a href="https://github.com/lokivelli316/Pain-point-resolver-/blob/main/CODE_OF_CONDUCT.md">Conduct</a></p>
+  </aside>
+</section>
+</main>
+<footer><div class="wrap">PPR forum tab · hosted on EARLYWINE-PRESIDENTIAL-BLUEPRINT only · other Pages sites untouched.</div></footer>
+<script src="../assets/js/hamburger-everywhere.js"></script>
+<script>
+(function(){
+  const v=document.getElementById('shopCall');
+  if(!v)return;
+  const lock=()=>{v.playbackRate=1;v.defaultPlaybackRate=1};
+  v.addEventListener('play',lock);
+  v.addEventListener('ratechange',()=>{if(v.playbackRate!==1)v.playbackRate=1});
+  v.addEventListener('error',()=>{
+    const cap=v.parentElement&&v.parentElement.querySelector('figcaption');
+    if(cap)cap.textContent='ASSET WAITING: drop ppr-shop-call.mp4 into ppr-build/media/ then refresh.';
+  });
+})();
+</script>
+<script>
+const REPO='lokivelli316/Pain-point-resolver-';
+const API='https://api.github.com/repos/'+REPO;
+const FORM='https://github.com/'+REPO+'/issues/new?template=pain_point.yml';
+const ISSUE5='https://github.com/'+REPO+'/issues/5';
+const DISCUSS='https://github.com/'+REPO+'/discussions';
+const boards={
+  issues:{title:'Pain Points',eyebrow:'Live issues',url:API+'/issues?state=open&per_page=20',empty:'No open issues visible yet. Rate limit or empty tracker.',fallback:FORM},
+  door:{title:'Issue #5',eyebrow:'No Python needed',url:API+'/issues/5',empty:'Could not load issue #5.',fallback:ISSUE5,single:true},
+  hunt:{title:'Hunt Party',eyebrow:'Discussions porch',url:null,empty:'Discussions do not expose a public unauthenticated list here. Open the hunt room on GitHub.',fallback:DISCUSS},
+  qa:{title:'Q&A',eyebrow:'No question too small',url:null,empty:'Ask on GitHub Discussions so the answer stays next to the code.',fallback:DISCUSS+'/new?category=q-a'},
+  a11y:{title:'Accessibility',eyebrow:'Calm tooling',url:API+'/issues?state=open&labels=accessibility&per_page=20',empty:'No open accessibility-labeled issues yet.',fallback:FORM}
+};
+const list=document.getElementById('threadList');
+const status=document.getElementById('feedStatus');
+function setStatus(text,cls){status.textContent=text;status.className='status '+(cls||'')}
+function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({ '&':'&','<':'<','>':'>','"':'"' }[c]))}
+function renderThreads(items,fallback){
+  if(!items.length){
+    list.innerHTML='<div class="empty">'+esc(fallback)+'</div>';
+    return;
+  }
+  list.innerHTML=items.map(it=>{
+    const labels=(it.labels||[]).map(l=>'<span class="chip">'+esc(l.name)+'</span>').join('');
+    const body=(it.body||'').replace(/\s+/g,' ').slice(0,180);
+    return '<a class="thread" href="'+esc(it.html_url)+'"><b>#'+(it.number||'')+'</b><div><h3>'+esc(it.title)+'</h3><p>'+esc(body)+'</p>'+labels+'</div><aside>'+esc((it.state||'open'))+'<br>'+esc((it.comments||0)+' comments')+'</aside></a>';
+  }).join('');
+}
+async function loadBoard(key){
+  const board=boards[key];
+  document.getElementById('boardTitle').textContent=board.title;
+  document.getElementById('boardEyebrow').textContent=board.eyebrow;
+  document.querySelectorAll('.board-btn').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.board===key)));
+  if(!board.url){
+    setStatus('github porch', 'warn');
+    list.innerHTML='<div class="empty">'+esc(board.empty)+' <a class="btn" style="margin-top:12px" href="'+board.fallback+'">Open on GitHub</a></div>';
+    return;
+  }
+  setStatus('loading');
+  try{
+    const res=await fetch(board.url,{headers:{Accept:'application/vnd.github+json'}});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data=await res.json();
+    const items=board.single?[data]:(Array.isArray(data)?data.filter(x=>!x.pull_request):[]);
+    setStatus(items.length+' live', 'live');
+    renderThreads(items, board.empty);
+  }catch(err){
+    setStatus('feed blocked', 'bad');
+    list.innerHTML='<div class="empty">GitHub feed did not load ('+esc(err.message)+'). Use the official form instead. <a class="btn" style="margin-top:12px" href="'+board.fallback+'">Open on GitHub</a></div>';
+  }
+}
+document.querySelectorAll('.board-btn').forEach(btn=>btn.addEventListener('click',()=>loadBoard(btn.dataset.board)));
+document.getElementById('composer').addEventListener('submit',e=>{
+  e.preventDefault();
+  const title=document.getElementById('title').value.trim()||'Pain point';
+  const body=document.getElementById('body').value.trim();
+  const url=FORM+'&title='+encodeURIComponent(title)+(body?'&body='+encodeURIComponent(body):'');
+  location.href=url;
+});
+loadBoard('issues');
+</script>
+</body>
+</html>

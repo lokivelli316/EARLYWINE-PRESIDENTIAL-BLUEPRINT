@@ -4,6 +4,7 @@
     {id:'blueprint',label:'Blueprint',href:'blueprint-build/blueprint-preview.html',state:'LIVE',kind:'architecture',desc:'Ten pillars as a connected systems architecture.'},
     {id:'explore',label:'Explorers',href:'explorers-build/explorers-preview.html',state:'LIVE',kind:'interactive',desc:'AEGIS, Citizen Road Builder, Pillar, and Weld explorers. White Papers now stand on their own public route.'},
     {id:'papers',label:'White Papers',href:'white-papers-build/white-papers-reading-room.html',state:'LIVE',kind:'publication',desc:'Standalone White Papers Reading Room with eleven-paper lineage, explicit publication gates, and per-paper reading lights.'},
+    {id:'ppr',label:'Pain Point Resolver',href:'ppr-build/ppr-forum.html',state:'LIVE',kind:'community',desc:'PPR workshop tab. GitHub is the source of truth. Report, confirm, hunt, and resolve developer pain. Facebook group parked.'},
     {id:'research',label:'Gate Closing / Research',href:'gate-closing-build/gate-closing-preview.html',state:'LIVE',kind:'evidence',desc:'Independent audit, scenarios, counter-evidence, frozen predictions, and receipts.'},
     {id:'prior',label:'Prior Site Builds',href:'prior-sites/index.html',state:'PRESERVED',kind:'archive',desc:'Preserved earlier site/page variants kept live for side-by-side comparison and exact copy/paste harvesting.'},
     {id:'labs',label:'Labs / Physics',href:null,state:'EXPERIMENTAL',kind:'lab',desc:'Interactive physics tools and staged experimental systems; route remains visible until a public surface clears integration.'},

@@ -1,0 +1,8 @@
+{
+  "service": "vantasm",
+  "base_url": "https://cooperation-fabulous-conflict-composition.trycloudflare.com",
+  "health_path": "/healthz",
+  "mcp_path": "/mcp",
+  "updated_at": "2026-10-26T04:53:37Z",
+  "note": "Public routing metadata only. No credentials or seat tokens."
+}

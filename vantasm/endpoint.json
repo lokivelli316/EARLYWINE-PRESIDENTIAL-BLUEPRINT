@@ -1,8 +1,9 @@
 {
   "service": "vantasm",
   "base_url": "https://cooperation-fabulous-conflict-composition.trycloudflare.com",
+  "bridge_url": "https://vantasm-bridge.vercel.app",
   "health_path": "/healthz",
   "mcp_path": "/mcp",
-  "updated_at": "2026-10-26T04:53:37Z",
+  "updated_at": "2026-10-26T05:18:06.053836+00:00",
   "note": "Public routing metadata only. No credentials or seat tokens."
 }

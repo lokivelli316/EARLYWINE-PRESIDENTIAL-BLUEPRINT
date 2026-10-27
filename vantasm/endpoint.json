@@ -1,9 +1,9 @@
 {
   "service": "vantasm",
-  "base_url": "https://cooperation-fabulous-conflict-composition.trycloudflare.com",
+  "base_url": "https://submit-sisters-malpractice-either.trycloudflare.com",
   "bridge_url": "https://vantasm-bridge.vercel.app",
   "health_path": "/healthz",
   "mcp_path": "/mcp",
-  "updated_at": "2026-10-26T05:18:56.061218+00:00",
+  "updated_at": "2026-10-27T21:30:30.330618+00:00",
   "note": "Public routing metadata only. No credentials or seat tokens."
 }

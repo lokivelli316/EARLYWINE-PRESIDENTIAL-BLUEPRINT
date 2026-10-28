@@ -1,9 +1,9 @@
 {
   "service": "vantasm",
-  "base_url": "https://purchasing-informational-timeline-justice.trycloudflare.com",
+  "base_url": "https://visitors-wilderness-enhancements-collaboration.trycloudflare.com",
   "bridge_url": "https://vantasm-bridge.vercel.app",
   "health_path": "/healthz",
   "mcp_path": "/mcp",
-  "updated_at": "2026-10-28T00:50:47.577743+00:00",
+  "updated_at": "2026-10-28T01:11:35.533343+00:00",
   "note": "Public routing metadata only. No credentials or seat tokens."
 }

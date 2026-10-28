@@ -4,6 +4,6 @@
   "bridge_url": "https://vantasm-bridge.vercel.app",
   "health_path": "/healthz",
   "mcp_path": "/mcp",
-  "updated_at": "2026-10-28T00:42:58.601357+00:00",
+  "updated_at": "2026-10-28T00:45:16.089146+00:00",
   "note": "Public routing metadata only. No credentials or seat tokens."
 }

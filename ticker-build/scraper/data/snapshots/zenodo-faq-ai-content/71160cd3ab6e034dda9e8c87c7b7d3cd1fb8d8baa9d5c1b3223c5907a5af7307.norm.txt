@@ -1,0 +1,125 @@
+TITLE: Zenodo FAQ - What content is not suitable for Zenodo?
+Zenodo FAQ - What content is not suitable for Zenodo?
+Home
+About
+Blog
+Help
+Projects
+Developers
+Zenodo FAQ
+
+Content
+What content is not suitable for Zenodo?
+What content is not suitable for Zenodo?
+Zenodo aims to be as open as possible for research-related content,
+to lower the barrier for sharing research outputs,
+and to support scientific discourse.
+At the same time Zenodo is a research repository ,
+and does not assess the scientific correctness or quality of submissions.
+Peer reviewers, expert communities, and scholarly channels do that.
+Content on Zenodo is part of the scholarly record,
+and depositors are responsible for meeting the common research standards of rigor
+such as the ones that journals, conferences, and other scholarly venues might require.
+We consider the following content classes misuse of Zenodo
+(i.e. unsolicited, irrelevant, or deceptive content)
+and outside the scope of our mission.
+"Content" here covers anything uploaded by a user on Zenodo:
+Non-research content:
+Submissions that lack a clear connection to research and science.
+Examples include:
+Personal content such as diaries, opinion pieces, manifestos,
+or autobiographical material with no research component.
+Commercial content such as product listings, service descriptions,
+or business proposals.
+Creative works (fiction, poetry, art portfolios)
+not connected to a recognized research project or scholarly output.
+AI-generated content without verifiable research basis:
+Content produced largely by generative AI tools of any modality,
+without a verifiable connection to legitimate research activity conducted by humans.
+Submissions should reflect
+research work conducted by its authors.
+AI may be used as a tool , but not as the source of the research itself.
+AI tools cannot be listed as authors/creators or contributors.
+Examples of unsuitable use include:
+Submitting raw AI output as a research paper.
+AI-generated survey papers without substantial original analysis.
+Fabricated or unsupported findings presented as empirical results.
+Uploading raw AI outputs as primary research artefacts.
+See our Generative AI policy for depositors
+for full guidance on authorship, accountability,
+disclosure, and fabricated results.
+Malicious or harmful content:
+Content containing links that direct users to phishing sites, malware,
+or any other potentially harmful online locations.
+Promotional content:
+Content uploaded primarily for promotion or marketing
+rather than research dissemination.
+Examples include:
+CVs, resumes, or author profiles.
+Book reviews or tutorials created to promote specific authors,
+publishers, or products.
+Content whose primary purpose is directing users to commercial services,
+paid consultations, or product sales.
+Abstract-only content:
+Entries that contain only an abstract
+without providing access to the full research material
+or digital resource they reference.
+Fake or predatory publishing:
+Content from journals or publishers
+using unethical publishing practices.
+Examples include:
+Falsified peer review claims or fabricated editorial boards.
+Charging authors for expedited publication
+without proper quality checks.
+Journals with no verifiable review process
+presenting content as peer-reviewed.
+Journal indexing:
+Bulk submissions from publishers seeking to use Zenodo primarily
+as a free journal indexing/archiving service,
+often to avoid DOI registration fees.
+If you plan to do bulk submission of a journal,
+please contact us on support for explicit permission.
+We do support certain journals when there is a specific research purpose
+(e.g. FAIR data for a specific domain),
+or when a journal is run from within an academic institution
+without hosting means.
+Student assignment submissions:
+Multiple submissions of similar work from different students,
+suggesting task assignments submitted to fulfil class requirements
+rather than for research dissemination.
+Students can submit research-related output to Zenodo
+(in particular bachelor or master theses).
+Zenodo is a research dissemination platform,
+not a submission system for homework.
+Please use https://sandbox.zenodo.org
+to train prospective researchers in data sharing.
+This list is not exhaustive and we may update it as new cases arise.
+Note on spam:
+We consider spam to be content that is unsolicited, irrelevant, or deceptive.
+Spam does not necessarily need to be submitted in bulk.
+Note on misinformation:
+Misinformation and disinformation are a concern
+but pose different challenges in a scholarly context.
+Research can include controversial or speculative ideas that,
+while potentially flawed or disputed,
+may still be part of scientific discourse.
+Removing such content too broadly could limit academic freedom
+and discourage open scientific exploration.
+Content grounded in research activity
+but containing disputed or potentially false claims
+may be removed or labelled with links to peer reviews where they exist,
+but follows a different procedure than content removals.
+We encourage the use of communities as a method for experts to curate content.
+Note on AI-generated misinformation:
+AI-generated content that presents unsubstantiated claims as research findings
+is handled under the AI-generated content section above,
+regardless of how the author characterizes the work.
+Please contact us on our support line
+if you are in doubt whether a specific use of Zenodo is within scope.
+Published 27/04/2026 23:35
+© 2026 CERN. Licensed CC-BY 4.0 International
+Privacy policy
+Cookie policy
+Terms of use
+English (United Kingdom)
+English (United Kingdom)

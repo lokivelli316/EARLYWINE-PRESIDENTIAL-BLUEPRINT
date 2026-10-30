@@ -1,0 +1,5 @@
+{
+ "schema": "gc-review-queue/1",
+ "note": "DERIVED from manifest.jsonl. Resolve with: node ticker-build/scraper/review.js resolve <REV-id> dismiss|emit --by \"Rob\" [--note ...]. Items here never reach the live board unless a human emits them (and even then only as PROPOSED).",
+ "items": []
+}

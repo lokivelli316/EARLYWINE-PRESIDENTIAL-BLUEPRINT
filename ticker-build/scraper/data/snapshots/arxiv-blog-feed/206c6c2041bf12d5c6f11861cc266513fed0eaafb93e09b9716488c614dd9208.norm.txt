@@ -1,0 +1,10 @@
+Wed, 21 Oct 2026 19:30:00 +0000 | Scheduled Database Maintenance | October 28th, 2026 | https://blog.arxiv.org/2026/10/21/scheduled-database-maintenance/
+Sat, 17 Oct 2026 18:13:50 +0000 | Modernizing arXiv technology: Updates on the arXiv-CE project | https://blog.arxiv.org/2026/10/17/modernizing-arxiv-technology-updates-on-the-arxiv-ce-project/
+Thu, 08 Oct 2026 17:30:00 +0000 | Attention authors: temporary change to announcement schedule due to holiday | https://blog.arxiv.org/2026/10/08/announcement_schedule_holiday_change/
+Thu, 01 Oct 2026 19:00:00 +0000 | Fair Moderation, Equitable Access, and AI: arXiv’s Updated Rate Limit Policy | https://blog.arxiv.org/2026/10/01/updated-rate-limit-policy/
+Wed, 23 Sep 2026 17:00:00 +0000 | arXiv receives Multiyear Philanthropic Commitments to Support Its Launch as an Independent Nonprofit | https://blog.arxiv.org/2026/09/23/arxiv-receives-multiyear-investment/
+Thu, 03 Sep 2026 16:23:02 +0000 | Attention Authors: Temporary changes to announcement schedule due to Labor Day holiday | https://blog.arxiv.org/2026/09/03/announcement-schedule-changes-laborday2026/
+Tue, 01 Sep 2026 16:59:07 +0000 | We’re Hiring! Associate Production Editor | https://blog.arxiv.org/2026/09/01/were-hiring-associate-production-editor/
+Thu, 30 Jul 2026 17:00:43 +0000 | arXiv welcomes inaugural CEO and Board of Directors | https://blog.arxiv.org/2026/07/30/arxiv-welcomes-inaugural-ceo-and-board-of-directors/
+Tue, 28 Jul 2026 14:15:33 +0000 | Remembering Ralph Wijers | https://blog.arxiv.org/2026/07/28/remembering-ralph-wijers/
+Thu, 09 Jul 2026 19:33:15 +0000 | arXiv now hosts over 3 million articles | https://blog.arxiv.org/2026/07/09/arxiv-now-hosts-over-3-million-articles/

@@ -1,0 +1,9 @@
+id=stabilityai/stable-audio-open-1.0 | private=false | gated=auto | disabled= | sha=f21265c1e2710b3bd2386596943f0007f55f802e | lastModified=2025-06-19T21:53:23.000Z
+id=stabilityai/stable-audio-3-medium | private=false | gated=auto | disabled= | sha=d4d3579395a8ac0df4ab13b5b1d7138ce7290f81 | lastModified=2026-10-06T19:37:26.000Z
+id=stabilityai/stable-audio-3-small-sfx | private=false | gated=auto | disabled= | sha=05ca3857881c94a2b84026b1111c537d78f5f9f0 | lastModified=2026-10-06T19:37:57.000Z
+id=stabilityai/stable-audio-3-small-music | private=false | gated=auto | disabled= | sha=8bdfb53c6b0fbc62113cd571fd37373efe15fa14 | lastModified=2026-10-06T19:38:31.000Z
+id=stabilityai/stable-audio-3-optimized | private=false | gated=false | disabled= | sha=30cb2644da54bfa63275d1bc7f1fa67fc718680f | lastModified=2026-10-30T00:22:06.000Z
+id=stabilityai/stable-audio-open-small | private=false | gated=auto | disabled= | sha=dc620d91535857b72ebb59b4ca45978db6d417f5 | lastModified=2025-05-27T14:47:23.000Z
+id=stabilityai/stable-audio-3-small-music-base | private=false | gated=false | disabled= | sha=4249e9179cd64a03fc016919c88d0e6f2c5617f3 | lastModified=2026-10-06T19:39:41.000Z
+id=stabilityai/stable-audio-3-small-sfx-base | private=false | gated=false | disabled= | sha=b332479a012f83c24c4381f331ce594284ec8a81 | lastModified=2026-10-06T19:39:20.000Z
+id=stabilityai/stable-audio-3-medium-base | private=false | gated=false | disabled= | sha=c397d9a6912dc8b1f71a80e7b9673f4d307e7f8c | lastModified=2026-10-06T19:39:59.000Z

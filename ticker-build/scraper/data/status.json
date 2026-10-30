@@ -1,0 +1,239 @@
+{
+ "schema": "gc-scraper-status/1",
+ "generated_from_row": "FETCH-000031",
+ "day": "2026-10-30",
+ "digest": {
+  "sources_checked": 12,
+  "fetches": 12,
+  "changed": 0,
+  "queued_for_review": 0,
+  "auto_events_proposed": 0,
+  "auto_posted": 0,
+  "dark_sources": []
+ },
+ "open_review": 0,
+ "manifest_rows": 31,
+ "manifest_head": "27245bc02bc51f8d5602febd16cf107ab6c63f49b5906209f33ea2e6023112e0",
+ "sources": [
+  {
+   "id": "spotify-newsroom-home",
+   "name": "Spotify Newsroom (front page)",
+   "enabled": true,
+   "tos": "CLEARED",
+   "last_health": "OK",
+   "last_fetch_id": "FETCH-000024",
+   "last_ok_at": "2026-10-30T23:07:03.431Z",
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "spotify-ai-persona-20260811",
+   "name": "Spotify Newsroom — AI Persona badges (2026-08-11)",
+   "enabled": true,
+   "tos": "CLEARED",
+   "last_health": "OK",
+   "last_fetch_id": "FETCH-000022",
+   "last_ok_at": "2026-10-30T23:06:39.419Z",
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "spotify-human-artistry-20261020",
+   "name": "Spotify Newsroom — One Year In: Human Artistry (2026-10-20)",
+   "enabled": true,
+   "tos": "CLEARED",
+   "last_health": "OK",
+   "last_fetch_id": "FETCH-000023",
+   "last_ok_at": "2026-10-30T23:06:51.425Z",
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "arxiv-docs-commits",
+   "name": "arXiv docs (info.arxiv.org source) — commit log",
+   "enabled": true,
+   "tos": "CLEARED",
+   "last_health": "OK",
+   "last_fetch_id": "FETCH-000007",
+   "last_ok_at": "2026-10-30T23:04:38.229Z",
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "arxiv-moderation-help",
+   "name": "arXiv — moderation help page",
+   "enabled": true,
+   "tos": "CLEARED",
+   "last_health": "OK",
+   "last_fetch_id": "FETCH-000010",
+   "last_ok_at": "2026-10-30T23:05:02.800Z",
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "arxiv-blog-feed",
+   "name": "arXiv blog (RSS)",
+   "enabled": true,
+   "tos": "CLEARED",
+   "last_health": "OK",
+   "last_fetch_id": "FETCH-000004",
+   "last_ok_at": "2026-10-30T23:04:14.112Z",
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "zenodo-faq-ai-content",
+   "name": "Zenodo FAQ — content not suitable for Zenodo",
+   "enabled": true,
+   "tos": "CLEARED",
+   "last_health": "OK",
+   "last_fetch_id": "FETCH-000027",
+   "last_ok_at": "2026-10-30T23:07:27.603Z",
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "zenodo-privacy",
+   "name": "Zenodo privacy policy",
+   "enabled": true,
+   "tos": "CLEARED",
+   "last_health": "OK",
+   "last_fetch_id": "FETCH-000031",
+   "last_ok_at": "2026-10-30T23:08:04.113Z",
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "zenodo-policies",
+   "name": "Zenodo policies",
+   "enabled": true,
+   "tos": "CLEARED",
+   "last_health": "OK",
+   "last_fetch_id": "FETCH-000030",
+   "last_ok_at": "2026-10-30T23:07:52.108Z",
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "hf-stabilityai-stable-audio",
+   "name": "Hugging Face API — stabilityai stable-audio models (availability)",
+   "enabled": true,
+   "tos": "CLEARED",
+   "last_health": "OK",
+   "last_fetch_id": "FETCH-000019",
+   "last_ok_at": "2026-10-30T23:06:15.324Z",
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "eu-ai-act-article-50",
+   "name": "EU AI Act Service Desk — Article 50",
+   "enabled": true,
+   "tos": "CLEARED",
+   "last_health": "OK",
+   "last_fetch_id": "FETCH-000013",
+   "last_ok_at": "2026-10-30T23:05:27.162Z",
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "eu-regulatory-framework-ai",
+   "name": "European Commission — Regulatory framework on AI",
+   "enabled": true,
+   "tos": "CLEARED",
+   "last_health": "OK",
+   "last_fetch_id": "FETCH-000016",
+   "last_ok_at": "2026-10-30T23:05:51.264Z",
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "suno-help-download-limits",
+   "name": "Suno help center",
+   "enabled": false,
+   "tos": "BLOCKED",
+   "last_health": null,
+   "last_fetch_id": null,
+   "last_ok_at": null,
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "udio-help",
+   "name": "Udio help center",
+   "enabled": false,
+   "tos": "UNREVIEWED",
+   "last_health": null,
+   "last_fetch_id": null,
+   "last_ok_at": null,
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "kdp-help-title-limits",
+   "name": "Amazon KDP help",
+   "enabled": false,
+   "tos": "NEEDS_ROB",
+   "last_health": null,
+   "last_fetch_id": null,
+   "last_ok_at": null,
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "kdp-community-announcements",
+   "name": "KDP Community announcements",
+   "enabled": false,
+   "tos": "NEEDS_ROB",
+   "last_health": null,
+   "last_fetch_id": null,
+   "last_ok_at": null,
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "acx-blog",
+   "name": "ACX blog",
+   "enabled": false,
+   "tos": "NEEDS_ROB",
+   "last_health": null,
+   "last_fetch_id": null,
+   "last_ok_at": null,
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "ingramspark-user-guide",
+   "name": "IngramSpark user guide (PDF)",
+   "enabled": false,
+   "tos": "NEEDS_ROB",
+   "last_health": null,
+   "last_fetch_id": null,
+   "last_ok_at": null,
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "stability-news",
+   "name": "Stability AI news",
+   "enabled": false,
+   "tos": "BLOCKED",
+   "last_health": null,
+   "last_fetch_id": null,
+   "last_ok_at": null,
+   "consecutive_bad": 0,
+   "dark": false
+  },
+  {
+   "id": "courtlistener-anthropic-cand",
+   "name": "CourtListener — N.D. Cal. dockets naming Anthropic",
+   "enabled": false,
+   "tos": "NEEDS_ROB",
+   "last_health": null,
+   "last_fetch_id": null,
+   "last_ok_at": null,
+   "consecutive_bad": 0,
+   "dark": false
+  }
+ ]
+}

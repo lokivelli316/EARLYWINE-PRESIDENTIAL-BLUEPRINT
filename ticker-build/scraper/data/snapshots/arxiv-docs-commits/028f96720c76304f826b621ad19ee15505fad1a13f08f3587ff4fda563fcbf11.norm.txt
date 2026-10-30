@@ -1,0 +1,30 @@
+sha=32bb8ca8f87e58266a63d95ce78d38262084f1ec | commit.committer.date=2026-10-28T14:11:29Z | commit.message=Merge pull request #1577 from arXiv/ET-249-holidays
+sha=cb0e27c4d7fdf8db23981aa61f0271a808334a2d | commit.committer.date=2026-10-28T13:31:40Z | commit.message=fix 18 june
+sha=66b0bb0b60426642593b8f34b525c22806d5dd8c | commit.committer.date=2026-10-28T13:22:16Z | commit.message=holiday changes 26/27
+sha=6b35c19ec30b20668f2054bde212159a4fd120b1 | commit.committer.date=2026-10-27T15:10:59Z | commit.message=Merge pull request #1576 from arXiv/dependabot/pip/certifi-2026.10.19
+sha=88611fb5dfc6ae4227e79ce51e85a5f874641553 | commit.committer.date=2026-10-25T01:39:12Z | commit.message=Bump certifi from 2024.7.4 to 2026.10.19
+sha=dfa98b066152b89bd6f0195c88e3c751d210900a | commit.committer.date=2026-10-21T17:53:39Z | commit.message=Merge pull request #1574 from arXiv/ARXIVCE-4522-footer-funders
+sha=567bb21f8fb09d53260d83827bbf51e23ef51611 | commit.committer.date=2026-10-21T17:44:25Z | commit.message=Footer: major funders link, no funder logos
+sha=742f5d99ab1fed8c2be4ec1e090239d91c6befe3 | commit.committer.date=2026-10-21T16:39:30Z | commit.message=Merge pull request #1572 from arXiv/major-funders-new
+sha=6360f0f373148f5f42348d0539b0fd395bcf8126 | commit.committer.date=2026-10-21T16:35:15Z | commit.message=Update supporters.md
+sha=a9cae6139f7a25bf54393459f53109bca5cb983a | commit.committer.date=2026-10-21T16:31:41Z | commit.message=Update funding.md
+sha=ac37ae990b99e05317511763c11e3f1ed195e8f2 | commit.committer.date=2026-10-21T16:23:26Z | commit.message=Update major_funders.md
+sha=1bf8c925bffc2349611616d4a39dc0e1fe66ab8f | commit.committer.date=2026-10-20T20:50:25Z | commit.message=Merge pull request #1571 from arXiv/sync-master-into-develop
+sha=56fbbaf88526f8c101bd55124a0385a90a8688a0 | commit.committer.date=2026-10-20T19:17:58Z | commit.message=Merge master into develop
+sha=7ac9e749ac592c13d25b11dd36f17702730da5fc | commit.committer.date=2026-10-20T19:15:50Z | commit.message=Merge pull request #1570 from arXiv/rebamrich-Benson-update
+sha=d84ff73ef80edbba9c39d289bb99c93f32f3ec43 | commit.committer.date=2026-10-20T19:03:00Z | commit.message=Add Benson, Reynolds now chair.md
+sha=5f8fa026a7d9819a65c85e0d6dde6616f321bc55 | commit.committer.date=2026-10-20T16:11:06Z | commit.message=Merge pull request #1568 from arXiv/ARXIVCE-4501-brand-templates
+sha=1eba75b915317c7048fef07239c170e321e4d2f6 | commit.committer.date=2026-10-20T01:09:32Z | commit.message=Header, footer and banner from the design system
+sha=b71da3df2c0565907a34c691e389f24380e51b4f | commit.committer.date=2026-10-19T22:22:14Z | commit.message=Merge pull request #1567 from arXiv/develop
+sha=f07d7ecd3eefa814ca2d80b144f030836a8ec1ec | commit.committer.date=2026-10-19T20:55:14Z | commit.message=Merge pull request #1566 from arXiv/staff_update20261019
+sha=7aa4762ad2c7983d142fcf559581d3ee47195d3e | commit.committer.date=2026-10-19T20:30:44Z | commit.message=Update staff.md
+sha=115b9d9a05abc579d2eb172a15cc9ea4dced0a98 | commit.committer.date=2026-10-19T20:25:08Z | commit.message=add TA
+sha=395d59a35b4921aea195f2d3eae06dd199f5b888 | commit.committer.date=2026-10-19T19:51:15Z | commit.message=Add real funder logos to Major Funders page
+sha=b8423085e95f0a044b154e51f6b03329979a0d4b | commit.committer.date=2026-10-19T19:41:07Z | commit.message=Add draft Major Funders page with logo card styles
+sha=73ba9a53e26f058a4ccc4022782e36ac88b4e396 | commit.committer.date=2026-10-16T14:56:39Z | commit.message=Merge pull request #1565 from arXiv/develop
+sha=1d8720f01562a64074add8b2bbc0468cf27aac0d | commit.committer.date=2026-10-15T19:52:09Z | commit.message=Merge pull request #1564 from arXiv/arxivce-4536-update-Board-Directors-Page
+sha=d6bc8394e62948685758f4257d4eeb87b58b7356 | commit.committer.date=2026-10-15T19:29:36Z | commit.message=Update board_of_directors.md
+sha=ef6aa713846f507056d1fbc89b1e244fed7f2ab2 | commit.committer.date=2026-10-09T20:28:58Z | commit.message=Merge pull request #1562 from arXiv/dependabot/pip/urllib3-2.8.0
+sha=6dc815502d603c1ae71e51afe628c9b31af8a99c | commit.committer.date=2026-10-09T17:26:33Z | commit.message=Bump urllib3 from 2.7.0 to 2.8.0
+sha=2e47ef6ee69b89931529ef8fc837060913e2933b | commit.committer.date=2026-10-05T17:59:18Z | commit.message=Merge pull request #1561 from arXiv/develop
+sha=d8fd77c4bbc59aab6104219bbd2a982ee20ded9d | commit.committer.date=2026-10-05T17:57:46Z | commit.message=format fix

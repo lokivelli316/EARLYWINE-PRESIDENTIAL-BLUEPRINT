@@ -1,0 +1,126 @@
+TITLE: One Year In: Putting Human Artistry First on Spotify — Spotify
+Skip to main content
+Skip to footer
+News
+News & Announcements
+Artists & Creators
+Culture & Trends
+Behind the Business
+View All News
+Featured categories
+Company News
+Books on Spotify
+Spotify Loud & Clear
+2025 Wrapped
+Company
+About Spotify
+Investors
+Press Center
+Life at Spotify
+Safety at Spotify
+Impact
+Featured categories
+Time to Play Fair
+Spotify Loud & Clear
+Stream On
+News
+Company
+Search for:
+About Spotify
+Investors
+Press Center
+Life at Spotify
+Safety at Spotify
+Impact
+Featured categories
+Time to Play Fair
+Spotify Loud & Clear
+Stream On
+News & Announcements
+Artists & Creators
+Culture & Trends
+Behind the Business
+View All News
+Featured categories
+Company News
+Books on Spotify
+Spotify Loud & Clear
+2025 Wrapped
+Search for:
+Suggestions
+Popular Topics
+Audiobooks
+Podcasts
+Wrapped
+A TRUSTED PLACE FOR MUSIC
+One Year In: Putting Human Artistry First on Spotify
+October 20, 2026
+Share
+Share
+A year ago, we laid out our plans to protect artists and listeners from spam, impersonation, and deception in the age of AI. One core idea drives this work: human artistry comes first.
+Here’s what we’ve done, and what’s next.
+Keeping AI-generated slop and spam out of recommendations
+AI-generated slop and spam don’t belong in your recommendations, and we’ve made changes to keep them out and protect the listening experience. This year alone, we’ve taken more than 50 million slop and spam tracks out of recommendations. This is in addition to more than 75 million spammy tracks we’ve removed from our platform altogether for serious or repeated violations of our rules.
+Earlier this year, we looked closely at the tracks listeners were skipping, ignoring, or telling us they didn’t want to hear. A clear pattern emerged: these tracks were consistently ones identified as slop or spam. Over the past six months, we’ve made numerous updates to our recommendation system to remove slop and spam, and surface more music made by authentic, human artists. Our editors hold the same standard and don’t program content identified as slop or spam. Since we made these changes, we’ve seen a marked decrease in listener concerns about this content showing up in recommendations.
+No single signal catches slop or spam on its own, so we combine many: listener engagement and feedback, upload patterns, metadata, and information from multiple third-party AI detection tools. AI detection technology in particular has limitations, and it will only get harder as generative AI evolves. Using these signals together, we can identify likely slop or spam with more confidence. We also hunt for new tactics, including mass uploads, duplicates, SEO manipulation, spammy playlist networks, and artificially short tracks. As spammers change tactics, we’ll keep updating our systems.
+This builds on the tools we’ve launched over the past year to protect artists and give listeners more context and trust in what they hear:
+AI Credits : We launched AI Credits in April, and artists are now submitting tens of thousands of credits every day, showing exactly which roles and instruments were made with AI. Listeners can already see this information in Song Credits within the Now Playing view on mobile, and we’re working on even more ways for listeners to quickly and easily see when an artist has disclosed AI use as part of the song’s creative process.
+Verified by Spotify : More than 300,000 artists—who represent more than 99% of what listeners search for on Spotify—are now verified. More than 70% of them are independent artists. The Verified by Spotify badge lets listeners know a real, identifiable person is behind the music.
+AI Persona badges : Thousands of AI Personas are now labeled, letting listeners know when an artist’s identity is AI-generated. AI Personas are excluded from editorial or algorithmic recommendations by default, unless a listener follows an AI Persona, for example. Spotify is currently the only major streaming service that labels when an artist’s identity is believed to be AI-generated.
+Artist Profile Protection : Thousands of artists opted in to the beta, giving them the ability to review releases that list them as an artist when they’re delivered to Spotify. That gives artists the final say over what appears on their profile. For the first time on any streaming service, artists have a proactive layer of defense against the wrong content landing on their page, and we’re making the tool available to all artists by the end of the year.
+Track monetization eligibility : Our 1,000-stream royalty threshold, in place since 2024, has become a first line of defense for human artists against the wave of AI-generated content. Tracks with indicators showing a high probability of being AI-generated are 10 times more likely to fall below the threshold, making it harder for bad actors to attempt to syphon royalties away from real artists by generating music at scale.
+NEXT
+This work isn’t finished. AI moves fast, and bad actors adapt just as fast. But as AI makes music more abundant, we believe listeners will value human artistry even more. Our job is to make Spotify the place they find it.
+Learn more about what we’re doing to keep Spotify a trusted place for artists and listeners on our new Spotify for Artists page .
+Share
+Up Next
+Up Next
+News & Announcements
+Introducing Verified by Spotify, a Signal of Authenticity and Trust for the Artists Behind the Music
+Discover More
+Artists & Creators
+Building a More Trusted Podcast Experience for Creators and Listeners
+Artists & Creators
+Introducing a New Label for AI-Generated Artist Identities on Spotify
+Behind the Business
+As Spotify Turns 20, the Most Global and Diverse Music Industry in History Has Taken Shape
+(opens in a new tab)
+Communities
+For Artists
+(opens in a new tab)
+For Creators
+(opens in a new tab)
+For Advertisers
+(opens in a new tab)
+Life at Spotify
+(opens in a new tab)
+For Engineering
+(opens in a new tab)
+For Vendors
+(opens in a new tab)
+For Songwriters
+(opens in a new tab)
+For Investors
+(opens in a new tab)
+For Help, Chat & Ideas
+(opens in a new tab)
+Company
+About
+Jobs
+Investors
+Useful Links
+Help
+Web Player
+(opens in a new tab)
+(opens in a new tab)
+(opens in a new tab)
+Get Spotify (opens in a new tab)
+Legal
+Privacy Center
+Privacy Policy
+Cookies
+About Ads
+&copy; 2026 Spotify AB .
+Podcast player
+&times;
+Listen on Spotify (opens in a new tab)

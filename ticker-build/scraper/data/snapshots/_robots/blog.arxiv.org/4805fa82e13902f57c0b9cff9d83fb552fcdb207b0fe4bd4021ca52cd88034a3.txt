@@ -1,0 +1,5 @@
+Sitemap: https://blog.arxiv.org/sitemap.xml
+Sitemap: https://blog.arxiv.org/news-sitemap.xml
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php

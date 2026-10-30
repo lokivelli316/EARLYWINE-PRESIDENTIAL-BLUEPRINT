@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>News from arXiv</title>
+	<atom:link href="https://blog.arxiv.org/feed/" rel="self" type="application/rss+xml" />
+	<link>https://blog.arxiv.org</link>
+	<description>News and updates from arxiv.org</description>
+	<lastBuildDate>Wed, 21 Oct 2026 20:06:37 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+
+<image>
+	<url>https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/07/ac93e-favicon.png?fit=32%2C32&#038;ssl=1</url>
+	<title>News from arXiv</title>
+	<link>https://blog.arxiv.org</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">254715368</site>	<item>
+		<title>Scheduled Database Maintenance &#124; October 28th, 2026</title>
+		<link>https://blog.arxiv.org/2026/10/21/scheduled-database-maintenance/</link>
+					<comments>https://blog.arxiv.org/2026/10/21/scheduled-database-maintenance/#comments</comments>
+		
+		<dc:creator><![CDATA[Kat Boboris]]></dc:creator>
+		<pubDate>Wed, 21 Oct 2026 19:30:00 +0000</pubDate>
+				<category><![CDATA[arXiv announcement schedule]]></category>
+		<category><![CDATA[arXiv updates]]></category>
+		<guid isPermaLink="false">https://blog.arxiv.org/?p=2304</guid>
+
+					<description><![CDATA[Attention arXiv users: a week from today, on Wednesday, October 28th, 2026, arXiv will be migrating our database to the cloud. This is scheduled maintenance for arxiv.org and will result in some disruptions to service, mailings, and new announcements. Why are we migrating the arXiv database? We’re migrating the arXiv database as an important step [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">Attention arXiv users: a week from today, on <strong>Wednesday, October 28th, 2026,</strong> arXiv will be migrating our database to the cloud. This is scheduled maintenance for <a href="http://arxiv.org">arxiv.org</a> and will result in some disruptions to service, mailings, and new announcements.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Why are we migrating the arXiv database?</strong></h2>
+
+
+
+<p class="wp-block-paragraph">We’re migrating the arXiv database as an important step in <a href="https://blog.arxiv.org/2026/10/17/modernizing-arxiv-technology-updates-on-the-arxiv-ce-project/">arXiv-CE, a critical project to modernize arXiv’s technology</a> and code to better serve arXiv users and set arXiv up for stable, scalable growth. The arXiv engineering team has been working diligently to modernize our technology since 2023, thanks to <a href="https://blog.arxiv.org/2025/11/24/arxiv-receives-7-million-in-gifts-and-grants-from-schmidt-sciences-and-nasa/">generous</a> <a href="https://blog.arxiv.org/2023/10/20/arxiv-receives-10-million-in-gifts-and-grants-from-simons-foundation-and-national-science-foundation/">funding</a> and community support. We’ve made a lot of progress in the past three years, and we are very close to wrapping up the arXiv-CE project.</p>
+
+
+
+<p class="wp-block-paragraph">arXiv’s services and database are currently hosted on Cornell University servers, where they have been for the past 25 years. The goal of this part of the arXiv-CE project is to move arXiv&#8217;s systems from Cornell to the cloud. Migrating the arXiv database, which stores arXiv’s core information, is the first step &#8211; once it has moved, we will move the rest of our services.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>By migrating to the cloud, we will:</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Improve reliability and resilience:</strong> cloud hosting gives us stronger redundancy, automated backups, and faster disaster recovery.</li>
+
+
+
+<li><strong>Support growth:</strong> we can add capacity as submissions and readership grow, without buying and maintaining physical hardware.</li>
+
+
+
+<li><strong>Reduce operational risk and overhead:</strong> we will rely less on aging on-premises infrastructure, and our team can spend more time improving arXiv.</li>
+
+
+
+<li><strong>Simplify our architecture:</strong> with all systems in one environment, arXiv will be easier to maintain, secure, and develop.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading"><strong>How will this scheduled maintenance affect me?</strong></h2>
+
+
+
+<p class="wp-block-paragraph">The arXiv team strives to make updates with as few disruptions to service as possible. However, sometimes outages are necessary to safely and efficiently make updates to arxiv.org. When we migrate the arXiv database on <strong>Wednesday, October 28th,</strong> there will be limited downtime and a temporary disruption to the announcement schedule.</p>
+
+
+
+<h4 class="wp-block-heading"><strong>The database migration will begin at 7:00 AM EDT (11:00 UTC) and is scheduled to have a service maintenance window of 5 hours, ending at 12:00 PM EDT (16:00 UTC).</strong></h4>
+
+
+
+<p class="wp-block-paragraph">During the maintenance window, arXiv will be in “read-only” mode. This means all functions that require login (submission, moderation, account editing, endorsement, etc) will be unavailable. Browsing, viewing, and searching papers on <a href="http://arxiv.org">arxiv.org</a> will continue to work as normal.<br><br>From 7AM &#8211; 12PM ET, arXiv users will not be able to login or make any changes to their accounts. There will be no access to the submission system. arXiv users intending to submit work to arXiv, please plan accordingly.</p>
+
+
+
+<h4 class="wp-block-heading"><strong>At noon (12:00PM EDT | 16:00 UTC)</strong> <a href="http://arxiv.org"><strong>arxiv.org</strong></a> <strong>will exit read-only mode and login functionality will return.</strong></h4>
+
+
+
+<p class="wp-block-paragraph">General service on arxiv.org will return to normal. arXiv users will be able to login to make changes to their account, submit papers, etc.</p>
+
+
+
+<h4 class="wp-block-heading"><strong>Announcements of new submissions will be deferred.</strong></h4>
+
+
+
+<p class="wp-block-paragraph">Similar to <a href="https://info.arxiv.org/help/availability.html#on-deferred-mailings">when a federal holiday disrupts the regular arXiv announcement schedule</a>, this scheduled maintenance will cause a temporary deferral of arXiv announcements. There will be no announcement or mailings on Wednesday. This temporary disruption will allow arXiv staff and volunteer moderators time to focus on responding to user questions and test for any potential issues. The regular announcement schedule will resume Thursday, October 29th.</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Wednesday, October 28, 2026:</strong> No announcement. Articles received and accepted at or after 14:00EDT Tuesday, October 27, 2026, and before 14:00ET Thursday, October 29, 2026 will be announced on Thursday, October 29, 2026 at 20:00EDT.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading"><strong>Where can I check for updates on</strong> <strong>arxiv.org</strong> <strong>status and/or the status of the arXiv-CE project?</strong></h2>
+
+
+
+<p class="wp-block-paragraph">We know that disruptions to service impact researchers and we strive to minimize that disruption as much as possible with open, timely, and frequent communication across all possible channels.</p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://status.arxiv.org/">The arXiv status page</a> will regularly be updated with information as we migrate the database, and there will be alerts in the submission portal in the week leading up to the database migration, as well as public banners across <a href="http://arxiv.org">arxiv.org</a>.</p>
+
+
+
+<p class="wp-block-paragraph">If you want more ways to stay up to date on arXiv news and changes to the announcement schedule, subscribe to <a href="https://blog.arxiv.org/">the arXiv blog</a> or follow us in your social media feed (<a href="https://www.linkedin.com/company/arxiv">LinkedIn</a>, <a href="https://twitter.com/intent/user?screen_name=arxiv">Twitter/X</a>, <a href="https://mathstodon.xyz/@arXiv">Mastodon</a>, <a href="https://bsky.app/profile/arxiv.bsky.social">Bluesky</a> and <a href="https://www.facebook.com/arXiv.official/">Facebook</a>) for timely updates.</p>
+
+
+
+<p class="wp-block-paragraph">Thank you to all our users for their patience while we make these changes, and as always, feedback is welcome as we continue to improve arXiv.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.arxiv.org/2026/10/21/scheduled-database-maintenance/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2304</post-id>	</item>
+		<item>
+		<title>Modernizing arXiv technology: Updates on the arXiv-CE project</title>
+		<link>https://blog.arxiv.org/2026/10/17/modernizing-arxiv-technology-updates-on-the-arxiv-ce-project/</link>
+					<comments>https://blog.arxiv.org/2026/10/17/modernizing-arxiv-technology-updates-on-the-arxiv-ce-project/#comments</comments>
+		
+		<dc:creator><![CDATA[Kat Boboris]]></dc:creator>
+		<pubDate>Sat, 17 Oct 2026 18:13:50 +0000</pubDate>
+				<category><![CDATA[arXiv accessibility]]></category>
+		<category><![CDATA[arXiv updates]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://blog.arxiv.org/?p=2293</guid>
+
+					<description><![CDATA[This past August, arXiv turned 35 years old. That’s 35 years of open science &#8211; and 35 years of legacy tech. arXiv is one of the largest and most widely used open repositories in the world. It’s also one of the oldest &#8211; and that comes with its share of technical debt. As arXiv has [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">This past August, arXiv turned 35 years old. That’s 35 years of open science &#8211; and 35 years of legacy tech.<br><br>arXiv is one of the largest and most widely used open repositories in the world. It’s also one of the oldest &#8211; and that comes with its share of technical debt. As arXiv has expanded and submissions have increased, aging infrastructure and growing requirements have made it clear that arXiv’s tech stack needed to be modernized so that we can scale sustainably and continue to serve the research community.</p>
+
+
+
+<p class="wp-block-paragraph">In 2022, arXiv proposed a plan to modernize our technology and migrate arxiv.org to the cloud &#8211; the arXiv-CE (Cloud Edition) project. Since 2023, the arXiv team has been diligently working to complete this plan, which includes updating our code base and migrating off of Cornell IT servers.</p>
+
+
+
+<p class="wp-block-paragraph">Thanks to generous support from major funders, arXiv has been able to hire new members to our engineering team who dedicate their talents specifically to the arXiv-CE project. arXiv has also recently welcomed our inaugural <a href="https://info.arxiv.org/about/people/leadership_team.html">Engineering Director</a>, Jeff Sank, who hit the ground running in April of this year. With over 20 years of experience, Jeff’s guidance and leadership as we near the completion of this critical project have been invaluable to arXiv.</p>
+
+
+
+<figure class="wp-block-pullquote is-style-default has-large-font-size"><blockquote><p>I&#8217;m so excited to have joined arXiv at this moment — it’s an honor to lead and help such a vital scientific resource as we complete our final steps to our new home in the cloud.</p><cite>Jeff sank, arXiv engineering director</cite></blockquote></figure>
+
+
+
+<p class="wp-block-paragraph">The tech goals for the arXiv-CE project include improving service for all users, securing arXiv and maintaining stability for years to come, and providing updated features for researchers using arxiv.org. Meeting these goals &#8211; while ensuring minimal disruptions to service &#8211; is a huge task. arXiv’s engineering team has already made marked progress on these goals that support arXiv submitters and readers.</p>
+
+
+
+<p class="wp-block-paragraph">Other arXiv-CE completed updates include <a href="https://blog.arxiv.org/2025/09/10/attention-authors-submission-1-5-and-other-updates/">our update to Submission 1.5</a>, reducing delays in new submission announcements, and steady improvement in <a href="https://blog.arxiv.org/2023/12/21/accessibility-update-arxiv-now-offers-papers-in-html-format/">arXiv’s Experimental HTML</a>, which makes research more accessible to researchers with disabilities. In August 2026, arXiv made its entire collection available in HTML: 4.6 million article versions, with 99% of all articles submitted as LaTeX now readable in HTML. arXiv browse has already been completely migrated to the cloud as of August 2023. As we continue to make progress on arXiv-CE, arxiv.org has also seen fewer outages, despite more traffic than ever. From October 2025 to October 2026, arXiv had no outages at all, with 99.96% availability.</p>
+
+
+
+<figure class="wp-block-image size-large"><img data-recalc-dims="1" fetchpriority="high" decoding="async" width="1024" height="369" data-attachment-id="2295" data-permalink="https://blog.arxiv.org/2026/10/17/modernizing-arxiv-technology-updates-on-the-arxiv-ce-project/screenshot-2026-10-17-at-2-07-24-pm/" data-orig-file="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/Screenshot-2026-10-17-at-2.07.24-PM.png?fit=1182%2C426&amp;ssl=1" data-orig-size="1182,426" data-comments-opened="1" data-image-title="Screenshot 2026-10-17 at 2.07.24 PM" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/Screenshot-2026-10-17-at-2.07.24-PM.png?fit=1024%2C369&amp;ssl=1" src="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/Screenshot-2026-10-17-at-2.07.24-PM.png?resize=1024%2C369&#038;ssl=1" alt="" class="wp-image-2295" srcset="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/Screenshot-2026-10-17-at-2.07.24-PM.png?resize=1024%2C369&amp;ssl=1 1024w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/Screenshot-2026-10-17-at-2.07.24-PM.png?resize=300%2C108&amp;ssl=1 300w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/Screenshot-2026-10-17-at-2.07.24-PM.png?resize=768%2C277&amp;ssl=1 768w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/Screenshot-2026-10-17-at-2.07.24-PM.png?w=1182&amp;ssl=1 1182w" sizes="(max-width: 1000px) 100vw, 1000px" /></figure>
+
+
+
+<p class="wp-block-paragraph">As of October 2026, the arXiv-CE project is very close to the finish line. There are still many critical updates to complete, including launching Submission 2.0 and migrating arXiv’s database. We anticipate some of these updates will require scheduled maintenance on arxiv.org and potentially disrupt submission service and announcements. arXiv is a critical service to researchers who visit arxiv.org every day, and our goal is to keep disruptions as minimal as possible. All outages will be announced in advance so that arXiv users can plan their submissions and other work on arxiv.org as needed.<br><br>Thank you to our funders and the scientific community at large who support arXiv and make these massive undertakings and important projects possible. And thank you to Cornell University for 25 years of collaboration, support, and hosting <a href="http://arxiv.org">arxiv.org</a> on Cornell IT servers. The completion of arXiv-CE will make arXiv’s technology more secure, flexible, and truly open, independent, and modern.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.arxiv.org/2026/10/17/modernizing-arxiv-technology-updates-on-the-arxiv-ce-project/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2293</post-id>	</item>
+		<item>
+		<title>Attention authors: temporary change to announcement schedule due to holiday</title>
+		<link>https://blog.arxiv.org/2026/10/08/announcement_schedule_holiday_change/</link>
+					<comments>https://blog.arxiv.org/2026/10/08/announcement_schedule_holiday_change/#comments</comments>
+		
+		<dc:creator><![CDATA[Kat Boboris]]></dc:creator>
+		<pubDate>Thu, 08 Oct 2026 17:30:00 +0000</pubDate>
+				<category><![CDATA[arXiv announcement schedule]]></category>
+		<category><![CDATA[arXiv submissions]]></category>
+		<category><![CDATA[arXiv updates]]></category>
+		<guid isPermaLink="false">https://blog.arxiv.org/?p=2285</guid>
+
+					<description><![CDATA[This coming Monday, October 12, 2026, is a federal holiday in the United States. This will temporarily affect arXiv’s mailings, help desk, and announcement schedule as the arXiv staff will be offline for the holiday. This brief change will only affect the announcement of new submissions; arXiv servers will otherwise remain in operation, existing papers will [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">This coming <strong>Monday, October 12, 2026</strong>, is a federal holiday in the United States. This will temporarily affect arXiv’s mailings, help desk, and announcement schedule as the arXiv staff will be offline for the holiday. This brief change will only affect the announcement of new submissions; arXiv servers will otherwise remain in operation, existing papers will still be available to browse, and arXiv will be accepting new submissions during this time.</p>
+
+
+
+<p class="wp-block-paragraph">Submissions to arXiv are typically made public on <a href="http://arxiv.org/">arXiv.org</a> and <a href="https://arxiv.org/help/subscribe">announced by email</a> on a <a href="https://arxiv.org/help/availability">regular schedule</a>. As you plan your submissions to arXiv in the coming days, please be aware of the following changes:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Monday, October 12, 2026.</strong> No announcement or help desk support. Articles received and accepted at or after 14:00ET Friday, October 9, 2026, and before 14:00ET Tuesday, October 13, 2026 will be announced on Tuesday, October 13, 2026 at 20:00ET.</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">To stay up to date on arXiv news and changes to the announcement schedule, subscribe to&nbsp;<a href="https://blog.arxiv.org/">the arXiv blog</a>&nbsp;or follow us on social (<a href="https://twitter.com/intent/user?screen_name=arxiv">Twitter/X</a>,<a href="https://mathstodon.xyz/@arXiv">&nbsp;Mastodon</a>,&nbsp;<a href="https://bsky.app/profile/arxiv.bsky.social">Bluesky</a>&nbsp;and&nbsp;<a href="https://www.linkedin.com/company/arxiv">LinkedIn</a>) for timely updates.</p>
+
+
+
+<p class="wp-block-paragraph"></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.arxiv.org/2026/10/08/announcement_schedule_holiday_change/feed/</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2285</post-id>	</item>
+		<item>
+		<title>Fair Moderation, Equitable Access, and AI: arXiv’s Updated Rate Limit Policy</title>
+		<link>https://blog.arxiv.org/2026/10/01/updated-rate-limit-policy/</link>
+					<comments>https://blog.arxiv.org/2026/10/01/updated-rate-limit-policy/#comments</comments>
+		
+		<dc:creator><![CDATA[Kat Boboris]]></dc:creator>
+		<pubDate>Thu, 01 Oct 2026 19:00:00 +0000</pubDate>
+				<category><![CDATA[arXiv policy]]></category>
+		<category><![CDATA[arXiv updates]]></category>
+		<category><![CDATA[AI]]></category>
+		<category><![CDATA[arXiv submissions]]></category>
+		<category><![CDATA[moderation]]></category>
+		<guid isPermaLink="false">https://blog.arxiv.org/?p=2225</guid>
+
+					<description><![CDATA[arXiv, and the scientific community at large, are facing a watershed moment. Scholarly publishing is currently changing at a rapid pace, and we are seeing a massive transformation in how researchers communicate their results. Before the advent of AI, there was an easily discernible, practical limit to the rate at which independent submissions could be [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">arXiv, and the scientific community at large, are facing a watershed moment. Scholarly publishing is currently changing at a rapid pace, and we are seeing a massive transformation in how researchers communicate their results.</p>
+
+
+
+<p class="wp-block-paragraph">Before the advent of AI, there was an easily discernible, practical limit to the rate at which independent submissions could be produced, and arXiv’s volunteer moderators would limit submitters who were well above that threshold. With AI tools becoming more advanced and accessible to authors, the “practical limit” of how many papers can be submitted is now up for debate. <strong>As of October 1st, 2026, arXiv is instituting an updated rate limiting policy across all submitters and categories as a stopgap while we determine what may be the new best practice for authors employing more and more advanced AI tools, and to give us time to improve our moderation tools and procedures accordingly.</strong></p>
+
+
+
+<p class="wp-block-paragraph">Open access repositories across the board are seeing a sharp increase in the number of submissions per author, per month. In September of 2016, arXiv received 9,869 submissions. In September of 2024, arXiv received 20,569 submissions. <strong>This September, arXiv received 40,363 submissions, which in turn generated almost 9,000 support tickets for arXiv staff and moderators.</strong> In only the past two years, submissions have doubled.</p>
+
+
+
+<figure class="wp-block-image size-large"><img data-recalc-dims="1" decoding="async" width="1024" height="642" data-attachment-id="2263" data-permalink="https://blog.arxiv.org/2026/10/01/updated-rate-limit-policy/arxiv-monthly-submissions-september-2026/" data-orig-file="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/arXiv-Monthly-Submissions-September-2026.png?fit=1966%2C1232&amp;ssl=1" data-orig-size="1966,1232" data-comments-opened="1" data-image-title="arXiv Monthly Submissions September 2026" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/arXiv-Monthly-Submissions-September-2026.png?fit=1024%2C642&amp;ssl=1" src="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/arXiv-Monthly-Submissions-September-2026.png?resize=1024%2C642&#038;ssl=1" alt="A bar chart showing arXiv monthly submissions from 1991 to present. September 2026 is highlighted with its submission total of 40,363." class="wp-image-2263" srcset="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/arXiv-Monthly-Submissions-September-2026.png?resize=1024%2C642&amp;ssl=1 1024w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/arXiv-Monthly-Submissions-September-2026.png?resize=300%2C188&amp;ssl=1 300w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/arXiv-Monthly-Submissions-September-2026.png?resize=768%2C481&amp;ssl=1 768w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/arXiv-Monthly-Submissions-September-2026.png?resize=1536%2C963&amp;ssl=1 1536w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/arXiv-Monthly-Submissions-September-2026.png?w=1966&amp;ssl=1 1966w" sizes="(max-width: 1000px) 100vw, 1000px" /><figcaption class="wp-element-caption"><em>arXiv submission rates have steadily increased since our founding in 1991. In September, arXiv received 40,363 submissions in a single month &#8211; a new record.</em></figcaption></figure>
+
+
+
+<p class="wp-block-paragraph">Advanced AI tools are helping drive these increases by making certain aspects of research faster and easier. arXiv policy permits authors to <a href="https://info.arxiv.org/help/moderation/index.html#policy-for-authors-use-of-generative-ai-language-tools">employ AI as a tool in support of their research</a> as long as it is disclosed and the research meets arXiv’s standards of scholarly interest and advances the field of research. However, many of the submissions that arXiv is now receiving do not satisfy these requirements. Our moderators are observing an increase in thin papers of narrow scope, as well as ‘salami’ papers, where a single work is broken up and submitted as a set of smaller papers. There is also a marked increase in dense, AI-written papers. AI tools are making it easy for authors to flood arXiv and other repositories with these low-value papers.</p>
+
+
+
+<figure class="wp-block-image size-large"><img data-recalc-dims="1" decoding="async" width="1024" height="758" data-attachment-id="2264" data-permalink="https://blog.arxiv.org/2026/10/01/updated-rate-limit-policy/cs-ai-growthchart-2/" data-orig-file="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/cs.AI_.growthchart-1.png?fit=5042%2C3734&amp;ssl=1" data-orig-size="5042,3734" data-comments-opened="1" data-image-title="cs.AI.growthchart" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/cs.AI_.growthchart-1.png?fit=1024%2C758&amp;ssl=1" src="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/cs.AI_.growthchart-1.png?resize=1024%2C758&#038;ssl=1" alt="This is a line chart showing submissions to arXiv's Artificial Intelligence category, which is listed under Computer Science and denoted as cs.AI. The chart plots submission growth from 2024 - 2026. Time is represented by the X axis, and Submission Count is represented by the Y axis, which goes up to 3,000." class="wp-image-2264" srcset="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/cs.AI_.growthchart-1.png?resize=1024%2C758&amp;ssl=1 1024w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/cs.AI_.growthchart-1.png?resize=300%2C222&amp;ssl=1 300w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/cs.AI_.growthchart-1.png?resize=768%2C569&amp;ssl=1 768w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/cs.AI_.growthchart-1.png?resize=1536%2C1138&amp;ssl=1 1536w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/cs.AI_.growthchart-1.png?resize=2048%2C1517&amp;ssl=1 2048w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/10/cs.AI_.growthchart-1.png?w=3000&amp;ssl=1 3000w" sizes="(max-width: 1000px) 100vw, 1000px" /><figcaption class="wp-element-caption"><em>Increases over the past two years in cs.AI (over 6X increase) illustrate the rate at which researchers are submitting to arXiv. Other arXiv categories have seen submissions double over the same period of time.</em></figcaption></figure>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">The heart of arXiv’s process for detecting and rejecting low-quality papers is our many volunteer moderators. We are so grateful that they donate their time and expertise every day. However, a relatively small proportion of authors are submitting a large number of low-quality papers and consuming a disproportionate fraction of the moderators’ time. This is unfair to authors who continue to submit quality papers — their papers can be delayed for days or weeks as a result.</p>
+<cite> Thomas Dietterich, Distinguished Professor Emeritus, Oregon State University and Chair of the arXiv Editorial Advisory Council</cite></blockquote>
+
+
+
+<p class="wp-block-paragraph"><strong><em>arXiv now limits submitters to up to two submissions per calendar month, with a limit of three total active submissions at any given time. </em>This policy update is being put into effect to equitably distribute our volunteer moderators’ time across arXiv authors, and protect the arXiv corpus from a sharp increase in inappropriate submissions.</strong></p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://info.arxiv.org/help/moderation/index.html#submission-rate">Rate-limiting</a> is an established arXiv policy, with limiting originally primarily left to moderator discretion. arXiv has always asked that authors follow our codes of conduct and our submission guidelines. Articles submitted to arXiv must be of original, novel, and significant self-contained research that is relevant to arXiv categories. All submissions to arXiv must meet prescribed <a href="https://info.arxiv.org/help/moderation/index.html#scholarly-standards">scholarly standards</a> and be of <a href="https://info.arxiv.org/help/moderation/index.html#scholarly-interest">scholarly interest</a> to the scientific community. This policy update strives to fairly distribute the incredibly valuable work of our volunteer moderators who check that submissions meet these standards, and we hope it will also encourage authors to curate and submit only their best work to arXiv.</p>
+
+
+
+<h4 class="wp-block-heading">Frequently Asked Questions</h4>
+
+
+
+<ul class="wp-block-list">
+<li>If my paper is rejected, does it count towards my monthly total?
+<ul class="wp-block-list">
+<li>Yes &#8211; this rate limit is for submissions, not announced papers, because it is submissions that consume moderator time. If you submit two papers in a month, whether they are accepted or rejected, you will have to wait until the next month to submit to arXiv again. We want to encourage authors to be mindful with their work, taking care that they are submitting something substantial of scholarly interest that meets arXiv’s guidelines and standards.</li>
+</ul>
+</li>
+
+
+
+<li><strong>What if my submissions are in different subject areas?</strong>
+<ul class="wp-block-list">
+<li>This rate limit applies to all submissions, across all categories.</li>
+</ul>
+</li>
+
+
+
+<li><strong>What if both of my submissions from one month are still “on hold” in the next month?</strong>
+<ul class="wp-block-list">
+<li>If your allotted submissions from a previous month are on hold in the next month, they do not count against your submission limit for next month. However, they do count as a part of your total “active submission” limit of 3 total submissions. </li>
+</ul>
+</li>
+
+
+
+<li><strong>What if I have a backlog of work that I need to submit, or I need to submit a paper for a conference?</strong>
+<ul class="wp-block-list">
+<li>Since 2024, arXiv has had a limit of 3 active submissions at any time, and this limit remains in place. We ask authors who have a backlog of work to submit, or who need to submit a paper at a specific time for a conference, to plan their submissions carefully so that the monthly submission rate limits and active submission rate limits will not negatively impact them.</li>
+</ul>
+</li>
+
+
+
+<li><strong>If I submit a paper on behalf of myself and my co-authors, does that affect their submission rate?</strong>
+<ul class="wp-block-list">
+<li>No. All arXiv rate limit policies apply only to submitters. If you submit a paper with several co-authors, that only counts towards your submission rate, not theirs. It is important for co-authors to coordinate their submissions accordingly.</li>
+</ul>
+</li>
+
+
+
+<li><strong>What if I submit a paper, and then delete it before it is announced?</strong>
+<ul class="wp-block-list">
+<li>While we ask that authors only submit work that is complete, polished, and ready to be shared with their peers, we understand that authors may realize after submitting that they missed something important that needs to be corrected or updated. Submitters who delete their submitted paper before it is announced, whatever the reason, will not have that paper count toward their monthly submission or active submission rate limits.</li>
+</ul>
+</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">Thank you to our scientific community for supporting us in this policy update. We rely on you to help us keep arXiv open, fast, and free, and to help us make sure submissions to arXiv are scientifically rigorous, of interest to the community, and in keeping with current academic standards.</p>
+
+
+
+<p class="wp-block-paragraph">As with all policies, we will continue to monitor the effect of this update on authors, readers, and the arXiv corpus, and modify as needed. Our goal in policy updates is to not only protect arXiv’s corpus, but to improve the arXiv experience for everyone who makes arXiv possible &#8211; authors, readers, staff, and all our volunteer moderators.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.arxiv.org/2026/10/01/updated-rate-limit-policy/feed/</wfw:commentRss>
+			<slash:comments>33</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2225</post-id>	</item>
+		<item>
+		<title>arXiv receives Multiyear Philanthropic Commitments to Support Its Launch as an Independent Nonprofit</title>
+		<link>https://blog.arxiv.org/2026/09/23/arxiv-receives-multiyear-investment/</link>
+					<comments>https://blog.arxiv.org/2026/09/23/arxiv-receives-multiyear-investment/#respond</comments>
+		
+		<dc:creator><![CDATA[Kat Boboris]]></dc:creator>
+		<pubDate>Wed, 23 Sep 2026 17:00:00 +0000</pubDate>
+				<category><![CDATA[about arXiv]]></category>
+		<category><![CDATA[arXiv fundraising]]></category>
+		<guid isPermaLink="false">https://blog.arxiv.org/?p=2204</guid>
+
+					<description><![CDATA[arXiv is pleased to announce that three leading philanthropic organizations have provided multimillion-dollar support for arXiv. These new multiyear philanthropic commitments from Simons Foundation International, XTX Markets, and Siegel Family Endowment will support platform development, organizational capacity, and overall provide foundational support to arXiv’s establishment as an independent nonprofit. The $17.2 million investment, spanning three [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">arXiv is pleased to announce that three leading philanthropic organizations have provided multimillion-dollar support for arXiv. These new multiyear philanthropic commitments from <strong>Simons Foundation International, XTX Markets, and Siegel Family Endowment</strong> will support platform development, organizational capacity, and overall provide foundational support to arXiv’s establishment as an independent nonprofit. The $17.2 million investment, spanning three to five years, will support arXiv as it transitions to independence by strengthening its technical infrastructure, supporting ongoing operations, and improving services for researchers around the world.</p>
+
+
+
+<p class="wp-block-paragraph">For three and a half decades, arXiv has been a trusted venue where researchers can share and access scientific findings. Today, we serve millions of users annually and play an essential role in scholarly communication across physics, mathematics, computer science, quantitative biology, quantitative finance, statistics, electrical engineering and systems science, and economics.</p>
+
+
+
+<h2 class="wp-block-heading"><strong>Helping Fund a New Organization</strong></h2>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">I am grateful for the commitments from Simons Foundation International, XTX Markets, and Siegel Family Endowment, which put arXiv on solid footing as we move into this next chapter. Their generous support provides a strong foundation and momentum for arXiv to continue to grow and serve the research community for the long term.” The new commitments build on previous philanthropic support for arXiv. arXiv gratefully acknowledges their community-based donors, including member organizations, foundations, affiliates, sponsors, and longstanding supporters.</p>
+<cite>penelope lewis, chief executive officer, arxiv</cite></blockquote>
+
+
+
+<p class="wp-block-paragraph">These new commitments will support three core areas of work:</p>
+
+
+
+<ul class="wp-block-list">
+<li>General operation and ongoing improvement of arXiv&#8217;s services for the research community;</li>
+
+
+
+<li>Continued technical development of the platform, including work related to the management of AI-generated content and other emerging challenges in scholarly communication; and</li>
+
+
+
+<li>Strengthening of arXiv as an independent nonprofit, including investments in governance and organizational operations.</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph"><strong><em>Simons Foundation International</em></strong></p>
+
+
+
+<p class="wp-block-paragraph">Building on the Simons Foundation&#8217;s long-standing support of arXiv, Simons Foundation International has made a new multi-year commitment to support the organization&#8217;s next phase as an independent nonprofit.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">For 35 years, arXiv has made math and science more open, transparent, accessible and collaborative. By growing into an independent nonprofit, arXiv will be positioned to evolve and modernize its systems to better serve the scientific community and to secure its future.</p>
+<cite>david spergel, president, simons foundation</cite></blockquote>
+
+
+
+<p class="wp-block-paragraph"><em>XTX Markets</em></p>
+
+
+
+<p class="wp-block-paragraph">XTX Markets and its founder, Alex Gerko, have supported arXiv’s mission for the past two years. The firm is now making a new multi-year commitment to strengthen arXiv’s role as a trusted platform for open scientific research.<strong>&nbsp;</strong></p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">For decades, arXiv has been an important bedrock for open science. Now, with rapid advances in AI driving changes across academia, it is even more valuable to have robust, open-source infrastructure for science. XTX Markets is delighted to continue our support for arXiv in this important endeavor.</p>
+<cite>simon coyle, head of philanthropy, xtx markets</cite></blockquote>
+
+
+
+<p class="wp-block-paragraph"><em><strong>Siegel Family Endowment&nbsp;</strong></em></p>
+
+
+
+<p class="wp-block-paragraph">Siegel Family Endowment has made a multi-year commitment to arXiv, advancing a shared vision for equitable digital infrastructure and open knowledge.</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">Open access to knowledge is a cornerstone of a healthy research ecosystem, but it is also essential to a thriving digital ecosystem and to ensuring people can equitably access and participate in the knowledge that shapes our world. We’re looking forward to supporting arXiv in its next chapter as essential infrastructure, enabling communities to share ideas, build on one another’s work, and sustain a living body of knowledge.</p>
+<cite>Joshua elder, svp &amp; head of grantmaking at siegel family endowment</cite></blockquote>
+
+
+
+<p class="wp-block-paragraph"><strong>We are especially grateful to our <a href="https://info.arxiv.org/about/supporters.html#major-funding">major funders</a>, who trust in arXiv’s important work, and are committed to our vision. Our major funders create a solid foundation of support and are an essential part of arXiv’s sustainable funding model, which is supplemented by our <a href="https://info.arxiv.org/about/membership.html">membership program</a>, as well as <a href="https://info.arxiv.org/about/supporters.html#gold-sponsors">our sponsors</a>, <a href="https://info.arxiv.org/about/supporters.html#gold-affiliates">our affiliates</a>, and individual donors. Thank you for your unwavering support of arXiv!</strong></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.arxiv.org/2026/09/23/arxiv-receives-multiyear-investment/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2204</post-id>	</item>
+		<item>
+		<title>Attention Authors: Temporary changes to announcement schedule due to Labor Day holiday</title>
+		<link>https://blog.arxiv.org/2026/09/03/announcement-schedule-changes-laborday2026/</link>
+					<comments>https://blog.arxiv.org/2026/09/03/announcement-schedule-changes-laborday2026/#respond</comments>
+		
+		<dc:creator><![CDATA[Kat Boboris]]></dc:creator>
+		<pubDate>Thu, 03 Sep 2026 16:23:02 +0000</pubDate>
+				<category><![CDATA[arXiv support]]></category>
+		<category><![CDATA[arXiv updates]]></category>
+		<guid isPermaLink="false">https://blog.arxiv.org/?p=2178</guid>
+
+					<description><![CDATA[This coming Monday, September 7, 2026, arXiv will be observing Labor Day, a federal holiday in the United States. This will temporarily affect arXiv’s mailings, help desk, and announcement schedule as the arXiv staff are relaxing offline for the holiday. This brief change will only affect the announcement of new submissions; arXiv servers will otherwise remain [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">This coming <strong>Monday, September 7, 2026</strong>, arXiv will be observing Labor Day, a federal holiday in the United States. This will temporarily affect arXiv’s mailings, help desk, and announcement schedule as the arXiv staff are relaxing offline for the holiday. This brief change will only affect the announcement of new submissions; arXiv servers will otherwise remain in operation, existing papers will still be available to browse, and arXiv will be accepting new submissions during this time.</p>
+
+
+
+<p class="wp-block-paragraph">Submissions to arXiv are typically made public on&nbsp;<a href="http://arxiv.org/">arXiv.org</a>&nbsp;and&nbsp;<a href="https://arxiv.org/help/subscribe">announced by email</a>&nbsp;on a&nbsp;<a href="https://arxiv.org/help/availability">regular schedule</a>. As our team celebrates Labor Day, announcements will be slightly deferred.</p>
+
+
+
+<p class="wp-block-paragraph">As you plan your submissions to arXiv in the coming days, please be aware of the following changes:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Monday, September 7, 2026.</strong>&nbsp;No announcement or help desk support. Articles received and accepted at or after 14:00ET Friday, September 4, 2026, and before 14:00ET Tuesday, September 8, 2026 will be announced on Tuesday, September 8, 2026 at 20:00ET.</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">To stay up to date on arXiv news and changes to the announcement schedule, subscribe to&nbsp;<a href="https://blog.arxiv.org/">the arXiv blog</a>&nbsp;or follow us on social (<a href="https://twitter.com/intent/user?screen_name=arxiv">Twitter/X</a>,<a href="https://mathstodon.xyz/@arXiv">&nbsp;Mastodon</a>,&nbsp;<a href="https://bsky.app/profile/arxiv.bsky.social">Bluesky</a>&nbsp;and&nbsp;<a href="https://www.linkedin.com/company/arxiv">LinkedIn</a>) for timely updates.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.arxiv.org/2026/09/03/announcement-schedule-changes-laborday2026/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2178</post-id>	</item>
+		<item>
+		<title>We&#8217;re Hiring! Associate Production Editor</title>
+		<link>https://blog.arxiv.org/2026/09/01/were-hiring-associate-production-editor/</link>
+					<comments>https://blog.arxiv.org/2026/09/01/were-hiring-associate-production-editor/#respond</comments>
+		
+		<dc:creator><![CDATA[Kat Boboris]]></dc:creator>
+		<pubDate>Tue, 01 Sep 2026 16:59:07 +0000</pubDate>
+				<category><![CDATA[arXiv jobs]]></category>
+		<guid isPermaLink="false">https://blog.arxiv.org/?p=2171</guid>
+
+					<description><![CDATA[Are you detail-oriented with a passion for scholarly publishing and digital curation? arXiv is looking for a part-time Associate Production Editor to help manage our high-volume scholarly pipeline. In this role, you will focus on data integrity, formatting accuracy, and metadata quality before research goes live to the world. Be part of the platform that [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">Are you detail-oriented with a passion for scholarly publishing and digital curation? arXiv is looking for a part-time Associate Production Editor to help manage our high-volume scholarly pipeline. In this role, you will focus on data integrity, formatting accuracy, and metadata quality before research goes live to the world.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Be part of the platform that powers global scientific breakthroughs. If you thrive in a fast-paced digital environment and want a highly flexible, remote part-time role where your skills directly benefit millions of researchers worldwide, we want to hear from you!</strong></p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=2614d6bd-154b-4639-a487-211b2405515e&amp;ccId=9201062958117_2&amp;source=CC2&amp;lang=en_US&amp;selectedMenuKey=CareerCenter&amp;jobId=582922">Apply to be an Associate Production Editor at arXiv!</a></p>
+
+
+
+<p class="wp-block-paragraph"><strong>Position Summary</strong></p>
+
+
+
+<p class="wp-block-paragraph">Reporting to a Production Editor, the Associate Editor is an important member of the Editorial and User Support Team, providing information and support to arXiv authors, readers, and moderators.</p>
+
+
+
+<p class="wp-block-paragraph">Working in a fast-paced environment alongside a supportive team, the Associate Editor works across team functions, screening submissions for moderation and technical checks, with a focus on metadata validation, and responding to support requests from authors and readers.</p>
+
+
+
+<p class="wp-block-paragraph">This user-facing position represents arXiv to its global community of researchers, referring users to relevant policies and workflows and supporting authors, readers, and moderators throughout the arXiv submission process.</p>
+
+
+
+<ul class="wp-block-list">
+<li>Duties include but are not limited to:</li>
+
+
+
+<li>Performing technical and validation checks on submission metadata</li>
+
+
+
+<li>Processing paper ownership requests</li>
+
+
+
+<li>Identifying opportunities for improvements to workflows and applications</li>
+
+
+
+<li>Testing system updates for bugs and functionality</li>
+
+
+
+<li>Responding to user queries related to submissions, accounts, and access&nbsp;</li>
+
+
+
+<li>Interpreting arXiv submission policy and interacting with editors and moderators as part of submission screening</li>
+
+
+
+<li>Coordinating with team members on daily service obligations and long-term process improvement projects</li>
+
+
+
+<li>Maintaining and updating documentation and user help pages</li>
+
+
+
+<li>Serving as an advocate for individuals of all ethnicities, genders, ages, and background</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph"><strong>Hours and Compensation</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>This position is part-time, 20 hours per week&nbsp;</li>
+
+
+
+<li>Remote work environment</li>
+
+
+
+<li>Pay rate is $25 per hour</li>
+
+
+
+<li>This position is not eligible for benefits</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph"><strong>Required Qualifications</strong></p>
+
+
+
+<ul class="wp-block-list">
+<li>Associate degree or other formal training program of two years or equivalent</li>
+
+
+
+<li>One or more years of professional experience in a technical computing environment</li>
+
+
+
+<li>Proven ability to work productively in a supportive role with colleagues and in a team environment, yet also self-motivated and possessing good independent decision-making abilities</li>
+
+
+
+<li>Excellent trouble-shooting and problem-solving skills, as demonstrated by previous job experience</li>
+
+
+
+<li>Able to work effectively and comfortably in a fast-paced, changing environment</li>
+
+
+
+<li>Detail oriented with good record-keeping skills and documentation habits</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph"><strong>Preferred Qualifications</strong> (if applicable)</p>
+
+
+
+<ul class="wp-block-list">
+<li>Degree in a physical science, library/information science, engineering, computer science, or mathematics&nbsp;</li>
+
+
+
+<li>Experience with writing technical documentation&nbsp;</li>
+
+
+
+<li>Understands the role and impact of preprints and e-print servers</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph"></p>
+
+
+
+<p class="wp-block-paragraph">Sounds like your dream job? Apply today! If you meet the required qualifications and are excited about this opportunity, please <a href="https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=2614d6bd-154b-4639-a487-211b2405515e&amp;ccId=9201062958117_2&amp;source=CC2&amp;lang=en_US&amp;selectedMenuKey=CareerCenter&amp;jobId=582922">complete the online application</a> and be sure to include a resume and cover letter that helps us get to know you and how you meet the qualifications.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.arxiv.org/2026/09/01/were-hiring-associate-production-editor/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2171</post-id>	</item>
+		<item>
+		<title>arXiv welcomes inaugural CEO and Board of Directors</title>
+		<link>https://blog.arxiv.org/2026/07/30/arxiv-welcomes-inaugural-ceo-and-board-of-directors/</link>
+					<comments>https://blog.arxiv.org/2026/07/30/arxiv-welcomes-inaugural-ceo-and-board-of-directors/#respond</comments>
+		
+		<dc:creator><![CDATA[Kat Boboris]]></dc:creator>
+		<pubDate>Thu, 30 Jul 2026 17:00:43 +0000</pubDate>
+				<category><![CDATA[about arXiv]]></category>
+		<category><![CDATA[arXiv people]]></category>
+		<guid isPermaLink="false">https://blog.arxiv.org/?p=2030</guid>
+
+					<description><![CDATA[We have exciting news to share today: the appointment of Dr. Penelope Lewis as arXiv&#8217;s inaugural Chief Executive Officer and the establishment of our Board of Directors. If you’ve been following arXiv&#8217;s transition to an independent nonprofit organization, these leadership appointments mark a significant step in our journey. Having a CEO and Board in place [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">We have exciting news to share today: the appointment of Dr. Penelope Lewis as arXiv&#8217;s inaugural Chief Executive Officer and the establishment of our Board of Directors.</p>
+
+
+
+<p class="wp-block-paragraph">If you’ve been following arXiv&#8217;s <a href="https://blog.arxiv.org/2026/04/02/arxiv-is-becoming-an-independent-nonprofit/">transition to an independent nonprofit organization</a>, these leadership appointments mark a significant step in our journey. Having a CEO and Board in place strengthens our governance, sustainability, and capacity to serve the global research community for generations to come.</p>
+
+
+
+<p class="wp-block-paragraph">For more than three decades, arXiv has enabled rapid and open sharing of scientific research. It has operated largely on the support and dedication of its staff, moderators, volunteers, members, funders, and, for the past 25 years, the institutional backing of Cornell. As the scale, reach, and importance of the platform have grown, so too has the need for more formal leadership and governance structures that support long-term sustainability.</p>
+
+
+
+<p class="wp-block-paragraph">The appointment of the first CEO and creation of an international governing board reflect our commitment to maintaining arXiv as a trusted, community-centered resource while preparing for future opportunities and evolution.</p>
+
+
+
+<p class="wp-block-paragraph">We are delighted to welcome Dr. Penelope Lewis as arXiv&#8217;s inaugural CEO, effective August 17, 2026.</p>
+
+
+
+<p class="wp-block-paragraph">Dr. Lewis is a scientist by training, holding a Ph.D. in Chemistry from Penn State University, a B.S. in Chemistry from Indiana University, and completing post-doctoral work at Columbia University. She brings to the role nearly 20 years of leadership in scholarly publishing and communication in mission-driven, nonprofit scientific organizations, most recently as Chief Publishing Officer at AIP Publishing, a subsidiary of the American Institute of Physics. At AIP Publishing, she led a comprehensive transformation of the organization&#8217;s publishing program, revitalizing the publication portfolio and restoring sustained growth while advancing open access, operational excellence, research integrity, and global engagement. Prior to that, Dr. Lewis held editorial and strategy leadership roles in the Publications Division at the American Chemical Society. Throughout her career, her leadership has been characterized by a strategic, collaborative approach that brings together diverse stakeholders around a shared vision.</p>
+
+
+
+<p class="wp-block-paragraph">Dr. Lewis’ scientific background is foundational to her longstanding commitment to supporting the research communities that are critical to advancing the scientific research enterprise. For Dr. Lewis, arXiv’s appeal is that it was created by researchers, for researchers to solve a clear need: rapid and unfettered access to scientific research results on a global scale. While the research and publishing landscape has changed dramatically in the 35 years since arXiv was introduced, the need for rapid distribution, access, validation, and curation of research reports persists and is more important than ever. Dr. Lewis aims to evolve arXiv to meet the challenges it is facing – the rise of AI-generated preprints, modernization of the underlying technology, and a fast-growing and increasingly global user base, among others, – while preserving its mission and the trust of the community it supports.</p>
+
+
+
+<figure class="wp-block-image size-large"><img data-recalc-dims="1" loading="lazy" decoding="async" width="3166" height="4096" data-attachment-id="2037" data-permalink="https://blog.arxiv.org/2026/07/30/arxiv-welcomes-inaugural-ceo-and-board-of-directors/drpenelopelewis-linkedin/" data-orig-file="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/07/drpenelopelewis.linkedin.jpg?fit=3166%2C4096&amp;ssl=1" data-orig-size="3166,4096" data-comments-opened="1" data-image-title="DrPenelopeLewis.LinkedIn" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/07/drpenelopelewis.linkedin.jpg?fit=792%2C1024&amp;ssl=1" src="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/07/drpenelopelewis.linkedin.jpg?resize=3166%2C4096&#038;ssl=1" alt="" class="wp-image-2037"/></figure>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">I am excited and honored to join arXiv at such a significant time for the organization and for scientific research communication more broadly. arXiv has been a vital resource for researchers for over three decades, a testament to both its value and the dedication of the team and volunteers who have sustained it. While its move to independence will have its challenges, we have an opportunity to work with its community to build an even brighter future for arXiv.</p>
+<cite>Dr. Penelope Lewis</cite></blockquote>
+
+
+
+<p class="wp-block-paragraph">&#8220;I&#8217;m thrilled about Penelope Lewis’ appointment as arXiv&#8217;s inaugural CEO. Her deep credibility in scholarly publishing, steady leadership through change, and collaborative approach are qualities that matter enormously in a community-driven organization like arXiv,” said Dr. Tracy Teal, CEO of openRxiv and member of the arXiv CEO search committee. “I&#8217;ve already seen how she builds trust across stakeholders and brings clarity to strategy and decision-making, and I&#8217;m excited for openRxiv to continue working with arXiv under her leadership to advance preprints and new ways of sharing science.&#8221;</p>
+
+
+
+<p class="wp-block-paragraph">Ramin Zabih, former arXiv Executive Director and Professor of Computer Science at Cornell University, said, “I am delighted that Penelope Lewis will guide arXiv through its next stage of development. Her credentials as a research scientist, combined with her extensive background in non-profit scientific publishing, make her uniquely qualified for this critical position. arXiv’s diverse community of stakeholders will benefit greatly from her empathetic leadership.”</p>
+
+
+
+<p class="wp-block-paragraph">arXiv is also pleased to introduce arXiv&#8217;s inaugural Board of Directors. The Board brings together leaders from research, higher education, and scholarly communications who share a commitment to open science and community stewardship.</p>
+
+
+
+<ul class="wp-block-list">
+<li>Hiroaki Aihara, Provost and Executive Vice President, University of Tokyo</li>
+
+
+
+<li> Atish Dabholkar, Professor, Director, Abdus Salam International Centre of Theoretical Physics (ICTP)</li>
+
+
+
+<li> Greg Gabadadze, Executive Vice President and Chief Science Officer, Simons Foundation</li>
+
+
+
+<li> Greg Morrisett, the Jack and Rilla Neafsey Dean and Vice Provost, Cornell Tech</li>
+
+
+
+<li> Ivan Oransky, Special Advisor, Scientific Publishing, Simons Foundation</li>
+
+
+
+<li> Licia Verde, Catalan Institution for Research and Advanced Studies (ICREA) Professor, University of Barcelona</li>
+
+
+
+<li> Michael Weissman, Executive Director, Finance and Business Operations, Cornell Tech</li>
+
+
+
+<li> Elaine L. Westbrooks, Carl A. Kroch University Librarian and Vice Provost, Cornell University</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">Greg Morrisett, former Steward of arXiv at Cornell and the Jack and Rilla Neafsey Dean and Vice Provost, Cornell Tech, described the Board’s role, “to provide strategic guidance, ensure strong governance, help steward resources responsibly, and support arXiv&#8217;s long-term mission.”</p>
+
+
+
+<p class="wp-block-paragraph">Ivan Oransky, special advisor for scientific publishing at the Simons Foundation, a longtime supporter of arXiv, noted that the international representation on the Board reflects the importance of arXiv as a “global, community-driven resource.”</p>
+
+
+
+<p class="wp-block-paragraph">Looking ahead, our priorities remain grounded in arXiv&#8217;s mission. We will continue to focus on providing a trusted, open platform for sharing research while investing in the infrastructure, governance, and partnerships needed to support the next generation of scientific discovery.</p>
+
+
+
+<p class="wp-block-paragraph">None of this would be possible without the researchers, moderators, institutional members, funders, advisors, and supporters who have helped shape arXiv over the years.</p>
+
+
+
+<p class="wp-block-paragraph">We are deeply grateful for the ongoing trust in and support of arXiv from the community and look forward to writing the next chapter together.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.arxiv.org/2026/07/30/arxiv-welcomes-inaugural-ceo-and-board-of-directors/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2030</post-id>	</item>
+		<item>
+		<title>Remembering Ralph Wijers</title>
+		<link>https://blog.arxiv.org/2026/07/28/remembering-ralph-wijers/</link>
+					<comments>https://blog.arxiv.org/2026/07/28/remembering-ralph-wijers/#respond</comments>
+		
+		<dc:creator><![CDATA[Kat Boboris]]></dc:creator>
+		<pubDate>Tue, 28 Jul 2026 14:15:33 +0000</pubDate>
+				<category><![CDATA[about arXiv]]></category>
+		<category><![CDATA[arXiv people]]></category>
+		<guid isPermaLink="false">https://blog.arxiv.org/?p=2020</guid>
+
+					<description><![CDATA[arXiv is sad to announce the recent passing of our colleague and friend, Professor Ralph Wijers. A talented researcher, lecturer, and mentor, Ralph joined arXiv as a moderator and advisor in 2020 and was chair of both arXiv’s Physics Section Editorial Committee (SEC) and its Editorial Advisory Council.&#160; Ralph generously lent his talents to arXiv [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">arXiv is sad to announce the recent passing of our colleague and friend, <a href="https://www.astronomie.nl/nieuws/en/in-memoriam-ralph-wijers-astrophysicist-1964-2026-4834">Professor Ralph Wijers</a>. A talented researcher, lecturer, and mentor, Ralph joined arXiv as a moderator and advisor in 2020 and was chair of both arXiv’s Physics Section Editorial Committee (SEC) and its Editorial Advisory Council.&nbsp;</p>
+
+
+
+<figure class="wp-block-image size-full"><img data-recalc-dims="1" loading="lazy" decoding="async" width="645" height="420" data-attachment-id="2141" data-permalink="https://blog.arxiv.org/2026/07/28/remembering-ralph-wijers/ralphwijers/" data-orig-file="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/07/RalphWijers.png?fit=645%2C420&amp;ssl=1" data-orig-size="645,420" data-comments-opened="1" data-image-title="RalphWijers" data-image-description="" data-image-caption="&lt;p&gt;Professor Ralph Wijers&lt;/p&gt;
+" data-large-file="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/07/RalphWijers.png?fit=645%2C420&amp;ssl=1" src="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/07/RalphWijers.png?resize=645%2C420&#038;ssl=1" alt="Professor Ralph Wijers smiling" class="wp-image-2141" srcset="https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/07/RalphWijers.png?w=645&amp;ssl=1 645w, https://i0.wp.com/blog.arxiv.org/wp-content/uploads/2026/07/RalphWijers.png?resize=300%2C195&amp;ssl=1 300w" sizes="auto, (max-width: 645px) 100vw, 645px" /><figcaption class="wp-element-caption">Professor Ralph Wijers</figcaption></figure>
+
+
+
+<p class="wp-block-paragraph">Ralph generously lent his talents to arXiv despite his busy schedule and long list of accomplishments. Interested in astronomy from a young age, Ralph studied and taught in universities on both sides of the Atlantic, and was most recently a Professor of Astronomy at the Anton Pannekoek Institute of Astronomy (API) at the University of Amsterdam. From 2011 to 2021, Ralph served as API’s director, during which time API’s staff doubled in size. Ralph contributed to many scientific publications on all types of gamma-ray bursts (GRBs). In total, he published more than 550 scientific articles, supervising more than 30 PhD students and 20 postdocs.</p>
+
+
+
+<p class="wp-block-paragraph">Ralph joined arXiv in 2020, an important time of growth and transition. Joining first as a moderator of arXiv’s astro-ph.HE category, Ralph soon took over as arXiv’s Physics SEC chair in 2021, where he generously gave his time and expertise to helping shape arXiv’s new governance. In 2023, Ralph became arXiv’s inaugural Editorial Advisory Council chair, essentially functioning as arXiv’s “Editor in Chief,” helping guide arXiv moderation and policies during a rapidly changing time for research communications.</p>
+
+
+
+<p class="wp-block-paragraph">A true champion of open science and arXiv, Ralph approached everything he did for arXiv with thoughtfulness and zeal, whether it was working with arXiv staff and volunteer moderators on policy issues or <a href="https://blog.arxiv.org/2025/07/10/arxiv-awarded-2025-jocelyn-bell-burnell-inspiration-medal/">accepting the prestigious Jocelyn Bell Burnell Inspiration Medal</a> on behalf of arXiv at the 2025 European Astronomical Society Annual Meeting. Ralph’s vision for arXiv was to support science while creating a community of respect, support, and inclusiveness. All work that promoted this vision was equally important work to Ralph, and treated by him with the same care.</p>
+
+
+
+<p class="wp-block-paragraph">“I joined arXiv shortly after Ralph,” said Ramin Zabih, Interim CEO of arXiv. “I was fortunate to work with Ralph during the entire four years of my tenure at arXiv. Ralph was remarkably dedicated to arXiv’s mission. I am confident that Ralph’s vision for arXiv as an inclusive scientific community will be carried on by arXiv’s staff. We were all fortunate to have him as a colleague, and he will be deeply missed.”</p>
+
+
+
+<p class="wp-block-paragraph">We will miss Ralph not only for his research accomplishments and contributions to astronomy and to arXiv (which were many) but also for his enthusiasm and passion for education, popularising science, and sharing the mysteries of the cosmos (and how they might be untangled) with the world at large.</p>
+
+
+
+<p class="wp-block-paragraph">Ralph didn’t reserve his time teaching to only students who would be dedicating their academic careers to physics. In addition to giving <a href="https://www.youtube.com/watch?v=hATWrgkhKv8">popular</a> <a href="https://www.youtube.com/watch?v=qF9FJVn9DRk">public</a> <a href="https://www.youtube.com/watch?v=ZVPs4NjEaXA">lectures</a>, Ralph also found it worthy to teach students with no background in natural sciences at all, to develop courses for Bachelors and Masters programs, and to work tirelessly to include students from all walks of life and levels of privilege in the wonder of learning and caring about the universe and what it can show us.</p>
+
+
+
+<p class="wp-block-paragraph">Science, no matter the subject or goal, is at its core a human endeavor. Ralph, even as a great intellect and researcher, knew the human side of science was just as important as the results. He was open with advice and wisdom not only to nascent astronomers or students in his charge, but anyone he encountered &#8211; new hires at arXiv were quickly and warmly greeted by Ralph, despite his busy schedule, with an invitation to talk about arXiv, research, or anything at all.</p>
+
+
+
+<p class="wp-block-paragraph">Ralph’s infectious enthusiasm and earnest curiosity made him adept at breaking down barriers, which made him a natural fit for the many things he put his hand to, but especially open access causes, scientific engagement, and to arXiv, where breaking down barriers to research access is paramount.</p>
+
+
+
+<p class="wp-block-paragraph">Thank you, Ralph, for your generosity with arXiv and with the scientific community at large &#8211; you are already missed by all of us. Our thoughts are especially with Ralph’s family and loved ones at this difficult time.&nbsp;</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.arxiv.org/2026/07/28/remembering-ralph-wijers/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">2020</post-id>	</item>
+		<item>
+		<title>arXiv now hosts over 3 million articles</title>
+		<link>https://blog.arxiv.org/2026/07/09/arxiv-now-hosts-over-3-million-articles/</link>
+					<comments>https://blog.arxiv.org/2026/07/09/arxiv-now-hosts-over-3-million-articles/#comments</comments>
+		
+		<dc:creator><![CDATA[Kat Boboris]]></dc:creator>
+		<pubDate>Thu, 09 Jul 2026 19:33:15 +0000</pubDate>
+				<category><![CDATA[about arXiv]]></category>
+		<guid isPermaLink="false">https://blogs.cornell.edu/arxiv/?p=1846</guid>
+
+					<description><![CDATA[On July 1st, 2026, arXiv reached an important milestone &#8211; establishing ourselves as an independent nonprofit. But only a few months before, arXiv quietly passed a different milestone &#8211; arxiv.org now hosts over 3 million scientific articles. Back in 2022, arXiv founder Paul Ginsparg predicted it would likely take four and half years for arXiv [&#8230;]]]></description>
+										<content:encoded><![CDATA[<p><span style="font-weight: 400">On July 1st, 2026, arXiv reached an important milestone &#8211; establishing ourselves as </span><a href="https://blog.arxiv.org/2026/06/30/arxivs-next-chapter/"><span style="font-weight: 400">an independent nonprofit</span></a><span style="font-weight: 400">. But only a few months before, arXiv quietly passed a different milestone &#8211; </span><a href="http://arxiv.org"><span style="font-weight: 400">arxiv.org</span></a><span style="font-weight: 400"> now hosts over 3 million scientific articles.</span></p>
+<p><span style="font-weight: 400">Back in 2022, arXiv founder Paul Ginsparg </span><a href="https://blog.arxiv.org/2022/01/03/two-million-articles-and-counting/"><span style="font-weight: 400">predicted it would likely take four and half years</span></a><span style="font-weight: 400"> for arXiv to pass 3 million articles.</span></p>
+<p><span style="font-weight: 400">arXiv did it in four.</span></p>
+<p><span style="font-weight: 400">In April 2026 </span><a href="http://arxiv.org"><span style="font-weight: 400">arxiv.org</span></a><span style="font-weight: 400"> surpassed 3 million articles. Only the month before, arXiv broke its monthly submission record, receiving 30,045 new submissions in March 2026. This record was quickly surpassed in May 2026, when we received 31,604 new submissions and then again in June 2026, when we received 32,040 new submissions in a single month.</span></p>
+<p><span style="font-weight: 400">arXiv was founded in 1991 to help scientists quickly and freely share their work with the world. arXiv was a “big idea” but we started small &#8211; one computer on one scientist’s desk at the dawn of the World Wide Web. In our very first month of existence, arXiv received less than 30 submissions. Since then, arXiv’s growth has exploded, with submissions counts continuously climbing year after year.</span></p>
+<p><span style="font-weight: 400">arXiv hit its very first milestone in 2008, when we reached 500,000 papers hosted. While it took 17 years from our founding to get there, it took less than 7 years to double that milestone, </span><a href="https://www.nature.com/articles/nature.2014.16643"><span style="font-weight: 400">reaching the 1 million article mark just after Christmas in 2014</span></a><span style="font-weight: 400">.</span></p>
+<p><span style="font-weight: 400">Fast forward another 6 years, and arXiv had once again doubled its article count, reaching the </span><a href="https://blog.arxiv.org/2022/01/03/two-million-articles-and-counting/"><span style="font-weight: 400">2 million mark in early 2022</span></a><span style="font-weight: 400">. In the year leading up to arXiv’s 2 million submission milestone, arXiv received 181,630 new submissions, with a monthly average of 15,135 &#8211; almost double what it was only 5 years before. </span></p>
+<p><span style="font-weight: 400">arXiv’s rapid growth is fueled by many things. arXiv is open to all scientists and is used by graduate students and Nobel Prize winners alike. With over 5 million active users visiting </span><a href="http://arxiv.org"><span style="font-weight: 400">arxiv.org</span></a><span style="font-weight: 400"> every month, arXiv is where researchers discover new ideas first, every day, across the globe. arXiv is such a foundational infrastructure for sharing research that many papers appear *only* on arXiv. Researchers in subject areas like physics, math, and computer science count on arXiv to keep pace with the explosion of new research in their fields.</span></p>
+<p><span style="font-weight: 400">As a community resource that is free to use, arXiv relies heavily on the scientific community, our 230 member institutions, as well as our sponsors, affiliates, and major funders. arXiv is not possible without the dedication of the researchers who use arXiv every day, hundreds of volunteer moderators, our volunteer councils, and the dedicated arXiv staff.</span><span style="font-weight: 400"><br />
+</span><span style="font-weight: 400"><br />
+</span><span style="font-weight: 400">arXiv’s submission growth shows no signs of slowing down &#8211; having passed 3 million articles in early April, three months later we’re already closing in on 3.1 million articles. At the current rate of </span><a href="https://arxiv.org/stats/monthly_submissions"><span style="font-weight: 400">arXiv’s monthly submission growth</span></a><span style="font-weight: 400">, it’s likely arXiv will pass 4 million articles in less than 3 years.</span><span style="font-weight: 400"><br />
+</span><span style="font-weight: 400"><br />
+</span><span style="font-weight: 400">arXiv is thankful for our early days at Los Alamos National Laboratory, and our over 25 years of growth and development with the support of Cornell University, which have created a strong community and a sustainable foundation for arXiv to continue to grow and scale independently.</span><span style="font-weight: 400"><br />
+</span><span style="font-weight: 400"><br />
+</span><span style="font-weight: 400">Thank you to everyone who helped arXiv reach 3 million articles!</span></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://blog.arxiv.org/2026/07/09/arxiv-now-hosts-over-3-million-articles/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1854</post-id>	</item>
+	</channel>
+</rss>

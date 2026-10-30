@@ -1,0 +1,16 @@
+{
+ "enabled": true,
+ "user_agent": "GateClosingLedgerBot/1.0 (+https://github.com/lokivelli316/EARLYWINE-PRESIDENTIAL-BLUEPRINT; evidence ledger; low-rate change monitor)",
+ "min_domain_interval_ms": 12000,
+ "timeout_ms": 30000,
+ "max_bytes": 15000000,
+ "dark_threshold": 3,
+ "big_change_ratio": 0.5,
+ "flap_window": 3,
+ "_notes": {
+  "enabled": "Kill switch. false = the scheduled job runs, fetches nothing, writes nothing.",
+  "dark_threshold": "Consecutive non-OK fetches before a SOURCE_DARK review item is raised.",
+  "big_change_ratio": "Share of changed lines above which a change is treated as a possible redesign and sent to review instead of the board.",
+  "flap_window": "If a source changed in 2+ of the last N OK fetches, new changes go to review (volatile page)."
+ }
+}

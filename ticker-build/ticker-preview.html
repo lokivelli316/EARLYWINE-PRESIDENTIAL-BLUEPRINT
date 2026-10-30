@@ -427,7 +427,7 @@ function renderLedger() {
   rows.forEach(e => {
     const tr = document.createElement('tr'); tr.tabIndex = 0;
     const ent = e.entity_id ? view.entities[e.entity_id] || journal.entities.find(x => x.id === e.entity_id) : null, m = journal.mechanisms.find(x => x.id === e.mechanism_id);
-    tr.innerHTML = '<td class="id">' + esc(e.event_id) + (e.legacy_ref ? '<br><small style="color:#777">' + esc(e.legacy_ref) + '</small>' : '') + (e.local ? '<br><small style="color:#c9a35b">LOCAL</small>' : '') + '</td><td>' + esc(e.date) + '</td><td>' + esc(ent ? ent.symbol : '—') + '</td><td>' + esc(m ? m.name : '—') + '</td><td style="max-width:360px">' + esc(e.title) + '</td><td>' + (e.direction ? '<span class="pill ' + esc(e.direction) + '">' + esc(e.direction === 'supports' ? 'SUPPORT' : e.direction === 'weakens' ? 'COUNTER' : 'OPEN') + '</span>' : '') + '</td><td>' + (e.new_state ? stateSpan(e.previous_state) + ' → ' + stateSpan(e.new_state) : '') + '</td><td><span class="pill ' + esc(e.audit_status) + '">' + esc(e.audit_status) + '</span></td><td>' + (e.source_refs || []).length + '</td>';
+    tr.innerHTML = '<td class="id">' + esc(e.event_id) + (e.legacy_ref ? '<br><small style="color:#777">' + esc(e.legacy_ref) + '</small>' : '') + (e.local ? '<br><small style="color:#c9a35b">LOCAL</small>' : '') + '</td><td>' + (e.date ? esc(e.date) : (e.flags || []).includes('NEEDS_HUMAN_DATE') ? '<span class="pill PROPOSED" title="Automated capture. The scraper never guesses an event date; a human sets it.">NEEDS HUMAN DATE</span>' : '') + ((e.flags || []).includes('AUTO_SCRAPED') ? '<br><small style="color:#777">AUTO · observed ' + esc((e.observed_at || '').slice(0, 16).replace('T', ' ')) + 'Z</small>' : '') + '</td><td>' + esc(ent ? ent.symbol : '—') + '</td><td>' + esc(m ? m.name : '—') + '</td><td style="max-width:360px">' + esc(e.title) + '</td><td>' + (e.direction ? '<span class="pill ' + esc(e.direction) + '">' + esc(e.direction === 'supports' ? 'SUPPORT' : e.direction === 'weakens' ? 'COUNTER' : 'OPEN') + '</span>' : '') + '</td><td>' + (e.new_state ? stateSpan(e.previous_state) + ' → ' + stateSpan(e.new_state) : '') + '</td><td><span class="pill ' + esc(e.audit_status) + '">' + esc(e.audit_status) + '</span></td><td>' + (e.source_refs || []).length + '</td>';
     tr.addEventListener('click', () => openEvent(e.event_id)); tr.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openEvent(e.event_id) } });
     body.appendChild(tr);
   });
@@ -477,6 +477,7 @@ function renderIntegrity() {
     '<div>FROZEN PREDICTIONS: ' + (tp.length ? '<span class="bad">' + tp.length + ' TAMPERED: ' + esc(tp.map(t => t.prediction_id).join(', ')) + '</span>' : '<span class="ok">all content hashes verify</span>') + '</div>' +
     '<div>WEIGHTS: <span class="warn">' + esc(view.weights.version) + '</span> · by source type ' + esc(JSON.stringify(view.weights.bySourceType)) + ' · hit ' + view.weights.predictionHit + ' · miss ' + view.weights.predictionMiss + ' · replication→mechanism +' + view.weights.replicationToMechanism + ' · PROPOSED counts 0</div>' +
     '<div>SEMANTICS: ' + esc(journal.meta.semantics) + '</div>' +
+    (scraperStatus ? (() => { const d = scraperStatus.digest; return '<div>SCRAPER ' + esc(scraperStatus.day) + ': ' + d.sources_checked + ' sources checked · ' + d.changed + ' changed · ' + d.queued_for_review + ' queued for review (' + scraperStatus.open_review + ' open) · ' + (d.auto_posted === 0 ? '<span class="ok">0 auto-posted</span>' : '<span class="bad">' + d.auto_posted + ' AUTO-POSTED — BOUNDARY VIOLATION</span>') + (d.dark_sources.length ? ' · <span class="warn">DARK: ' + esc(d.dark_sources.join(', ')) + '</span>' : '') + ' · manifest ' + scraperStatus.manifest_rows + ' rows · <a href="scraper/data/digests/' + esc(scraperStatus.day) + '.md" target="_blank" rel="noopener" style="color:inherit">digest</a></div>'; })() : '<div style="color:#777">SCRAPER: no status yet (first scheduled run has not happened, or opened from disk)</div>') +
     (view.validation.warnings.length ? '<div class="warn">WARNINGS:<br>' + view.validation.warnings.map(w => '· ' + esc(w)).join('<br>') + '</div>' : '') +
     (quarantine.length ? '<div class="bad">QUARANTINED LOCAL PROPOSALS (' + quarantine.length + ') — failed validation against the current sealed journal:<br>' + quarantine.map(qq => '· ' + esc(qq.item.type) + ' ' + esc(qq.item.record.event_id || qq.item.record.id || qq.item.record.prediction_id) + ': ' + esc(qq.error)).join('<br>') + '</div>' : '') +
     '<div style="margin-top:6px"><button class="evlink" id="exportLocal">EXPORT LOCAL PROPOSALS (' + localCount + ')</button> <button class="evlink" id="copyLocal">COPY JSON</button> <button class="evlink" id="discardLocal" style="color:#ff8a84;border-color:#5a2a26">DISCARD LOCAL PROPOSALS</button> <span style="color:#777">· the sealed journal cannot be modified from this page</span></div>';
@@ -653,6 +654,8 @@ tickClock(); setInterval(tickClock, 1000);
  * board keeps the last good journal. Opened from disk (file://) the fetch fails and the board runs on the sealed snapshot. */
 const FEED_URL = 'gate-closing-journal.json', FEED_MS = 60000;
 const feed = { state: 'CONNECTING', checked: null, error: null, added: 0 };
+let scraperStatus = null;
+async function pollScraperStatus() { try { const r = await fetch('scraper/data/status.json?t=' + Date.now(), { cache: 'no-store' }); if (!r.ok) return; const s = await r.json(); const changed = !scraperStatus || s.manifest_head !== scraperStatus.manifest_head; scraperStatus = s; if (changed) renderIntegrity(); } catch (e) {} }
 function headOf(j) { const ev = j.events || []; return ev.length ? ev[ev.length - 1].content_hash : null }
 function appendOnlyExtension(oldJ, newJ) {
   if (!newJ || !Array.isArray(newJ.events) || newJ.events.length < oldJ.events.length) return false;
@@ -689,7 +692,7 @@ async function pollFeed() {
   } catch (e) {
     feed.state = feed.state === 'LIVE' || feed.state === 'STALE' ? 'STALE' : 'OFFLINE'; feed.error = e.message; feed.checked = new Date();
   }
-  renderFeed();
+  renderFeed(); pollScraperStatus();
 }
 document.addEventListener('visibilitychange', () => { if (!document.hidden) pollFeed() });
 setInterval(() => { if (!document.hidden) pollFeed() }, FEED_MS);

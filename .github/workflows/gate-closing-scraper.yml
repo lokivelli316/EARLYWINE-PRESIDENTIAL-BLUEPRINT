@@ -1,0 +1,79 @@
+name: gate-closing-scraper
+
+# Polls the CLEARED sources in ticker-build/scraper/sources.json a few times a day and appends to the
+# live ledger. Auto events are PROPOSED only (date null, NEEDS_HUMAN_DATE). Nothing here can write POSTED.
+# Kill switch: set "enabled": false in ticker-build/scraper/config.json.
+
+on:
+  schedule:
+    - cron: '23 1,7,13,19 * * *'   # 4×/day UTC (≈ 9:23p, 3:23a, 9:23a, 3:23p Eastern)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'run = fetch + append; replay = wipe test only (no network)'
+        required: true
+        default: run
+        type: choice
+        options: [run, replay]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gate-closing-scraper
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Replay check (manifest + snapshots must rebuild the committed ledger exactly)
+        run: |
+          if [ -s ticker-build/scraper/data/manifest.jsonl ]; then
+            node ticker-build/scraper/replay.js --wipe-test --out "$RUNNER_TEMP/replay"
+          else
+            echo "No manifest yet — first run will seed it."
+          fi
+
+      - name: Snapshot pre-run state for the guard
+        if: ${{ github.event_name == 'schedule' || inputs.mode == 'run' }}
+        run: |
+          cp ticker-build/gate-closing-journal.json "$RUNNER_TEMP/journal_before.json"
+          cp ticker-build/scraper/data/manifest.jsonl "$RUNNER_TEMP/manifest_before.jsonl" 2>/dev/null || : > "$RUNNER_TEMP/manifest_before.jsonl"
+
+      - name: Scrape
+        if: ${{ github.event_name == 'schedule' || inputs.mode == 'run' }}
+        run: node ticker-build/scraper/run.js
+
+      - name: Guard (no auto-promotion, append-only, chains intact)
+        if: ${{ github.event_name == 'schedule' || inputs.mode == 'run' }}
+        run: |
+          node ticker-build/scraper/guard.js "$RUNNER_TEMP/journal_before.json" ticker-build/gate-closing-journal.json "$RUNNER_TEMP/manifest_before.jsonl" ticker-build/scraper/data/manifest.jsonl
+          # snapshots are content-addressed: existing files may never be modified or deleted
+          if git diff --name-only --diff-filter=MD -- ticker-build/scraper/data/snapshots | grep -q .; then
+            echo "GUARD FAILED: an existing snapshot was modified or deleted"; exit 1
+          fi
+
+      - name: Commit and push
+        if: ${{ github.event_name == 'schedule' || inputs.mode == 'run' }}
+        run: |
+          git config user.name  "gc-scraper"
+          git config user.email "gc-scraper@users.noreply.github.com"
+          git add ticker-build/gate-closing-journal.json ticker-build/gate-closing-journal.js ticker-build/scraper/data
+          if git diff --cached --quiet; then echo "Nothing to commit."; exit 0; fi
+          DIGEST=$(node -e 'const s=require("./ticker-build/scraper/data/status.json");const d=s.digest;console.log(`${d.sources_checked} checked · ${d.changed} changed · ${d.queued_for_review} queued · ${d.auto_posted} auto-posted`)')
+          git commit -q -m "gc-scraper: ${DIGEST}" -m "Automated fetch-hash-diff run. Auto events are PROPOSED only (date null, NEEDS_HUMAN_DATE)."
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            git pull --rebase -q || { echo "Rebase conflict — a human pushed ledger changes mid-run. Aborting; the next run will capture them as EXTERNAL_APPEND."; git rebase --abort; exit 1; }
+          done
+          exit 1

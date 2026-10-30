@@ -1,0 +1,117 @@
+{
+ "schema": "gc-scraper-sources/1",
+ "rule": "Only sources with enabled:true AND tos.status:\"CLEARED\" are ever fetched. CLEARED means the terms and robots.txt were checked and do not prohibit low-rate automated reading. Anything else stays off until Rob rules. robots.txt is re-checked at runtime on every run regardless.",
+ "tos_statuses": {
+  "CLEARED": "terms checked; no prohibition on automated access found; robots.txt honored at runtime",
+  "BLOCKED": "terms explicitly prohibit scraping/robots, or robots.txt disallows — do not enable",
+  "NEEDS_ROB": "ambiguous or unverifiable — Rob decides",
+  "UNREVIEWED": "terms could not be read"
+ },
+ "sources": [
+  {
+   "id": "spotify-newsroom-home", "name": "Spotify Newsroom (front page)", "url": "https://newsroom.spotify.com/", "kind": "html",
+   "entity_id": "ENT-SPOTIFY", "mechanism_id": null, "market": "Music", "route_changes": "review", "enabled": true,
+   "tos": { "status": "CLEARED", "checked_at": "2026-10-30", "basis": "Rob cleared Spotify newsroom. robots.txt (2026-10-30): User-agent: * / Disallow: */feed/ — so the RSS feed is OFF-LIMITS and the HTML front page is used instead." },
+   "note": "Broad page: every new post changes it. Changes go to the review queue, not the board."
+  },
+  {
+   "id": "spotify-ai-persona-20260811", "name": "Spotify Newsroom — AI Persona badges (2026-08-11)", "url": "https://newsroom.spotify.com/2026-08-11/ai-persona-badges-transparency/", "kind": "html",
+   "entity_id": "ENT-SPOTIFY", "mechanism_id": "MECH-IDENTITY", "market": "Music", "enabled": true,
+   "tos": { "status": "CLEARED", "checked_at": "2026-10-30", "basis": "as spotify-newsroom-home" }
+  },
+  {
+   "id": "spotify-human-artistry-20261020", "name": "Spotify Newsroom — One Year In: Human Artistry (2026-10-20)", "url": "https://newsroom.spotify.com/2026-10-20/prioritizing-human-artistry/", "kind": "html",
+   "entity_id": "ENT-SPOTIFY", "mechanism_id": "MECH-DISCOVERY", "market": "Music", "enabled": true,
+   "tos": { "status": "CLEARED", "checked_at": "2026-10-30", "basis": "as spotify-newsroom-home" }
+  },
+  {
+   "id": "arxiv-docs-commits", "name": "arXiv docs (info.arxiv.org source) — commit log", "url": "https://api.github.com/repos/arXiv/arxiv-docs/commits?per_page=30", "kind": "json",
+   "json": { "fields": ["sha", "commit.committer.date", "commit.message|firstline"] },
+   "entity_id": "ENT-ARXIV", "mechanism_id": "MECH-PUBLICATION", "market": "Scholarly", "route_changes": "review", "enabled": true,
+   "tos": { "status": "CLEARED", "checked_at": "2026-10-30", "basis": "Official changelog for info.arxiv.org (help + moderation pages) via the GitHub REST API, which GitHub's terms permit. Preferred over HTML scraping. Broad: includes holiday-schedule edits, so changes go to review. If api.github.com robots.txt disallows at runtime, the run records ROBOTS_DISALLOWED and raises one review item." }
+  },
+  {
+   "id": "arxiv-moderation-help", "name": "arXiv — moderation help page", "url": "https://info.arxiv.org/help/moderation/index.html", "kind": "html",
+   "entity_id": "ENT-ARXIV", "mechanism_id": "MECH-PUBLICATION", "market": "Scholarly", "enabled": true,
+   "tos": { "status": "CLEARED", "checked_at": "2026-10-30", "basis": "Rob cleared arXiv. arXiv API ToU asks for ≤1 request / 3 s and a single connection; this job makes one request per page per run with ≥12 s spacing." }
+  },
+  {
+   "id": "arxiv-blog-feed", "name": "arXiv blog (RSS)", "url": "https://blog.arxiv.org/feed/", "kind": "rss",
+   "entity_id": "ENT-ARXIV", "mechanism_id": "MECH-PUBLICATION", "market": "Scholarly", "route_changes": "review", "enabled": true,
+   "tos": { "status": "CLEARED", "checked_at": "2026-10-30", "basis": "Rob cleared arXiv. blog.arxiv.org robots.txt (2026-10-30) only disallows /wp-admin/. Official RSS preferred over HTML." }
+  },
+  {
+   "id": "zenodo-faq-ai-content", "name": "Zenodo FAQ — content not suitable for Zenodo", "url": "https://support.zenodo.org/help/en-gb/2-content/141-what-content-is-not-suitable-for-zenodo", "kind": "html",
+   "entity_id": "ENT-ZENODO", "mechanism_id": "MECH-PUBLICATION", "market": "Scholarly", "enabled": true, "min_interval_ms": 10000,
+   "tos": { "status": "CLEARED", "checked_at": "2026-10-30", "basis": "Zenodo Terms of Use contain no clause on automated access (closest: CERN may restrict use that interferes with operations). zenodo.org robots.txt asks Crawl-delay 10; honored on every Zenodo host." }
+  },
+  {
+   "id": "zenodo-privacy", "name": "Zenodo privacy policy", "url": "https://about.zenodo.org/privacy-policy/", "kind": "html",
+   "entity_id": "ENT-ZENODO", "mechanism_id": "MECH-PUBLICATION", "market": "Scholarly", "enabled": true, "min_interval_ms": 10000,
+   "tos": { "status": "CLEARED", "checked_at": "2026-10-30", "basis": "as zenodo-faq-ai-content" }
+  },
+  {
+   "id": "zenodo-policies", "name": "Zenodo policies", "url": "https://about.zenodo.org/policies/", "kind": "html",
+   "entity_id": "ENT-ZENODO", "mechanism_id": "MECH-PUBLICATION", "market": "Scholarly", "enabled": true, "min_interval_ms": 10000,
+   "tos": { "status": "CLEARED", "checked_at": "2026-10-30", "basis": "as zenodo-faq-ai-content" }
+  },
+  {
+   "id": "hf-stabilityai-stable-audio", "name": "Hugging Face API — stabilityai stable-audio models (availability)", "url": "https://huggingface.co/api/models?author=stabilityai&search=stable-audio&full=true", "kind": "json",
+   "json": { "fields": ["id", "private", "gated", "disabled", "sha", "lastModified"] },
+   "entity_id": "ENT-STABILITY", "mechanism_id": "MECH-DISTRIBUTION", "market": "Music", "enabled": true,
+   "tos": { "status": "CLEARED", "checked_at": "2026-10-30", "basis": "Official Hugging Face API. huggingface.co robots.txt (2026-10-30): User-agent: * / Allow: /. HF terms contain no clause on automated access. Tracks whether weights stay public, ungated, enabled — the EVT-0010 durability question." }
+  },
+  {
+   "id": "eu-ai-act-article-50", "name": "EU AI Act Service Desk — Article 50", "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50", "kind": "html",
+   "entity_id": "ENT-EUAIACT", "mechanism_id": "MECH-PROVENANCE", "market": "Cross-cutting", "enabled": true,
+   "tos": { "status": "CLEARED", "checked_at": "2026-10-30", "basis": "European Commission content; Commission reuse policy (Decision 2011/833/EU) permits reuse. robots.txt honored at runtime." }
+  },
+  {
+   "id": "eu-regulatory-framework-ai", "name": "European Commission — Regulatory framework on AI", "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai", "kind": "html",
+   "entity_id": "ENT-EUAIACT", "mechanism_id": "MECH-PROVENANCE", "market": "Cross-cutting", "enabled": true,
+   "tos": { "status": "CLEARED", "checked_at": "2026-10-30", "basis": "As above. digital-strategy.ec.europa.eu robots.txt (2026-10-30) disallows PDFs and any URL with a query string — this clean page URL is allowed." }
+  },
+
+  {
+   "id": "suno-help-download-limits", "name": "Suno help center", "url": "https://help.suno.com/", "kind": "html",
+   "entity_id": "ENT-SUNO", "mechanism_id": "MECH-METERING", "market": "Music", "enabled": false,
+   "tos": { "status": "BLOCKED", "checked_at": "2026-10-30", "basis": "Suno Terms (effective 2026-09-03), Conditions of Access and Use item 12: users may not \"engage in or use any data mining, robots, scraping, or similar data gathering or extraction methods\"." }
+  },
+  {
+   "id": "udio-help", "name": "Udio help center", "url": "https://help.udio.com/", "kind": "html",
+   "entity_id": "ENT-UDIO", "mechanism_id": "MECH-EXPORT", "market": "Music", "enabled": false,
+   "tos": { "status": "UNREVIEWED", "checked_at": "2026-10-30", "basis": "Full terms text at udio.com/terms-of-service could not be retrieved (page rendered metadata only). Needs a human read." }
+  },
+  {
+   "id": "kdp-help-title-limits", "name": "Amazon KDP help", "url": "https://kdp.amazon.com/en_US/help/topic/G200672390", "kind": "html",
+   "entity_id": "ENT-KDP", "mechanism_id": "MECH-VOLUME", "market": "Publishing", "enabled": false,
+   "tos": { "status": "NEEDS_ROB", "checked_at": "2026-10-30", "basis": "kdp.amazon.com robots.txt only disallows image paths, but Amazon's Conditions of Use ban robots and data mining, and amazon.com's own robots.txt blocked this check. KDP Community (kdpcommunity.com) is also Amazon-operated. Rob's call; default off." }
+  },
+  {
+   "id": "kdp-community-announcements", "name": "KDP Community announcements", "url": "https://www.kdpcommunity.com/s/announcements", "kind": "html",
+   "entity_id": "ENT-KDP", "mechanism_id": "MECH-VOLUME", "market": "Publishing", "enabled": false,
+   "tos": { "status": "NEEDS_ROB", "checked_at": "2026-10-30", "basis": "as kdp-help-title-limits; also likely JS-rendered (Salesforce community) — would hit the JS-wall detector." }
+  },
+  {
+   "id": "acx-blog", "name": "ACX blog", "url": "https://www.acx.com/mp/blog", "kind": "html",
+   "entity_id": "ENT-ACX", "mechanism_id": "MECH-MONETIZATION", "market": "Publishing", "enabled": false,
+   "tos": { "status": "NEEDS_ROB", "checked_at": "2026-10-30", "basis": "Amazon/Audible-operated; acx.com robots.txt could not be retrieved; Amazon Conditions of Use ban robots. Rob's call." }
+  },
+  {
+   "id": "ingramspark-user-guide", "name": "IngramSpark user guide (PDF)", "url": "https://www.ingramspark.com/hubfs/downloads/user-guide.pdf", "kind": "pdf",
+   "entity_id": "ENT-INGRAM", "mechanism_id": "MECH-MONETIZATION", "market": "Publishing", "enabled": false,
+   "tos": { "status": "NEEDS_ROB", "checked_at": "2026-10-30", "basis": "IngramSpark/LSI terms have no explicit scraping clause, but Clause 04 bars obtaining information \"through any means not purposely made available through the LSI Site\". A public PDF link is arguably made available; Rob's call. PDF changes always go to review (binary hash only)." }
+  },
+  {
+   "id": "stability-news", "name": "Stability AI news", "url": "https://stability.ai/news", "kind": "html",
+   "entity_id": "ENT-STABILITY", "mechanism_id": "MECH-DISTRIBUTION", "market": "Music", "enabled": false,
+   "tos": { "status": "BLOCKED", "checked_at": "2026-10-30", "basis": "Stability AI Terms of Use §3(b) item 04 prohibits users \"To crawl or scrape data from our Services or to access our Services through automated or non-human means (such as through a bot or script)\". Hugging Face API source covers the weights instead." }
+  },
+  {
+   "id": "courtlistener-anthropic-cand", "name": "CourtListener — N.D. Cal. dockets naming Anthropic", "url": "https://www.courtlistener.com/api/rest/v4/search/?type=r&q=Anthropic&court=cand&order_by=dateFiled%20desc", "kind": "json",
+   "json": { "array_path": "results", "fields": ["docket_id", "caseName", "docketNumber", "dateFiled", "dateTerminated"] },
+   "entity_id": "ENT-ANTHROPIC", "mechanism_id": "MECH-PROVENANCE", "market": "Cross-cutting", "enabled": false,
+   "tos": { "status": "NEEDS_ROB", "checked_at": "2026-10-30", "basis": "courtlistener.com robots.txt: User-agent: * / Disallow: / . Free Law Project documents a token-authenticated REST API for programmatic use (5/min, 50/hr, 125/day). Honoring robots.txt as written blocks it; using the documented API needs Rob's explicit ruling plus a COURTLISTENER_TOKEN secret and a code change to send it." }
+  }
+ ]
+}

@@ -115,7 +115,7 @@
     req(EVENT_KINDS.includes(ev.kind), 'kind must be one of ' + EVENT_KINDS.join('|'));
     req(AUDIT.includes(ev.audit_status), 'audit_status must be one of ' + AUDIT.join('|'));
     req(ev.proposed_by && ev.proposed_by.actor && ['model', 'human'].includes(ev.proposed_by.role), 'proposed_by {actor, role:model|human} required');
-    req(ev.date, 'date (event date) required');
+    req(ev.date || (ev.date === null && (ev.flags || []).includes('NEEDS_HUMAN_DATE')), 'date (event date) required — or date: null with flag NEEDS_HUMAN_DATE (never guess a date)');
     req(ev.posted_at, 'posted_at required');
     if (ev.entity_id) req(entities[ev.entity_id], 'unknown entity_id ' + ev.entity_id);
     if (ev.mechanism_id) req(mechanisms[ev.mechanism_id], 'unknown mechanism_id ' + ev.mechanism_id);

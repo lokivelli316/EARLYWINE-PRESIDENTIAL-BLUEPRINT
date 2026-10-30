@@ -52,6 +52,14 @@ button,input,select,textarea{font:inherit} button{cursor:pointer} a{color:inheri
 @keyframes tape{to{transform:translateX(-50%)}}
 .tape-item{height:100%;display:flex;align-items:center;gap:9px;padding:0 14px;border:0;border-right:1px solid #292929;background:transparent;color:#d7d7d7;font:11px var(--mono);white-space:nowrap}
 .tape-item:hover{background:#101008}
+.tape .feed{flex:none;display:flex;align-items:center;gap:7px;padding:0 12px;border-right:1px solid #353535;background:#050505;color:#bdbdbd;font:10px var(--mono);white-space:nowrap;position:relative;z-index:2}
+.tape .feed::before{content:"";width:7px;height:7px;border-radius:50%;background:#777}
+.tape .feed.live{color:#9fe8b9}.tape .feed.live::before{background:#3ddc84;animation:blink 1.6s steps(1) infinite}
+.tape .feed.stale{color:#e0b341}.tape .feed.stale::before{background:#e0b341}.tape .feed.offline{color:#ff8a84}.tape .feed.offline::before{background:#e5534b}
+@media (max-width:640px){.tape .feed{max-width:42vw;overflow:hidden;text-overflow:ellipsis}}
+.tape-item.fresh{box-shadow:inset 0 -2px 0 #3ddc84;animation:freshPulse 1.2s ease-in-out 8}
+@keyframes freshPulse{50%{background:#0f2a18}}
+@media (prefers-reduced-motion:reduce){.tape-item.fresh,.tape .feed.live::before{animation:none}}
 .sym{color:var(--amber);font-weight:900}.up{color:#00c176}.dn{color:#ff6264}.flat{color:#9c9c9c}
 .tape-item .st{font-weight:900} .tape-item .sec{color:#7d7d7d;font-size:9px}
 .tape-item.index .sym{color:var(--blue)}
@@ -223,6 +231,7 @@ button,input,select,textarea{font:inherit} button{cursor:pointer} a{color:inheri
     <div class="clock" id="clock">--:--:--</div>
   </div>
   <div class="tape" id="tape">
+    <div class="feed" id="feedStatus" role="status" aria-live="polite" title="Live journal feed">FEED · CONNECTING</div>
     <button class="tape-control" id="tapeToggle" type="button" aria-pressed="false">TAPE HALT</button>
     <div class="tape-viewport" aria-label="Gate Closing ticker tape"><div class="tape-track" id="tapeTrack"></div></div>
   </div>
@@ -334,7 +343,8 @@ button,input,select,textarea{font:inherit} button{cursor:pointer} a{color:inheri
 <script>
 /* ================= BOARD SHELL SCRIPT ================= */
 const E = window.GCEngine;
-const SEALED = window.GC_JOURNAL;
+let SEALED = window.GC_JOURNAL; // replaced in place by the live feed (append-only, chain-verified) — see LIVE FEED below
+const fresh = new Set(); // entity ids with events that arrived over the live feed this session
 const LS_LAYOUT = 'gate.stockboard.layout.v1', LS_LOCAL = 'gate.stockboard.local-journal.v1', LS_LEGACY = 'gate.stockboard.legacy-preview.v1';
 const FREEZE = SEALED.meta.freeze, PROTOCOL = SEALED.meta.protocol;
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -382,7 +392,7 @@ function renderTape() {
   const ents = entList().sort((a, b) => a.symbol.localeCompare(b.symbol));
   const items = [...ents.map(e => ({ t: 'e', e })), ...view.indices.map(ix => ({ t: 'i', ix }))];
   [...items, ...items].forEach(it => {
-    const b = document.createElement('button'); b.type = 'button'; b.className = 'tape-item' + (it.t === 'i' ? ' index' : '');
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'tape-item' + (it.t === 'i' ? ' index' : '') + (it.t === 'e' && fresh.has(it.e.id) ? ' fresh' : '');
     if (it.t === 'e') { const e = it.e; b.innerHTML = '<span class="sym">' + esc(e.symbol) + '</span><span class="st st-' + esc(e.state) + '">' + esc(e.state) + '</span>' + arrow(e.movement) + '<span>' + (e.score.total >= 0 ? '+' : '') + e.score.total + '</span><span class="sec">' + esc(e.market.toUpperCase()) + (e.pending.length ? ' · ' + e.pending.length + ' PENDING' : '') + '</span>'; b.addEventListener('click', () => openEntity(e.id)); }
     else { const ix = it.ix; b.innerHTML = '<span class="sym">' + esc(ix.symbol) + '</span><span class="st">INDEX</span><span>' + (ix.score.total >= 0 ? '+' : '') + ix.score.total + '</span><span class="sec">' + ix.members.length + ' CONSTITUENTS</span>'; b.addEventListener('click', () => openIndex(ix.id)); }
     host.appendChild(b);
@@ -636,9 +646,57 @@ function toast(msg) { const el = document.getElementById('toast'); el.textConten
 function tickClock() { document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-US', { hour12: false, timeZone: 'America/Indiana/Indianapolis' }) }
 tickClock(); setInterval(tickClock, 1000);
 
+/* ---- LIVE FEED ----
+ * Polls gate-closing-journal.json (the published twin of the sealed journal) every 60 s and when the tab regains focus.
+ * An update is accepted ONLY if: the hash chain verifies, frozen predictions verify, and it is an append-only
+ * extension of what this page already holds (every existing event hash unchanged). Anything else is rejected and the
+ * board keeps the last good journal. Opened from disk (file://) the fetch fails and the board runs on the sealed snapshot. */
+const FEED_URL = 'gate-closing-journal.json', FEED_MS = 60000;
+const feed = { state: 'CONNECTING', checked: null, error: null, added: 0 };
+function headOf(j) { const ev = j.events || []; return ev.length ? ev[ev.length - 1].content_hash : null }
+function appendOnlyExtension(oldJ, newJ) {
+  if (!newJ || !Array.isArray(newJ.events) || newJ.events.length < oldJ.events.length) return false;
+  return oldJ.events.every((e, i) => newJ.events[i].content_hash === e.content_hash);
+}
+function renderFeed() {
+  const el = document.getElementById('feedStatus'); if (!el) return;
+  const t = feed.checked ? feed.checked.toLocaleTimeString('en-US', { hour12: false, timeZone: 'America/Indiana/Indianapolis' }) : '--:--:--';
+  const head = (headOf(SEALED) || '').slice(0, 8);
+  el.className = 'feed ' + feed.state.toLowerCase();
+  el.textContent = feed.state === 'LIVE' ? 'FEED LIVE · ' + SEALED.events.length + ' EV · ' + head + ' · ' + t + (feed.added ? ' · +' + feed.added + ' NEW' : '')
+    : feed.state === 'STALE' ? 'FEED STALE · last good ' + head + ' · ' + t
+    : feed.state === 'OFFLINE' ? 'FEED OFFLINE · SEALED SNAPSHOT ' + head
+    : 'FEED · CONNECTING';
+  el.title = feed.error ? 'Last feed problem: ' + feed.error : 'Polls ' + FEED_URL + ' every ' + FEED_MS / 1000 + ' s; accepts only chain-verified, append-only updates.';
+}
+async function pollFeed() {
+  try {
+    const r = await fetch(FEED_URL + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const next = await r.json();
+    const ch = E.verifyChain(next); if (!ch.ok) throw new Error('feed hash chain BROKEN — rejected: ' + ch.problems.join('; '));
+    if (E.verifyPredictions(next).some(p => !p.ok)) throw new Error('feed frozen-prediction hash mismatch — rejected');
+    if (!appendOnlyExtension(SEALED, next)) throw new Error('feed rewrites or drops sealed history — rejected');
+    const added = next.events.slice(SEALED.events.length);
+    const metaChanged = (next.meta && next.meta.updated) !== (SEALED.meta && SEALED.meta.updated) || next.sources.length !== SEALED.sources.length || next.entities.length !== SEALED.entities.length;
+    feed.state = 'LIVE'; feed.error = null; feed.checked = new Date();
+    if (added.length || metaChanged) {
+      SEALED = next; feed.added += added.length;
+      added.forEach(e => { if (e.entity_id) fresh.add(e.entity_id) });
+      rebuildJournal(); rerender(); if (typeof refreshFormOptions === 'function') refreshFormOptions();
+      if (added.length) toast('LIVE: ' + added.length + ' NEW EVENT' + (added.length > 1 ? 'S' : '') + ' · ' + added.map(e => e.event_id).join(' '));
+    }
+  } catch (e) {
+    feed.state = feed.state === 'LIVE' || feed.state === 'STALE' ? 'STALE' : 'OFFLINE'; feed.error = e.message; feed.checked = new Date();
+  }
+  renderFeed();
+}
+document.addEventListener('visibilitychange', () => { if (!document.hidden) pollFeed() });
+setInterval(() => { if (!document.hidden) pollFeed() }, FEED_MS);
+
 /* ---- boot ---- */
-rebuildJournal(); rerender(); renderProposeForm();
-window.GC_BOARD = { get journal() { return journal }, get view() { return view }, ui, rerender, openEvent, openEntity, openLane, openPrediction, openClaim };
+rebuildJournal(); rerender(); renderProposeForm(); renderFeed(); pollFeed();
+window.GC_BOARD = { get journal() { return journal }, get view() { return view }, get feed() { return feed }, ui, rerender, pollFeed, openEvent, openEntity, openLane, openPrediction, openClaim };
 </script>
 <script data-ew-hamburger-graft src="/EARLYWINE-PRESIDENTIAL-BLUEPRINT/assets/js/hamburger-everywhere.js" defer></script>
 </body>

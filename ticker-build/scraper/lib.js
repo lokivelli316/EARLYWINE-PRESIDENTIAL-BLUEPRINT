@@ -17,6 +17,7 @@ const fs = require('fs'), path = require('path'), crypto = require('crypto');
 const E = require('../gate-closing-engine.js');
 
 const EXTRACTOR_VERSION = 'gc-extract/1.0.0';
+const PIPELINE_VERSION = 2; // v2: hash change with zero added/removed lines (reorder only) → review, not board. Rows without pipeline_version replay under v1 rules.
 const SCRAPER_ACTOR = 'gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)';
 const AUTO_AUDIT_STATUS = 'PROPOSED'; // constant on purpose. See boundary 1.
 const BAD_HEALTH_NOT_DARK = new Set(['ROBOTS_DISALLOWED', 'RATE_LIMITED']); // config/politeness problems, not a vanishing source
@@ -313,6 +314,7 @@ function applyRow(S, row, ctx) {
         if (diff.ratio > config.big_change_ratio) reasons.push(`large rewrite (${Math.round(diff.ratio * 100)}% of lines) — redesign or reorganization?`);
         if (flapping) reasons.push('flapping: changed in ≥2 of the last ' + config.flap_window + ' OK fetches');
         if (!cfg.entity_id) reasons.push('source has no entity');
+        if ((row.pipeline_version || 1) >= 2 && !diff.added.length && !diff.removed.length) reasons.push('reorder only: same lines, different order (e.g. API result ordering) — no content change');
         if (cfg.route_changes === 'review') reasons.push('broad feed: all changes go to human review by config');
         if (wasDark) reasons.push('source just recovered from dark');
         if (reasons.length) { out.review_id = openReview(S, row, cfg, 'CHANGE_NEEDS_REVIEW', { why: reasons, added: diff.added.slice(0, 40), removed: diff.removed.slice(0, 40), ratio: diff.ratio, date_candidates: norm.date_fields }); out.route = 'REVIEW'; }
@@ -417,4 +419,4 @@ function writeDerived(P, S, ctx, rows, nowIso) {
   return st;
 }
 
-module.exports = { EXTRACTOR_VERSION, SCRAPER_ACTOR, sha256, canonical, paths, readManifest, storeSnapshot, readSnapshot, sealRow, verifyManifestChain, normalize, classify, parseRobots, robotsVerdict, lineDiff, emptyState, applyRow, replay, loadCtx, writeJournal, journalJsText, writeDerived, buildStatus, journalStateSha, assertAutoEventShape, autoPostedCount, documentDates };
+module.exports = { EXTRACTOR_VERSION, PIPELINE_VERSION, SCRAPER_ACTOR, sha256, canonical, paths, readManifest, storeSnapshot, readSnapshot, sealRow, verifyManifestChain, normalize, classify, parseRobots, robotsVerdict, lineDiff, emptyState, applyRow, replay, loadCtx, writeJournal, journalJsText, writeDerived, buildStatus, journalStateSha, assertAutoEventShape, autoPostedCount, documentDates };

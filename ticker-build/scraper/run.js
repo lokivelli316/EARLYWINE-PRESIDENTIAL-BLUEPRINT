@@ -109,7 +109,7 @@ async function fetchFollow(url, { onHop } = {}) {
 
     const v = verdictFor(src.url);
     const sourceCfg = { url: src.url, name: src.name, kind: src.kind, entity_id: src.entity_id || null, mechanism_id: src.mechanism_id || null, market: src.market || null, region: src.region || null, ignore_lines: src.ignore_lines || null, json: src.json || null, route_changes: src.route_changes || 'board' };
-    const base = { type: 'FETCH', source_id: src.id, url: src.url, kind: src.kind, source_cfg: sourceCfg, user_agent: UA, robots_ref: robotsThisRun[host].fetch_id, robots_verdict: v, extractor_version: L.EXTRACTOR_VERSION };
+    const base = { type: 'FETCH', source_id: src.id, url: src.url, kind: src.kind, source_cfg: sourceCfg, user_agent: UA, robots_ref: robotsThisRun[host].fetch_id, robots_verdict: v, extractor_version: L.EXTRACTOR_VERSION, pipeline_version: L.PIPELINE_VERSION };
     if (!v.allowed) { append({ ...base, fetched_at: now(), http_status: null, final_url: src.url, redirect_chain: [], content_sha256: null, normalized_sha256: null, raw_snapshot_path: null, normalized_snapshot_path: null, parser_warnings: ['not fetched: robots.txt ' + v.rule] }); continue; }
 
     await politeWait(host, Math.max((v.crawl_delay || 0) * 1000, src.min_interval_ms || 0));

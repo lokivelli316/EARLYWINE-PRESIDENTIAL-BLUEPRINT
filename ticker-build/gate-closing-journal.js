@@ -1,6 +1,6 @@
 /* GATE CLOSING — SEALED EVIDENCE JOURNAL (gc-journal/1)
- * GENERATED deterministically from the journal JSON. Last scraper row: FETCH-000001 @ 2026-10-30T23:03:50.065Z.
- * DO NOT EDIT BY HAND. Append via the engine (appendEvent). Hash chain: 56 events, head 2edd3945b7976c09f02ef92dc84c6d95a703bcb5aa0b0fa16d054ee33c65176b
+ * GENERATED deterministically from the journal JSON. Last scraper row: FETCH-000043 @ 2026-10-31T07:08:04.399Z.
+ * DO NOT EDIT BY HAND. Append via the engine (appendEvent). Hash chain: 57 events, head f005f280387ec4d83e2bf120b0cc7ede6e1953d64839153164fee8f1b1540d35
  * Live feed twin: gate-closing-journal.json (same content; the board polls it).
  * Verify any event: sha256(canonical({prev: prev_hash, event: <event without content_hash/prev_hash>})) — see engine.eventHashInput.
  */
@@ -820,6 +820,18 @@ window.GC_JOURNAL = {
    "retrieved": "2026-10-30",
    "retrieved_by": "Claude (research seat 2026-10-30)",
    "quote": "Setup fee removed 2023 → market access fee 1% of list at sale; 1.5% from 2025-04-01; 1.875% and revision fees removed from 2026-02-01."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-000043",
+   "type": "observed-url",
+   "title": "Hugging Face API — stabilityai stable-audio models (availability) — automated snapshot FETCH-000043",
+   "url": "https://huggingface.co/api/models?author=stabilityai&search=stable-audio&full=true",
+   "published": null,
+   "retrieved": "2026-10-31T07:08:04.399Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "a41eb75dee31f5750a3e6e4744636d9d3122e92cea6d3d26b5ddcd4a1e814ca9",
+   "snapshot": "snapshots/hf-stabilityai-stable-audio/a41eb75dee31f5750a3e6e4744636d9d3122e92cea6d3d26b5ddcd4a1e814ca9.json",
+   "note": "Automated capture. normalized_sha256 00e8e7556ff9f3c418871bdc89fc26e2227ad6ddf72a1f573bac76a0de4927a7 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
   }
  ],
  "claims": [
@@ -3081,6 +3093,40 @@ window.GC_JOURNAL = {
    "seq": 56,
    "prev_hash": "ec76bbf490055b70f649ca9eb4ebed3ec5d84a987ad61d291625585bd7788809",
    "content_hash": "2edd3945b7976c09f02ef92dc84c6d95a703bcb5aa0b0fa16d054ee33c65176b"
+  },
+  {
+   "event_id": "EVT-0057",
+   "kind": "observation",
+   "title": "AUTO: Hugging Face API — stabilityai stable-audio models (availability) changed (+0 / −0 lines)",
+   "entity_id": "ENT-STABILITY",
+   "mechanism_id": "MECH-DISTRIBUTION",
+   "market": "Music",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-10-31T07:08:04.399Z",
+   "posted_at": "2026-10-31",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-000043"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-000043",
+   "date_candidates": [],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n",
+   "seq": 57,
+   "prev_hash": "2edd3945b7976c09f02ef92dc84c6d95a703bcb5aa0b0fa16d054ee33c65176b",
+   "content_hash": "f005f280387ec4d83e2bf120b0cc7ede6e1953d64839153164fee8f1b1540d35"
   }
  ]
 };

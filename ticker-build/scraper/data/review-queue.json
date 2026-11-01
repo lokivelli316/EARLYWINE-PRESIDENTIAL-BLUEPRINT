@@ -1,5 +1,24 @@
 {
  "schema": "gc-review-queue/1",
  "note": "DERIVED from manifest.jsonl. Resolve with: node ticker-build/scraper/review.js resolve <REV-id> dismiss|emit --by \"Rob\" [--note ...]. Items here never reach the live board unless a human emits them (and even then only as PROPOSED).",
- "items": []
+ "items": [
+  {
+   "review_id": "REV-000001",
+   "fetch_id": "FETCH-000127",
+   "source_id": "hf-stabilityai-stable-audio",
+   "source_url": "https://huggingface.co/api/models?author=stabilityai&search=stable-audio&full=true",
+   "entity_id": "ENT-STABILITY",
+   "mechanism_id": "MECH-DISTRIBUTION",
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-01T18:29:00.166Z",
+   "status": "OPEN",
+   "why": [
+    "reorder only: same lines, different order (e.g. API result ordering) — no content change"
+   ],
+   "added": [],
+   "removed": [],
+   "ratio": 0,
+   "date_candidates": []
+  }
+ ]
 }

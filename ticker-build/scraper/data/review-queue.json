@@ -37,6 +37,46 @@
    "removed": [],
    "ratio": 0,
    "date_candidates": []
+  },
+  {
+   "review_id": "REV-000003",
+   "fetch_id": "FETCH-000194",
+   "source_id": "spotify-newsroom-home",
+   "source_url": "https://newsroom.spotify.com/",
+   "entity_id": "ENT-SPOTIFY",
+   "mechanism_id": null,
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-02T22:25:22.646Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "Erykah Badu, H.E.R., and More Take the Stage at Spotify’s RNB X Live in Dallas",
+    "Spotify to Gather Emerging Artists for First Fresh Finds Summit, With Sessions From John Legend, Ryan Tedder, María Zardoya, and More"
+   ],
+   "removed": [
+    "Benito Skinner and Mary Beth Barone Will Always Ride for Pop Divas",
+    "Spotify and Joe Rogan Continue Longstanding Partnership"
+   ],
+   "ratio": 0.013157894736842105,
+   "date_candidates": [
+    {
+     "field": "jsonld:dateModified",
+     "value": "2026-11-02T18:53:57+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "jsonld:datePublished",
+     "value": "2024-09-12T18:37:47+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "meta:article:modified_time",
+     "value": "2026-11-02T18:53:57+00:00",
+     "context": "HTML meta tag"
+    }
+   ]
   }
  ]
 }

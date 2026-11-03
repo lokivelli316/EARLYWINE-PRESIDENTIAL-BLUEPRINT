@@ -826,6 +826,18 @@
    "hash": "a41eb75dee31f5750a3e6e4744636d9d3122e92cea6d3d26b5ddcd4a1e814ca9",
    "snapshot": "snapshots/hf-stabilityai-stable-audio/a41eb75dee31f5750a3e6e4744636d9d3122e92cea6d3d26b5ddcd4a1e814ca9.json",
    "note": "Automated capture. normalized_sha256 00e8e7556ff9f3c418871bdc89fc26e2227ad6ddf72a1f573bac76a0de4927a7 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-000228",
+   "type": "observed-url",
+   "title": "EU AI Act Service Desk — Article 50 — automated snapshot FETCH-000228",
+   "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50",
+   "published": null,
+   "retrieved": "2026-11-03T20:11:53.865Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "a44b3017bdda958447a3d7b4d7a3a5e605c56149748e782905836a8e6b0040c7",
+   "snapshot": "snapshots/eu-ai-act-article-50/a44b3017bdda958447a3d7b4d7a3a5e605c56149748e782905836a8e6b0040c7.html",
+   "note": "Automated capture. normalized_sha256 1ae304f3c13bab1375d1b440c3334dec708b91057c2e03de2a047ccd705aa180 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
   }
  ],
  "claims": [
@@ -3121,6 +3133,40 @@
    "seq": 57,
    "prev_hash": "2edd3945b7976c09f02ef92dc84c6d95a703bcb5aa0b0fa16d054ee33c65176b",
    "content_hash": "f005f280387ec4d83e2bf120b0cc7ede6e1953d64839153164fee8f1b1540d35"
+  },
+  {
+   "event_id": "EVT-0058",
+   "kind": "observation",
+   "title": "AUTO: EU AI Act Service Desk — Article 50 changed (+2 / −0 lines)",
+   "entity_id": "ENT-EUAIACT",
+   "mechanism_id": "MECH-PROVENANCE",
+   "market": "Cross-cutting",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-11-03T20:11:53.865Z",
+   "posted_at": "2026-11-03",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-000228"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-000228",
+   "date_candidates": [],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n+ This site is managed by:\n+ Directorate-General for Communications Networks, Content and Technology",
+   "seq": 58,
+   "prev_hash": "f005f280387ec4d83e2bf120b0cc7ede6e1953d64839153164fee8f1b1540d35",
+   "content_hash": "f028cf84fe5e1372ee1c0891927e67d1d45c27a0ab6b9eb80008ab75232416b2"
   }
  ]
 }

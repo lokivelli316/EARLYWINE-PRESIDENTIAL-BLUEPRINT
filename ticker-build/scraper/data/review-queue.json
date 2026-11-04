@@ -132,6 +132,63 @@
    "removed": [],
    "ratio": 0,
    "date_candidates": []
+  },
+  {
+   "review_id": "REV-000007",
+   "fetch_id": "FETCH-000274",
+   "source_id": "hf-stabilityai-stable-audio",
+   "source_url": "https://huggingface.co/api/models?author=stabilityai&search=stable-audio&full=true",
+   "entity_id": "ENT-STABILITY",
+   "mechanism_id": "MECH-DISTRIBUTION",
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-04T20:29:16.027Z",
+   "status": "OPEN",
+   "why": [
+    "flapping: changed in ≥2 of the last 3 OK fetches",
+    "reorder only: same lines, different order (e.g. API result ordering) — no content change"
+   ],
+   "added": [],
+   "removed": [],
+   "ratio": 0,
+   "date_candidates": []
+  },
+  {
+   "review_id": "REV-000008",
+   "fetch_id": "FETCH-000278",
+   "source_id": "spotify-newsroom-home",
+   "source_url": "https://newsroom.spotify.com/",
+   "entity_id": "ENT-SPOTIFY",
+   "mechanism_id": null,
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-04T20:29:52.162Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "Behind the Business"
+   ],
+   "removed": [
+    "Artists & Creators"
+   ],
+   "ratio": 0.006578947368421052,
+   "date_candidates": [
+    {
+     "field": "jsonld:dateModified",
+     "value": "2026-11-04T16:07:40+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "jsonld:datePublished",
+     "value": "2024-09-12T18:37:47+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "meta:article:modified_time",
+     "value": "2026-11-04T16:07:40+00:00",
+     "context": "HTML meta tag"
+    }
+   ]
   }
  ]
 }

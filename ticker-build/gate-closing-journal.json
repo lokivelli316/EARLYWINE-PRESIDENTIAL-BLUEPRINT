@@ -838,6 +838,30 @@
    "hash": "a44b3017bdda958447a3d7b4d7a3a5e605c56149748e782905836a8e6b0040c7",
    "snapshot": "snapshots/eu-ai-act-article-50/a44b3017bdda958447a3d7b4d7a3a5e605c56149748e782905836a8e6b0040c7.html",
    "note": "Automated capture. normalized_sha256 1ae304f3c13bab1375d1b440c3334dec708b91057c2e03de2a047ccd705aa180 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-000270",
+   "type": "observed-url",
+   "title": "EU AI Act Service Desk — Article 50 — automated snapshot FETCH-000270",
+   "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50",
+   "published": null,
+   "retrieved": "2026-11-04T20:28:51.308Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "2bf384b5335be7723d1647c1760b4069b2657d7285e14c4e1fbc5c92987e816c",
+   "snapshot": "snapshots/eu-ai-act-article-50/2bf384b5335be7723d1647c1760b4069b2657d7285e14c4e1fbc5c92987e816c.html",
+   "note": "Automated capture. normalized_sha256 f4cba5b8a3e5665b4a588af3aaff8d40490a3d1c8559d46d8f4e24b63b5c7547 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-000272",
+   "type": "observed-url",
+   "title": "European Commission — Regulatory framework on AI — automated snapshot FETCH-000272",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+   "published": null,
+   "retrieved": "2026-11-04T20:29:03.986Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "402ef0f27ea22499e01c266f9f8db5d44eafcf89903fc0805db29e6eaa1c6d22",
+   "snapshot": "snapshots/eu-regulatory-framework-ai/402ef0f27ea22499e01c266f9f8db5d44eafcf89903fc0805db29e6eaa1c6d22.html",
+   "note": "Automated capture. normalized_sha256 dbaf19b277d6e4ca0aac1aea4ddcf6ef6b11171548944cb4a94889f84233a9b8 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
   }
  ],
  "claims": [
@@ -3167,6 +3191,81 @@
    "seq": 58,
    "prev_hash": "f005f280387ec4d83e2bf120b0cc7ede6e1953d64839153164fee8f1b1540d35",
    "content_hash": "f028cf84fe5e1372ee1c0891927e67d1d45c27a0ab6b9eb80008ab75232416b2"
+  },
+  {
+   "event_id": "EVT-0059",
+   "kind": "observation",
+   "title": "AUTO: EU AI Act Service Desk — Article 50 changed (+4 / −4 lines)",
+   "entity_id": "ENT-EUAIACT",
+   "mechanism_id": "MECH-PROVENANCE",
+   "market": "Cross-cutting",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-11-04T20:28:51.308Z",
+   "posted_at": "2026-11-04",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-000270"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-000270",
+   "date_candidates": [],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n+ es Español\n+ de Deutsch\n+ fr Français\n+ pl Polski\n− es Spanish\n− de German\n− fr French\n− pl Polish",
+   "seq": 59,
+   "prev_hash": "f028cf84fe5e1372ee1c0891927e67d1d45c27a0ab6b9eb80008ab75232416b2",
+   "content_hash": "bfdda4f74fc7029e00f0b5cbfaad9ef99b2cca0b32124147d04ab027886720ae"
+  },
+  {
+   "event_id": "EVT-0060",
+   "kind": "observation",
+   "title": "AUTO: European Commission — Regulatory framework on AI changed (+2 / −2 lines)",
+   "entity_id": "ENT-EUAIACT",
+   "mechanism_id": "MECH-PROVENANCE",
+   "market": "Cross-cutting",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-11-04T20:29:03.986Z",
+   "posted_at": "2026-11-04",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-000272"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-000272",
+   "date_candidates": [
+    {
+     "field": "text:starting",
+     "value": "2 December 2027",
+     "context": "atic processes (e.g. AI solutions to prepare court rulings) ⏎ Starting on 2 December 2027, high-risk AI systems will be subject to strict obligations",
+     "kind": "document-date (NOT the event date)"
+    }
+   ],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n+ 04-11-2026\n+ Executive Vice-President Virkkunen updates Council and Parliament on simplification, implementation and enforcement of the digital rulebook\n− 13-07-2026\n− New feasibility study for introducing an EU-level registry of Text and Data Mining opt-out",
+   "seq": 60,
+   "prev_hash": "bfdda4f74fc7029e00f0b5cbfaad9ef99b2cca0b32124147d04ab027886720ae",
+   "content_hash": "6614580a8cc3cd61e604815b2126fcf140cd2158c897c87e58b2ce4e821aa600"
   }
  ]
 }

@@ -862,6 +862,18 @@
    "hash": "402ef0f27ea22499e01c266f9f8db5d44eafcf89903fc0805db29e6eaa1c6d22",
    "snapshot": "snapshots/eu-regulatory-framework-ai/402ef0f27ea22499e01c266f9f8db5d44eafcf89903fc0805db29e6eaa1c6d22.html",
    "note": "Automated capture. normalized_sha256 dbaf19b277d6e4ca0aac1aea4ddcf6ef6b11171548944cb4a94889f84233a9b8 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-000314",
+   "type": "observed-url",
+   "title": "European Commission — Regulatory framework on AI — automated snapshot FETCH-000314",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+   "published": null,
+   "retrieved": "2026-11-05T20:44:49.757Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "52d64e5b6540c6c8a1172f28a1d3bd9ddafe510029e4c44938769aa4b4561535",
+   "snapshot": "snapshots/eu-regulatory-framework-ai/52d64e5b6540c6c8a1172f28a1d3bd9ddafe510029e4c44938769aa4b4561535.html",
+   "note": "Automated capture. normalized_sha256 4767ab8f2c5412bd9783399ddb090bc7adc0e9b97228aa22e78decb258aa6eff · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
   }
  ],
  "claims": [
@@ -3266,6 +3278,47 @@
    "seq": 60,
    "prev_hash": "bfdda4f74fc7029e00f0b5cbfaad9ef99b2cca0b32124147d04ab027886720ae",
    "content_hash": "6614580a8cc3cd61e604815b2126fcf140cd2158c897c87e58b2ce4e821aa600"
+  },
+  {
+   "event_id": "EVT-0061",
+   "kind": "observation",
+   "title": "AUTO: European Commission — Regulatory framework on AI changed (+2 / −2 lines)",
+   "entity_id": "ENT-EUAIACT",
+   "mechanism_id": "MECH-PROVENANCE",
+   "market": "Cross-cutting",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-11-05T20:44:49.757Z",
+   "posted_at": "2026-11-05",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-000314"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-000314",
+   "date_candidates": [
+    {
+     "field": "text:starting",
+     "value": "2 December 2027",
+     "context": "atic processes (e.g. AI solutions to prepare court rulings) ⏎ Starting on 2 December 2027, high-risk AI systems will be subject to strict obligations",
+     "kind": "document-date (NOT the event date)"
+    }
+   ],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n+ | 05 November 2026\n+ Commission launches Education and Skills package to tackle declining basic skills, rapid digital change and teacher shortages\n− | 30 September 2026\n− Three in four EU employees faced cyber threats at work, new Eurobarometer finds",
+   "seq": 61,
+   "prev_hash": "6614580a8cc3cd61e604815b2126fcf140cd2158c897c87e58b2ce4e821aa600",
+   "content_hash": "35c897973b4b97d21e246efe6633f0e8141f12126272f6192116f898c4b830fe"
   }
  ]
 }

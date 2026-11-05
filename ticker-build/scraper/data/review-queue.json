@@ -208,6 +208,70 @@
    "removed": [],
    "ratio": 0,
    "date_candidates": []
+  },
+  {
+   "review_id": "REV-000010",
+   "fetch_id": "FETCH-000316",
+   "source_id": "hf-stabilityai-stable-audio",
+   "source_url": "https://huggingface.co/api/models?author=stabilityai&search=stable-audio&full=true",
+   "entity_id": "ENT-STABILITY",
+   "mechanism_id": "MECH-DISTRIBUTION",
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-05T20:45:01.869Z",
+   "status": "OPEN",
+   "why": [
+    "flapping: changed in ≥2 of the last 3 OK fetches"
+   ],
+   "added": [
+    "id=stabilityai/stable-audio-open-small | private=false | gated=auto | disabled= | sha=ea2772170fc06f80dfd02bea6e57a44d9d4bc9d3 | lastModified=2026-11-05T19:04:49.000Z"
+   ],
+   "removed": [
+    "id=stabilityai/stable-audio-open-small | private=false | gated=auto | disabled= | sha=dc620d91535857b72ebb59b4ca45978db6d417f5 | lastModified=2025-05-27T14:47:23.000Z"
+   ],
+   "ratio": 0.1111111111111111,
+   "date_candidates": []
+  },
+  {
+   "review_id": "REV-000011",
+   "fetch_id": "FETCH-000320",
+   "source_id": "spotify-newsroom-home",
+   "source_url": "https://newsroom.spotify.com/",
+   "entity_id": "ENT-SPOTIFY",
+   "mechanism_id": null,
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-05T20:45:37.994Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "Get Ready for Your Spotify Wrapped",
+    "Log In to Spotify. Take Off With United.",
+    "Artists & Creators"
+   ],
+   "removed": [
+    "Behind the Business",
+    "Believe and Spotify Partner to Unlock New Opportunities for Artists Through Licensed Fan Remixes and Covers",
+    "Deck Your Halls With This Year’s Spotify Singles: Holiday Collection"
+   ],
+   "ratio": 0.019736842105263157,
+   "date_candidates": [
+    {
+     "field": "jsonld:dateModified",
+     "value": "2026-11-05T15:23:05+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "jsonld:datePublished",
+     "value": "2024-09-12T18:37:47+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "meta:article:modified_time",
+     "value": "2026-11-05T15:23:05+00:00",
+     "context": "HTML meta tag"
+    }
+   ]
   }
  ]
 }

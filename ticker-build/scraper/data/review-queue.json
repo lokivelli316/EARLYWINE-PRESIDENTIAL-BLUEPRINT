@@ -291,6 +291,28 @@
    "removed": [],
    "ratio": 0,
    "date_candidates": []
+  },
+  {
+   "review_id": "REV-000013",
+   "fetch_id": "FETCH-000369",
+   "source_id": "arxiv-blog-feed",
+   "source_url": "https://blog.arxiv.org/feed/",
+   "entity_id": "ENT-ARXIV",
+   "mechanism_id": "MECH-PUBLICATION",
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-07T07:21:41.462Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "Fri, 06 Nov 2026 21:29:03 +0000 | Attention Authors: Temporary changes to announcement schedule due to upcoming US federal holiday | https://blog.arxiv.org/2026/11/06/announcement-change-veterans-day/"
+   ],
+   "removed": [
+    "Thu, 09 Jul 2026 19:33:15 +0000 | arXiv now hosts over 3 million articles | https://blog.arxiv.org/2026/07/09/arxiv-now-hosts-over-3-million-articles/"
+   ],
+   "ratio": 0.1,
+   "date_candidates": []
   }
  ]
 }

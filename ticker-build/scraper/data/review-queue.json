@@ -349,6 +349,44 @@
    "removed": [],
    "ratio": 0,
    "date_candidates": []
+  },
+  {
+   "review_id": "REV-000016",
+   "fetch_id": "FETCH-000530",
+   "source_id": "spotify-newsroom-home",
+   "source_url": "https://newsroom.spotify.com/",
+   "entity_id": "ENT-SPOTIFY",
+   "mechanism_id": null,
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-09T23:04:23.231Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "Gwyneth Paltrow’s New Video Podcast ‘The goop Guide’ Is Coming to Spotify"
+   ],
+   "removed": [
+    "Spotify to Gather Emerging Artists for First Fresh Finds Summit, With Sessions From John Legend, Ryan Tedder, María Zardoya, and More"
+   ],
+   "ratio": 0.006578947368421052,
+   "date_candidates": [
+    {
+     "field": "jsonld:dateModified",
+     "value": "2026-11-09T18:37:59+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "jsonld:datePublished",
+     "value": "2024-09-12T18:37:47+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "meta:article:modified_time",
+     "value": "2026-11-09T18:37:59+00:00",
+     "context": "HTML meta tag"
+    }
+   ]
   }
  ]
 }

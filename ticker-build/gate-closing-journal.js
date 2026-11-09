@@ -1,6 +1,6 @@
 /* GATE CLOSING — SEALED EVIDENCE JOURNAL (gc-journal/1)
- * GENERATED deterministically from the journal JSON. Last scraper row: FETCH-000314 @ 2026-11-05T20:44:49.757Z.
- * DO NOT EDIT BY HAND. Append via the engine (appendEvent). Hash chain: 61 events, head 35c897973b4b97d21e246efe6633f0e8141f12126272f6192116f898c4b830fe
+ * GENERATED deterministically from the journal JSON. Last scraper row: FETCH-000522 @ 2026-11-09T23:03:22.470Z.
+ * DO NOT EDIT BY HAND. Append via the engine (appendEvent). Hash chain: 62 events, head e5c8d1506032e9588ce0873d7abdd1c37832f9c157fde407a709ae4524567692
  * Live feed twin: gate-closing-journal.json (same content; the board polls it).
  * Verify any event: sha256(canonical({prev: prev_hash, event: <event without content_hash/prev_hash>})) — see engine.eventHashInput.
  */
@@ -880,6 +880,18 @@ window.GC_JOURNAL = {
    "hash": "52d64e5b6540c6c8a1172f28a1d3bd9ddafe510029e4c44938769aa4b4561535",
    "snapshot": "snapshots/eu-regulatory-framework-ai/52d64e5b6540c6c8a1172f28a1d3bd9ddafe510029e4c44938769aa4b4561535.html",
    "note": "Automated capture. normalized_sha256 4767ab8f2c5412bd9783399ddb090bc7adc0e9b97228aa22e78decb258aa6eff · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-000522",
+   "type": "observed-url",
+   "title": "EU AI Act Service Desk — Article 50 — automated snapshot FETCH-000522",
+   "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50",
+   "published": null,
+   "retrieved": "2026-11-09T23:03:22.470Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "72e509794fd07e3a57829c36f27ab846345dd26ef24428d5986d9d0391cfd4a7",
+   "snapshot": "snapshots/eu-ai-act-article-50/72e509794fd07e3a57829c36f27ab846345dd26ef24428d5986d9d0391cfd4a7.html",
+   "note": "Automated capture. normalized_sha256 4b4b5d9b4573388e79b5888c06f883df117b7a358301ce75a83f3654a9a1fe50 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
   }
  ],
  "claims": [
@@ -3325,6 +3337,40 @@ window.GC_JOURNAL = {
    "seq": 61,
    "prev_hash": "6614580a8cc3cd61e604815b2126fcf140cd2158c897c87e58b2ce4e821aa600",
    "content_hash": "35c897973b4b97d21e246efe6633f0e8141f12126272f6192116f898c4b830fe"
+  },
+  {
+   "event_id": "EVT-0062",
+   "kind": "observation",
+   "title": "AUTO: EU AI Act Service Desk — Article 50 changed (+0 / −1 lines)",
+   "entity_id": "ENT-EUAIACT",
+   "mechanism_id": "MECH-PROVENANCE",
+   "market": "Cross-cutting",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-11-09T23:03:22.470Z",
+   "posted_at": "2026-11-09",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-000522"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-000522",
+   "date_candidates": [],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n− Digital Omnibus Disclaimer",
+   "seq": 62,
+   "prev_hash": "35c897973b4b97d21e246efe6633f0e8141f12126272f6192116f898c4b830fe",
+   "content_hash": "e5c8d1506032e9588ce0873d7abdd1c37832f9c157fde407a709ae4524567692"
   }
  ]
 };

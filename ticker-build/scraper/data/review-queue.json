@@ -387,6 +387,88 @@
      "context": "HTML meta tag"
     }
    ]
+  },
+  {
+   "review_id": "REV-000017",
+   "fetch_id": "FETCH-000560",
+   "source_id": "arxiv-docs-commits",
+   "source_url": "https://api.github.com/repos/arXiv/arxiv-docs/commits?per_page=30",
+   "entity_id": "ENT-ARXIV",
+   "mechanism_id": "MECH-PUBLICATION",
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-10T20:30:45.542Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "sha=a536f556d8253f6e3575156d290f9d0e2cd57252 | commit.committer.date=2026-11-10T16:06:56Z | commit.message=Merge pull request #1581 from arXiv/ARXIVCE-4570-404-a11y",
+    "sha=00cfe762d23b4c0f986e2451b38fd449c90380d4 | commit.committer.date=2026-11-05T14:32:34Z | commit.message=ARXIVCE-4570: apply a11y patches to the 404 page"
+   ],
+   "removed": [
+    "sha=2e47ef6ee69b89931529ef8fc837060913e2933b | commit.committer.date=2026-10-05T17:59:18Z | commit.message=Merge pull request #1561 from arXiv/develop",
+    "sha=d8fd77c4bbc59aab6104219bbd2a982ee20ded9d | commit.committer.date=2026-10-05T17:57:46Z | commit.message=format fix"
+   ],
+   "ratio": 0.06666666666666667,
+   "date_candidates": []
+  },
+  {
+   "review_id": "REV-000018",
+   "fetch_id": "FETCH-000568",
+   "source_id": "hf-stabilityai-stable-audio",
+   "source_url": "https://huggingface.co/api/models?author=stabilityai&search=stable-audio&full=true",
+   "entity_id": "ENT-STABILITY",
+   "mechanism_id": "MECH-DISTRIBUTION",
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-10T20:31:34.905Z",
+   "status": "OPEN",
+   "why": [
+    "reorder only: same lines, different order (e.g. API result ordering) — no content change"
+   ],
+   "added": [],
+   "removed": [],
+   "ratio": 0,
+   "date_candidates": []
+  },
+  {
+   "review_id": "REV-000019",
+   "fetch_id": "FETCH-000572",
+   "source_id": "spotify-newsroom-home",
+   "source_url": "https://newsroom.spotify.com/",
+   "entity_id": "ENT-SPOTIFY",
+   "mechanism_id": null,
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-10T20:32:10.995Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "Make Spotify’s DJ Your Own With New Voices and Even More Control",
+    "Scholastic’s Catalog Is Now Available on Audiobooks in Premium"
+   ],
+   "removed": [
+    "The Latest FC Barcelona Jersey Takeover Is Here, and Tyler, The Creator Is Taking Full Creative Control",
+    "Boo! The Spotify Editors’ Guide to Horror Audiobooks"
+   ],
+   "ratio": 0.013157894736842105,
+   "date_candidates": [
+    {
+     "field": "jsonld:dateModified",
+     "value": "2026-11-10T14:05:19+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "jsonld:datePublished",
+     "value": "2024-09-12T18:37:47+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "meta:article:modified_time",
+     "value": "2026-11-10T14:05:19+00:00",
+     "context": "HTML meta tag"
+    }
+   ]
   }
  ]
 }

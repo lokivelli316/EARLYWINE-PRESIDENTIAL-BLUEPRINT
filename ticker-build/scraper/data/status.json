@@ -1,10 +1,10 @@
 {
  "schema": "gc-scraper-status/1",
- "generated_from_row": "FETCH-000598",
+ "generated_from_row": "FETCH-000619",
  "day": "2026-11-11",
  "digest": {
   "sources_checked": 12,
-  "fetches": 12,
+  "fetches": 24,
   "changed": 0,
   "queued_for_review": 0,
   "auto_events_proposed": 0,
@@ -12,8 +12,8 @@
   "dark_sources": []
  },
  "open_review": 19,
- "manifest_rows": 598,
- "manifest_head": "0e745f8ae2bd41773191c0cfa860eae6b61b74b579562b52ebbf975103471103",
+ "manifest_rows": 619,
+ "manifest_head": "126ab66ee280df112945539c6dc7db1a700063019f7d54c1d6eb66cd45b45dad",
  "sources": [
   {
    "id": "spotify-newsroom-home",
@@ -21,8 +21,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-000593",
-   "last_ok_at": "2026-11-11T07:52:59.337Z",
+   "last_fetch_id": "FETCH-000614",
+   "last_ok_at": "2026-11-11T20:17:59.035Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -32,8 +32,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-000591",
-   "last_ok_at": "2026-11-11T07:52:35.324Z",
+   "last_fetch_id": "FETCH-000612",
+   "last_ok_at": "2026-11-11T20:17:35.023Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -43,8 +43,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-000592",
-   "last_ok_at": "2026-11-11T07:52:47.331Z",
+   "last_fetch_id": "FETCH-000613",
+   "last_ok_at": "2026-11-11T20:17:47.029Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -54,8 +54,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-000581",
-   "last_ok_at": "2026-11-11T07:51:33.748Z",
+   "last_fetch_id": "FETCH-000602",
+   "last_ok_at": "2026-11-11T20:16:34.228Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -65,8 +65,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-000583",
-   "last_ok_at": "2026-11-11T07:51:46.219Z",
+   "last_fetch_id": "FETCH-000604",
+   "last_ok_at": "2026-11-11T20:16:46.653Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -76,8 +76,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-000579",
-   "last_ok_at": "2026-11-11T07:51:21.528Z",
+   "last_fetch_id": "FETCH-000600",
+   "last_ok_at": "2026-11-11T20:16:22.191Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -87,8 +87,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-000595",
-   "last_ok_at": "2026-11-11T07:53:11.486Z",
+   "last_fetch_id": "FETCH-000616",
+   "last_ok_at": "2026-11-11T20:18:11.326Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -98,8 +98,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-000598",
-   "last_ok_at": "2026-11-11T07:53:36.098Z",
+   "last_fetch_id": "FETCH-000619",
+   "last_ok_at": "2026-11-11T20:18:35.770Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -109,8 +109,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-000597",
-   "last_ok_at": "2026-11-11T07:53:24.092Z",
+   "last_fetch_id": "FETCH-000618",
+   "last_ok_at": "2026-11-11T20:18:23.765Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -120,8 +120,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-000589",
-   "last_ok_at": "2026-11-11T07:52:23.195Z",
+   "last_fetch_id": "FETCH-000610",
+   "last_ok_at": "2026-11-11T20:17:22.991Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -131,8 +131,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-000585",
-   "last_ok_at": "2026-11-11T07:51:58.483Z",
+   "last_fetch_id": "FETCH-000606",
+   "last_ok_at": "2026-11-11T20:16:58.777Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -142,8 +142,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-000587",
-   "last_ok_at": "2026-11-11T07:52:11.150Z",
+   "last_fetch_id": "FETCH-000608",
+   "last_ok_at": "2026-11-11T20:17:10.884Z",
    "consecutive_bad": 0,
    "dark": false
   },

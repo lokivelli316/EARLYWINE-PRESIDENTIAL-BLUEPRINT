@@ -886,6 +886,30 @@
    "hash": "72e509794fd07e3a57829c36f27ab846345dd26ef24428d5986d9d0391cfd4a7",
    "snapshot": "snapshots/eu-ai-act-article-50/72e509794fd07e3a57829c36f27ab846345dd26ef24428d5986d9d0391cfd4a7.html",
    "note": "Automated capture. normalized_sha256 4b4b5d9b4573388e79b5888c06f883df117b7a358301ce75a83f3654a9a1fe50 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-000660",
+   "type": "observed-url",
+   "title": "Zenodo policies — automated snapshot FETCH-000660",
+   "url": "https://about.zenodo.org/policies/",
+   "published": null,
+   "retrieved": "2026-11-12T21:00:17.895Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "18e0a54451152803056b2e65383b767164d09914676586c49efd49ddcf82499b",
+   "snapshot": "snapshots/zenodo-policies/18e0a54451152803056b2e65383b767164d09914676586c49efd49ddcf82499b.html",
+   "note": "Automated capture. normalized_sha256 0fc09bd4bbc27c2b10c7590883d46b128c6298ee00f21032bbea04eb80c7e688 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-000661",
+   "type": "observed-url",
+   "title": "Zenodo privacy policy — automated snapshot FETCH-000661",
+   "url": "https://about.zenodo.org/privacy-policy/",
+   "published": null,
+   "retrieved": "2026-11-12T21:00:29.902Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "9e182341282223e4ab7612cea38e3cd6f6c141fa78ef65a2689b0cc732b715ac",
+   "snapshot": "snapshots/zenodo-privacy/9e182341282223e4ab7612cea38e3cd6f6c141fa78ef65a2689b0cc732b715ac.html",
+   "note": "Automated capture. normalized_sha256 0b46908f1d365aba089596aec07c91cbe5b60a82bc3b13420dbe8401b3e04093 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
   }
  ],
  "claims": [
@@ -3365,6 +3389,74 @@
    "seq": 62,
    "prev_hash": "35c897973b4b97d21e246efe6633f0e8141f12126272f6192116f898c4b830fe",
    "content_hash": "e5c8d1506032e9588ce0873d7abdd1c37832f9c157fde407a709ae4524567692"
+  },
+  {
+   "event_id": "EVT-0063",
+   "kind": "observation",
+   "title": "AUTO: Zenodo policies changed (+0 / −1 lines)",
+   "entity_id": "ENT-ZENODO",
+   "mechanism_id": "MECH-PUBLICATION",
+   "market": "Scholarly",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-11-12T21:00:17.895Z",
+   "posted_at": "2026-11-12",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-000660"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-000660",
+   "date_candidates": [],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n− FAQ",
+   "seq": 63,
+   "prev_hash": "e5c8d1506032e9588ce0873d7abdd1c37832f9c157fde407a709ae4524567692",
+   "content_hash": "5a7de03b186add155a5854cd9786516d5c9bb35195fc34bc613ee257c7f13ef2"
+  },
+  {
+   "event_id": "EVT-0064",
+   "kind": "observation",
+   "title": "AUTO: Zenodo privacy policy changed (+0 / −1 lines)",
+   "entity_id": "ENT-ZENODO",
+   "mechanism_id": "MECH-PUBLICATION",
+   "market": "Scholarly",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-11-12T21:00:29.902Z",
+   "posted_at": "2026-11-12",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-000661"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-000661",
+   "date_candidates": [],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n− FAQ",
+   "seq": 64,
+   "prev_hash": "5a7de03b186add155a5854cd9786516d5c9bb35195fc34bc613ee257c7f13ef2",
+   "content_hash": "8be7a3cb6f0cad9d540578bb06638566771f3e75864558cbd44e6a02e666052c"
   }
  ]
 }

@@ -487,6 +487,66 @@
    "removed": [],
    "ratio": 0,
    "date_candidates": []
+  },
+  {
+   "review_id": "REV-000021",
+   "fetch_id": "FETCH-000652",
+   "source_id": "hf-stabilityai-stable-audio",
+   "source_url": "https://huggingface.co/api/models?author=stabilityai&search=stable-audio&full=true",
+   "entity_id": "ENT-STABILITY",
+   "mechanism_id": "MECH-DISTRIBUTION",
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-12T20:59:17.209Z",
+   "status": "OPEN",
+   "why": [
+    "reorder only: same lines, different order (e.g. API result ordering) — no content change"
+   ],
+   "added": [],
+   "removed": [],
+   "ratio": 0,
+   "date_candidates": []
+  },
+  {
+   "review_id": "REV-000022",
+   "fetch_id": "FETCH-000656",
+   "source_id": "spotify-newsroom-home",
+   "source_url": "https://newsroom.spotify.com/",
+   "entity_id": "ENT-SPOTIFY",
+   "mechanism_id": null,
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-12T20:59:53.303Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "NBA Star Shai Gilgeous-Alexander Brings the Heat as Spotify’s First Guest Editor",
+    "Three New Ways to Shape What You See on Spotify Home",
+    "From RADAR to the Latin Grammys: Five Artists, Then and Now"
+   ],
+   "removed": [
+    "Spotify’s New In-Car App Is Available for Audi Vehicles Starting Today",
+    "Spotify Memberships Give Podcast Creators a New Way to Connect With Their Biggest Fans",
+    "One Year In: Putting Human Artistry First on Spotify"
+   ],
+   "ratio": 0.019736842105263157,
+   "date_candidates": [
+    {
+     "field": "jsonld:dateModified",
+     "value": "2026-11-12T16:06:03+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "jsonld:datePublished",
+     "value": "2024-09-12T18:37:47+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "meta:article:modified_time",
+     "value": "2026-11-12T16:06:03+00:00",
+     "context": "HTML meta tag"
+    }
+   ]
   }
  ]
 }

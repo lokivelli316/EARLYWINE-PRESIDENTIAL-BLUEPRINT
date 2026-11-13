@@ -566,6 +566,67 @@
    "removed": [],
    "ratio": 0,
    "date_candidates": []
+  },
+  {
+   "review_id": "REV-000024",
+   "fetch_id": "FETCH-000694",
+   "source_id": "hf-stabilityai-stable-audio",
+   "source_url": "https://huggingface.co/api/models?author=stabilityai&search=stable-audio&full=true",
+   "entity_id": "ENT-STABILITY",
+   "mechanism_id": "MECH-DISTRIBUTION",
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-13T20:34:15.527Z",
+   "status": "OPEN",
+   "why": [
+    "flapping: changed in ≥2 of the last 3 OK fetches",
+    "reorder only: same lines, different order (e.g. API result ordering) — no content change"
+   ],
+   "added": [],
+   "removed": [],
+   "ratio": 0,
+   "date_candidates": []
+  },
+  {
+   "review_id": "REV-000025",
+   "fetch_id": "FETCH-000698",
+   "source_id": "spotify-newsroom-home",
+   "source_url": "https://newsroom.spotify.com/",
+   "entity_id": "ENT-SPOTIFY",
+   "mechanism_id": null,
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-13T20:34:51.664Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "Pedro Pascal and Tony Gilroy on the Music From ‘Behemoth!’",
+    "‘The Toast’ Hosts Jackie and Claudia Oshry Want to Make Pop Culture Feel Like the Group Chat",
+    "News & Announcements"
+   ],
+   "removed": [
+    "Artists & Creators",
+    "The Next Generation of Puerto Rican Music Starts Here, With Support From Spotify",
+    "Your Next Favorite Podcast Starts Here: Meet the RADAR Creators Class of 2026"
+   ],
+   "ratio": 0.019736842105263157,
+   "date_candidates": [
+    {
+     "field": "jsonld:dateModified",
+     "value": "2026-11-13T16:10:41+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "jsonld:datePublished",
+     "value": "2024-09-12T18:37:47+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "meta:article:modified_time",
+     "value": "2026-11-13T16:10:41+00:00",
+     "context": "HTML meta tag"
+    }
+   ]
   }
  ]
 }

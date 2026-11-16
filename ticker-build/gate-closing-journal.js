@@ -1,6 +1,6 @@
 /* GATE CLOSING — SEALED EVIDENCE JOURNAL (gc-journal/1)
- * GENERATED deterministically from the journal JSON. Last scraper row: FETCH-000661 @ 2026-11-12T21:00:29.902Z.
- * DO NOT EDIT BY HAND. Append via the engine (appendEvent). Hash chain: 64 events, head 8be7a3cb6f0cad9d540578bb06638566771f3e75864558cbd44e6a02e666052c
+ * GENERATED deterministically from the journal JSON. Last scraper row: FETCH-000839 @ 2026-11-16T22:57:46.172Z.
+ * DO NOT EDIT BY HAND. Append via the engine (appendEvent). Hash chain: 66 events, head f5972cea4b19f5486a8e88a679a08ce741209cdd78125d0377b9c52b3fbcd431
  * Live feed twin: gate-closing-journal.json (same content; the board polls it).
  * Verify any event: sha256(canonical({prev: prev_hash, event: <event without content_hash/prev_hash>})) — see engine.eventHashInput.
  */
@@ -916,6 +916,30 @@ window.GC_JOURNAL = {
    "hash": "9e182341282223e4ab7612cea38e3cd6f6c141fa78ef65a2689b0cc732b715ac",
    "snapshot": "snapshots/zenodo-privacy/9e182341282223e4ab7612cea38e3cd6f6c141fa78ef65a2689b0cc732b715ac.html",
    "note": "Automated capture. normalized_sha256 0b46908f1d365aba089596aec07c91cbe5b60a82bc3b13420dbe8401b3e04093 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-000837",
+   "type": "observed-url",
+   "title": "EU AI Act Service Desk — Article 50 — automated snapshot FETCH-000837",
+   "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50",
+   "published": null,
+   "retrieved": "2026-11-16T22:57:34.013Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "7ae5db3e2dea6fdae4eeda55e1e56e347f2f33d40ee36796a19f3776ba313f17",
+   "snapshot": "snapshots/eu-ai-act-article-50/7ae5db3e2dea6fdae4eeda55e1e56e347f2f33d40ee36796a19f3776ba313f17.html",
+   "note": "Automated capture. normalized_sha256 8db1f25305449b445cea55af502a1719533be1fbf087801a8165853c1eb53fce · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-000839",
+   "type": "observed-url",
+   "title": "European Commission — Regulatory framework on AI — automated snapshot FETCH-000839",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+   "published": null,
+   "retrieved": "2026-11-16T22:57:46.172Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "6fe145c5aa75be77ecf8d747b1d849dc0980b24336d90f6eac422e8f6e755760",
+   "snapshot": "snapshots/eu-regulatory-framework-ai/6fe145c5aa75be77ecf8d747b1d849dc0980b24336d90f6eac422e8f6e755760.html",
+   "note": "Automated capture. normalized_sha256 cddb43ee84a3143cf83228660ce2227c152e0de41627ecd84d40abbd0507e2c7 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
   }
  ],
  "claims": [
@@ -3463,6 +3487,81 @@ window.GC_JOURNAL = {
    "seq": 64,
    "prev_hash": "5a7de03b186add155a5854cd9786516d5c9bb35195fc34bc613ee257c7f13ef2",
    "content_hash": "8be7a3cb6f0cad9d540578bb06638566771f3e75864558cbd44e6a02e666052c"
+  },
+  {
+   "event_id": "EVT-0065",
+   "kind": "observation",
+   "title": "AUTO: EU AI Act Service Desk — Article 50 changed (+2 / −3 lines)",
+   "entity_id": "ENT-EUAIACT",
+   "mechanism_id": "MECH-PROVENANCE",
+   "market": "Cross-cutting",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-11-16T22:57:34.013Z",
+   "posted_at": "2026-11-16",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-000837"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-000837",
+   "date_candidates": [],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n+ it Italiano\n+ Digital Omnibus Disclaimer\n− it Italian\n− This site is managed by:\n− Directorate-General for Communications Networks, Content and Technology",
+   "seq": 65,
+   "prev_hash": "8be7a3cb6f0cad9d540578bb06638566771f3e75864558cbd44e6a02e666052c",
+   "content_hash": "8d42cc07ac8ec650ab56d18e77ff1f574e4232b1cf4f14c384c1ff8799e5334a"
+  },
+  {
+   "event_id": "EVT-0066",
+   "kind": "observation",
+   "title": "AUTO: European Commission — Regulatory framework on AI changed (+3 / −3 lines)",
+   "entity_id": "ENT-EUAIACT",
+   "mechanism_id": "MECH-PROVENANCE",
+   "market": "Cross-cutting",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-11-16T22:57:46.172Z",
+   "posted_at": "2026-11-16",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-000839"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-000839",
+   "date_candidates": [
+    {
+     "field": "text:starting",
+     "value": "2 December 2027",
+     "context": "atic processes (e.g. AI solutions to prepare court rulings) ⏎ Starting on 2 December 2027, high-risk AI systems will be subject to strict obligations",
+     "kind": "document-date (NOT the event date)"
+    }
+   ],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n+ | 16 November 2026\n+ Commission hosts Apply AI Summit to boost Europe’s AI innovation and uptake\n+ PRESS RELEASE\n− DIGIBYTE\n− | 01 October 2026\n− EDIC for Agri-Food launched to support digital innovation across Europe’s food and agriculture sector",
+   "seq": 66,
+   "prev_hash": "8d42cc07ac8ec650ab56d18e77ff1f574e4232b1cf4f14c384c1ff8799e5334a",
+   "content_hash": "f5972cea4b19f5486a8e88a679a08ce741209cdd78125d0377b9c52b3fbcd431"
   }
  ]
 };

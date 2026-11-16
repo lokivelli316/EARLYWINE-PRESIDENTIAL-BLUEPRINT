@@ -645,6 +645,48 @@
    "removed": [],
    "ratio": 0,
    "date_candidates": []
+  },
+  {
+   "review_id": "REV-000027",
+   "fetch_id": "FETCH-000845",
+   "source_id": "spotify-newsroom-home",
+   "source_url": "https://newsroom.spotify.com/",
+   "entity_id": "ENT-SPOTIFY",
+   "mechanism_id": null,
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-16T22:58:34.343Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "Spotify’s Creator Milestone Awards Get a Refresh to Celebrate Podcast Success",
+    "Watch IVE’s Comeback Performance Videos From the Spotify DIVE ACADEMY",
+    "News & Announcements"
+   ],
+   "removed": [
+    "Behind the Business",
+    "Spotify Reports Third Quarter 2026 Earnings",
+    "Spotify and Harry Styles Team Up for a Halloween Dance Party in NYC"
+   ],
+   "ratio": 0.019736842105263157,
+   "date_candidates": [
+    {
+     "field": "jsonld:dateModified",
+     "value": "2026-11-16T14:37:06+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "jsonld:datePublished",
+     "value": "2024-09-12T18:37:47+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "meta:article:modified_time",
+     "value": "2026-11-16T14:37:06+00:00",
+     "context": "HTML meta tag"
+    }
+   ]
   }
  ]
 }

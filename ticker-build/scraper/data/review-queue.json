@@ -687,6 +687,48 @@
      "context": "HTML meta tag"
     }
    ]
+  },
+  {
+   "review_id": "REV-000028",
+   "fetch_id": "FETCH-000887",
+   "source_id": "spotify-newsroom-home",
+   "source_url": "https://newsroom.spotify.com/",
+   "entity_id": "ENT-SPOTIFY",
+   "mechanism_id": null,
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-17T21:51:48.817Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "Spotify Expands Our Commitment to Music Industry Mental Health With New Recovery Support",
+    "Spotify Audiobook Selects Returns With a New Collection of Swoon-Worthy Stories",
+    "News & Announcements"
+   ],
+   "removed": [
+    "Watch the Unearthed Performance Video for Amy Winehouse’s “You Know I’m No Good” First on Spotify",
+    "Artists & Creators",
+    "Brazilian Pop Star Jão’s Return to the Stage Is Now on Spotify"
+   ],
+   "ratio": 0.019736842105263157,
+   "date_candidates": [
+    {
+     "field": "jsonld:dateModified",
+     "value": "2026-11-17T17:36:18+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "jsonld:datePublished",
+     "value": "2024-09-12T18:37:47+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "meta:article:modified_time",
+     "value": "2026-11-17T17:36:18+00:00",
+     "context": "HTML meta tag"
+    }
+   ]
   }
  ]
 }

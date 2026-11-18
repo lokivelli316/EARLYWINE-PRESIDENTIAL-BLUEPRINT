@@ -1,6 +1,6 @@
 /* GATE CLOSING — SEALED EVIDENCE JOURNAL (gc-journal/1)
- * GENERATED deterministically from the journal JSON. Last scraper row: FETCH-000839 @ 2026-11-16T22:57:46.172Z.
- * DO NOT EDIT BY HAND. Append via the engine (appendEvent). Hash chain: 66 events, head f5972cea4b19f5486a8e88a679a08ce741209cdd78125d0377b9c52b3fbcd431
+ * GENERATED deterministically from the journal JSON. Last scraper row: FETCH-000928 @ 2026-11-18T21:30:19.557Z.
+ * DO NOT EDIT BY HAND. Append via the engine (appendEvent). Hash chain: 67 events, head 01d4f4e8ac7b1432dfac5cfa1f99d862743669b3db38e229dd89764d4dbfdf04
  * Live feed twin: gate-closing-journal.json (same content; the board polls it).
  * Verify any event: sha256(canonical({prev: prev_hash, event: <event without content_hash/prev_hash>})) — see engine.eventHashInput.
  */
@@ -940,6 +940,18 @@ window.GC_JOURNAL = {
    "hash": "6fe145c5aa75be77ecf8d747b1d849dc0980b24336d90f6eac422e8f6e755760",
    "snapshot": "snapshots/eu-regulatory-framework-ai/6fe145c5aa75be77ecf8d747b1d849dc0980b24336d90f6eac422e8f6e755760.html",
    "note": "Automated capture. normalized_sha256 cddb43ee84a3143cf83228660ce2227c152e0de41627ecd84d40abbd0507e2c7 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-000928",
+   "type": "observed-url",
+   "title": "Spotify Newsroom — One Year In: Human Artistry (2026-10-20) — automated snapshot FETCH-000928",
+   "url": "https://newsroom.spotify.com/2026-10-20/prioritizing-human-artistry/",
+   "published": null,
+   "retrieved": "2026-11-18T21:30:19.557Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "423acab7e319dbd00373f5df6bb9d3872fabd677b244ceee37aa4a6a9e5e52cf",
+   "snapshot": "snapshots/spotify-human-artistry-20261020/423acab7e319dbd00373f5df6bb9d3872fabd677b244ceee37aa4a6a9e5e52cf.html",
+   "note": "Automated capture. normalized_sha256 079c88b629ea24a60c4d5c91e4106f59b8a455940bc7fb83ffb28782276a08fa · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
   }
  ],
  "claims": [
@@ -3562,6 +3574,65 @@ window.GC_JOURNAL = {
    "seq": 66,
    "prev_hash": "8d42cc07ac8ec650ab56d18e77ff1f574e4232b1cf4f14c384c1ff8799e5334a",
    "content_hash": "f5972cea4b19f5486a8e88a679a08ce741209cdd78125d0377b9c52b3fbcd431"
+  },
+  {
+   "event_id": "EVT-0067",
+   "kind": "observation",
+   "title": "AUTO: Spotify Newsroom — One Year In: Human Artistry (2026-10-20) changed (+1 / −0 lines)",
+   "entity_id": "ENT-SPOTIFY",
+   "mechanism_id": "MECH-DISCOVERY",
+   "market": "Music",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-11-18T21:30:19.557Z",
+   "posted_at": "2026-11-18",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-000928"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-000928",
+   "date_candidates": [
+    {
+     "field": "jsonld:dateModified",
+     "value": "2026-11-18T17:19:49+00:00",
+     "context": "JSON-LD",
+     "kind": "document-date (NOT the event date)"
+    },
+    {
+     "field": "jsonld:datePublished",
+     "value": "2026-10-20T11:57:54+00:00",
+     "context": "JSON-LD",
+     "kind": "document-date (NOT the event date)"
+    },
+    {
+     "field": "meta:article:modified_time",
+     "value": "2026-11-18T17:19:49+00:00",
+     "context": "HTML meta tag",
+     "kind": "document-date (NOT the event date)"
+    },
+    {
+     "field": "meta:article:published_time",
+     "value": "2026-10-20T11:57:54+00:00",
+     "context": "HTML meta tag",
+     "kind": "document-date (NOT the event date)"
+    }
+   ],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n+ Update: As of November 17, all artists can turn on Artist Profile Protection via their Settings in Spotify for Artists.",
+   "seq": 67,
+   "prev_hash": "f5972cea4b19f5486a8e88a679a08ce741209cdd78125d0377b9c52b3fbcd431",
+   "content_hash": "01d4f4e8ac7b1432dfac5cfa1f99d862743669b3db38e229dd89764d4dbfdf04"
   }
  ]
 };

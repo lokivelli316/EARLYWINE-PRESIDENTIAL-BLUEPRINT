@@ -805,6 +805,65 @@
      "context": "HTML meta tag"
     }
    ]
+  },
+  {
+   "review_id": "REV-000032",
+   "fetch_id": "FETCH-000967",
+   "source_id": "hf-stabilityai-stable-audio",
+   "source_url": "https://huggingface.co/api/models?author=stabilityai&search=stable-audio&full=true",
+   "entity_id": "ENT-STABILITY",
+   "mechanism_id": "MECH-DISTRIBUTION",
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-19T21:42:45.777Z",
+   "status": "OPEN",
+   "why": [
+    "flapping: changed in ≥2 of the last 3 OK fetches",
+    "reorder only: same lines, different order (e.g. API result ordering) — no content change"
+   ],
+   "added": [],
+   "removed": [],
+   "ratio": 0,
+   "date_candidates": []
+  },
+  {
+   "review_id": "REV-000033",
+   "fetch_id": "FETCH-000971",
+   "source_id": "spotify-newsroom-home",
+   "source_url": "https://newsroom.spotify.com/",
+   "entity_id": "ENT-SPOTIFY",
+   "mechanism_id": null,
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-19T21:43:21.903Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "Take Your Shoes Off and Stay a While at the ‘Friends Keep Secrets’ Dinner Party",
+    "Artists & Creators"
+   ],
+   "removed": [
+    "Culture & Trends",
+    "Erykah Badu, H.E.R., and More Take the Stage at Spotify’s RNB X Live in Dallas"
+   ],
+   "ratio": 0.013157894736842105,
+   "date_candidates": [
+    {
+     "field": "jsonld:dateModified",
+     "value": "2026-11-19T14:06:26+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "jsonld:datePublished",
+     "value": "2024-09-12T18:37:47+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "meta:article:modified_time",
+     "value": "2026-11-19T14:06:26+00:00",
+     "context": "HTML meta tag"
+    }
+   ]
   }
  ]
 }

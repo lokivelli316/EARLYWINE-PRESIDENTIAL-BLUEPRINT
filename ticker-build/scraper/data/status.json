@@ -1,10 +1,10 @@
 {
  "schema": "gc-scraper-status/1",
- "generated_from_row": "FETCH-001039",
+ "generated_from_row": "FETCH-001060",
  "day": "2026-11-21",
  "digest": {
   "sources_checked": 12,
-  "fetches": 12,
+  "fetches": 24,
   "changed": 0,
   "queued_for_review": 0,
   "auto_events_proposed": 0,
@@ -12,8 +12,8 @@
   "dark_sources": []
  },
  "open_review": 37,
- "manifest_rows": 1039,
- "manifest_head": "7c487cfadc22073c5784517df1ade6552179eb44bb7469a1588db096eb5ea045",
+ "manifest_rows": 1060,
+ "manifest_head": "cfebc5b4b9c2181936bb85cc547728acaa5b6365917821ddcfc0fe9b67ff9ac9",
  "sources": [
   {
    "id": "spotify-newsroom-home",
@@ -21,8 +21,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-001034",
-   "last_ok_at": "2026-11-21T08:25:16.823Z",
+   "last_fetch_id": "FETCH-001055",
+   "last_ok_at": "2026-11-21T20:12:02.665Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -32,8 +32,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-001032",
-   "last_ok_at": "2026-11-21T08:24:52.812Z",
+   "last_fetch_id": "FETCH-001053",
+   "last_ok_at": "2026-11-21T20:11:38.654Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -43,8 +43,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-001033",
-   "last_ok_at": "2026-11-21T08:25:04.817Z",
+   "last_fetch_id": "FETCH-001054",
+   "last_ok_at": "2026-11-21T20:11:50.660Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -53,10 +53,10 @@
    "name": "arXiv docs (info.arxiv.org source) — commit log",
    "enabled": true,
    "tos": "CLEARED",
-   "last_health": "OK",
-   "last_fetch_id": "FETCH-001022",
+   "last_health": "HTTP_403",
+   "last_fetch_id": "FETCH-001043",
    "last_ok_at": "2026-11-21T08:23:51.284Z",
-   "consecutive_bad": 0,
+   "consecutive_bad": 1,
    "dark": false
   },
   {
@@ -65,8 +65,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-001024",
-   "last_ok_at": "2026-11-21T08:24:03.686Z",
+   "last_fetch_id": "FETCH-001045",
+   "last_ok_at": "2026-11-21T20:10:49.990Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -76,8 +76,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-001020",
-   "last_ok_at": "2026-11-21T08:23:39.209Z",
+   "last_fetch_id": "FETCH-001041",
+   "last_ok_at": "2026-11-21T20:10:25.937Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -87,8 +87,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-001036",
-   "last_ok_at": "2026-11-21T08:25:28.963Z",
+   "last_fetch_id": "FETCH-001057",
+   "last_ok_at": "2026-11-21T20:12:14.770Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -98,8 +98,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-001039",
-   "last_ok_at": "2026-11-21T08:25:53.537Z",
+   "last_fetch_id": "FETCH-001060",
+   "last_ok_at": "2026-11-21T20:12:39.240Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -109,8 +109,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-001038",
-   "last_ok_at": "2026-11-21T08:25:41.530Z",
+   "last_fetch_id": "FETCH-001059",
+   "last_ok_at": "2026-11-21T20:12:27.234Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -120,8 +120,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-001030",
-   "last_ok_at": "2026-11-21T08:24:40.717Z",
+   "last_fetch_id": "FETCH-001051",
+   "last_ok_at": "2026-11-21T20:11:26.619Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -131,8 +131,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-001026",
-   "last_ok_at": "2026-11-21T08:24:15.896Z",
+   "last_fetch_id": "FETCH-001047",
+   "last_ok_at": "2026-11-21T20:11:02.089Z",
    "consecutive_bad": 0,
    "dark": false
   },
@@ -142,8 +142,8 @@
    "enabled": true,
    "tos": "CLEARED",
    "last_health": "OK",
-   "last_fetch_id": "FETCH-001028",
-   "last_ok_at": "2026-11-21T08:24:28.552Z",
+   "last_fetch_id": "FETCH-001049",
+   "last_ok_at": "2026-11-21T20:11:14.518Z",
    "consecutive_bad": 0,
    "dark": false
   },

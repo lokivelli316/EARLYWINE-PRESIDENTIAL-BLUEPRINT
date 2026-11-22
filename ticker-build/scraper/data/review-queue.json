@@ -980,6 +980,24 @@
      "context": "HTML meta tag"
     }
    ]
+  },
+  {
+   "review_id": "REV-000038",
+   "fetch_id": "FETCH-001072",
+   "source_id": "hf-stabilityai-stable-audio",
+   "source_url": "https://huggingface.co/api/models?author=stabilityai&search=stable-audio&full=true",
+   "entity_id": "ENT-STABILITY",
+   "mechanism_id": "MECH-DISTRIBUTION",
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-22T08:16:06.084Z",
+   "status": "OPEN",
+   "why": [
+    "reorder only: same lines, different order (e.g. API result ordering) — no content change"
+   ],
+   "added": [],
+   "removed": [],
+   "ratio": 0,
+   "date_candidates": []
   }
  ]
 }

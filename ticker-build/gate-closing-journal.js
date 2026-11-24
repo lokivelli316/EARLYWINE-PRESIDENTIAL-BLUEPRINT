@@ -1,6 +1,6 @@
 /* GATE CLOSING — SEALED EVIDENCE JOURNAL (gc-journal/1)
- * GENERATED deterministically from the journal JSON. Last scraper row: FETCH-001133 @ 2026-11-24T01:02:57.572Z.
- * DO NOT EDIT BY HAND. Append via the engine (appendEvent). Hash chain: 68 events, head 45c6f74a4c1bd07986f040c51d185236de6a06bfc230a100fe60116da9b4aa5d
+ * GENERATED deterministically from the journal JSON. Last scraper row: FETCH-001175 @ 2026-11-24T23:09:09.166Z.
+ * DO NOT EDIT BY HAND. Append via the engine (appendEvent). Hash chain: 69 events, head 51e9a473be5b90677cac4aa9b67241ed956b1d8eaa807f8b8a27759b3d21efd4
  * Live feed twin: gate-closing-journal.json (same content; the board polls it).
  * Verify any event: sha256(canonical({prev: prev_hash, event: <event without content_hash/prev_hash>})) — see engine.eventHashInput.
  */
@@ -964,6 +964,18 @@ window.GC_JOURNAL = {
    "hash": "66b343fcf27e824493b5af95f1ab6c54c4de4f4a2b3094648db2aa404a0da338",
    "snapshot": "snapshots/eu-regulatory-framework-ai/66b343fcf27e824493b5af95f1ab6c54c4de4f4a2b3094648db2aa404a0da338.html",
    "note": "Automated capture. normalized_sha256 7eb5a0cca98a1e0684a3896eb1fd0f7eae46110aa2d5372eef30fd1353a2a01a · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-001175",
+   "type": "observed-url",
+   "title": "European Commission — Regulatory framework on AI — automated snapshot FETCH-001175",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+   "published": null,
+   "retrieved": "2026-11-24T23:09:09.166Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "80bb97d5e5561f94806b74a6286330aba9dd24ef383b62660dc690197623fbfd",
+   "snapshot": "snapshots/eu-regulatory-framework-ai/80bb97d5e5561f94806b74a6286330aba9dd24ef383b62660dc690197623fbfd.html",
+   "note": "Automated capture. normalized_sha256 c814e857f9e79f8066b673cc6d31fe8b43695c04df9292e197ed21ac914a0cc4 · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
   }
  ],
  "claims": [
@@ -3686,6 +3698,47 @@ window.GC_JOURNAL = {
    "seq": 68,
    "prev_hash": "01d4f4e8ac7b1432dfac5cfa1f99d862743669b3db38e229dd89764d4dbfdf04",
    "content_hash": "45c6f74a4c1bd07986f040c51d185236de6a06bfc230a100fe60116da9b4aa5d"
+  },
+  {
+   "event_id": "EVT-0069",
+   "kind": "observation",
+   "title": "AUTO: European Commission — Regulatory framework on AI changed (+12 / −12 lines)",
+   "entity_id": "ENT-EUAIACT",
+   "mechanism_id": "MECH-PROVENANCE",
+   "market": "Cross-cutting",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-11-24T23:09:09.166Z",
+   "posted_at": "2026-11-24",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-001175"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-001175",
+   "date_candidates": [
+    {
+     "field": "text:starting",
+     "value": "2 December 2027",
+     "context": "atic processes (e.g. AI solutions to prepare court rulings) ⏎ Starting on 2 December 2027, high-risk AI systems will be subject to strict obligations",
+     "kind": "document-date (NOT the event date)"
+    }
+   ],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n+ Press release\n+ 23 November 2026\n+ Press release\n+ 16 November 2026\n+ Press release\n+ 05 November 2026\n+ Digibyte\n+ 30 October 2026\n− PRESS RELEASE\n− | 23 November 2026\n− PRESS RELEASE\n− | 16 November 2026\n− PRESS RELEASE\n− | 05 November 2026\n− DIGIBYTE\n− | 30 October 2026",
+   "seq": 69,
+   "prev_hash": "45c6f74a4c1bd07986f040c51d185236de6a06bfc230a100fe60116da9b4aa5d",
+   "content_hash": "51e9a473be5b90677cac4aa9b67241ed956b1d8eaa807f8b8a27759b3d21efd4"
   }
  ]
 };

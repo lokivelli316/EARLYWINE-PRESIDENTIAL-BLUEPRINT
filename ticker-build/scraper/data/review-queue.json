@@ -1092,6 +1092,89 @@
      "context": "HTML meta tag"
     }
    ]
+  },
+  {
+   "review_id": "REV-000043",
+   "fetch_id": "FETCH-001169",
+   "source_id": "arxiv-docs-commits",
+   "source_url": "https://api.github.com/repos/arXiv/arxiv-docs/commits?per_page=30",
+   "entity_id": "ENT-ARXIV",
+   "mechanism_id": "MECH-PUBLICATION",
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-24T23:08:32.135Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "sha=bea230aa1e80d6b1f18fe0551efa2687cfeaaa0b | commit.committer.date=2026-11-24T18:51:31Z | commit.message=Merge pull request #1584 from arXiv/ET-251-clarify-personal-endorsement-req",
+    "sha=3472aea89c9b47c32a61520c46362db7981fbbdf | commit.committer.date=2026-11-24T18:45:10Z | commit.message=email in full text",
+    "sha=d315ebbd5f68761c03c996b7a431f3087948996f | commit.committer.date=2026-11-24T18:41:49Z | commit.message=clarify personal endorsement req"
+   ],
+   "removed": [
+    "sha=d6bc8394e62948685758f4257d4eeb87b58b7356 | commit.committer.date=2026-10-15T19:29:36Z | commit.message=Update board_of_directors.md",
+    "sha=ef6aa713846f507056d1fbc89b1e244fed7f2ab2 | commit.committer.date=2026-10-09T20:28:58Z | commit.message=Merge pull request #1562 from arXiv/dependabot/pip/urllib3-2.8.0",
+    "sha=6dc815502d603c1ae71e51afe628c9b31af8a99c | commit.committer.date=2026-10-09T17:26:33Z | commit.message=Bump urllib3 from 2.7.0 to 2.8.0"
+   ],
+   "ratio": 0.1,
+   "date_candidates": []
+  },
+  {
+   "review_id": "REV-000044",
+   "fetch_id": "FETCH-001177",
+   "source_id": "hf-stabilityai-stable-audio",
+   "source_url": "https://huggingface.co/api/models?author=stabilityai&search=stable-audio&full=true",
+   "entity_id": "ENT-STABILITY",
+   "mechanism_id": "MECH-DISTRIBUTION",
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-24T23:09:21.233Z",
+   "status": "OPEN",
+   "why": [
+    "flapping: changed in ≥2 of the last 3 OK fetches",
+    "reorder only: same lines, different order (e.g. API result ordering) — no content change"
+   ],
+   "added": [],
+   "removed": [],
+   "ratio": 0,
+   "date_candidates": []
+  },
+  {
+   "review_id": "REV-000045",
+   "fetch_id": "FETCH-001181",
+   "source_id": "spotify-newsroom-home",
+   "source_url": "https://newsroom.spotify.com/",
+   "entity_id": "ENT-SPOTIFY",
+   "mechanism_id": null,
+   "reason": "CHANGE_NEEDS_REVIEW",
+   "created_at": "2026-11-24T23:09:57.335Z",
+   "status": "OPEN",
+   "why": [
+    "broad feed: all changes go to human review by config"
+   ],
+   "added": [
+    "The ‘Grand Theft Auto VI’ Experience Arrives on Spotify"
+   ],
+   "removed": [
+    "The Grand Theft Auto VI Experience Arrives on Spotify"
+   ],
+   "ratio": 0.006578947368421052,
+   "date_candidates": [
+    {
+     "field": "jsonld:dateModified",
+     "value": "2026-11-23T15:55:15+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "jsonld:datePublished",
+     "value": "2024-09-12T18:37:47+00:00",
+     "context": "JSON-LD"
+    },
+    {
+     "field": "meta:article:modified_time",
+     "value": "2026-11-23T15:55:15+00:00",
+     "context": "HTML meta tag"
+    }
+   ]
   }
  ]
 }

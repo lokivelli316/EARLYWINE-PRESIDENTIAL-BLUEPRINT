@@ -946,6 +946,18 @@
    "hash": "423acab7e319dbd00373f5df6bb9d3872fabd677b244ceee37aa4a6a9e5e52cf",
    "snapshot": "snapshots/spotify-human-artistry-20261020/423acab7e319dbd00373f5df6bb9d3872fabd677b244ceee37aa4a6a9e5e52cf.html",
    "note": "Automated capture. normalized_sha256 079c88b629ea24a60c4d5c91e4106f59b8a455940bc7fb83ffb28782276a08fa · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
+  },
+  {
+   "id": "SRC-AUTO-FETCH-001133",
+   "type": "observed-url",
+   "title": "European Commission — Regulatory framework on AI — automated snapshot FETCH-001133",
+   "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+   "published": null,
+   "retrieved": "2026-11-24T01:02:57.572Z",
+   "retrieved_by": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+   "hash": "66b343fcf27e824493b5af95f1ab6c54c4de4f4a2b3094648db2aa404a0da338",
+   "snapshot": "snapshots/eu-regulatory-framework-ai/66b343fcf27e824493b5af95f1ab6c54c4de4f4a2b3094648db2aa404a0da338.html",
+   "note": "Automated capture. normalized_sha256 7eb5a0cca98a1e0684a3896eb1fd0f7eae46110aa2d5372eef30fd1353a2a01a · extractor gc-extract/1.0.0. Snapshot is in ticker-build/scraper/data/."
   }
  ],
  "claims": [
@@ -3627,6 +3639,47 @@
    "seq": 67,
    "prev_hash": "f5972cea4b19f5486a8e88a679a08ce741209cdd78125d0377b9c52b3fbcd431",
    "content_hash": "01d4f4e8ac7b1432dfac5cfa1f99d862743669b3db38e229dd89764d4dbfdf04"
+  },
+  {
+   "event_id": "EVT-0068",
+   "kind": "observation",
+   "title": "AUTO: European Commission — Regulatory framework on AI changed (+2 / −2 lines)",
+   "entity_id": "ENT-EUAIACT",
+   "mechanism_id": "MECH-PROVENANCE",
+   "market": "Cross-cutting",
+   "date": null,
+   "date_precision": null,
+   "flags": [
+    "NEEDS_HUMAN_DATE",
+    "AUTO_SCRAPED"
+   ],
+   "observed_at": "2026-11-24T01:02:57.572Z",
+   "posted_at": "2026-11-24",
+   "direction": "open",
+   "source_refs": [
+    "SRC-AUTO-FETCH-001133"
+   ],
+   "counterevidence_refs": [],
+   "claim_refs": [],
+   "prediction_refs": [],
+   "fetch_id": "FETCH-001133",
+   "date_candidates": [
+    {
+     "field": "text:starting",
+     "value": "2 December 2027",
+     "context": "atic processes (e.g. AI solutions to prepare court rulings) ⏎ Starting on 2 December 2027, high-risk AI systems will be subject to strict obligations",
+     "kind": "document-date (NOT the event date)"
+    }
+   ],
+   "proposed_by": {
+    "actor": "gc-scraper/1 (automated fetch-hash-diff; not an adjudicator)",
+    "role": "model"
+   },
+   "audit_status": "PROPOSED",
+   "note": "Automated hash change on a watched source. This is NOT evidence of direction and carries no date: a human must read the snapshot, decide what (if anything) happened, and when. Dates found in the document are listed in date_candidates as DOCUMENT dates only.\n+ | 23 November 2026\n+ Commission welcomes European Citizens' Panel recommendations on Democratic Resilience\n− | 05 October 2026\n− Commission holds special meeting of Scientific panel on frontier AI safety and risks",
+   "seq": 68,
+   "prev_hash": "01d4f4e8ac7b1432dfac5cfa1f99d862743669b3db38e229dd89764d4dbfdf04",
+   "content_hash": "45c6f74a4c1bd07986f040c51d185236de6a06bfc230a100fe60116da9b4aa5d"
   }
  ]
 }

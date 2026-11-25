@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080b0b">
+<title>LOKIVELLI // FORGE · Hub</title>
+<style>
+:root{
+  --bg:#080b0b; --panel:#111716; --panel2:#16201e; --line:#283b36;
+  --ink:#edf8f2; --dim:#96aaa3; --forge:#ff5e00; --glass:#00c4b4; --green:#a4f15b;
+  --mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;
+  --sans:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --bar:52px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans)}
+body{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+
+/* top bar */
+.bar{position:fixed;inset:0 0 auto 0;z-index:60;height:calc(var(--bar) + env(safe-area-inset-top,0px));
+  padding:env(safe-area-inset-top,0px) 10px 0 10px;display:flex;align-items:center;gap:10px;
+  background:rgba(8,11,11,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.burger{width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:var(--panel);
+  display:grid;place-items:center;flex:none}
+.burger:focus-visible,.item:focus-visible,.open:focus-visible{outline:2px solid var(--glass);outline-offset:2px}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:2px;background:var(--ink);
+  border-radius:2px;transition:transform .2s,opacity .2s;content:"";position:relative}
+.burger span::before{position:absolute;top:-6px}
+.burger span::after{position:absolute;top:6px}
+body.menu .burger span{background:transparent}
+body.menu .burger span::before{transform:translateY(6px) rotate(45deg);background:var(--forge)}
+body.menu .burger span::after{transform:translateY(-6px) rotate(-45deg);background:var(--forge)}
+.brand{min-width:0;flex:1;line-height:1.15}
+.brand b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--forge);white-space:nowrap}
+.brand em{display:block;font-style:normal;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.open{flex:none;font-family:var(--mono);font-size:11px;letter-spacing:.08em;border:1px solid var(--line);
+  border-radius:10px;padding:11px 12px;background:var(--panel);color:var(--dim)}
+.open:hover{color:var(--ink);border-color:var(--glass)}
+
+/* stage */
+.stage{position:fixed;inset:calc(var(--bar) + env(safe-area-inset-top,0px)) 0 0 0;background:var(--bg)}
+iframe{width:100%;height:100%;border:0;display:block;background:var(--bg)}
+.loading{position:absolute;inset:0;display:grid;place-content:center;gap:10px;text-align:center;
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--dim);pointer-events:none;
+  transition:opacity .25s}
+.loading.done{opacity:0}
+.loading i{display:block;width:150px;height:3px;margin:0 auto;background:var(--line);overflow:hidden;border-radius:2px}
+.loading i::after{content:"";display:block;width:40%;height:100%;background:var(--forge);animation:slide 1s infinite ease-in-out}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(260%)}}
+@media (prefers-reduced-motion:reduce){.loading i::after{animation:none;width:100%}}
+
+/* drawer */
+.scrim{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .2s}
+body.menu .scrim{opacity:1;pointer-events:auto}
+.drawer{position:fixed;z-index:50;top:calc(var(--bar) + env(safe-area-inset-top,0px));bottom:0;left:0;width:min(88vw,380px);
+  padding:14px 14px calc(env(safe-area-inset-bottom,0px) + 14px);
+  background:var(--panel);border-right:1px solid var(--line);transform:translateX(-102%);
+  transition:transform .22s ease;display:flex;flex-direction:column;overflow:auto;visibility:hidden}
+body.menu .drawer{transform:none;visibility:visible}
+@media (prefers-reduced-motion:reduce){.drawer,.scrim,.burger span,.burger span::before,.burger span::after{transition:none}}
+.dhead{padding:6px 4px 14px;border-bottom:1px solid var(--line);margin-bottom:10px}
+.dhead b{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--forge)}
+.dhead p{margin:6px 0 0;font-size:12px;color:var(--dim);line-height:1.4}
+.group{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--dim);margin:14px 4px 6px}
+.item{display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:start;width:100%;text-align:left;
+  padding:12px 10px;margin:0 0 6px;border:1px solid var(--line);border-radius:12px;background:var(--panel2)}
+.item:hover{border-color:var(--glass)}
+.item[aria-current="page"]{border-color:var(--forge);background:#1c1410}
+.item .n{font-family:var(--mono);font-size:12px;color:var(--forge);padding-top:2px}
+.item .t{font-weight:600;font-size:15px}
+.item .d{display:block;margin-top:3px;font-size:12px;line-height:1.35;color:var(--dim)}
+.item .k{font-family:var(--mono);font-size:10px;color:var(--green);border:1px solid #2c4a2a;border-radius:6px;padding:2px 6px;white-space:nowrap}
+.dfoot{margin-top:auto;padding:14px 4px 0;font-size:11px;color:var(--dim);font-family:var(--mono);line-height:1.6}
+.dfoot a{color:var(--glass)}
+noscript{position:fixed;inset:0;z-index:99;background:var(--bg);padding:24px;overflow:auto}
+noscript a{display:block;padding:10px 0;color:var(--glass)}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
+  <div class="brand"><b>LOKIVELLI // FORGE</b><em id="title">Loading…</em></div>
+  <button class="open" id="openFull" title="Open this page on its own">FULL ↗</button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<nav class="drawer" id="drawer" aria-label="Pages">
+  <div class="dhead"><b>⌁ THE HUB</b><p>Every page keeps its own code and styles. Pick one; use FULL ↗ to open it on its own.</p></div>
+  <div id="list"></div>
+  <div class="dfoot">
+    <a href="https://github.com/lokivelli316" target="_blank" rel="noopener">GitHub ↗</a> ·
+    <a href="https://x.com/Lokivelli316" target="_blank" rel="noopener">X ↗</a> ·
+    <a href="https://lokivelli316.github.io/" target="_blank" rel="noopener">Site ↗</a>
+  </div>
+</nav>
+
+<main class="stage">
+  <iframe id="frame" title="Page" allow="fullscreen; clipboard-write" referrerpolicy="same-origin"></iframe>
+  <div class="loading" id="loading"><span id="loadmsg">LOADING</span><i></i></div>
+</main>
+
+<noscript>
+  <h2>LOKIVELLI // FORGE — pages</h2>
+  <a href="pages/signal-control.html">Signal Control</a>
+  <a href="pages/public-signal.html">Public Signal Cross-Seed</a>
+  <a href="pages/warning-hub.html">Warning Hub</a>
+  <a href="pages/dossiers.html">Industrial Dossiers</a>
+  <a href="pages/containment-gate.html">Containment Gate</a>
+  <a href="pages/smartass-mouth.html">Smartass Mouth</a>
+</noscript>
+
+<script>
+/* ===== EDIT HERE: this array is the whole menu. Add a page = add one line + drop the file in /pages. ===== */
+var PAGES = [
+  { group:"HOME",     id:"signal-control",  title:"Signal Control",          desc:"Forge front door: releases, manifesto, network links.",            file:"pages/signal-control.html",  tag:"HTML", mb:"0.04" },
+  { group:"HOME",     id:"public-signal",   title:"Public Signal Cross-Seed",desc:"Self-contained public cross-seed build (R3-1).",                   file:"pages/public-signal.html",   tag:"HTML", mb:"7.7"  },
+  { group:"SYSTEMS",  id:"warning-hub",     title:"Warning Hub",             desc:"Warning system, field manual, explorers, favorites.",              file:"pages/warning-hub.html",     tag:"APP",  mb:"0.2"  },
+  { group:"SYSTEMS",  id:"dossiers",        title:"Industrial Dossiers",     desc:"Warning plate, five dossier files, NDA clauses.",                  file:"pages/dossiers.html",        tag:"APP",  mb:"1.9", hidden:false },
+  { group:"SYSTEMS",  id:"containment-gate",title:"Containment Gate",        desc:"Termux key-gate demo. Preview only, no real auth.",                file:"pages/containment-gate.html",tag:"APP",  mb:"2.9"  },
+  { group:"VOICE",    id:"smartass-mouth",  title:"Smartass Mouth",          desc:"Reply-voice guide with tagged examples.",                          file:"pages/smartass-mouth.html",  tag:"APP",  mb:"0.2"  }
+];
+var DEFAULT_ID = "signal-control";
+
+var $ = function(id){ return document.getElementById(id); };
+var frame=$("frame"), loading=$("loading"), titleEl=$("title"), listEl=$("list");
+var current=null, lastFocus=null;
+
+PAGES = PAGES.filter(function(p){ return !p.hidden; });   /* set hidden:true on a page to remove it from menu + routing */
+function byId(id){ for (var i=0;i<PAGES.length;i++) if (PAGES[i].id===id) return PAGES[i]; return null; }
+
+function buildList(){
+  var html="", g="";
+  PAGES.forEach(function(p,i){
+    if (p.group!==g){ g=p.group; html+='<div class="group">'+g+'</div>'; }
+    html+='<button class="item" data-id="'+p.id+'"><span class="n">'+String(i+1).padStart(2,"0")+
+      '</span><span><span class="t">'+p.title+'</span><span class="d">'+p.desc+
+      '</span></span><span class="k">'+p.tag+'</span></button>';
+  });
+  listEl.innerHTML=html;
+  listEl.addEventListener("click",function(e){
+    var b=e.target.closest(".item"); if(!b) return;
+    go(b.getAttribute("data-id"));
+    closeMenu(true);
+  });
+}
+
+function mark(){
+  var items=listEl.querySelectorAll(".item");
+  for (var i=0;i<items.length;i++){
+    if (items[i].getAttribute("data-id")===current) items[i].setAttribute("aria-current","page");
+    else items[i].removeAttribute("aria-current");
+  }
+}
+
+function go(id, skipHash){
+  var p=byId(id) || byId(DEFAULT_ID);
+  if (!p) return;
+  if (current===p.id && frame.getAttribute("src")===p.file) return;
+  current=p.id;
+  titleEl.textContent=p.title;
+  document.title=p.title+" · LOKIVELLI // FORGE";
+  $("loadmsg").textContent="LOADING"+(parseFloat(p.mb)>1?" · "+p.mb+" MB":"");
+  loading.classList.remove("done");
+  frame.setAttribute("src",p.file);
+  if (!skipHash && location.hash!=="#"+p.id) { try{ history.pushState(null,"","#"+p.id); }catch(e){ location.hash=p.id; } }
+  try{ localStorage.setItem("lokivelli.hub.last",p.id); }catch(e){}
+  mark();
+}
+
+frame.addEventListener("load",function(){ loading.classList.add("done"); });
+
+/* menu */
+function openMenu(){
+  lastFocus=document.activeElement;
+  document.body.classList.add("menu");
+  $("burger").setAttribute("aria-expanded","true");
+  $("burger").setAttribute("aria-label","Close menu");
+  var cur=listEl.querySelector('[aria-current="page"]')||listEl.querySelector(".item");
+  if (cur) setTimeout(function(){ cur.focus(); },60);
+}
+function closeMenu(skipRefocus){
+  document.body.classList.remove("menu");
+  $("burger").setAttribute("aria-expanded","false");
+  $("burger").setAttribute("aria-label","Open menu");
+  if (!skipRefocus && lastFocus && lastFocus.focus) lastFocus.focus();
+}
+$("burger").addEventListener("click",function(){ document.body.classList.contains("menu")?closeMenu():openMenu(); });
+$("scrim").addEventListener("click",function(){ closeMenu(); });
+document.addEventListener("keydown",function(e){ if (e.key==="Escape" && document.body.classList.contains("menu")) closeMenu(); });
+
+/* swipe: from left edge opens, swipe left on drawer closes */
+(function(){
+  var sx=null, sy=null;
+  document.addEventListener("touchstart",function(e){ var t=e.touches[0]; sx=t.clientX; sy=t.clientY; },{passive:true});
+  document.addEventListener("touchend",function(e){
+    if (sx===null) return; var t=e.changedTouches[0], dx=t.clientX-sx, dy=Math.abs(t.clientY-sy); 
+    if (Math.abs(dx)>70 && dy<50){
+      if (dx>0 && sx<20 && !document.body.classList.contains("menu")) openMenu();
+      if (dx<0 && document.body.classList.contains("menu")) closeMenu();
+    }
+    sx=null;
+  },{passive:true});
+})();
+
+/* full page */
+$("openFull").addEventListener("click",function(){
+  var p=byId(current); if (p) window.open(p.file,"_blank","noopener");
+});
+
+/* routing: plain #id only */
+function fromHash(){
+  var id=(location.hash||"").replace(/^#/,"");
+  if (id && byId(id)) { go(id,true); return true; }
+  return false;
+}
+window.addEventListener("hashchange",fromHash);
+window.addEventListener("popstate",fromHash);
+
+buildList();
+if (!fromHash()){
+  var last=null; try{ last=localStorage.getItem("lokivelli.hub.last"); }catch(e){}
+  go(byId(last)?last:DEFAULT_ID,false);
+}
+</script>
+</body>
+</html>

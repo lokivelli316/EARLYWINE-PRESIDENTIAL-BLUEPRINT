@@ -1,0 +1,7 @@
+ORIGINAL FILE  ->  HUB PATH  (originals copied byte-for-byte, not edited)
+index-50_7_vjb0.html                                      -> pages/signal-control.html
+LOKIVELLI_PUBLIC_SIGNAL_CROSSSEED_SELF_CONTAINED_R3-1.html -> pages/public-signal.html
+lokivelli-warning-hub-upgraded.html                       -> pages/warning-hub.html
+lokivelli_x5f_dossiers_x5f_industrial_x5f_warning.html    -> pages/dossiers.html
+lokivelli-containment-gate-password__1_.html              -> pages/containment-gate.html
+smartass_mouth2.html                                      -> pages/smartass-mouth.html
